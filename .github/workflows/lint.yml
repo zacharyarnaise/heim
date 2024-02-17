@@ -1,0 +1,27 @@
+name: Lint
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v25
+        with:
+          extra_nix_config: |
+            auto-optimise-store = true
+            experimental-features = nix-command flakes
+
+      - name: Run statix
+        run: |
+          if ! nix run nixpkgs#statix -- check .; then
+            exit 1
+          fi
