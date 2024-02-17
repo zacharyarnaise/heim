@@ -1,0 +1,2 @@
+# heim
+My NixOS configuration
