@@ -24,15 +24,15 @@ jobs:
       - name: Cache Nix builds
         uses: DeterminateSystems/magic-nix-cache-action@v3
 
+      - name: Check Nix flake inputs
+        uses: DeterminateSystems/flake-checker-action@v5
+
       - name: Run statix
         run: nix run nixpkgs#statix -- fix
 
-      - name: Run nixpkgs-fmt
-        run: nix run nixpkgs#nixpkgs-fmt -- .
+      - name: Run Alejandra
+        run: nix run nixpkgs#alejandra -- .
 
-      - name: Check Nix flake inputs
-        uses: DeterminateSystems/flake-checker-action@v5
-      
       - name: Commit changes
         if: github.event_name == 'push'
         uses: stefanzweifel/git-auto-commit-action@v5
