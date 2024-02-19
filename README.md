@@ -8,7 +8,12 @@
 ## Overview
 This repository holds configuration files for my personal systems that runs on NixOS.
 
+> [!Important]
+> I am by no means an expert on Nix or NixOS. Whatever you do with this,
+> keep in mind that mistakes will be made and things might break.
+
 ## References / Useful resources
+- [Learn Nix](https://nixos.org/learn.html)
 - [nix.dev documentation](https://nix.dev/)
 - [Zero to Nix guide](https://zero-to-nix.com/) from [Determinate Systems](https://determinate.systems/)
 - [Nix Starter Config](https://github.com/Misterio77/nix-starter-configs) from [Gabriel Fontes](https://github.com/Misterio77)
