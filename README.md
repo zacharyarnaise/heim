@@ -1,5 +1,5 @@
 # heim
-[![NixOS 23.11](https://img.shields.io/badge/NixOS%2023.11-5277C3?logo=nixos&logoColor=FFFFFF)](https://nixos.org/)
+[![NixOS unstable](https://img.shields.io/badge/NixOS%20unstable-5277C3?logo=nixos&logoColor=FFFFFF)](https://nixos.org/)
 [![Built with Nix](https://img.shields.io/badge/Built%20with%20Nix%20and%20%E2%9D%A4%EF%B8%8F-5277C3?logo=nixos&logoColor=FFFFFF)](https://builtwithnix.org/)
 [![Lint action](https://github.com/zacharyarnaise/heim/actions/workflows/lint.yml/badge.svg)](https://github.com/zacharyarnaise/heim/actions/workflows/lint.yml)
 
