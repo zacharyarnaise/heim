@@ -15,5 +15,6 @@ This repository holds configuration files for my personal systems that runs on N
 ## References / Useful resources
 - [Learn Nix](https://nixos.org/learn.html)
 - [nix.dev documentation](https://nix.dev/)
-- [Zero to Nix guide](https://zero-to-nix.com/) from [Determinate Systems](https://determinate.systems/)
-- [Nix Starter Config](https://github.com/Misterio77/nix-starter-configs) from [Gabriel Fontes](https://github.com/Misterio77)
+- [Nix Pills](https://nixos.org/guides/nix-pills/)
+- [Zero to Nix guide](https://zero-to-nix.com/)
+- [Nix Starter Config](https://github.com/Misterio77/nix-starter-configs)
