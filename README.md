@@ -12,6 +12,17 @@ This repository holds configuration files for my personal systems that runs on N
 > I am by no means an expert on Nix or NixOS. Whatever you do with this,
 > keep in mind that mistakes will be made and things might break.
 
+## Setup
+1. Get the latest NixOS minimal ISO from [here](https://nixos.org/download.html#nixos-iso)
+    ```sh
+    wget https://channels.nixos.org/nixos-23.11/latest-nixos-minimal-x86_64-linux.iso
+    ```
+2. Create a bootable USB drive with the ISO
+    ```sh
+   dd if=latest-nixos-minimal-x86_64-linux.iso of=/dev/sdX bs=1MiB oflag=direct status=progress
+   ```
+3. Boot from the USB drive and follow the [installation guide](https://nixos.org/manual/nixos/stable/index.html#sec-installation-manual)
+
 ## References / Useful resources
 - [Learn Nix](https://nixos.org/learn.html)
 - [nix.dev documentation](https://nix.dev/)
