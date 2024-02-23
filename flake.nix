@@ -23,10 +23,11 @@
       "x86_64-linux"
     ];
     forEachSystem = f: lib.genAttrs systems (system: f pkgsFor.${system});
-    pkgsFor = lib.genAttrs systems (system: import nixpkgs {
-      inherit system;
-      config.allowUnfree = true;
-    });
+    pkgsFor = lib.genAttrs systems (system:
+      import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+      });
   in {
     inherit lib;
 
@@ -35,40 +36,40 @@
     homeManagerModules = import ./modules/home-manager;
 
     # Custom packages and modifications, exported as overlays
-    overlays = import ./overlays { inherit inputs outputs; };
+    overlays = import ./overlays {inherit inputs outputs;};
 
     # Custom packages available through 'nix build', 'nix shell', etc.
-    packages = forEachSystem (pkgs: import ./pkgs { inherit pkgs; });
+    packages = forEachSystem (pkgs: import ./pkgs {inherit pkgs;});
     # Formatter available through 'nix fmt'
     formatter = forEachSystem (pkgs: pkgs.alejandra);
 
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#hostname'
     nixosConfigurations = {
-        calcifer =  lib.nixosSystem {
-          modules = [ ./hosts/calcifer ];
-          specialArgs = { inherit inputs outputs; };
-        };
+      calcifer = lib.nixosSystem {
+        modules = [./hosts/calcifer];
+        specialArgs = {inherit inputs outputs;};
+      };
 
-        laptop-gb = lib.nixosSystem {
-          modules = [ ./hosts/laptop-gb ];
-          specialArgs = { inherit inputs outputs; };
-        };
+      laptop-gb = lib.nixosSystem {
+        modules = [./hosts/laptop-gb];
+        specialArgs = {inherit inputs outputs;};
+      };
     };
 
     # Standalone home-manager configuration entrypoint
     # Available through 'home-manager --flake .#username@hostname'
     homeConfigurations = {
       "zach@calcifer" = lib.homeManagerConfiguration {
-        modules = [ ./home/zach/calcifer.nix ];
+        modules = [./home/zach/calcifer.nix];
         pkgs = pkgsFor.x86_64-linux;
-        extraSpecialArgs = { inherit inputs outputs; };
+        extraSpecialArgs = {inherit inputs outputs;};
       };
 
       "zach@laptop-gb" = lib.homeManagerConfiguration {
-        modules = [ ./home/zach/laptop-gb.nix ];
+        modules = [./home/zach/laptop-gb.nix];
         pkgs = pkgsFor.x86_64-linux;
-        extraSpecialArgs = { inherit inputs outputs; };
+        extraSpecialArgs = {inherit inputs outputs;};
       };
     };
   };
