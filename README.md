@@ -37,16 +37,21 @@ This repository holds configuration files for my personal systems that runs on N
     ```
 
 ## References / Useful resources
+Stuff that helped me when I jumped into the Nix rabbit hole:
+
 - Resources from the official Nix website:
   - [Learn Nix](https://nixos.org/learn.html)
   - [Nix ecosystem documentation](https://nix.dev/)
   - [Nix Pills](https://nixos.org/guides/nix-pills/) a series of blog posts that provide an introduction to Nix
-- [How to learn Nix](https://ianthehenry.com/posts/how-to-learn-nix/) another series of blog posts and IMHO a great starting point
+
+- [NixOS & Flakes book](https://nixos-and-flakes.thiscute.world/)
+- [NixOS for the confused](https://cola-gang.industries/nixos-for-the-confused-part-i)
+- [How to learn Nix](https://ianthehenry.com/posts/how-to-learn-nix/) another series of blog posts, quite dense but nonetheless useful
 - [Zero to Nix guide](https://zero-to-nix.com/)
 - [Flakes introduction](https://www.tweag.io/blog/2020-05-25-flakes/) blog posts about Nix Flakes
 - [Awesome Nix](https://github.com/nix-community/awesome-nix) a curated list of Nix resources
 
-This repository was humbly inspired by the following works:
+I ~~stole code I didn't understand~~ was inspired by the following repositories:
 - [Nix Starter Config](https://github.com/Misterio77/nix-starter-configs)
 - hlissner's [dotfiles](https://github.com/hlissner/dotfiles)
 
