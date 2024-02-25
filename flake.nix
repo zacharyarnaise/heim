@@ -18,40 +18,39 @@
     ...
   } @ inputs: let
     inherit (self) outputs;
-    lib = nixpkgs.lib // home-manager.lib;
-    systems = [
-      "x86_64-linux"
-    ];
-    forEachSystem = f: lib.genAttrs systems (system: f pkgsFor.${system});
-    pkgsFor = lib.genAttrs systems (system:
+
+    # Set of supported systems
+    supportedSystems = ["x86_64-linux"];
+
+    # Function to generate an attribute set for each supported system
+    forSupportedSystems = f:
+      nixpkgs.lib.genAttrs supportedSystems (system: f nixpkgsFor.${system});
+
+    # Attribute set of nixpkgs for each supported system
+    nixpkgsFor = forSupportedSystems (system:
       import nixpkgs {
         inherit system;
         config.allowUnfree = true;
       });
   in {
-    inherit lib;
-
     # Reusable NixOS and home-manager modules
     nixosModules = import ./modules/nixos;
     homeManagerModules = import ./modules/home-manager;
 
-    # Custom packages and modifications, exported as overlays
-    overlays = import ./overlays {inherit inputs outputs;};
-
     # Custom packages available through 'nix build', 'nix shell', etc.
-    packages = forEachSystem (pkgs: import ./pkgs {inherit pkgs;});
+    packages = forSupportedSystems (pkgs: import ./pkgs {inherit pkgs;});
     # Formatter available through 'nix fmt'
-    formatter = forEachSystem (pkgs: pkgs.alejandra);
+    formatter = forSupportedSystems (pkgs: pkgs.alejandra);
 
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#hostname'
     nixosConfigurations = {
-      calcifer = lib.nixosSystem {
+      calcifer = nixpkgs.lib.nixosSystem {
         modules = [./hosts/calcifer];
         specialArgs = {inherit inputs outputs;};
       };
 
-      laptop-gb = lib.nixosSystem {
+      laptop-gb = nixpkgs.lib.nixosSystem {
         modules = [./hosts/laptop-gb];
         specialArgs = {inherit inputs outputs;};
       };
@@ -60,15 +59,15 @@
     # Standalone home-manager configuration entrypoint
     # Available through 'home-manager --flake .#username@hostname'
     homeConfigurations = {
-      "zach@calcifer" = lib.homeManagerConfiguration {
+      "zach@calcifer" = nixpkgs.lib.homeManagerConfiguration {
         modules = [./home/zach/calcifer.nix];
-        pkgs = pkgsFor.x86_64-linux;
+        pkgs = nixpkgsFor.x86_64-linux;
         extraSpecialArgs = {inherit inputs outputs;};
       };
 
-      "zach@laptop-gb" = lib.homeManagerConfiguration {
+      "zach@laptop-gb" = nixpkgs.lib.homeManagerConfiguration {
         modules = [./home/zach/laptop-gb.nix];
-        pkgs = pkgsFor.x86_64-linux;
+        pkgs = nixpkgsFor.x86_64-linux;
         extraSpecialArgs = {inherit inputs outputs;};
       };
     };
