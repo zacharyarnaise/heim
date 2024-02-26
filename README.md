@@ -42,6 +42,7 @@ Stuff that helped me when I jumped into the Nix rabbit hole:
 - Resources from the official Nix website:
   - [Learn Nix](https://nixos.org/learn.html)
   - [Nix ecosystem documentation](https://nix.dev/)
+  - [NixOS reference manual](https://nixos.org/manual/nixos/unstable/)
   - [Nix Pills](https://nixos.org/guides/nix-pills/) a series of blog posts that provide an introduction to Nix
 
 - [NixOS & Flakes book](https://nixos-and-flakes.thiscute.world/)
