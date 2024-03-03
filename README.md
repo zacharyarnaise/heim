@@ -12,6 +12,14 @@ This repository holds configuration files for my personal systems that runs on N
 > I am by no means an expert on Nix or NixOS. Whatever you do with this,
 > keep in mind that mistakes will be made and things might break.
 
+## Repository structure
+```sh
+.
+├── home    # Home-manager configuration
+├── hosts
+└── modules # NixOS modules
+```
+
 ## Instructions
 ### Add a new host
 1. Generate a new SSH keypair and get a corresponding AGE public key
@@ -28,6 +36,7 @@ This repository holds configuration files for my personal systems that runs on N
 2. Create a bootable USB drive with the ISO
     ```sh
    dd if=latest-nixos-minimal-x86_64-linux.iso of=/dev/sdX bs=1MiB oflag=direct status=progress
+   sync
    ```
 3. Boot from the USB drive, follow the [installation guide](https://nixos.org/manual/nixos/stable/index.html#sec-installation-manual)
    to set up the networking and partition the disks.

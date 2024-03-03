@@ -1,7 +1,7 @@
-# Common configuration for my PCs
+# Configuration applicable to all my PCs
 {lib, ...}: {
   imports = [
-    ./shared
+    ./all.nix
   ];
 
   i18n = {
