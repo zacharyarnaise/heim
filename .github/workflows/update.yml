@@ -37,5 +37,8 @@ jobs:
           pr-title: "Update flake.lock"
           pr-labels: |
             dependencies
-          pr-assignees: zacharyarnaise
           pr-reviewers: zacharyarnaise
+          git-author-name: "Zachary Arnaise"
+          git-author-email: "121795280+zacharyarnaise@users.noreply.github.com"
+          git-committer-name: "Zachary Arnaise"
+          git-committer-email: "121795280+zacharyarnaise@users.noreply.github.com"
