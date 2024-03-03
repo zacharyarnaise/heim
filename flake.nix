@@ -18,13 +18,13 @@
     nixos-hardware = {url = "github:nixos/nixos-hardware/master";};
     flake-utils = {url = "github:numtide/flake-utils";};
 
-    sops-nix = {
-      url = "github:Mic92/sops-nix";
+    home-manager = {
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    home-manager = {
-      url = "github:nix-community/home-manager";
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -32,7 +32,9 @@
   outputs = {
     self,
     nixpkgs,
+    flake-utils,
     home-manager,
+    sops-nix,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -50,6 +52,14 @@
         inherit system;
         config.allowUnfree = true;
       });
+
+    genRevision = {
+      system.configurationRevision = self.rev or null;
+      system.nixos.label =
+        if self.sourceInfo ? shortRev && self.sourceInfo ? lastModifiedDate
+        then "${self.sourceInfo.shortRev}-${builtins.substring 0 10 self.sourceInfo.lastModifiedDate}"
+        else nixpkgs.lib.warn "Git tree is dirty, not setting revision" "dirty";
+    };
   in {
     # Reusable NixOS and home-manager modules
     nixosModules = import ./modules/nixos;
