@@ -2,14 +2,14 @@
   description = "My NixOS configurations";
 
   nixConfig = {
+    # Will be merged with system-level substituters, only affects the flake itself
     extra-substituters = [
-      "https://nix-config.cachix.org"
       "https://nix-community.cachix.org"
     ];
     extra-trusted-public-keys = [
-      "nix-config.cachix.org-1:Vd6raEuldeIZpttVQfrUbLvXJHzzzkS0pezXCVVjDG4="
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
     ];
+
     show-trace = true;
   };
 
@@ -53,12 +53,12 @@
         config.allowUnfree = true;
       });
 
+    # Let NixOS know about the current Git revision
     genRevision = {
-      system.configurationRevision = self.rev or null;
+      system.configurationRevision = self.rev or self.dirtyRev;
       system.nixos.label =
-        if self.sourceInfo ? shortRev && self.sourceInfo ? lastModifiedDate
-        then "${self.sourceInfo.shortRev}-${builtins.substring 0 10 self.sourceInfo.lastModifiedDate}"
-        else nixpkgs.lib.warn "Git tree is dirty, not setting revision" "dirty";
+        self.shortRev
+        or nixpkgs.lib.warn "Git tree is dirty" "${self.dirtyShortRev}-dirty";
     };
   in {
     # Reusable NixOS and home-manager modules
@@ -73,14 +73,20 @@
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#hostname'
     nixosConfigurations = {
-      calcifer = nixpkgs.lib.nixosSystem {
-        modules = [./hosts/calcifer];
+      "calcifer" = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
+        modules = [
+          ./hosts/calcifer
+          genRevision
+        ];
       };
 
-      laptop-gb = nixpkgs.lib.nixosSystem {
-        modules = [./hosts/laptop-gb];
+      "laptop-gb" = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
+        modules = [
+          ./hosts/laptop-gb
+          genRevision
+        ];
       };
     };
 
