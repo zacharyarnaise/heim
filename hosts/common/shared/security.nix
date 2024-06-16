@@ -1,4 +1,4 @@
-{
+{lib, ...}: {
   security.sudo = {
     enable = true;
     wheelNeedsPassword = true;
@@ -18,7 +18,7 @@
   };
 
   services.openssh = {
-    allowSFTP = false;
+    allowSFTP = lib.mkDefault false;
     settings = {
       KbdInteractiveAuthentication = false;
       PasswordAuthentication = false;
