@@ -4,12 +4,12 @@
   ...
 }: {
   nix = {
+    enable = true;
     checkAllErrors = true;
     checkConfig = true;
-    enable = true;
     package = pkgs.nixVersions.unstable;
 
-    # Garbage collection runs on a weekly basis, keeping the last three generations
+    # GC runs on a weekly basis, keeping the last three generations
     gc = {
       automatic = true;
       dates = "weekly";
@@ -35,14 +35,20 @@
         "nix-config.cachix.org-1:Vd6raEuldeIZpttVQfrUbLvXJHzzzkS0pezXCVVjDG4="
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       ];
+
+      flake-registry = ""; # Disable global flake registry
+      max-silent-time = 60;
+
+      system-features = [
+        "kvm"
+        "big-parallel"
+        "nixos-test"
+      ];
       experimental-features = [
+        "ca-derivations"
         "nix-command"
         "flakes"
-        "repl-flake"
       ];
-      flake-registry = ""; # Disable global flake registry
-      max-silent-time = 60; # 1 minute
-      system-features = ["kvm" "big-parallel" "nixos-test"];
     };
   };
 }

@@ -14,4 +14,8 @@
     ];
     useDHCP = true;
   };
+
+  hardware = {
+    opengl.enable = true;
+  };
 }
