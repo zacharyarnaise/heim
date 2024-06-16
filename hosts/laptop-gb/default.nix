@@ -13,6 +13,9 @@
     ../common/optional/powertop.nix
   ];
 
+  # Improve battery life by running full tickless on the last 4 cores
+  boot.kernelParams = ["nohz_full=4-7"];
+
   networking = {
     hostName = "laptop-gb";
   };

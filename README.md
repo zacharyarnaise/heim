@@ -67,3 +67,8 @@ I ~~stole code I didn't understand~~ was inspired by the following repositories:
 
 Kudos to all the authors and contributors of the aforementioned resources and to
 the Nix community in general.
+
+## Ideas / Improvements / TODO
+- [Secure Boot](https://github.com/nix-community/lanzaboote)
+- [easyeffects for PipeWire](https://github.com/wwmm/easyeffects)
+- [Wireless with iwd](https://nixos.wiki/wiki/Iwd)

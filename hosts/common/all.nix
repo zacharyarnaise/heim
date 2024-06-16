@@ -1,5 +1,5 @@
 # Configuration applicable to all hosts
-{
+{lib, ...}: {
   imports = [
     ./shared
     ./shared/boot.nix
@@ -14,7 +14,7 @@
     enable = true;
     doc.enable = false;
     man.enable = true;
-    nixos.enable = false;
+    nixos.enable = lib.mkForce false;
     info.enable = false;
   };
 
