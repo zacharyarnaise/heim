@@ -7,6 +7,7 @@
     ./shared/networking.nix
     ./shared/nix-daemon.nix
     ./shared/security.nix
+    ./shared/zsh.nix
   ];
 
   documentation = {
