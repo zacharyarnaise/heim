@@ -1,4 +1,3 @@
-# Work laptop
 {inputs, ...}: {
   imports = with inputs.nixos-hardware.nixosModules; [
     common-cpu-amd
@@ -6,7 +5,7 @@
     common-gpu-amd
     common-pc-laptop-ssd
 
-    ../common/home-pc.nix
+    ../common/pc.nix
 
     ../common/optional/bluetooth.nix
     ../common/optional/boot-efi.nix

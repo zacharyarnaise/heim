@@ -3,8 +3,9 @@
   imports = [
     ./shared
     ./shared/boot.nix
+    ./shared/locale.nix
+    ./shared/networking.nix
     ./shared/nix-daemon.nix
-    ./shared/resolved.nix
     ./shared/security.nix
   ];
 
@@ -19,11 +20,4 @@
   hardware = {
     enableAllFirmware = true;
   };
-
-  powerManagement = {
-    enable = true;
-    cpuFreqGovernor = "ondemand";
-  };
-
-  time.timeZone = "Europe/Paris";
 }

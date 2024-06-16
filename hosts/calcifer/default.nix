@@ -1,11 +1,10 @@
-# Main computer
 {inputs, ...}: {
   imports = with inputs.nixos-hardware.nixosModules; [
     common-cpu-intel-cpu-only
     common-gpu-amd
     common-pc-ssd
 
-    ../common/home-pc.nix
+    ../common/pc.nix
 
     ../common/optional/bluetooth.nix
     ../common/optional/boot-efi.nix

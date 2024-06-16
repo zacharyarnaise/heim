@@ -9,11 +9,11 @@
     enable = true;
     package = pkgs.nixVersions.unstable;
 
-    # Garbage collection runs on a weekly basis, keeping the last two generations
+    # Garbage collection runs on a weekly basis, keeping the last three generations
     gc = {
       automatic = true;
       dates = "weekly";
-      options = "--delete-older-than +2";
+      options = "--delete-older-than +3";
       persistent = true;
     };
 
