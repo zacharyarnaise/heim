@@ -24,6 +24,7 @@
 
     settings = {
       auto-optimise-store = false;
+      allow-import-from-derivation = lib.mkDefault false;
       allowed-users = lib.mkDefault [""]; # Trusted users are always allowed to connect
       trusted-users = ["root" "@wheel"];
       require-sigs = true;
