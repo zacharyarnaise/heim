@@ -2,6 +2,7 @@
 {
   imports = [
     ./all.nix
+    ./optional/boot-efi.nix
     ./optional/pipewire.nix
     ./optional/resolved.nix
   ];

@@ -30,14 +30,7 @@ This repository holds configuration files for my personal systems that runs on N
 
 ### Fresh Install
 1. Get the latest NixOS minimal ISO from [here](https://nixos.org/download.html#nixos-iso)
-    ```sh
-    wget https://channels.nixos.org/nixos-23.11/latest-nixos-minimal-x86_64-linux.iso
-    ```
-2. Create a bootable USB drive with the ISO
-    ```sh
-   dd if=latest-nixos-minimal-x86_64-linux.iso of=/dev/sdX bs=1MiB oflag=direct status=progress
-   sync
-   ```
+2. Follow [these instructions](https://nixos.org/manual/nixos/stable/index.html#sec-booting-from-usb) to create a bootable USB drive
 3. Boot from the USB drive, follow the [installation guide](https://nixos.org/manual/nixos/stable/index.html#sec-installation-manual)
    to set up the networking and partition the disks.
 4. Install NixOS with the following command:
@@ -46,8 +39,6 @@ This repository holds configuration files for my personal systems that runs on N
     ```
 
 ## References / Useful resources
-Stuff that helped me when I jumped into the Nix rabbit hole:
-
 - Resources from the official Nix website:
   - [Learn Nix](https://nixos.org/learn.html)
   - [Nix ecosystem documentation](https://nix.dev/)
@@ -60,15 +51,11 @@ Stuff that helped me when I jumped into the Nix rabbit hole:
 - [Zero to Nix guide](https://zero-to-nix.com/)
 - [Flakes introduction](https://www.tweag.io/blog/2020-05-25-flakes/) blog posts about Nix Flakes
 - [Awesome Nix](https://github.com/nix-community/awesome-nix) a curated list of Nix resources
-
-I ~~stole code I didn't understand~~ was inspired by the following repositories:
 - [Nix Starter Config](https://github.com/Misterio77/nix-starter-configs)
 - hlissner's [dotfiles](https://github.com/hlissner/dotfiles)
-
-Kudos to all the authors and contributors of the aforementioned resources and to
-the Nix community in general.
 
 ## Ideas / Improvements / TODO
 - [Secure Boot](https://github.com/nix-community/lanzaboote)
 - [easyeffects for PipeWire](https://github.com/wwmm/easyeffects)
 - [Wireless with iwd](https://nixos.wiki/wiki/Iwd)
+- [Zen kernel](https://github.com/zen-kernel/zen-kernel)

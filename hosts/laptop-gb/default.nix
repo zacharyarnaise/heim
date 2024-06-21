@@ -5,20 +5,19 @@
     common-gpu-amd
     common-pc-laptop-ssd
 
+    ./hardware.nix
+
     ../common/pc.nix
 
     ../common/optional/bluetooth.nix
-    ../common/optional/boot-efi.nix
     ../common/optional/boot-quiet.nix
     ../common/optional/powertop.nix
+    ../common/optional/wireless-wpa_supplicant.nix
   ];
-
-  # Improve battery life by running full tickless on the last 4 cores
-  boot.kernelParams = ["nohz_full=4-7"];
 
   networking = {
     hostName = "laptop-gb";
   };
 
-  nix.settings.max-jobs = 8; # == logical cores count
+  system.stateVersion = "24.05";
 }

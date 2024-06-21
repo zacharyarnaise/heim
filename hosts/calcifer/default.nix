@@ -4,15 +4,17 @@
     common-gpu-amd
     common-pc-ssd
 
+    ./hardware.nix
+
     ../common/pc.nix
 
     ../common/optional/bluetooth.nix
-    ../common/optional/boot-efi.nix
+    ../common/optional/wireless-wpa_supplicant.nix
   ];
 
   networking = {
     hostName = "calcifer";
   };
 
-  nix.settings.max-jobs = 20; # == logical cores count
+  system.stateVersion = "24.05";
 }
