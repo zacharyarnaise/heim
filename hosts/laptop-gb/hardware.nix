@@ -1,9 +1,18 @@
-{lib, ...}: {
-  boot = {
-    kernelModules = ["kvm-amd"];
-    # Improve battery life by running full tickless on the last 4 cores
-    kernelParams = ["nohz_full=4-7"];
-  };
+{
+  inputs,
+  lib,
+  ...
+}: {
+  imports = with inputs.nixos-hardware.nixosModules; [
+    common-cpu-amd
+    common-cpu-amd-pstate
+    common-gpu-amd
+    common-pc-laptop-ssd
+
+    ./disko.nix
+  ];
+
+  boot.kernelModules = ["kvm-amd"];
 
   nix.settings.max-jobs = 8;
 

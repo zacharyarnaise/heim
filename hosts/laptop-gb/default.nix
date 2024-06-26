@@ -1,10 +1,5 @@
-{inputs, ...}: {
-  imports = with inputs.nixos-hardware.nixosModules; [
-    common-cpu-amd
-    common-cpu-amd-pstate
-    common-gpu-amd
-    common-pc-laptop-ssd
-
+{
+  imports = [
     ./hardware.nix
 
     ../common/pc.nix
@@ -15,9 +10,14 @@
     ../common/optional/wireless-wpa_supplicant.nix
   ];
 
-  networking = {
-    hostName = "laptop-gb";
+  environment.persistence."/persist" = {
+    directories = [
+      "/var/lib/power-profiles-daemon"
+      "/var/lib/upower"
+    ];
   };
+
+  networking.hostName = "laptop-gb";
 
   system.stateVersion = "24.05";
 }

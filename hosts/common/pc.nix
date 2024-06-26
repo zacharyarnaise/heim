@@ -1,11 +1,14 @@
 # Configuration applicable to all my PCs
 {
   imports = [
-    ./all.nix
-    ./optional/boot-efi.nix
+    ./all
+
     ./optional/pipewire.nix
     ./optional/resolved.nix
+    ./optional/impermanence.nix
   ];
+
+  boot.kernelParams = ["nowatchdog"];
 
   networking = {
     nameservers = [
@@ -17,7 +20,10 @@
     useDHCP = true;
   };
 
-  hardware = {
-    opengl.enable = true;
+  nix = {
+    daemonCPUSchedPolicy = "idle";
+    daemonIOSchedClass = "idle";
   };
+
+  hardware.opengl.enable = true;
 }

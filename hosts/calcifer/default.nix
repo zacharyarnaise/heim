@@ -1,9 +1,5 @@
-{inputs, ...}: {
-  imports = with inputs.nixos-hardware.nixosModules; [
-    common-cpu-intel-cpu-only
-    common-gpu-amd
-    common-pc-ssd
-
+{
+  imports = [
     ./hardware.nix
 
     ../common/pc.nix
@@ -12,9 +8,7 @@
     ../common/optional/wireless-wpa_supplicant.nix
   ];
 
-  networking = {
-    hostName = "calcifer";
-  };
+  networking.hostName = "calcifer";
 
   system.stateVersion = "24.05";
 }

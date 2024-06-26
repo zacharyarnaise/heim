@@ -1,14 +1,15 @@
 {
-  disko.devices.disk = {
-    nvme0n1 = {
-      type = "disk";
+  disko.devices = {
+    disk.main = {
       device = "/dev/nvme0n1";
+      type = "disk";
+
       content = {
         type = "gpt";
         partitions = {
           ESP = {
             type = "EF00";
-            size = "500M";
+            size = "512M";
             content = {
               type = "filesystem";
               format = "vfat";
@@ -16,6 +17,7 @@
               mountOptions = ["defaults" "noauto" "noexec"];
             };
           };
+
           luks = {
             size = "100%";
             content = {
@@ -27,23 +29,22 @@
                 bypassWorkqueues = true;
               };
               content = {
-                type = "btfs";
+                type = "btrfs";
                 extraArgs = ["-f"];
                 subvolumes = {
                   "/root" = {
                     mountpoint = "/";
-                    mountOptions = ["compress=zstd" "noatime"];
+                    mountOptions = ["compress=lzo" "noatime"];
                   };
                   "/persist" = {
-                    mountOptions = ["compress=zstd" "noatime"];
+                    mountOptions = ["compress=lzo" "noatime"];
                   };
                   "/nix" = {
                     mountOptions = [
-                      "compress=zstd"
+                      "compress=lzo"
                       "noatime"
                       "lazytime"
                       "noacl"
-                      "noxattr"
                     ];
                   };
                 };
@@ -53,5 +54,9 @@
         };
       };
     };
+  };
+
+  fileSystems."/persist" = {
+    neededForBoot = true;
   };
 }

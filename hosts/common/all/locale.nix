@@ -1,4 +1,6 @@
 {lib, ...}: {
+  console.keyMap = "fr";
+
   i18n = {
     defaultLocale = lib.mkDefault "fr_FR.UTF-8";
     extraLocaleSettings = {

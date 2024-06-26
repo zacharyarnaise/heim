@@ -34,5 +34,10 @@
         "curve25519-sha256@libssh.org"
       ];
     };
+    extraConfig = ''
+      AllowAgentForwarding no
+      AllowStreamLocalForwarding no
+      AllowTcpForwarding no
+    '';
   };
 }

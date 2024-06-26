@@ -1,4 +1,16 @@
-{lib, ...}: {
+{
+  inputs,
+  lib,
+  ...
+}: {
+  imports = with inputs.nixos-hardware.nixosModules; [
+    common-cpu-intel-cpu-only
+    common-gpu-amd
+    common-pc-ssd
+
+    ./filesystems.nix
+  ];
+
   boot = {
     initrd.availableKernelModules = [
       "xhci_pci"
@@ -17,4 +29,6 @@
   hardware.cpu.intel.updateMicrocode = true;
 
   swapDevices = lib.mkForce [];
+
+  powerManagement.cpuFreqGovernor = lib.mkDefault "schedutil";
 }

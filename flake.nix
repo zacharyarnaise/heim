@@ -41,11 +41,9 @@
 
     # Set of supported systems
     supportedSystems = ["x86_64-linux"];
-
     # Function to generate an attribute set for each supported system
     forSupportedSystems = f:
       nixpkgs.lib.genAttrs supportedSystems (system: f nixpkgsFor.${system});
-
     # Attribute set of nixpkgs for each supported system
     nixpkgsFor = forSupportedSystems (system:
       import nixpkgs {
