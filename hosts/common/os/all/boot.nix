@@ -9,9 +9,7 @@
     loader = {
       timeout = lib.mkDefault 3;
 
-      efi = {
-        canTouchEfiVariables = true;
-      };
+      efi.canTouchEfiVariables = true;
 
       grub.enable = lib.mkForce false;
       systemd-boot = {
