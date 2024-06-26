@@ -1,16 +1,15 @@
 {
   description = "My NixOS configurations";
 
+  # nix options specific to this flake
   nixConfig = {
-    # Will be merged with system-level substituters, only affects the flake itself
-    extra-substituters = [
-      "https://nix-community.cachix.org"
-    ];
+    experimental-features = ["nix-command" "flakes"];
+    show-trace = true;
+
+    extra-substituters = ["https://nix-community.cachix.org"];
     extra-trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
     ];
-
-    show-trace = true;
   };
 
   inputs = {
@@ -56,17 +55,23 @@
         config.allowUnfree = true;
       });
 
-    # Let NixOS know about the current Git revision
-    genRevision = {
-      system.configurationRevision = self.rev or self.dirtyRev;
+    genRevision = with builtins; {
+      hash = self.rev or self.dirtyRev;
+      date =
+        if self.sourceInfo ? lastModifiedDate
+        then concatStringsSep "-" (match "(.{4})(.{2})(.{2}).*" self.sourceInfo.lastModifiedDate)
+        else "unknown-date";
+
+      system.configurationRevision = hash;
       system.nixos.label =
-        self.shortRev
-        or nixpkgs.lib.warn "Git tree is dirty" "${self.dirtyShortRev}-dirty";
+        if self ? rev
+        then "${date}_${substring 0 7 hash}"
+        else "dirty_${date}_${substring 0 7 hash}";
     };
   in {
     # Custom packages available through 'nix build', 'nix shell', etc.
     packages = forSupportedSystems (pkgs: import ./pkgs {inherit pkgs;});
-    # Formatter available through 'nix fmt'
+    # nix fmt formatter
     formatter = forSupportedSystems (pkgs: pkgs.alejandra);
 
     # Reusable NixOS and home-manager modules

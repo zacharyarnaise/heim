@@ -17,7 +17,7 @@
       grub.enable = lib.mkForce false;
       systemd-boot = {
         enable = true;
-        configurationLimit = 10;
+        configurationLimit = lib.mkDefault 10;
         consoleMode = "max";
         editor = false;
       };
