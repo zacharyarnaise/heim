@@ -4,17 +4,16 @@
   lib,
   ...
 }: {
-  imports =
-    [
-      inputs.home-manager.nixosModules.home-manager
-      ./boot.nix
-      ./locale.nix
-      ./networking.nix
-      ./nix-daemon.nix
-      ./security.nix
-      ./zsh.nix
-    ]
-    ++ (builtins.attrValues outputs.nixosModules);
+  imports = [
+    inputs.home-manager.nixosModules.home-manager
+    ./boot.nix
+    ./locale.nix
+    ./networking.nix
+    ./nix-daemon.nix
+    ./security.nix
+    ./zsh.nix
+  ];
+  # ++ (builtins.attrValues outputs.nixosModules);
 
   home-manager.useGlobalPkgs = true;
   home-manager.extraSpecialArgs = {inherit inputs outputs;};
