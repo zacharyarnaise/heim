@@ -19,7 +19,7 @@
 
     optimise = {
       automatic = true;
-      dates = "daily";
+      dates = ["daily"];
     };
 
     settings = {
