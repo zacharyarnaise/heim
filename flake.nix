@@ -14,9 +14,9 @@
   };
 
   inputs = {
-    nixpkgs = {url = "github:nixos/nixpkgs/nixos-unstable";};
-    nixos-hardware = {url = "github:nixos/nixos-hardware/master";};
-    flake-utils = {url = "github:numtide/flake-utils";};
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixos-hardware.url = "github:nixos/nixos-hardware/master";
+    impermanence.url = "github:nix-community/impermanence";
 
     home-manager = {
       url = "github:nix-community/home-manager";
