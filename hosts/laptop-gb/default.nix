@@ -2,12 +2,12 @@
   imports = [
     ./hardware.nix
 
-    ../common/pc.nix
+    ../common/os/pc.nix
 
-    ../common/optional/bluetooth.nix
-    ../common/optional/boot-quiet.nix
-    ../common/optional/powertop.nix
-    ../common/optional/wireless-wpa_supplicant.nix
+    ../common/os/optional/bluetooth.nix
+    ../common/os/optional/boot-quiet.nix
+    ../common/os/optional/powertop.nix
+    ../common/os/optional/wireless-wpa_supplicant.nix
   ];
 
   environment.persistence."/persist" = {

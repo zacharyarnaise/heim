@@ -2,10 +2,10 @@
   imports = [
     ./hardware.nix
 
-    ../common/pc.nix
+    ../common/os/pc.nix
 
-    ../common/optional/bluetooth.nix
-    ../common/optional/wireless-wpa_supplicant.nix
+    ../common/os/optional/bluetooth.nix
+    ../common/os/optional/wireless-wpa_supplicant.nix
   ];
 
   networking.hostName = "calcifer";
