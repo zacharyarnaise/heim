@@ -7,7 +7,7 @@
     enable = true;
     checkAllErrors = true;
     checkConfig = true;
-    package = pkgs.nixVersions.unstable;
+    package = pkgs.nixVersions.latest;
 
     # GC runs on a weekly basis, keeping the last three generations
     gc = {
