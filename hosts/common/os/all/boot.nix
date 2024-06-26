@@ -5,7 +5,6 @@
 }: {
   boot = {
     kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
-    initrd.systemd.enable = true;
 
     loader = {
       timeout = lib.mkDefault 3;

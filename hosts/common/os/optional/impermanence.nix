@@ -3,7 +3,31 @@
   lib,
   config,
   ...
-}: {
+}: let
+  rollbackScript = ''
+    mkdir /tmp -p
+    MOUNTDIR=$(mktemp -d)
+
+    BTRFS_VOL=/dev/mapper/crypted
+    BTRFS_ROOT="$MOUNTDIR/root"
+    BTRFS_BLANK="$MOUNTDIR/root-blank"
+
+    echo "Mounting BTRFS root..."
+    mount -t btrfs -o subvol=/ "$BTRFS_VOL" "$MOUNTDIR"
+    trap 'umount "$MOUNTDIR"' EXIT
+
+    echo "Cleaning up root subvolume..."
+    btrfs subvolume list -o "$BTRFS_ROOT" | cut -d' ' -f9 |
+      while read -r subvolume; do
+        echo 'Deleting "$subvolume" subvolume...'
+        btrfs subvolume delete "$MOUNTDIR/$subvolume"
+      done &&
+      echo 'Deleting root subvolume...' && btrfs subvolume delete "$BTRFS_ROOT"
+
+    echo "Restoring blank root subvolume..."
+    btrfs subvolume snapshot "$BTRFS_BLANK" "$BTRFS_ROOT"
+  '';
+in {
   imports = [inputs.impermanence.nixosModule];
 
   environment.persistence."/persist" = {
@@ -21,7 +45,7 @@
     Defaults lecture = never
   '';
 
-  # Persist home directories
+  # Create persistent home directories for each user
   system.activationScripts.persistent-dirs.text = let
     mkHomePersist = user:
       lib.optionalString user.createHome ''
@@ -32,4 +56,15 @@
     users = lib.attrValues config.users.users;
   in
     lib.concatLines (map mkHomePersist users);
+
+  boot.initrd.systemd.enable = true;
+  boot.initrd.systemd.services.rollback = {
+    description = "Rollback BTRFS root subvolume to a pristine state";
+    wantedBy = ["initrd.target"];
+    after = ["systemd-cryptsetup@crypted.service"];
+    before = ["sysroot.mount"];
+    unitConfig.DefaultDependencies = "no";
+    serviceConfig.Type = "oneshot";
+    script = rollbackScript;
+  };
 }

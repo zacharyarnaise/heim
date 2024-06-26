@@ -3,6 +3,7 @@
     ./hardware.nix
 
     ../common/os/pc.nix
+    ../common/users/zach
 
     ../common/os/optional/bluetooth.nix
     ../common/os/optional/boot-quiet.nix

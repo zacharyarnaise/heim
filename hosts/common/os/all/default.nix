@@ -29,4 +29,6 @@
   };
 
   hardware.enableAllFirmware = true;
+
+  users.mutableUsers = false;
 }
