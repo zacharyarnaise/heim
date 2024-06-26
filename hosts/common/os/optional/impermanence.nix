@@ -57,7 +57,10 @@ in {
   in
     lib.concatLines (map mkHomePersist users);
 
-  boot.initrd.systemd.enable = true;
+  boot.initrd = {
+    systemd.enable = true;
+    supportedFilesystems = ["btrfs"];
+  };
   boot.initrd.systemd.services.rollback = {
     description = "Rollback BTRFS root subvolume to a pristine state";
     wantedBy = ["initrd.target"];

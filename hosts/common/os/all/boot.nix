@@ -8,7 +8,6 @@
 
     loader = {
       timeout = lib.mkDefault 3;
-      supportedFilesystems = ["btrfs"];
 
       efi = {
         canTouchEfiVariables = true;
