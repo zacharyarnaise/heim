@@ -12,7 +12,15 @@
     ./disko.nix
   ];
 
-  boot.kernelModules = ["kvm-amd"];
+  boot = {
+    initrd.availableKernelModules = [
+      "xhci_pci"
+      "nvme"
+      "usb_storage"
+      "sd_mod"
+    ];
+    kernelModules = ["kvm-amd"];
+  };
 
   nix.settings.max-jobs = 8;
 

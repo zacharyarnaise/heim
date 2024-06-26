@@ -32,7 +32,7 @@ This repository holds configuration files for my personal systems that runs on N
 1. Get the latest NixOS minimal ISO from [here](https://nixos.org/download.html#nixos-iso)
 2. Follow [these instructions](https://nixos.org/manual/nixos/stable/index.html#sec-booting-from-usb) to create a bootable USB drive
 3. Boot from the USB drive, follow the [installation guide](https://nixos.org/manual/nixos/stable/index.html#sec-installation-manual)
-   to set up the networking and partition the disks.
+   to set up the networking and partition the disks (if not handled by `disko`).
 4. Install NixOS with the following command:
     ```sh
     nixos-install --flake github:zacharyarnaise/heim#hostname
