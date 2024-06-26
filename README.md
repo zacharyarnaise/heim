@@ -12,36 +12,54 @@ This repository holds configuration files for my personal systems that runs on N
 > I am by no means an expert on Nix or NixOS. Whatever you do with this,
 > keep in mind that mistakes will be made and things might break.
 
+## Repository structure
+```sh
+.
+├── home    # Home-manager configuration
+├── hosts
+└── modules # NixOS modules
+```
+
 ## Instructions
+### Add a new host
+1. Generate a new SSH keypair and get a corresponding AGE public key
+    ```sh
+    ssh-keygen -C user@hostname -t ed25519 -f hostname_id_ed25519
+    echo -e "# hostname\n$(ssh-to-age -i hostname_id_ed25519 -private-key)" >>  ~/.config/sops/age/keys.txt
+    ```
+
 ### Fresh Install
 1. Get the latest NixOS minimal ISO from [here](https://nixos.org/download.html#nixos-iso)
-    ```sh
-    wget https://channels.nixos.org/nixos-23.11/latest-nixos-minimal-x86_64-linux.iso
-    ```
-2. Create a bootable USB drive with the ISO
-    ```sh
-   dd if=latest-nixos-minimal-x86_64-linux.iso of=/dev/sdX bs=1MiB oflag=direct status=progress
-   ```
-3. Boot from the USB drive, follow the [installation guide](https://nixos.org/manual/nixos/stable/index.html#sec-installation-manual)
-   to set up the networking and partition the disks.
-4. Install NixOS with the following command:
-    ```sh
-    nixos-install --flake github:zacharyarnaise/heim#hostname
-    ```
+2. Follow [these instructions](https://nixos.org/manual/nixos/stable/index.html#sec-booting-from-usb) to create a bootable USB drive
+3. Boot the installer, [set the keyboard layout and connect to the internet](https://nixos.org/manual/nixos/stable/#sec-installation-manual)
+4. Do the installation:
+    - If the hosts uses [`disko`](https://github.com/nix-community/disko):
+        ```sh
+        nix --experimental-features "nix-command flakes" run github:nix-community/disko#disko-install -- -f github:zacharyarnaise/heim#hostname --write-efi-boot-entries --disk main /dev/<my-disk>
+        ```
+    - Otherwise, [partition and mount the disk manually](https://nixos.org/manual/nixos/stable/#sec-installation-manual-partitioning) and run the following command:
+        ```sh
+        nixos-install --flake github:zacharyarnaise/heim#hostname
+        ```
 
 ## References / Useful resources
 - Resources from the official Nix website:
   - [Learn Nix](https://nixos.org/learn.html)
   - [Nix ecosystem documentation](https://nix.dev/)
+  - [NixOS reference manual](https://nixos.org/manual/nixos/unstable/)
   - [Nix Pills](https://nixos.org/guides/nix-pills/) a series of blog posts that provide an introduction to Nix
-- [How to learn Nix](https://ianthehenry.com/posts/how-to-learn-nix/) another series of blog posts and IMHO a great starting point
+
+- [NixOS & Flakes book](https://nixos-and-flakes.thiscute.world/)
+- [NixOS for the confused](https://cola-gang.industries/nixos-for-the-confused-part-i)
+- [How to learn Nix](https://ianthehenry.com/posts/how-to-learn-nix/) another series of blog posts, quite dense but nonetheless useful
 - [Zero to Nix guide](https://zero-to-nix.com/)
 - [Flakes introduction](https://www.tweag.io/blog/2020-05-25-flakes/) blog posts about Nix Flakes
 - [Awesome Nix](https://github.com/nix-community/awesome-nix) a curated list of Nix resources
-
-This repository was humbly inspired by the following works:
 - [Nix Starter Config](https://github.com/Misterio77/nix-starter-configs)
 - hlissner's [dotfiles](https://github.com/hlissner/dotfiles)
 
-Kudos to all the authors and contributors of the aforementioned resources and to
-the Nix community in general.
+## Ideas / Improvements / TODO
+- [Secure Boot](https://github.com/nix-community/lanzaboote)
+- [easyeffects for PipeWire](https://github.com/wwmm/easyeffects)
+- [Wireless with iwd](https://nixos.wiki/wiki/Iwd)
+- [Zen kernel](https://github.com/zen-kernel/zen-kernel)
