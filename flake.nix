@@ -73,7 +73,7 @@
     nixosModules = import ./modules/nixos;
     homeManagerModules = import ./modules/home-manager;
     # Custom packages and modifications, exported as overlays
-    overlays = import ./overlays {inherit inputs;};
+    overlays = import ./overlays;
 
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#hostname'
