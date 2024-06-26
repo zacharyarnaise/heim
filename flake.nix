@@ -55,18 +55,23 @@
         config.allowUnfree = true;
       });
 
-    genRevision = with builtins; {
-      gitHash = self.rev or self.dirtyRev;
-      gitDate =
-        if self.sourceInfo ? lastModifiedDate
-        then concatStringsSep "-" (match "(.{4})(.{2})(.{2}).*" self.sourceInfo.lastModifiedDate)
-        else "unknown-date";
+    # Format a date string as YYYY-MM-DD
+    formatDate = date:
+      with builtins;
+        concatStringsSep "-" (match "(.{4})(.{2})(.{2}).*" date);
 
-      system.configurationRevision = gitHash;
-      system.nixos.label =
-        if self ? rev
-        then "${gitDate}_${substring 0 7 gitHash}"
-        else "dirty_${gitDate}_${substring 0 7 gitHash}";
+    # Enrich system revision and label with Git information
+    genSystemLabel = let
+      hash = self.rev or self.dirtyRev;
+      shortHash = builtins.substring 0 7 hash;
+      isDirty = self.rev == null;
+      date =
+        if self.sourceInfo ? lastModifiedDate
+        then formatDate self.sourceInfo.lastModifiedDate
+        else "unknown-date";
+    in {
+      system.configurationRevision = hash;
+      system.nixos.label = "${date}_${shortHash}${isDirty ? "_dirty"}";
     };
   in {
     # Custom packages available through 'nix build', 'nix shell', etc.
@@ -87,7 +92,7 @@
         specialArgs = {inherit inputs outputs;};
         modules = [
           ./hosts/calcifer
-          genRevision
+          genSystemLabel
         ];
       };
 
@@ -95,7 +100,7 @@
         specialArgs = {inherit inputs outputs;};
         modules = [
           ./hosts/laptop-gb
-          genRevision
+          genSystemLabel
         ];
       };
     };
