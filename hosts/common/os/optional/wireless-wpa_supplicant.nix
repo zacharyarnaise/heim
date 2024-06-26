@@ -1,8 +1,4 @@
-{pkgs, ...}: {
-  environment.systemPackages = [
-    pkgs.wpa_supplicant
-  ];
-
+{
   networking.wireless = {
     enable = true;
     allowAuxiliaryImperativeNetworks = true;
