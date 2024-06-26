@@ -16,7 +16,7 @@
 
   home-manager.useGlobalPkgs = true;
   home-manager.extraSpecialArgs = {inherit inputs outputs;};
-  nixpkgs.overlays = builtins.attrValues outputs.overlays;
+  # nixpkgs.overlays = builtins.attrValues outputs.overlays;
 
   documentation = {
     enable = true;
