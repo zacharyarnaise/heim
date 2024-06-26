@@ -31,12 +31,16 @@ This repository holds configuration files for my personal systems that runs on N
 ### Fresh Install
 1. Get the latest NixOS minimal ISO from [here](https://nixos.org/download.html#nixos-iso)
 2. Follow [these instructions](https://nixos.org/manual/nixos/stable/index.html#sec-booting-from-usb) to create a bootable USB drive
-3. Boot from the USB drive, follow the [installation guide](https://nixos.org/manual/nixos/stable/index.html#sec-installation-manual)
-   to set up the networking and partition the disks (if not handled by `disko`).
-4. Install NixOS with the following command:
-    ```sh
-    nixos-install --flake github:zacharyarnaise/heim#hostname
-    ```
+3. Boot the installer, [set the keyboard layout and connect to the internet](https://nixos.org/manual/nixos/stable/#sec-installation-manual)
+4. Do the installation:
+    - If the hosts uses [`disko`](https://github.com/nix-community/disko):
+        ```sh
+        nix --experimental-features "nix-command flakes" run github:nix-community/disko#disko-install -- -f github:zacharyarnaise/heim#hostname --write-efi-boot-entries --disk main /dev/<my-disk>
+        ```
+    - Otherwise, [partition and mount the disk manually](https://nixos.org/manual/nixos/stable/#sec-installation-manual-partitioning) and run the following command:
+        ```sh
+        nixos-install --flake github:zacharyarnaise/heim#hostname
+        ```
 
 ## References / Useful resources
 - Resources from the official Nix website:

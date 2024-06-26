@@ -46,7 +46,6 @@
         "nixos-test"
       ];
       experimental-features = [
-        "ca-derivations"
         "nix-command"
         "flakes"
       ];

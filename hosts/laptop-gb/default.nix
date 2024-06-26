@@ -11,13 +11,6 @@
     ../common/os/optional/wireless-wpa_supplicant.nix
   ];
 
-  environment.persistence."/persist" = {
-    directories = [
-      "/var/lib/power-profiles-daemon"
-      "/var/lib/upower"
-    ];
-  };
-
   networking.hostName = "laptop-gb";
 
   system.stateVersion = "24.05";

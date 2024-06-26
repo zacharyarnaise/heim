@@ -7,9 +7,4 @@
     # TODO: remove when things are working
     password = "testing";
   };
-
-  # Persist entire home
-  environment.persistence."/persist" = {
-    directories = ["/home/zach"];
-  };
 }
