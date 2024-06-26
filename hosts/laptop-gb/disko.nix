@@ -2,7 +2,7 @@
   imports = [inputs.disko.nixosModules.disko];
 
   disko.devices = {
-    disk.nvme0n1 = {
+    disk.main = {
       device = "/dev/nvme0n1";
       type = "disk";
 
