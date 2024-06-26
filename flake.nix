@@ -18,6 +18,11 @@
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
     impermanence.url = "github:nix-community/impermanence";
 
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -25,11 +30,6 @@
 
     sops-nix = {
       url = "github:Mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    disko = {
-      url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -64,14 +64,16 @@
         or nixpkgs.lib.warn "Git tree is dirty" "${self.dirtyShortRev}-dirty";
     };
   in {
-    # Reusable NixOS and home-manager modules
-    # nixosModules = import ./modules/nixos;
-    # homeManagerModules = import ./modules/home-manager;
-
     # Custom packages available through 'nix build', 'nix shell', etc.
     packages = forSupportedSystems (pkgs: import ./pkgs {inherit pkgs;});
     # Formatter available through 'nix fmt'
     formatter = forSupportedSystems (pkgs: pkgs.alejandra);
+
+    # Reusable NixOS and home-manager modules
+    nixosModules = import ./modules/nixos;
+    homeManagerModules = import ./modules/home-manager;
+    # Custom packages and modifications, exported as overlays
+    overlays = import ./overlays {inherit inputs;};
 
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#hostname'
