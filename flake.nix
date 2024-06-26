@@ -56,17 +56,17 @@
       });
 
     genRevision = with builtins; {
-      hash = self.rev or self.dirtyRev;
-      date =
+      gitHash = self.rev or self.dirtyRev;
+      gitDate =
         if self.sourceInfo ? lastModifiedDate
         then concatStringsSep "-" (match "(.{4})(.{2})(.{2}).*" self.sourceInfo.lastModifiedDate)
         else "unknown-date";
 
-      system.configurationRevision = hash;
+      system.configurationRevision = gitHash;
       system.nixos.label =
         if self ? rev
-        then "${date}_${substring 0 7 hash}"
-        else "dirty_${date}_${substring 0 7 hash}";
+        then "${gitDate}_${substring 0 7 gitHash}"
+        else "dirty_${gitDate}_${substring 0 7 gitHash}";
     };
   in {
     # Custom packages available through 'nix build', 'nix shell', etc.
