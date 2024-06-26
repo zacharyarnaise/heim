@@ -39,9 +39,11 @@
                     mountOptions = ["compress=lzo" "noatime"];
                   };
                   "/persist" = {
+                    mountpoint = "/persist";
                     mountOptions = ["compress=lzo" "noatime"];
                   };
                   "/nix" = {
+                    mountpoint = "/nix";
                     mountOptions = [
                       "compress=lzo"
                       "noatime"
@@ -49,7 +51,8 @@
                       "noacl"
                     ];
                   };
-                  "/var/log" = {
+                  "/log" = {
+                    mountpoint = "/var/log";
                     mountOptions = ["compress=lzo" "noatime" "lazytime"];
                   };
                 };
@@ -62,7 +65,7 @@
   };
 
   fileSystems = {
-    "/foobar".neededForBoot = true;
+    "/persist".neededForBoot = true;
     "/var/log".neededForBoot = true;
   };
 }
