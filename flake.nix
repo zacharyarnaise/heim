@@ -65,8 +65,8 @@
     };
   in {
     # Reusable NixOS and home-manager modules
-    nixosModules = import ./modules/nixos;
-    homeManagerModules = import ./modules/home-manager;
+    # nixosModules = import ./modules/nixos;
+    # homeManagerModules = import ./modules/home-manager;
 
     # Custom packages available through 'nix build', 'nix shell', etc.
     packages = forSupportedSystems (pkgs: import ./pkgs {inherit pkgs;});
