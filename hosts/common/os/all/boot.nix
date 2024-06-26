@@ -11,7 +11,6 @@
 
       efi = {
         canTouchEfiVariables = true;
-        efiSysMountPoint = "/boot/efi";
       };
 
       grub.enable = lib.mkForce false;
