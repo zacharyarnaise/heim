@@ -62,7 +62,7 @@
   };
 
   fileSystems = {
-    "/persist".neededForBoot = true;
+    "/foobar".neededForBoot = true;
     "/var/log".neededForBoot = true;
   };
 }
