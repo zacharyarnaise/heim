@@ -17,6 +17,7 @@
     ];
   };
 
+  # Provides sane defaults in case we enable OpenSSH somewhere
   services.openssh = {
     allowSFTP = lib.mkDefault false;
     settings = {
