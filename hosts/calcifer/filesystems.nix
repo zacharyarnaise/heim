@@ -37,6 +37,7 @@
       device = "/dev/disk/by-label/crypted";
       fsType = "btrfs";
       options = ["subvol=log" "compress=lzo" "noatime" "lazytime"];
+      neededForBoot = true;
     };
   };
 }

@@ -47,6 +47,9 @@
                       "noacl"
                     ];
                   };
+                  "/var/log" = {
+                    mountOptions = ["compress=lzo" "noatime" "lazytime"];
+                  };
                 };
               };
             };
@@ -56,7 +59,8 @@
     };
   };
 
-  fileSystems."/persist" = {
-    neededForBoot = true;
+  fileSystems = {
+    "/persist".neededForBoot = true;
+    "/var/log".neededForBoot = true;
   };
 }
