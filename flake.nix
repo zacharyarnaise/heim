@@ -64,14 +64,16 @@
     genSystemLabel = let
       hash = self.rev or self.dirtyRev;
       shortHash = builtins.substring 0 7 hash;
-      isDirty = self.rev == null;
       date =
         if self.sourceInfo ? lastModifiedDate
         then formatDate self.sourceInfo.lastModifiedDate
         else "unknown-date";
     in {
       system.configurationRevision = hash;
-      system.nixos.label = "${date}_${shortHash}${isDirty ? "_dirty"}";
+      system.nixos.label =
+        if self.rev == null
+        then "dirty_"
+        else "" + "${date}_${shortHash}";
     };
   in {
     # Custom packages available through 'nix build', 'nix shell', etc.
