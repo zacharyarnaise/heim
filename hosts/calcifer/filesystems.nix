@@ -11,7 +11,7 @@
     "/boot" = {
       device = "/dev/disk/by-label/ESP";
       fsType = "vfat";
-      options = ["defaults" "noauto" "noexec"];
+      options = ["defaults" "noexec" "noauto" "x-systemd.automount"];
     };
 
     "/" = {
