@@ -16,7 +16,7 @@
         enable = true;
         configurationLimit = lib.mkDefault 10;
         consoleMode = "max";
-        editor = true;
+        editor = false;
       };
     };
 
