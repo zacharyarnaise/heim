@@ -32,5 +32,5 @@
 
   hardware.enableAllFirmware = true;
 
-  users.mutableUsers = false;
+  users.mutableUsers = true;
 }
