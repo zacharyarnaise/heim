@@ -75,6 +75,8 @@
     packages = forSupportedSystems (pkgs: import ./pkgs {inherit pkgs;});
     # nix fmt formatter
     formatter = forSupportedSystems (pkgs: pkgs.alejandra);
+    # Flake output attributes for 'nix develop'
+    devShells = forSupportedSystems (pkgs: import ./shell.nix {inherit pkgs;});
 
     # Reusable NixOS and home-manager modules
     nixosModules = import ./modules/nixos;
