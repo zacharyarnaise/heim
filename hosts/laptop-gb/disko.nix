@@ -16,7 +16,7 @@
               type = "filesystem";
               format = "vfat";
               mountpoint = "/boot";
-              mountOptions = ["defaults" "noauto" "noexec"];
+              mountOptions = ["defaults" "noexec" "noauto" "x-systemd.automount"];
             };
           };
 
