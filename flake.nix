@@ -38,16 +38,18 @@
   } @ inputs: let
     inherit (self) outputs;
 
+    supportedSystems = ["x86_64-linux"];
+    # Nixpkgs instantiated for each supported systems
+    nixpkgsFor = nixpkgs.lib.genAttrs supportedSystems (
+      system:
+        import nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+        }
+    );
     # Helper function to generate an attribute set for each supported system
     forSupportedSystems = f:
-      nixpkgs.lib.genAttrs ["x86_64-linux"] f;
-
-    # Nixpkgs instantiated for supported systems
-    nixpkgsFor = forSupportedSystems (system:
-      import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-      });
+      nixpkgs.lib.genAttrs supportedSystems (system: f nixpkgsFor.${system});
 
     # Format a date string as YYYY-MM-DD
     formatDate = date:
@@ -70,10 +72,10 @@
         else "" + "${date}_${shortHash}";
     };
   in {
+    # Formatter available through 'nix fmt'
+    formatter = forSupportedSystems (pkgs: pkgs.alejandra);
     # Custom packages available through 'nix build', 'nix shell', etc.
     packages = forSupportedSystems (pkgs: import ./pkgs {inherit pkgs;});
-    # nix fmt formatter
-    formatter = forSupportedSystems (pkgs: pkgs.alejandra);
     # Flake output attributes for 'nix develop'
     devShells = forSupportedSystems (pkgs: import ./shell.nix {inherit pkgs;});
 
