@@ -128,7 +128,24 @@
         "impermanence": "impermanence",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
+        "secrets": "secrets",
         "sops-nix": "sops-nix"
+      }
+    },
+    "secrets": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1719787799,
+        "narHash": "sha256-F5S0PQ5uBIY6zOWO0SfPawIKrZNvOJIW/wi8hSKgCfk=",
+        "ref": "refs/heads/main",
+        "rev": "41676b90ddc87f371b0f7f56a7864a091f5af3e4",
+        "revCount": 1,
+        "type": "git",
+        "url": "ssh://git@github.com/zacharyarnaise/heim-secrets.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@github.com/zacharyarnaise/heim-secrets.git"
       }
     },
     "sops-nix": {
