@@ -40,7 +40,7 @@
 
     # Helper function to generate an attribute set for each supported system
     forSupportedSystems = f:
-      nixpkgs.lib.genAttrs ["x86_64-linux"] (system: f system);
+      nixpkgs.lib.genAttrs ["x86_64-linux"] f;
 
     # Nixpkgs instantiated for supported systems
     nixpkgsFor = forSupportedSystems (system:
