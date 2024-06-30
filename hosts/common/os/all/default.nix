@@ -11,6 +11,7 @@
       ./locale.nix
       ./nix-daemon.nix
       ./security.nix
+      ./sops-nix.nix
       ./zsh.nix
     ]
     ++ (builtins.attrValues outputs.nixosModules);
