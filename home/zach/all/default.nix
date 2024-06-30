@@ -31,5 +31,7 @@
         allowOther = true;
       };
     };
+
+    stateVersion = "24.05";
   };
 }
