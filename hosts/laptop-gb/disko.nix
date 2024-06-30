@@ -33,6 +33,15 @@
               content = {
                 type = "btrfs";
                 extraArgs = ["-f"];
+                postCreateHook = ''
+                  mkdir /tmp -p
+                  MNTPOINT=$(mktemp -d)
+
+                  mount -t btrfs -o subvol=/ /dev/mapper/crypted "$MNTPOINT"
+                  trap 'umount "$MNTPOINT"; rm -rf "$MNTPOINT"' EXIT
+
+                  btrfs subvolume snapshot -r "$MNTPOINT/root" "$MNTPOINT/root-blank"
+                '';
                 subvolumes = {
                   "/root" = {
                     mountpoint = "/";
