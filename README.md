@@ -41,6 +41,11 @@ This repository holds configuration files for my personal systems that runs on N
         ```sh
         nixos-install --flake github:zacharyarnaise/heim#hostname
         ```
+    - When partitioning manually and using impermanence, make sure to create a BTRFS snapshot of the root subvolume:
+        ```sh
+        mount -t btrfs -o subvol=/ /dev/mapper/crypted /mnt
+        btrfs subvolume snapshot -r "/mnt/root" "/mnt/root-blank"
+        ```
 
 ## References / Useful resources
 - Resources from the official Nix website:
