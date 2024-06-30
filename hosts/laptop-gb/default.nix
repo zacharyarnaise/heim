@@ -11,9 +11,6 @@
     ../common/os/optional/wireless-wpa_supplicant.nix
   ];
 
-  # FIXME: remove when debugging is done
-  users.users.root.password = "nixos";
-
   networking.hostName = "laptop-gb";
 
   system.stateVersion = "24.05";
