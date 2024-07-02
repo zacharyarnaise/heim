@@ -23,7 +23,7 @@
     };
 
     sops-nix = {
-      url = "github:Mic92/sops-nix";
+      url = "github:mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -72,20 +72,20 @@
         else "" + "${date}_${shortHash}";
     };
   in {
-    # Formatter available through 'nix fmt'
-    formatter = forSupportedSystems (pkgs: pkgs.alejandra);
-    # Custom packages available through 'nix build', 'nix shell', etc.
-    packages = forSupportedSystems (pkgs: import ./pkgs {inherit pkgs;});
-    # Flake output attributes for 'nix develop'
-    devShells = forSupportedSystems (pkgs: import ./shell.nix {inherit pkgs;});
-
-    # Reusable NixOS and home-manager modules
+    # Reusable custom modules for NixOS and home-manager
     nixosModules = import ./modules/nixos;
     homeManagerModules = import ./modules/home-manager;
-    # Custom packages and modifications, exported as overlays
+    # Custom modifications/overrides, exported as overlays
     overlays = import ./overlays;
+    # Custom packages, to be shared or upstreamed
+    packages = forSupportedSystems (pkgs: import ./pkgs {inherit pkgs;});
 
-    # NixOS configuration entrypoint
+    # Nix formatter available through 'nix fmt'
+    formatter = forSupportedSystems (pkgs: pkgs.alejandra);
+    # Configuration for 'nix develop' shell
+    devShells = forSupportedSystems (pkgs: import ./shell.nix {inherit pkgs;});
+
+    # -- NixOS configuration entrypoint ----------------------------------------
     # Available through 'nixos-rebuild --flake .#hostname'
     nixosConfigurations = {
       "calcifer" = nixpkgs.lib.nixosSystem {
@@ -105,7 +105,7 @@
       };
     };
 
-    # Standalone home-manager configuration entrypoint
+    # -- home-manager configuration entrypoint ---------------------------------
     # Available through 'home-manager --flake .#username@hostname'
     homeConfigurations = {
       "zach@calcifer" = nixpkgs.lib.homeManagerConfiguration {
