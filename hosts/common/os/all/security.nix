@@ -26,12 +26,13 @@
       PermitRootLogin = "no";
       UseDns = false;
       X11Forwarding = false;
+      StrictModes = true;
 
       Ciphers = [
         "chacha20-poly1305@openssh.com"
       ];
       KexAlgorithms = [
-        "curve25519-sha256"
+        "sntrup761x25519-sha512@openssh.com"
         "curve25519-sha256@libssh.org"
       ];
     };
