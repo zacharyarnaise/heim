@@ -29,6 +29,8 @@
     secrets = {
       url = "git+ssh://git@github.com/zacharyarnaise/heim-secrets.git";
       flake = false;
+      ref = "main";
+      shallow = true;
     };
   };
 
