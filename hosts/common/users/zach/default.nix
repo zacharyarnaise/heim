@@ -32,5 +32,5 @@ in {
     packages = [pkgs.home-manager];
   };
 
-  home-manager.users.zach = import ../../../../home/zach/laptop-gb.nix;
+  home-manager.users.zach = import ../../../../home/zach/${config.networking.hostName}.nix;
 }

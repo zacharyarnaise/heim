@@ -115,19 +115,13 @@
     # Available through 'home-manager --flake .#username@hostname'
     homeConfigurations = {
       "zach@calcifer" = nixpkgs.lib.homeManagerConfiguration {
-        modules = [
-          ./home/zach/all
-          ./home/zach/calcifer.nix
-        ];
+        modules = [./home/zach/calcifer.nix];
         pkgs = nixpkgsFor.x86_64-linux;
         extraSpecialArgs = {inherit inputs outputs;};
       };
 
       "zach@laptop-gb" = nixpkgs.lib.homeManagerConfiguration {
-        modules = [
-          ./home/zach/all
-          ./home/zach/laptop-gb.nix
-        ];
+        modules = [./home/zach/laptop-gb.nix];
         pkgs = nixpkgsFor.x86_64-linux;
         extraSpecialArgs = {inherit inputs outputs;};
       };
