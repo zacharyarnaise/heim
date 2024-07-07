@@ -26,11 +26,11 @@ in {
     ];
     hashedPasswordFile = config.sops.secrets."zach/password".path;
 
-    # openssh.authorizedKeys.keys =
-    #  lib.splitString "\n" builtins.readFile "${secretsDir}/users/zach/id_ed25519.pub";
+    openssh.authorizedKeys.keys =
+      lib.splitString "\n" builtins.readFile "${secretsDir}/users/zach/id_ed25519.pub";
 
     packages = [pkgs.home-manager];
   };
 
-  home-manager.users.zach = import ../../../../home/zach/${config.networking.hostName}.nix;
+  home-manager.users.zach = import ../../../../home/zach/laptop-gb.nix;
 }
