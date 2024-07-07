@@ -10,8 +10,8 @@
       ./boot.nix
       ./locale.nix
       ./nix-daemon.nix
+      ./openssh.nix
       ./secrets.nix
-      ./security.nix
       ./zsh.nix
     ]
     ++ (builtins.attrValues outputs.nixosModules);
