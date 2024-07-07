@@ -44,7 +44,7 @@
     ...
   } @ inputs: let
     inherit (self) outputs;
-    utils = import ./utils;
+    utils = import ./utils {inherit inputs;};
 
     supportedSystems = ["x86_64-linux"];
     # Nixpkgs instantiated for each supported systems
