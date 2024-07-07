@@ -23,7 +23,7 @@
     };
 
     settings = {
-      auto-optimise-store = false;
+      auto-optimise-store = true;
       allow-import-from-derivation = lib.mkDefault false;
       allowed-users = lib.mkDefault [""]; # Trusted users are always allowed to connect
       trusted-users = ["root" "@wheel"];
@@ -37,8 +37,11 @@
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       ];
 
+      connect-timeout = 10;
+      log-lines = 25;
       flake-registry = ""; # Disable global flake registry
       max-silent-time = 60;
+      warn-dirty = false;
 
       system-features = [
         "kvm"
