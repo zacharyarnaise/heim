@@ -6,15 +6,6 @@
 
   programs.ssh = {
     enableAskPassword = false;
-    hostKeyAlgorithms = [
-      "ssh-ed25519"
-      "ecdsa-sha2-nistp256"
-      "ecdsa-sha2-nistp384"
-      "ecdsa-sha2-nistp521"
-      "rsa-sha2-512"
-      "rsa-sha2-256"
-      "ssh-rsa"
-    ];
   };
 
   # Provides sane defaults in case we enable OpenSSH somewhere
@@ -24,7 +15,6 @@
       KbdInteractiveAuthentication = false;
       PasswordAuthentication = false;
       PermitRootLogin = "no";
-      UseDns = false;
       X11Forwarding = false;
       StrictModes = true;
 
@@ -33,7 +23,6 @@
       ];
       KexAlgorithms = [
         "sntrup761x25519-sha512@openssh.com"
-        "curve25519-sha256@libssh.org"
       ];
     };
     extraConfig = ''
