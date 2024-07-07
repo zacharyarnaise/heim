@@ -2,7 +2,6 @@
   config,
   lib,
   outputs,
-  utils,
   ...
 }: let
   hosts = lib.attrNames outputs.nixosConfigurations;
@@ -13,7 +12,7 @@ in {
     knownHosts = lib.genAttrs hosts (hostname: {
       extraHostNames = ["${hostname}.zzz"];
       publicKey =
-        builtins.readFile ((utils.hostSecretsDir hostname) + "/ssh_host_ed25519_key.pub");
+        builtins.readFile ((lib.dirs.hostSecrets hostname) + "/ssh_host_ed25519_key.pub");
     });
   };
 

@@ -3,7 +3,6 @@
   outputs,
   lib,
   config,
-  utils,
   ...
 }: {
   imports =
@@ -41,7 +40,7 @@
   };
 
   sops = {
-    defaultSopsFile = utils.secretsDir + "/secrets.yaml";
+    defaultSopsFile = lib.dirs.secrets + "/secrets.yaml";
     age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
   };
 }

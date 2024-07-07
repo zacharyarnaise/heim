@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  utils,
   ...
 }: {
   sops.secrets = {
@@ -25,11 +24,11 @@
     hashedPasswordFile = config.sops.secrets."zach/password".path;
 
     openssh.authorizedKeys.keys =
-      lib.splitString "\n" (builtins.readFile (utils.userSecretsDir "zach") + "/id_ed25519.pub");
+      lib.splitString "\n" (builtins.readFile (lib.dirs.userSecrets "zach") + "/id_ed25519.pub");
 
     packages = [pkgs.home-manager];
   };
 
   home-manager.users.zach =
-    import (utils.rootDir + "/home/zach/${config.networking.hostName}.nix");
+    import (lib.dirs.root + "/home/zach/${config.networking.hostName}.nix");
 }

@@ -38,13 +38,17 @@
   outputs = {
     self,
     nixpkgs,
-    flake-utils,
     home-manager,
     sops-nix,
     ...
   } @ inputs: let
     inherit (self) outputs;
-    utils = import ./utils {inherit inputs;};
+
+    # Library of helper functions used throughout the flake
+    lib = import ./lib {
+      inherit inputs;
+      inherit (inputs.nixpkgs) lib;
+    };
 
     supportedSystems = ["x86_64-linux"];
     # Nixpkgs instantiated for each supported systems
@@ -97,7 +101,7 @@
     # Available through 'nixos-rebuild --flake .#hostname'
     nixosConfigurations = {
       "calcifer" = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs outputs utils;};
+        specialArgs = {inherit lib inputs outputs;};
         modules = [
           ./hosts/calcifer
           genSystemLabel
@@ -105,7 +109,7 @@
       };
 
       "laptop-gb" = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs outputs utils;};
+        specialArgs = {inherit lib inputs outputs;};
         modules = [
           ./hosts/laptop-gb
           genSystemLabel
@@ -122,7 +126,7 @@
           ./home/zach/calcifer.nix
         ];
         pkgs = nixpkgsFor.x86_64-linux;
-        extraSpecialArgs = {inherit inputs outputs utils;};
+        extraSpecialArgs = {inherit inputs outputs;};
       };
 
       "zach@laptop-gb" = nixpkgs.lib.homeManagerConfiguration {
@@ -131,7 +135,7 @@
           ./home/zach/laptop-gb.nix
         ];
         pkgs = nixpkgsFor.x86_64-linux;
-        extraSpecialArgs = {inherit inputs outputs utils;};
+        extraSpecialArgs = {inherit inputs outputs;};
       };
     };
   };
