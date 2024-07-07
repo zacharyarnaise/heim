@@ -3,14 +3,19 @@
   outputs,
   lib,
   config,
+  utils,
   ...
 }: {
   imports =
-    [inputs.impermanence.nixosModules.home-manager.impermanence]
+    [
+      inputs.impermanence.nixosModules.home-manager.impermanence
+      inputs.sops-nix.homeManagerModules.sops
+    ]
     ++ (builtins.attrValues outputs.homeManagerModules);
 
   programs = {
     home-manager.enable = true;
+    git.enable = true;
   };
 
   home = {
@@ -33,5 +38,10 @@
     };
 
     stateVersion = "24.05";
+  };
+
+  sops = {
+    defaultSopsFile = utils.secretsDir + "/secrets.yaml";
+    age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
   };
 }

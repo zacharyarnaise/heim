@@ -43,6 +43,7 @@
     ...
   } @ inputs: let
     inherit (self) outputs;
+    utils = import ./utils;
 
     supportedSystems = ["x86_64-linux"];
     # Nixpkgs instantiated for each supported systems
@@ -95,7 +96,7 @@
     # Available through 'nixos-rebuild --flake .#hostname'
     nixosConfigurations = {
       "calcifer" = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs outputs;};
+        specialArgs = {inherit inputs outputs utils;};
         modules = [
           ./hosts/calcifer
           genSystemLabel
@@ -103,7 +104,7 @@
       };
 
       "laptop-gb" = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs outputs;};
+        specialArgs = {inherit inputs outputs utils;};
         modules = [
           ./hosts/laptop-gb
           genSystemLabel
@@ -120,7 +121,7 @@
           ./home/zach/calcifer.nix
         ];
         pkgs = nixpkgsFor.x86_64-linux;
-        extraSpecialArgs = {inherit inputs outputs;};
+        extraSpecialArgs = {inherit inputs outputs utils;};
       };
 
       "zach@laptop-gb" = nixpkgs.lib.homeManagerConfiguration {
@@ -129,7 +130,7 @@
           ./home/zach/laptop-gb.nix
         ];
         pkgs = nixpkgsFor.x86_64-linux;
-        extraSpecialArgs = {inherit inputs outputs;};
+        extraSpecialArgs = {inherit inputs outputs utils;};
       };
     };
   };
