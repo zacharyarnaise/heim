@@ -40,7 +40,7 @@
   };
 
   sops = {
-    defaultSopsFile = lib.dirs.secrets + "/secrets.yaml";
+    defaultSopsFile = builtins.toString inputs.secrets + "/secrets.yaml";
     age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
   };
 }

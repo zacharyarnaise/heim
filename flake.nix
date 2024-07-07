@@ -44,12 +44,6 @@
   } @ inputs: let
     inherit (self) outputs;
 
-    # Library of helper functions used throughout the flake
-    lib = import ./lib {
-      inherit inputs;
-      inherit (inputs.nixpkgs) lib;
-    };
-
     supportedSystems = ["x86_64-linux"];
     # Nixpkgs instantiated for each supported systems
     nixpkgsFor = nixpkgs.lib.genAttrs supportedSystems (
@@ -101,7 +95,7 @@
     # Available through 'nixos-rebuild --flake .#hostname'
     nixosConfigurations = {
       "calcifer" = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit lib inputs outputs;};
+        specialArgs = {inherit inputs outputs;};
         modules = [
           ./hosts/calcifer
           genSystemLabel
@@ -109,7 +103,7 @@
       };
 
       "laptop-gb" = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit lib inputs outputs;};
+        specialArgs = {inherit inputs outputs;};
         modules = [
           ./hosts/laptop-gb
           genSystemLabel

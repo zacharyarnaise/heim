@@ -1,9 +1,12 @@
 {
   config,
   lib,
+  inputs,
   pkgs,
   ...
-}: {
+}: let
+  secretsDir = builtins.toString inputs.secrets;
+in {
   sops.secrets = {
     "zach/password".neededForUsers = true;
     "zach/age_keys.txt" = {
@@ -24,11 +27,11 @@
     hashedPasswordFile = config.sops.secrets."zach/password".path;
 
     openssh.authorizedKeys.keys =
-      lib.splitString "\n" (builtins.readFile (lib.dirs.userSecrets "zach") + "/id_ed25519.pub");
+      lib.splitString "\n" builtins.readFile "${secretsDir}/users/zach/id_ed25519.pub";
 
     packages = [pkgs.home-manager];
   };
 
   home-manager.users.zach =
-    import (lib.dirs.root + "/home/zach/${config.networking.hostName}.nix");
+    import "../../../home/zach/${config.networking.hostName}.nix";
 }

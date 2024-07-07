@@ -1,9 +1,11 @@
 {
   config,
   lib,
+  inputs,
   outputs,
   ...
 }: let
+  secretsDir = builtins.toString inputs.secrets;
   hosts = lib.attrNames outputs.nixosConfigurations;
 
   hasOptinPersistence = config.environment.persistence ? "/persist";
@@ -12,7 +14,7 @@ in {
     knownHosts = lib.genAttrs hosts (hostname: {
       extraHostNames = ["${hostname}.zzz"];
       publicKey =
-        builtins.readFile ((lib.dirs.hostSecrets hostname) + "/ssh_host_ed25519_key.pub");
+        builtins.readFile "${secretsDir}/hosts/${hostname}/ssh_host_ed25519_key.pub";
     });
   };
 
