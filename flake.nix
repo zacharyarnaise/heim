@@ -114,6 +114,14 @@
           genSystemLabel
         ];
       };
+
+      "noface" = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs outputs;};
+        modules = [
+          ./hosts/noface
+          genSystemLabel
+        ];
+      };
     };
 
     # -- home-manager configuration entrypoint ---------------------------------
@@ -141,6 +149,15 @@
         modules = [
           ./home/zach/all
           ./home/zach/laptop-gb.nix
+        ];
+        pkgs = nixpkgsFor.x86_64-linux;
+        extraSpecialArgs = {inherit inputs outputs;};
+      };
+
+      "zach@noface" = nixpkgs.lib.homeManagerConfiguration {
+        modules = [
+          ./home/zach/all
+          ./home/zach/noface.nix
         ];
         pkgs = nixpkgsFor.x86_64-linux;
         extraSpecialArgs = {inherit inputs outputs;};
