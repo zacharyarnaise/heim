@@ -7,7 +7,7 @@
     kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
 
     loader = {
-      timeout = lib.mkDefault 5;
+      timeout = lib.mkDefault 3;
 
       efi.canTouchEfiVariables = true;
 
@@ -16,7 +16,7 @@
         enable = true;
         configurationLimit = lib.mkDefault 10;
         consoleMode = "max";
-        editor = true;
+        editor = lib.mkDefault false;
       };
     };
 
