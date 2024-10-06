@@ -11,7 +11,7 @@
 
   networking.hostName = "noface";
 
-  loader = {
+  boot.loader = {
     timeout = 5;
     systemd-boot.editor = true;
   };
