@@ -26,12 +26,19 @@
       url = "github:mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    secrets = {
+      type = "git";
+      #url = "git+ssh://git@github.com/zacharyarnaise/heim-secrets.git";
+      url = "https://github.com/zacharyarnaise/heim-secrets";
+      flake = false;
+      ref = "main";
+      shallow = true;
+    };
   };
 
   outputs = {
     self,
     nixpkgs,
-    flake-utils,
     home-manager,
     sops-nix,
     ...
@@ -120,10 +127,7 @@
     # Available through 'home-manager --flake .#username@hostname'
     homeConfigurations = {
       "zach@calcifer" = nixpkgs.lib.homeManagerConfiguration {
-        modules = [
-          ./home/zach/all
-          ./home/zach/calcifer.nix
-        ];
+        modules = [./home/zach/calcifer.nix];
         pkgs = nixpkgsFor.x86_64-linux;
         extraSpecialArgs = {inherit inputs outputs;};
       };
@@ -138,10 +142,7 @@
       };
 
       "zach@laptop-gb" = nixpkgs.lib.homeManagerConfiguration {
-        modules = [
-          ./home/zach/all
-          ./home/zach/laptop-gb.nix
-        ];
+        modules = [./home/zach/laptop-gb.nix];
         pkgs = nixpkgsFor.x86_64-linux;
         extraSpecialArgs = {inherit inputs outputs;};
       };
