@@ -38,7 +38,10 @@
   } @ inputs: let
     inherit (self) outputs;
 
-    supportedSystems = ["x86_64-linux"];
+    supportedSystems = [
+      "x86_64-linux"
+      "aarch64-linux"
+    ];
     # Nixpkgs instantiated for each supported systems
     nixpkgsFor = nixpkgs.lib.genAttrs supportedSystems (
       system:
@@ -96,6 +99,14 @@
         ];
       };
 
+      "howl" = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs outputs;};
+        modules = [
+          ./hosts/howl
+          genSystemLabel
+        ];
+      };
+
       "laptop-gb" = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
@@ -114,6 +125,15 @@
           ./home/zach/calcifer.nix
         ];
         pkgs = nixpkgsFor.x86_64-linux;
+        extraSpecialArgs = {inherit inputs outputs;};
+      };
+
+      "zach@howl" = nixpkgs.lib.homeManagerConfiguration {
+        modules = [
+          ./home/zach/all
+          ./home/zach/howl.nix
+        ];
+        pkgs = nixpkgsFor.aarch64-linux;
         extraSpecialArgs = {inherit inputs outputs;};
       };
 
