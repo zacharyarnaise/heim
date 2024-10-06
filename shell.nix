@@ -10,6 +10,7 @@
       ssh-to-age
       gnupg
       age
+      age-keygen
     ];
   };
 }
