@@ -4,6 +4,7 @@
     ./all
 
     ./optional/resolved.nix
+    ./optional/impermanence.nix
   ];
 
   boot.kernelParams = ["nowatchdog"];
