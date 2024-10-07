@@ -19,7 +19,6 @@
 
     initrd.luks.devices = {
       "crypted" = {
-        device = "/dev/mapper/crypted";
         preLVM = true;
       };
     };
