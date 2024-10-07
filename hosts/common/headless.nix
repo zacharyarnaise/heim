@@ -4,7 +4,6 @@
     ./all
 
     ./optional/resolved.nix
-    ./optional/impermanence.nix
   ];
 
   boot.kernelParams = ["nowatchdog"];
@@ -24,5 +23,5 @@
     daemonIOSchedClass = "best-effort";
   };
 
-  hardware.graphics.enable = lib.mkForce false;
+  hardware.graphics.enable = lib.mkDefault false;
 }
