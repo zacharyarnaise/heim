@@ -23,5 +23,5 @@
     plymouth.enable = false;
   };
 
-  console.earlySetup = lib.mkDefault true;
+  console.earlySetup = lib.mkDefault false;
 }

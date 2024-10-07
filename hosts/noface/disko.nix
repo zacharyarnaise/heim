@@ -26,10 +26,6 @@
               type = "luks";
               name = "crypted";
               askPassword = true;
-              settings = {
-                allowDiscards = true;
-                bypassWorkqueues = true;
-              };
               content = {
                 type = "btrfs";
                 extraArgs = ["-f"];
