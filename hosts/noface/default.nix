@@ -19,7 +19,7 @@
 
     initrd.luks.devices = {
       "crypted" = {
-        preLVM = true;
+        preLVM = false;
       };
     };
   };
