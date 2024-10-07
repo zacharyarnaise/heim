@@ -23,4 +23,6 @@
     daemonCPUSchedPolicy = "batch";
     daemonIOSchedClass = "best-effort";
   };
+
+  hardware.graphics.enable = lib.mkForce false;
 }

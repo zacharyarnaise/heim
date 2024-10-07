@@ -11,9 +11,18 @@
 
   networking.hostName = "noface";
 
-  boot.loader = {
-    timeout = 5;
-    systemd-boot.editor = true;
+  boot = {
+    loader = {
+      timeout = 5;
+      systemd-boot.editor = true;
+    };
+
+    initrd.luks.devices = {
+      "crypted" = {
+        device = "/dev/mapper/crypted";
+        preLVM = true;
+      };
+    };
   };
 
   system.stateVersion = "24.05";
