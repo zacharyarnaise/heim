@@ -12,9 +12,12 @@
   networking.hostName = "noface";
   system.stateVersion = "24.05";
 
-  boot.loader = {
-    timeout = 5;
-    systemd-boot.editor = true;
+  boot = {
+    loader = {
+      timeout = 5;
+      systemd-boot.editor = true;
+    };
+    initrd.systemd.emergencyAccess = true;
   };
 
   specialisation.debug.configuration = {
