@@ -31,7 +31,6 @@ in {
     hideMounts = false;
 
     directories = [
-      "/etc/nixos"
       "/var/lib/nixos"
     ];
 
@@ -68,11 +67,7 @@ in {
         serviceConfig.Type = "oneshot";
         script = rollbackScript;
         wantedBy = ["initrd.target"];
-        requires = ["dev-disk-by\\x2dlabel-crypted.device"];
-        after = [
-          "dev-disk-by\\x2dlabel-crypted.device"
-          "systemd-cryptsetup@crypted.service"
-        ];
+        after = ["systemd-cryptsetup@crypted.service"];
         before = ["sysroot.mount"];
       };
     };

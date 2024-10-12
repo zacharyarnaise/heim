@@ -28,6 +28,7 @@
               type = "luks";
               name = "crypted";
               askPassword = true;
+              initrdUnlock = true;
 
               content = {
                 type = "btrfs";
