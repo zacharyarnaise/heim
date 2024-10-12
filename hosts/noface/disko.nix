@@ -18,7 +18,7 @@
               type = "filesystem";
               format = "vfat";
               mountpoint = "/boot";
-              mountOptions = ["defaults" "noexec"];
+              mountOptions = ["defaults" "noexec" "umask=0077"];
             };
           };
 

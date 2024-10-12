@@ -67,6 +67,7 @@ in {
         unitConfig.DefaultDependencies = "no";
         serviceConfig.Type = "oneshot";
         wantedBy = ["initrd.target"];
+        requires = ["dev-disk-by\\x2dlabel-crypted.device"];
         after = ["systemd-cryptsetup@crypted.service"];
         before = ["sysroot.mount"];
         script = rollbackScript;
