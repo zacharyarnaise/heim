@@ -26,7 +26,7 @@
       auto-optimise-store = true;
       allow-import-from-derivation = lib.mkDefault false;
       allowed-users = lib.mkDefault [""]; # Trusted users are always allowed to connect
-      trusted-users = ["root" "@wheel"];
+      trusted-users = lib.mkForce ["root" "@wheel"];
       require-sigs = true;
       substituters = [
         "https://nix-config.cachix.org"
