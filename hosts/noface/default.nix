@@ -19,7 +19,7 @@
 
   specialisation.debug.configuration = {
     system.nixos.tags = ["debug" "serial-console"];
-    system.nixos.label = "${config.system.nixos.label} (debug)";
+    system.nixos.label = "${config.system.nixos.label}_debug";
 
     boot.kernelParams = [
       "systemd.setenv=SYSTEMD_SULOGIN_FORCE=1"
