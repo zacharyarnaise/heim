@@ -66,6 +66,7 @@ in {
         description = "Rollback BTRFS root subvolume to a pristine state";
         unitConfig.DefaultDependencies = "no";
         serviceConfig.Type = "oneshot";
+        script = rollbackScript;
         wantedBy = ["initrd.target"];
         requires = ["dev-disk-by\\x2dlabel-crypted.device"];
         after = [
@@ -73,7 +74,6 @@ in {
           "systemd-cryptsetup@crypted.service"
         ];
         before = ["sysroot.mount"];
-        script = rollbackScript;
       };
     };
   };
