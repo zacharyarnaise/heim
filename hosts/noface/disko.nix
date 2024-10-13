@@ -26,8 +26,6 @@
             content = {
               type = "luks";
               name = "crypted";
-              askPassword = true;
-              initrdUnlock = false;
 
               content = {
                 type = "btrfs";
