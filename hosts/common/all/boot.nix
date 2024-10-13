@@ -19,6 +19,4 @@
       };
     };
   };
-
-  console.earlySetup = lib.mkDefault true;
 }

@@ -13,6 +13,4 @@
     initrd.verbose = false;
     loader.timeout = 0;
   };
-
-  console.earlySetup = false;
 }
