@@ -7,8 +7,6 @@
     ./optional/impermanence.nix
   ];
 
-  boot.kernelParams = ["nowatchdog"];
-
   networking = {
     nameservers = [
       "1.1.1.1#cloudflare-dns.com"
@@ -24,5 +22,5 @@
     daemonIOSchedClass = "best-effort";
   };
 
-  hardware.graphics.enable = lib.mkForce false;
+  hardware.graphics.enable = lib.mkDefault false;
 }

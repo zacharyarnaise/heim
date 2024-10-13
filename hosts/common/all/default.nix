@@ -9,9 +9,10 @@
       inputs.home-manager.nixosModules.home-manager
       ./boot.nix
       ./locale.nix
-      ./nix-daemon.nix
+      ./nix.nix
       ./openssh.nix
       ./secrets.nix
+      ./security.nix
       ./zsh.nix
     ]
     ++ (builtins.attrValues outputs.nixosModules);
@@ -32,6 +33,5 @@
   };
 
   hardware.enableAllFirmware = true;
-
   users.mutableUsers = false;
 }

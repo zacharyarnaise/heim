@@ -7,31 +7,31 @@
   rollbackScript = ''
     mkdir /tmp -p
     MNTPOINT=$(mktemp -d)
-    BTRFS_ROOT="$MNTPOINT/root"
-    BTRFS_BLANK="$MNTPOINT/root-blank"
 
-    echo "Mounting BTRFS root..."
+    echo "Mounting volumes"
     mount -t btrfs -o subvol=/ /dev/mapper/crypted "$MNTPOINT"
     trap 'umount "$MNTPOINT"; rm -rf "$MNTPOINT"' EXIT
 
-    echo "Cleaning up root subvolume..."
-    btrfs subvolume list -o "$BTRFS_ROOT" | cut -d' ' -f9 |
+    echo "Deleting @root subvolumes"
+    btrfs subvolume list -o "$MNTPOINT/@root" | cut -f9 -d' ' | sort |
       while read -r subvolume; do
         btrfs subvolume delete "$MNTPOINT/$subvolume"
-      done &&
-      btrfs subvolume delete "$BTRFS_ROOT"
+      done
+    btrfs subvolume delete "$MNTPOINT/@root"
 
-    echo "Restoring blank root subvolume..."
-    btrfs subvolume snapshot "$BTRFS_BLANK" "$BTRFS_ROOT"
+    echo "Restoring @root from @root-blank snapshot"
+    btrfs subvolume snapshot "$MNTPOINT/@root-blank" "$MNTPOINT/@root"
   '';
 in {
   imports = [inputs.impermanence.nixosModule];
 
   environment.persistence."/persist" = {
+    hideMounts = true;
+
     directories = [
       "/var/lib/nixos"
-      "/var/lib/systemd"
     ];
+
     files = [
       "/etc/machine-id"
     ];
@@ -54,17 +54,20 @@ in {
   in
     lib.concatLines (map mkHomePersist users);
 
+  # systemd service in initrd to rollback root subvolume
   boot.initrd = {
-    systemd.enable = true;
     supportedFilesystems = ["btrfs"];
-  };
-  boot.initrd.systemd.services.rollback = {
-    description = "Rollback BTRFS root subvolume to a pristine state";
-    wantedBy = ["initrd.target"];
-    after = ["systemd-cryptsetup@crypted.service"];
-    before = ["sysroot.mount"];
-    unitConfig.DefaultDependencies = "no";
-    serviceConfig.Type = "oneshot";
-    script = rollbackScript;
+    systemd = {
+      enable = true;
+      services.rollback-root = {
+        description = "Rollback BTRFS root subvolume to a pristine state";
+        unitConfig.DefaultDependencies = "no";
+        serviceConfig.Type = "oneshot";
+        script = rollbackScript;
+        wantedBy = ["initrd.target"];
+        after = ["systemd-cryptsetup@crypted.service"];
+        before = ["sysroot.mount"];
+      };
+    };
   };
 }
