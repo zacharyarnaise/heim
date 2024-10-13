@@ -14,10 +14,6 @@
   boot.kernelModules = [];
   boot.extraModulePackages = [];
 
-  boot.initrd.luks.devices."crypted" = {
-    preLVM = true;
-  };
-
   nix.settings.max-jobs = lib.mkDefault 2;
   swapDevices = lib.mkForce [];
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
