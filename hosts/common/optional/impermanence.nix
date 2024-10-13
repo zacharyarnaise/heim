@@ -8,20 +8,18 @@
     mkdir /tmp -p
     MNTPOINT=$(mktemp -d)
 
-    echo "Mounting BTRFS volumes"
+    echo "Mounting volumes"
     mount -t btrfs -o subvol=/ /dev/mapper/crypted "$MNTPOINT"
     trap 'umount "$MNTPOINT"; rm -rf "$MNTPOINT"' EXIT
 
+    echo "Deleting @root subvolumes"
     btrfs subvolume list -o "$MNTPOINT/@root" | cut -f9 -d' ' | sort |
       while read -r subvolume; do
-        echo "Deleting $subvolume"
         btrfs subvolume delete "$MNTPOINT/$subvolume"
       done
-
-    echo "Deleting @root subvolume"
     btrfs subvolume delete "$MNTPOINT/@root"
 
-    echo "Restoring blank root subvolume"
+    echo "Restoring @root from @root-blank snapshot"
     btrfs subvolume snapshot "$MNTPOINT/@root-blank" "$MNTPOINT/@root"
   '';
 in {
