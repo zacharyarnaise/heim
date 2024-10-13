@@ -37,6 +37,4 @@
       "boot.shell_on_fail"
     ];
   };
-
-  console.earlySetup = false;
 }
