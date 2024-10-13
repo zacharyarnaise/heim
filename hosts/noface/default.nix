@@ -20,6 +20,8 @@
     initrd.systemd.emergencyAccess = true;
   };
 
+  fileSystems."/boot".options = ["defaults" "umask=0077"];
+
   specialisation.debug.configuration = {
     system.nixos.tags = ["debug" "serial-console"];
 
