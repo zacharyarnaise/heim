@@ -13,7 +13,7 @@
     gc = {
       automatic = true;
       dates = "weekly";
-      options = "--delete-older-than +3";
+      options = "--delete-older-than 14d";
       persistent = true;
     };
 
@@ -37,7 +37,7 @@
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       ];
 
-      connect-timeout = 10;
+      connect-timeout = 5;
       log-lines = 25;
       max-silent-time = 60;
       warn-dirty = false;

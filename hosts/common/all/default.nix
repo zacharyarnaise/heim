@@ -9,7 +9,7 @@
       inputs.home-manager.nixosModules.home-manager
       ./boot.nix
       ./locale.nix
-      ./nix-daemon.nix
+      ./nix.nix
       ./security.nix
       ./zsh.nix
     ]
