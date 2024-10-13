@@ -9,7 +9,6 @@
     checkConfig = true;
     package = pkgs.nixVersions.latest;
 
-    # GC runs on a weekly basis, keeping the last three generations
     gc = {
       automatic = true;
       dates = "weekly";
