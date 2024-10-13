@@ -4,13 +4,14 @@
   ];
 
   boot.initrd.availableKernelModules = [
+    "ahci"
     "ohci_pci"
     "ehci_pci"
-    "ahci"
     "sd_mod"
     "sr_mod"
   ];
   boot.initrd.kernelModules = [];
+  boot.kernelModules = [];
   boot.extraModulePackages = [];
 
   boot.initrd.luks.devices."crypted" = {
@@ -18,10 +19,7 @@
   };
 
   nix.settings.max-jobs = lib.mkDefault 2;
-
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-
   swapDevices = lib.mkForce [];
-
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   virtualisation.virtualbox.guest.enable = true;
 }
