@@ -20,11 +20,8 @@
     initrd.systemd.emergencyAccess = true;
   };
 
-  fileSystems."/boot".options = ["defaults" "umask=0077"];
-
   specialisation.debug.configuration = {
     system.nixos.tags = ["debug" "serial-console"];
-
     boot.kernelParams = [
       "systemd.setenv=SYSTEMD_SULOGIN_FORCE=1"
       "systemd.show_status=true"

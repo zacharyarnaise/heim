@@ -6,8 +6,6 @@
     ./optional/resolved.nix
   ];
 
-  boot.kernelParams = ["nowatchdog"];
-
   networking = {
     nameservers = [
       "1.1.1.1#cloudflare-dns.com"
