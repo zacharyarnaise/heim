@@ -4,14 +4,15 @@
   disko.devices = {
     disk.main = {
       type = "disk";
+      device = "/dev/sda";
 
       content = {
         type = "gpt";
-
         partitions = {
           ESP = {
             type = "EF00";
             size = "500M";
+            priority = 1;
 
             content = {
               type = "filesystem";
@@ -26,6 +27,7 @@
             content = {
               type = "luks";
               name = "crypted";
+              askPassword = true;
 
               content = {
                 type = "btrfs";

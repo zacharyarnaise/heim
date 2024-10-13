@@ -39,7 +39,6 @@
 
       connect-timeout = 10;
       log-lines = 25;
-      flake-registry = ""; # Disable global flake registry
       max-silent-time = 60;
       warn-dirty = false;
 

@@ -10,6 +10,8 @@
     "sd_mod"
     "sr_mod"
   ];
+  boot.initrd.kernelModules = [];
+  boot.extraModulePackages = [];
 
   nix.settings.max-jobs = lib.mkDefault 2;
 
