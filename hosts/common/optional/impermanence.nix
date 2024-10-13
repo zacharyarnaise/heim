@@ -26,7 +26,7 @@ in {
   imports = [inputs.impermanence.nixosModule];
 
   environment.persistence."/persist" = {
-    hideMounts = false;
+    hideMounts = true;
 
     directories = [
       "/var/lib/nixos"

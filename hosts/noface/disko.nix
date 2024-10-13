@@ -4,7 +4,7 @@
   disko.devices = {
     disk.main = {
       type = "disk";
-      device = "/dev/sda";
+      device = "/dev/nvme0n1";
 
       content = {
         type = "gpt";
@@ -26,6 +26,15 @@
               type = "luks";
               name = "crypted";
               askPassword = true;
+              postCreateHook = ''
+                mkdir /tmp -p
+                MNTPOINT=$(mktemp -d)
+
+                mount -t btrfs -o subvol=/ /dev/mapper/crypted "$MNTPOINT"
+                trap 'umount "$MNTPOINT"; rm -rf "$MNTPOINT"' EXIT
+
+                btrfs subvolume snapshot -r "$MNTPOINT/@root" "$MNTPOINT/@root-blank"
+              '';
 
               content = {
                 type = "btrfs";
