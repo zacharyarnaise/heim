@@ -28,8 +28,7 @@
     };
     secrets = {
       type = "git";
-      #url = "git+ssh://git@github.com/zacharyarnaise/heim-secrets.git";
-      url = "https://github.com/zacharyarnaise/heim-secrets";
+      url = "git+ssh://git@github.com/zacharyarnaise/heim-secrets.git";
       flake = false;
       ref = "main";
       shallow = true;
