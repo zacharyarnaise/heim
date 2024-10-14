@@ -10,6 +10,8 @@
       ./boot.nix
       ./locale.nix
       ./nix.nix
+      ./openssh.nix
+      ./secrets.nix
       ./security.nix
       ./zsh.nix
     ]
