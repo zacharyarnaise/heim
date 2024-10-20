@@ -26,12 +26,18 @@
       url = "github:mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    secrets = {
+      type = "git";
+      url = "git+ssh://git@github.com/zacharyarnaise/heim-secrets.git";
+      flake = false;
+      ref = "main";
+      shallow = true;
+    };
   };
 
   outputs = {
     self,
     nixpkgs,
-    flake-utils,
     home-manager,
     sops-nix,
     ...

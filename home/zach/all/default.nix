@@ -6,14 +6,19 @@
   ...
 }: {
   imports =
-    [inputs.impermanence.nixosModules.home-manager.impermanence]
+    [
+      inputs.impermanence.nixosModules.home-manager.impermanence
+      inputs.sops-nix.homeManagerModules.sops
+    ]
     ++ (builtins.attrValues outputs.homeManagerModules);
 
   programs = {
     home-manager.enable = true;
+    git.enable = true;
   };
 
   home = {
+    stateVersion = lib.mkDefault "24.05";
     username = lib.mkDefault "zach";
     homeDirectory = lib.mkDefault "/home/${config.home.username}";
     sessionPath = ["$HOME/.local/bin"];
@@ -31,7 +36,5 @@
         allowOther = true;
       };
     };
-
-    stateVersion = "24.05";
   };
 }
