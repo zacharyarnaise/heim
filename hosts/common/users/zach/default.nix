@@ -7,15 +7,7 @@
 }: let
   secretsDir = builtins.toString inputs.secrets;
 in {
-  sops.secrets = {
-    "zach/password".neededForUsers = true;
-    "zach/age_keys.txt" = {
-      owner = "zach";
-      group = "zach";
-      mode = "0400";
-      path = "/home/zach/.config/sops/age/keys.txt";
-    };
-  };
+  home-manager.users.zach = import ../../../../home/zach/${config.networking.hostName}.nix;
 
   users.users.zach = {
     isNormalUser = true;
@@ -32,5 +24,13 @@ in {
     packages = [pkgs.home-manager];
   };
 
-  home-manager.users.zach = import ../../../../home/zach/${config.networking.hostName}.nix;
+  sops.secrets = {
+    "zach/password".neededForUsers = true;
+    "zach/age_keys.txt" = {
+      owner = "zach";
+      group = "zach";
+      mode = "0400";
+      path = "/home/zach/.config/sops/age/keys.txt";
+    };
+  };
 }

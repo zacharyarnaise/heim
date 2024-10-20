@@ -11,8 +11,7 @@
       ./locale.nix
       ./nix.nix
       ./openssh.nix
-      ./secrets.nix
-      ./security.nix
+      ./sops-nix.nix
       ./zsh.nix
     ]
     ++ (builtins.attrValues outputs.nixosModules);
@@ -31,6 +30,8 @@
     nixos.enable = lib.mkForce false;
     info.enable = false;
   };
+
+  services.speechd.enable = false;
 
   hardware.enableAllFirmware = true;
   users.mutableUsers = false;
