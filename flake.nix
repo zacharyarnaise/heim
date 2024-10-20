@@ -140,10 +140,7 @@
       };
 
       "zach@howl" = nixpkgs.lib.homeManagerConfiguration {
-        modules = [
-          ./home/zach/all
-          ./home/zach/howl.nix
-        ];
+        modules = [./home/zach/howl.nix];
         pkgs = nixpkgsFor.aarch64-linux;
         extraSpecialArgs = {inherit inputs outputs;};
       };
@@ -155,10 +152,7 @@
       };
 
       "zach@noface" = nixpkgs.lib.homeManagerConfiguration {
-        modules = [
-          ./home/zach/all
-          ./home/zach/noface.nix
-        ];
+        modules = [./home/zach/noface.nix];
         pkgs = nixpkgsFor.x86_64-linux;
         extraSpecialArgs = {inherit inputs outputs;};
       };
