@@ -6,8 +6,9 @@
   ...
 }: let
   secretsDir = builtins.toString inputs.secrets;
+  hostname = config.networking.hostName;
 in {
-  home-manager.users.zach = import ../../../../home/zach/${config.networking.hostName}.nix;
+  home-manager.users.zach = import ../../../../home/zach/${hostname}.nix;
 
   users.users.zach = {
     isNormalUser = true;
@@ -16,11 +17,10 @@ in {
       "network"
       "wheel"
     ];
-    hashedPasswordFile = config.sops.secrets."zach/password".path;
 
+    hashedPasswordFile = config.sops.secrets."zach/password".path;
     openssh.authorizedKeys.keys =
       lib.splitString "\n" (builtins.readFile "${secretsDir}/users/zach/id_ed25519.pub");
-
     packages = [pkgs.home-manager];
   };
 

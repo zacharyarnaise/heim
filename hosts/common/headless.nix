@@ -1,7 +1,6 @@
-# Configuration applicable to my headless devices
 {lib, ...}: {
   imports = [
-    ./all
+    ./global
 
     ./optional/resolved.nix
     ./optional/impermanence.nix

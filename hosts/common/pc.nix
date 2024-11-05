@@ -1,7 +1,6 @@
-# Configuration applicable to all my PCs
 {
   imports = [
-    ./all
+    ./global
 
     ./optional/pipewire.nix
     ./optional/resolved.nix

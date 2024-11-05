@@ -14,6 +14,8 @@ in {
 
   sops = {
     defaultSopsFile = "${secretsFile}";
-    age.sshKeyPaths = builtins.map getKeyPath hostKeys;
+    age = {
+      sshKeyPaths = builtins.map getKeyPath hostKeys;
+    };
   };
 }
