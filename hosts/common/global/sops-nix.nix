@@ -1,6 +1,7 @@
 {
   inputs,
   config,
+  pkgs,
   ...
 }: let
   secretsDir = builtins.toString inputs.secrets;
@@ -11,6 +12,12 @@
   hostKeys = builtins.filter isEd25519 config.services.openssh.hostKeys;
 in {
   imports = [inputs.sops-nix.nixosModules.sops];
+
+  environment.systemPackages = with pkgs; [
+    age
+    ssh-to-age
+    sops
+  ];
 
   sops = {
     defaultSopsFile = "${secretsFile}";

@@ -1,13 +1,10 @@
-{
-  inputs,
-  outputs,
-  lib,
-  ...
-}: {
+{outputs, ...}: {
   imports =
     [
-      inputs.home-manager.nixosModules.home-manager
+      ./home-manager.nix
+
       ./boot.nix
+      ./hardening.nix
       ./locale.nix
       ./nix.nix
       ./openssh.nix
@@ -16,23 +13,16 @@
     ]
     ++ (builtins.attrValues outputs.nixosModules);
 
-  home-manager.useGlobalPkgs = true;
-  home-manager.extraSpecialArgs = {inherit inputs outputs;};
   nixpkgs = {
     overlays = builtins.attrValues outputs.overlays;
     config.allowUnfree = true;
   };
 
-  documentation = {
-    enable = true;
-    doc.enable = false;
-    man.enable = true;
-    nixos.enable = lib.mkForce false;
-    info.enable = false;
-  };
-
-  services.speechd.enable = false;
-
   hardware.enableAllFirmware = true;
   users.mutableUsers = false;
+
+  # Disable unused stuff
+  documentation.doc.enable = false;
+  documentation.info.enable = false;
+  services.speechd.enable = false;
 }

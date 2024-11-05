@@ -6,6 +6,8 @@
     ./optional/impermanence.nix
   ];
 
+  boot.kernelParams = ["nomodeset" "panic=1" "boot.panic_on_fail=1"];
+
   networking = {
     nameservers = [
       "1.1.1.1#cloudflare-dns.com"
@@ -20,6 +22,4 @@
     daemonCPUSchedPolicy = "batch";
     daemonIOSchedClass = "best-effort";
   };
-
-  hardware.graphics.enable = lib.mkDefault false;
 }

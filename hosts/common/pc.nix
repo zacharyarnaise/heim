@@ -23,6 +23,4 @@
     daemonCPUSchedPolicy = "idle";
     daemonIOSchedClass = "idle";
   };
-
-  hardware.graphics.enable = true;
 }
