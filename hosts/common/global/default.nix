@@ -8,7 +8,7 @@
       ./locale.nix
       ./nix.nix
       ./openssh.nix
-      ./sops-nix.nix
+      ./secrets.nix
       ./zsh.nix
     ]
     ++ (builtins.attrValues outputs.nixosModules);

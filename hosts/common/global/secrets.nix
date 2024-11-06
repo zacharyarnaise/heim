@@ -5,6 +5,8 @@
   ...
 }: let
   secretsDir = builtins.toString inputs.secrets;
+  hostName = config.networking.hostName;
+  userName = config.home.username;
 in {
   imports = [inputs.sops-nix.nixosModules.sops];
 
@@ -16,14 +18,13 @@ in {
 
   sops = {
     secrets = {
-      common = {
-        sopsFile = "${secretsDir}/common/secrets.yaml";
-      };
       host = {
-        sopsFile = "${secretsDir}/hosts/${config.networking.hostName}/secrets.yaml";
+        sopsFile = "${secretsDir}/hosts/${hostName}/secrets.yaml";
       };
+
       user = {
-        sopsFile = "${secretsDir}/users/${config.home.username}/secrets.yaml";
+        sopsFile = "${secretsDir}/users/${userName}/secrets.yaml";
+        "passwords/${hostName}".neededForUsers = true;
       };
     };
   };
