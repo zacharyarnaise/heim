@@ -7,7 +7,6 @@
       git
 
       age
-      age-keygen
       sops
       ssh-to-age
     ];
