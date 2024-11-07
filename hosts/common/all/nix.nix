@@ -8,6 +8,7 @@
     checkAllErrors = true;
     checkConfig = true;
     package = pkgs.nixVersions.latest;
+    accept-flake-config = true;
 
     gc = {
       automatic = true;
