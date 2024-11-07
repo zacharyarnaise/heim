@@ -4,7 +4,6 @@
       ./home-manager.nix
 
       ./boot.nix
-      ./hardening.nix
       ./locale.nix
       ./nix.nix
       ./openssh.nix
