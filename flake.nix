@@ -37,13 +37,14 @@
     ...
   } @ inputs: let
     inherit (self) outputs;
+    lib = nixpkgs.lib // home-manager.lib;
 
     supportedSystems = [
       "x86_64-linux"
       "aarch64-linux"
     ];
     # Nixpkgs instantiated for each supported systems
-    nixpkgsFor = nixpkgs.lib.genAttrs supportedSystems (
+    nixpkgsFor = lib.genAttrs supportedSystems (
       system:
         import nixpkgs {
           inherit system;
@@ -52,7 +53,7 @@
     );
     # Helper function to generate an attribute set for each supported system
     forSupportedSystems = f:
-      nixpkgs.lib.genAttrs supportedSystems (system: f nixpkgsFor.${system});
+      lib.genAttrs supportedSystems (system: f nixpkgsFor.${system});
 
     # Format a date string as YYYY-MM-DD
     formatDate = date:
@@ -75,6 +76,8 @@
         else "" + "${date}_${shortHash}";
     };
   in {
+    inherit lib;
+
     # Reusable custom modules for NixOS and home-manager
     nixosModules = import ./modules/nixos;
     homeManagerModules = import ./modules/home-manager;
@@ -91,7 +94,7 @@
     # -- NixOS configuration entrypoint ----------------------------------------
     # Available through 'nixos-rebuild --flake .#hostname'
     nixosConfigurations = {
-      "calcifer" = nixpkgs.lib.nixosSystem {
+      "calcifer" = lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
           ./hosts/calcifer
@@ -99,7 +102,7 @@
         ];
       };
 
-      "howl" = nixpkgs.lib.nixosSystem {
+      "howl" = lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
           ./hosts/howl
@@ -107,7 +110,7 @@
         ];
       };
 
-      "laptop-gb" = nixpkgs.lib.nixosSystem {
+      "laptop-gb" = lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
           ./hosts/laptop-gb
@@ -115,7 +118,7 @@
         ];
       };
 
-      "noface" = nixpkgs.lib.nixosSystem {
+      "noface" = lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
           ./hosts/noface
@@ -127,25 +130,25 @@
     # -- home-manager configuration entrypoint ---------------------------------
     # Available through 'home-manager --flake .#username@hostname'
     homeConfigurations = {
-      "zach@calcifer" = nixpkgs.lib.homeManagerConfiguration {
+      "zach@calcifer" = lib.homeManagerConfiguration {
         modules = [./home/zach/calcifer.nix];
         pkgs = nixpkgsFor.x86_64-linux;
         extraSpecialArgs = {inherit inputs outputs;};
       };
 
-      "zach@howl" = nixpkgs.lib.homeManagerConfiguration {
+      "zach@howl" = lib.homeManagerConfiguration {
         modules = [./home/zach/howl.nix];
         pkgs = nixpkgsFor.aarch64-linux;
         extraSpecialArgs = {inherit inputs outputs;};
       };
 
-      "zach@laptop-gb" = nixpkgs.lib.homeManagerConfiguration {
+      "zach@laptop-gb" = lib.homeManagerConfiguration {
         modules = [./home/zach/laptop-gb.nix];
         pkgs = nixpkgsFor.x86_64-linux;
         extraSpecialArgs = {inherit inputs outputs;};
       };
 
-      "zach@noface" = nixpkgs.lib.homeManagerConfiguration {
+      "zach@noface" = lib.homeManagerConfiguration {
         modules = [./home/zach/noface.nix];
         pkgs = nixpkgsFor.x86_64-linux;
         extraSpecialArgs = {inherit inputs outputs;};
