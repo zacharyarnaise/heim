@@ -31,7 +31,6 @@
           "Pictures"
           "Videos"
         ];
-        allowOther = true;
       };
     };
 
