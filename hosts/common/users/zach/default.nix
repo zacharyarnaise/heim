@@ -12,5 +12,5 @@
   };
 
   home-manager.users.zach =
-    import ../../../../home/zach${config.networking.hostName}.nix;
+    import ../../../../home/zach/${config.networking.hostName}.nix;
 }
