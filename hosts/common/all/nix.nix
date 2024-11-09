@@ -8,7 +8,6 @@
     checkAllErrors = true;
     checkConfig = true;
     package = pkgs.nixVersions.latest;
-    accept-flake-config = true;
 
     gc = {
       automatic = true;
@@ -25,6 +24,7 @@
     settings = {
       auto-optimise-store = true;
       allow-import-from-derivation = lib.mkDefault false;
+      accept-flake-config = true;
       allowed-users = lib.mkDefault [""]; # Trusted users are always allowed to connect
       trusted-users = lib.mkForce ["root" "@wheel"];
       require-sigs = true;
