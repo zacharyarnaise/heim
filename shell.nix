@@ -6,11 +6,9 @@
       home-manager
       git
 
+      age
       sops
       ssh-to-age
-      gnupg
-      age
-      age-keygen
     ];
   };
 }

@@ -22,6 +22,10 @@
     config.allowUnfree = true;
   };
 
+  programs.nh = {
+    enable = true;
+  };
+
   documentation = {
     enable = true;
     doc.enable = false;
