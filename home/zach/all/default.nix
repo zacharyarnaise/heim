@@ -24,11 +24,12 @@
     persistence = {
       "/persist/${config.home.homeDirectory}" = {
         directories = [
+          ".local/share/nix" # trusted settings and repl history
+          "heim"
           "Documents"
           "Downloads"
           "Pictures"
           "Videos"
-          ".local/share/nix" # trusted settings and repl history
         ];
         allowOther = true;
       };
