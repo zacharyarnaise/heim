@@ -1,10 +1,14 @@
-{config, ...}: {
+{config, ...}: let
+  ifTheyExist = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
+in {
   users.users.zach = {
     isNormalUser = true;
     description = "Zach";
-    extraGroups = [
+    extraGroups = ifTheyExist [
       "network"
       "wheel"
+
+      "vboxsf"
     ];
     # hashedPasswordFile = config.sops.secrets.layla-password.path;
     # TODO: remove when things are working
