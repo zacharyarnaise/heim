@@ -6,15 +6,16 @@
   programs.git = {
     enable = true;
 
+    ignores = [
+      ".direnv"
+      ".env"
+    ];
+
     extraConfig = {
       log = {
         date = "iso";
         showSignature = true;
       };
-      ignores = [
-        ".direnv"
-        ".env"
-      ];
       url = {
         "ssh://git@github.com".insteadOf = "https://github.com";
       };
