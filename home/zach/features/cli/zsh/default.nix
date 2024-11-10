@@ -66,7 +66,4 @@
       "sudo"
     ];
   };
-
-  # required for completion
-  environment.pathsToLink = ["/share/zsh"];
 }
