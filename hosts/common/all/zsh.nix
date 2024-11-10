@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{
   programs.zsh = {
     enable = true;
 
@@ -11,7 +11,4 @@
     histSize = 5000;
     syntaxHighlighting.enable = true;
   };
-
-  users.defaultUserShell = pkgs.zsh;
-  environment.shells = [pkgs.zsh];
 }
