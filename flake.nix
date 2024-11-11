@@ -94,10 +94,10 @@
 
     # -- home-manager configurations -------------------------------------------
     homeConfigurations = {
-      "zach@calcifer" = mkHome [./home/zach/calcifer] "x86_64-linux";
-      "zach@howl" = mkHome [./home/zach/howl] "aarch64-linux";
-      "zach@laptop-gb" = mkHome [./home/zach/laptop-gb] "x86_64-linux";
-      "zach@noface" = mkHome [./home/zach/noface] "x86_64-linux";
+      "zach@calcifer" = mkHome [./home/zach/calcifer.nix] "x86_64-linux";
+      "zach@howl" = mkHome [./home/zach/howl.nix] "aarch64-linux";
+      "zach@laptop-gb" = mkHome [./home/zach/laptop-gb.nix] "x86_64-linux";
+      "zach@noface" = mkHome [./home/zach/noface.nix] "x86_64-linux";
     };
   };
 }
