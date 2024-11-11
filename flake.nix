@@ -69,7 +69,7 @@
       lib.homeManagerConfiguration {
         pkgs = pkgsFor.${systemName};
         extraSpecialArgs = specialArgs;
-        inherit modules;
+        modules = modules;
       };
   in {
     inherit lib;
