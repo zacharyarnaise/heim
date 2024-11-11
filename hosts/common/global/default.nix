@@ -9,6 +9,7 @@
       ./nix.nix
       ./openssh.nix
       ./secrets.nix
+      ./userborn.nix
     ]
     ++ (builtins.attrValues outputs.nixosModules);
 

@@ -12,9 +12,11 @@
 in {
   home-manager.users.zach = import ../../../../home/zach/${hostName}.nix;
 
+  users.groups.zach = {};
   users.users.zach = {
     isNormalUser = true;
     shell = pkgs.zsh;
+    group = "zach";
     extraGroups =
       [
         "audio"
