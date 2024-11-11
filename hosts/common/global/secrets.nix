@@ -7,6 +7,7 @@
 }: let
   secretsDir = builtins.toString inputs.secrets;
   hostName = config.networking.hostName;
+  normalUsers = lib.filterAttrs (_: v: v.isNormalUser) config.users.users;
 in {
   imports = [inputs.sops-nix.nixosModules.sops];
 
@@ -22,9 +23,11 @@ in {
         {
           sopsFile = "${secretsDir}/hosts/${hostName}/secrets.yaml";
         }
-        // lib.optionalAttrs (lib.attrValues config.users.users) (user: {
-          "passwords/${user.name}".neededForUsers = true;
-        });
+        // builtins.map (u: {
+          name = "passwords/${u.name}";
+          neededForUsers = true;
+        })
+        normalUsers;
     };
   };
 }
