@@ -22,6 +22,7 @@ in {
 
     password = "testing";
   };
+  users.groups.zach = {};
 
   home-manager.users.zach =
     import ../../../../home/zach/${config.networking.hostName}.nix;
