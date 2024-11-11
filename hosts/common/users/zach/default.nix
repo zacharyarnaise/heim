@@ -8,6 +8,7 @@ in {
   users.users.zach = {
     isNormalUser = true;
     shell = pkgs.zsh;
+    group = "zach";
     extraGroups =
       [
         "audio"
