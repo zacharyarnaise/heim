@@ -44,121 +44,60 @@
     ...
   } @ inputs: let
     inherit (self) outputs;
-    lib = nixpkgs.lib // home-manager.lib;
+    lib =
+      nixpkgs.lib.extend (l: _: {extras = import ./lib.nix;}) // home-manager.lib;
 
     supportedSystems = [
       "x86_64-linux"
       "aarch64-linux"
     ];
-    # Nixpkgs instantiated for each supported systems
-    nixpkgsFor = lib.genAttrs supportedSystems (
+    forEachSystem = f: lib.genAttrs supportedSystems (sys: f pkgsFor.${sys});
+    pkgsFor = lib.genAttrs supportedSystems (
       system:
         import nixpkgs {
           inherit system;
           config.allowUnfree = true;
         }
     );
-    # Helper function to generate an attribute set for each supported system
-    forSupportedSystems = f:
-      lib.genAttrs supportedSystems (system: f nixpkgsFor.${system});
 
-    # Format a date string as YYYY-MM-DD
-    formatDate = date:
-      with builtins;
-        concatStringsSep "-" (match "(.{4})(.{2})(.{2}).*" date);
-
-    # Enrich system revision and label with Git information
-    genSystemLabel = let
-      hash = self.rev or self.dirtyRev;
-      shortHash = builtins.substring 0 7 hash;
-      date =
-        if self.sourceInfo ? lastModifiedDate
-        then formatDate self.sourceInfo.lastModifiedDate
-        else "unknown-date";
-    in {
-      system.configurationRevision = hash;
-      system.nixos.label =
-        if self.rev == null
-        then "dirty_"
-        else "" + "${date}_${shortHash}";
-    };
+    specialArgs = {inherit inputs outputs;};
+    mkNixos = modules:
+      lib.nixosSystem {
+        inherit specialArgs modules;
+      };
+    mkHome = modules: systemName:
+      lib.homeManagerConfiguration {
+        inherit modules;
+        pkgs = pkgsFor.${systemName};
+        extraSpecialArgs = specialArgs;
+      };
   in {
     inherit lib;
 
     # Reusable custom modules for NixOS and home-manager
     nixosModules = import ./modules/nixos;
     homeManagerModules = import ./modules/home-manager;
-    # Custom modifications/overrides, exported as overlays
-    # Custom packages, to be shared or upstreamed
-    packages = forSupportedSystems (pkgs: import ./pkgs {inherit pkgs;});
-
+    # Custom modifications/override to upstream packages
+    overlays = import ./overlays {inherit inputs outputs;};
+    # Custom packages to be shared or upstreamed
+    packages = forEachSystem (pkgs: import ./pkgs {inherit pkgs;});
     # Nix formatter available through 'nix fmt'
-    formatter = forSupportedSystems (pkgs: pkgs.alejandra);
-    # Configuration for 'nix develop' shell
-    devShells = forSupportedSystems (pkgs: import ./shell.nix {inherit pkgs;});
+    formatter = forEachSystem (pkgs: pkgs.alejandra);
 
-    # -- NixOS configuration entrypoint ----------------------------------------
-    # Available through 'nixos-rebuild --flake .#hostname'
+    # -- NixOS configurations --------------------------------------------------
     nixosConfigurations = {
-      "calcifer" = lib.nixosSystem {
-        specialArgs = {inherit inputs outputs;};
-        modules = [
-          ./hosts/calcifer
-          genSystemLabel
-        ];
-      };
-
-      "howl" = lib.nixosSystem {
-        specialArgs = {inherit inputs outputs;};
-        modules = [
-          ./hosts/howl
-          genSystemLabel
-        ];
-      };
-
-      "laptop-gb" = lib.nixosSystem {
-        specialArgs = {inherit inputs outputs;};
-        modules = [
-          ./hosts/laptop-gb
-          genSystemLabel
-        ];
-      };
-
-      "noface" = lib.nixosSystem {
-        specialArgs = {inherit inputs outputs;};
-        modules = [
-          ./hosts/noface
-          genSystemLabel
-        ];
-      };
+      "calcifer" = mkNixos [./hosts/calcifer];
+      "howl" = mkNixos [./hosts/howl];
+      "laptop-gb" = mkNixos [./hosts/laptop-gb];
+      "noface" = mkNixos [./hosts/noface];
     };
 
-    # -- home-manager configuration entrypoint ---------------------------------
-    # Available through 'home-manager --flake .#username@hostname'
+    # -- home-manager configurations -------------------------------------------
     homeConfigurations = {
-      "zach@calcifer" = lib.homeManagerConfiguration {
-        modules = [./home/zach/calcifer.nix];
-        pkgs = nixpkgsFor.x86_64-linux;
-        extraSpecialArgs = {inherit inputs outputs;};
-      };
-
-      "zach@howl" = lib.homeManagerConfiguration {
-        modules = [./home/zach/howl.nix];
-        pkgs = nixpkgsFor.aarch64-linux;
-        extraSpecialArgs = {inherit inputs outputs;};
-      };
-
-      "zach@laptop-gb" = lib.homeManagerConfiguration {
-        modules = [./home/zach/laptop-gb.nix];
-        pkgs = nixpkgsFor.x86_64-linux;
-        extraSpecialArgs = {inherit inputs outputs;};
-      };
-
-      "zach@noface" = lib.homeManagerConfiguration {
-        modules = [./home/zach/noface.nix];
-        pkgs = nixpkgsFor.x86_64-linux;
-        extraSpecialArgs = {inherit inputs outputs;};
-      };
+      "zach@calcifer" = mkHome [./home/zach/calcifer.nix] "x86_64-linux";
+      "zach@howl" = mkHome [./home/zach/howl.nix] "aarch64-linux";
+      "zach@laptop-gb" = mkHome [./home/zach/laptop-gb.nix] "x86_64-linux";
+      "zach@noface" = mkHome [./home/zach/noface.nix] "x86_64-linux";
     };
   };
 }
