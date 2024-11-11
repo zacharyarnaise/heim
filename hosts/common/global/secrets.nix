@@ -2,11 +2,11 @@
   inputs,
   config,
   pkgs,
+  lib,
   ...
 }: let
   secretsDir = builtins.toString inputs.secrets;
   hostName = config.networking.hostName;
-  userName = config.home.username;
 in {
   imports = [inputs.sops-nix.nixosModules.sops];
 
@@ -18,15 +18,13 @@ in {
 
   sops = {
     secrets = {
-      host = {
-        sopsFile = "${secretsDir}/hosts/${hostName}/secrets.yaml";
-        "passwords/${userName}".neededForUsers = true;
-      };
-
-      user = {
-        sopsFile = "${secretsDir}/users/${userName}/secrets.yaml";
-        validateSopsFile = false;
-      };
+      host =
+        {
+          sopsFile = "${secretsDir}/hosts/${hostName}/secrets.yaml";
+        }
+        // lib.optionalAttrs (lib.attrValues config.users.users) (user: {
+          "passwords/${user.name}".neededForUsers = true;
+        });
     };
   };
 }
