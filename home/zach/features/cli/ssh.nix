@@ -1,13 +1,4 @@
-{
-  outputs,
-  lib,
-  config,
-  ...
-}: let
-  nixosConfigs = builtins.attrNames outputs.nixosConfigurations;
-  homeConfigs = map (n: lib.last (lib.splitString "@" n)) (builtins.attrNames outputs.homeConfigurations);
-  hostnames = lib.unique (homeConfigs ++ nixosConfigs);
-in {
+{config, ...}: {
   home.persistence = {
     "/persist/${config.home.homeDirectory}".directories = [
       ".ssh/known_hosts.d"
