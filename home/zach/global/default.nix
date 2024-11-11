@@ -5,7 +5,7 @@
 }: {
   imports =
     [
-      inputs.impermanence.nixosModules.home-manager.impermanence
+      inputs.impermanence.homeManagerModules.impermanence
       inputs.sops-nix.homeManagerModules.sops
 
       # ../features/cli
