@@ -20,11 +20,12 @@ in {
     secrets = {
       host = {
         sopsFile = "${secretsDir}/hosts/${hostName}/secrets.yaml";
+        "passwords/${userName}".neededForUsers = true;
       };
 
       user = {
         sopsFile = "${secretsDir}/users/${userName}/secrets.yaml";
-        "passwords/${hostName}".neededForUsers = true;
+        validateSopsFile = false;
       };
     };
   };

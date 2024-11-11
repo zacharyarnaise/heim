@@ -6,11 +6,11 @@
   ...
 }: let
   ifTheyExist = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
-  hostName = config.networking.hostName;
   secrets = config.sops.secrets;
   secretsDir = builtins.toString inputs.secrets;
 in {
-  home-manager.users.zach = import ../../../../home/zach/${hostName}.nix;
+  home-manager.users.zach =
+    import ../../../../home/zach/${config.networking.hostName}.nix;
 
   users.groups.zach = {};
   users.users.zach = {
@@ -28,7 +28,7 @@ in {
         "vboxsf"
       ];
 
-    hashedPasswordFile = secrets.user."passwords/${hostName}".path;
+    hashedPasswordFile = secrets.host."passwords/zach".path;
     openssh.authorizedKeys.keys =
       lib.splitString "\n" (builtins.readFile "${secretsDir}/users/zach/id_ed25519.pub");
   };
