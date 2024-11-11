@@ -67,9 +67,9 @@
       };
     mkHome = modules: systemName:
       lib.homeManagerConfiguration {
-        inherit modules;
         pkgs = pkgsFor.${systemName};
         extraSpecialArgs = specialArgs;
+        inherit modules;
       };
   in {
     inherit lib;
