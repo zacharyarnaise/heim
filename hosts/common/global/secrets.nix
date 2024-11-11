@@ -23,9 +23,9 @@ in {
         {
           sopsFile = "${secretsDir}/hosts/${hostName}/secrets.yaml";
         }
-        // builtins.map (u: {
-          name = "passwords/${u.name}";
-          neededForUsers = true;
+        // lib.mapAttrs' (n: _: {
+          name = "passwords/${n}";
+          value = {neededForUsers = true;};
         })
         normalUsers;
     };
