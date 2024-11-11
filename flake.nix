@@ -89,7 +89,6 @@
     nixosModules = import ./modules/nixos;
     homeManagerModules = import ./modules/home-manager;
     # Custom modifications/overrides, exported as overlays
-    overlays = import ./overlays {inherit inputs outputs;};
     # Custom packages, to be shared or upstreamed
     packages = forSupportedSystems (pkgs: import ./pkgs {inherit pkgs;});
 
