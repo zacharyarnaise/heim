@@ -16,9 +16,9 @@
         date = "iso";
         showSignature = true;
       };
-      # url = {
-      #  "ssh://git@github.com".insteadOf = "https://github.com";
-      # };
+      url = {
+        "ssh://git@github.com".insteadOf = "https://github.com";
+      };
 
       branch.autosetuprebase = "always";
       branch.sort = "committerdate";
