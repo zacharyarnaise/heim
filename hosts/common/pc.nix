@@ -1,4 +1,3 @@
-# Configuration applicable to all my PCs
 {
   imports = [
     ./global
@@ -7,8 +6,6 @@
     ./optional/resolved.nix
     ./optional/impermanence.nix
   ];
-
-  boot.kernelParams = ["nowatchdog"];
 
   networking = {
     nameservers = [
@@ -25,5 +22,5 @@
     daemonIOSchedClass = "idle";
   };
 
-  hardware.graphics.enable = true;
+  boot.kernelParams = ["nowatchdog"];
 }

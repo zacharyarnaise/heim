@@ -5,7 +5,9 @@
 }: {
   imports =
     [
-      inputs.impermanence.nixosModules.home-manager.impermanence
+      inputs.impermanence.homeManagerModules.impermanence
+      inputs.sops-nix.homeManagerModules.sops
+
       ../features/cli
     ]
     ++ (builtins.attrValues outputs.homeManagerModules);
@@ -18,6 +20,7 @@
   systemd.user.startServices = "sd-switch";
 
   home = {
+    stateVersion = "24.05";
     username = "zach";
     homeDirectory = "/home/zach";
     sessionPath = ["$HOME/.local/bin"];
@@ -26,6 +29,7 @@
     };
 
     persistence."/persist/home/zach" = {
+      allowOther = false;
       directories = [
         ".local/share/nix" # trusted settings and repl history
         "heim"
@@ -35,7 +39,5 @@
         "Videos"
       ];
     };
-
-    stateVersion = "24.05";
   };
 }
