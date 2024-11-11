@@ -24,7 +24,6 @@
 
   hardware.enableAllFirmware = true;
   users.mutableUsers = false;
-  services.userborn.enable = true;
 
   # Disable unused stuff
   documentation.doc.enable = false;
