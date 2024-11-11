@@ -11,6 +11,7 @@
       ./locale.nix
       ./nix.nix
       ./security.nix
+      ./userborn.nix
       ./zsh.nix
     ]
     ++ (builtins.attrValues outputs.nixosModules);
@@ -36,5 +37,4 @@
 
   hardware.enableAllFirmware = true;
   users.mutableUsers = false;
-  services.userborn.enable = true;
 }
