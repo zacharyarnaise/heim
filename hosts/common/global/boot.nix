@@ -7,6 +7,8 @@
     kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
     plymouth.enable = false;
 
+    initrd.systemd.strip = true;
+
     loader = {
       timeout = lib.mkDefault 3;
       efi.canTouchEfiVariables = true;

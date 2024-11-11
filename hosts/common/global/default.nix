@@ -9,7 +9,6 @@
       ./nix.nix
       ./openssh.nix
       ./secrets.nix
-      ./zsh.nix
     ]
     ++ (builtins.attrValues outputs.nixosModules);
 
@@ -18,8 +17,13 @@
     config.allowUnfree = true;
   };
 
+  programs.nh = {
+    enable = true;
+  };
+
   hardware.enableAllFirmware = true;
   users.mutableUsers = false;
+  services.userborn.enable = true;
 
   # Disable unused stuff
   documentation.doc.enable = false;

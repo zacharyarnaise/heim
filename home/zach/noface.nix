@@ -1,7 +1,3 @@
 {
-  users.users.zach = {
-    extraGroups = [
-      "vboxsf"
-    ];
-  };
+  imports = [./global];
 }
