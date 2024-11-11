@@ -28,6 +28,7 @@ in {
         "vboxsf"
       ];
 
+    password = lib.mkForce null;
     hashedPasswordFile = secrets.host."passwords/zach".path;
     openssh.authorizedKeys.keys =
       lib.splitString "\n" (builtins.readFile "${secretsDir}/users/zach/id_ed25519.pub");
