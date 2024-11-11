@@ -60,16 +60,16 @@
         }
     );
 
+    specialArgs = {inherit inputs outputs;};
     mkNixos = modules:
       lib.nixosSystem {
-        inherit modules;
-        specialArgs = {inherit inputs outputs;};
+        inherit specialArgs modules;
       };
     mkHome = modules: systemName:
       lib.homeManagerConfiguration {
         inherit modules;
         pkgs = pkgsFor.${systemName};
-        extraSpecialArgs = {inherit inputs outputs;};
+        extraSpecialArgs = specialArgs;
       };
   in {
     inherit lib;

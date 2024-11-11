@@ -8,7 +8,7 @@
       inputs.impermanence.nixosModules.home-manager.impermanence
       inputs.sops-nix.homeManagerModules.sops
 
-      ../features/cli
+      # ../features/cli
     ]
     ++ (builtins.attrValues outputs.homeManagerModules);
 
