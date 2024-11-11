@@ -11,11 +11,17 @@
   hasOptinPersistence = config.environment.persistence ? "/persist";
 in {
   programs.ssh = {
-    knownHosts = lib.genAttrs hosts (hostname: {
-      extraHostNames = ["${hostname}.zzz"];
-      publicKey =
-        builtins.readFile "${secretsDir}/hosts/${hostname}/ssh_host_ed25519_key.pub";
-    });
+    knownHosts =
+      lib.genAttrs hosts (hostname: {
+        extraHostNames = ["${hostname}.zzz"];
+        publicKey =
+          builtins.readFile "${secretsDir}/hosts/${hostname}/ssh_host_ed25519_key.pub";
+      })
+      // {
+        "github.com".publicKey = ''
+          ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl
+        '';
+      };
   };
 
   services.openssh = {
