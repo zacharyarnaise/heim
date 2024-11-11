@@ -13,11 +13,11 @@
       killUnconfinedConfinables = true;
       packages = [pkgs.apparmor-profiles];
     };
-  };
 
-  sudo = {
-    execWheelOnly = true;
-    wheelNeedsPassword = true;
+    sudo = {
+      execWheelOnly = true;
+      wheelNeedsPassword = true;
+    };
   };
 
   boot.kernel.sysctl = {
