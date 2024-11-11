@@ -49,6 +49,7 @@
       setopt hist_reduce_blanks
       setopt auto_list
       setopt auto_menu
+      setopt NO_HIST_SAVE_BY_COPY
     '';
   };
 
