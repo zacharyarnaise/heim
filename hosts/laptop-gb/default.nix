@@ -8,7 +8,7 @@
     ../common/optional/bluetooth.nix
     # ../common/optional/boot-quiet.nix
     ../common/optional/powertop.nix
-    ../common/optional/wireless.nix
+    # ../common/optional/wireless.nix
   ];
 
   networking.hostName = "laptop-gb";

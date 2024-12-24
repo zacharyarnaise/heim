@@ -1,6 +1,10 @@
 {config, ...}: let
   secrets = config.sops.secrets;
 in {
+  sops.secrets.wireless = {
+    neededForUsers = true;
+  };
+
   networking.wireless = {
     enable = true;
     allowAuxiliaryImperativeNetworks = true;
@@ -18,6 +22,13 @@ in {
       pmf=1
       sae_pwe=2
     '';
+
+    secretsFile = secrets.wireless.secrets.path;
+    networks = {
+      "${secrets.wireless.wf1}" = {
+        pskRaw = "ext:wf1";
+      };
+    };
   };
 
   # Ensure group exists
