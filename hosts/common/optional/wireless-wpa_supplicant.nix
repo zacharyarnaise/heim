@@ -1,6 +1,4 @@
-{
-  config,
-}: {
+{config}: {
   networking.wireless = {
     enable = true;
     allowAuxiliaryImperativeNetworks = true;
