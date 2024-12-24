@@ -6,7 +6,8 @@
   imports =
     [
       inputs.impermanence.homeManagerModules.impermanence
-      inputs.sops-nix.homeManagerModules.sops
+
+      ./secrets.nix
 
       ../features/cli
     ]
@@ -25,14 +26,14 @@
     homeDirectory = "/home/zach";
     sessionPath = ["$HOME/.local/bin"];
     sessionVariables = {
-      FLAKE = "$HOME/heim";
+      FLAKE = "$HOME/.nix-heim/heim";
     };
 
     persistence."/persist/home/zach" = {
       allowOther = false;
       directories = [
         ".local/share/nix" # trusted settings and repl history
-        "heim"
+        ".nix-heim"
         "Documents"
         "Downloads"
         "Pictures"
