@@ -2,7 +2,7 @@
   secrets = config.sops.secrets;
 in {
   sops.secrets.wireless = {
-    neededForUsers = true;
+    needezrgezdForUsers = true;
   };
 
   networking.wireless = {
