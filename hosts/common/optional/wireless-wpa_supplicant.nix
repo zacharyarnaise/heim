@@ -1,4 +1,6 @@
 {
+  config,
+}: {
   networking.wireless = {
     enable = true;
     allowAuxiliaryImperativeNetworks = true;
@@ -6,7 +8,6 @@
       enable = true;
       group = "network";
     };
-
     fallbackToWPA2 = false;
     scanOnLowSignal = false;
     extraConfig = ''
@@ -17,8 +18,17 @@
       pmf=1
       sae_pwe=2
     '';
+
+    secretsFile = config.sops.secrets.wireless.secrets.path;
+    networks = {
+      "${config.sops.secrets.wireless.wf1}" = {
+        pskRaw = "ext:wf1";
+      };
+    };
   };
 
   # Ensure group exists
   users.groups.network = {};
+
+  systemd.services.wpa_supplicant.preStart = "touch /etc/wpa_supplicant.conf";
 }
