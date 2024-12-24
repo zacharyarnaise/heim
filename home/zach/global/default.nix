@@ -36,6 +36,7 @@
       ];
     };
 
-    stateVersion = "24.05";
+    # Should stay at the version originally installed.
+    stateVersion = "24.11";
   };
 }
