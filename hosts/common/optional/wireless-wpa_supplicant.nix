@@ -1,4 +1,6 @@
-{config}: {
+{config}: let
+  secrets = config.sops.secrets;
+in {
   networking.wireless = {
     enable = true;
     allowAuxiliaryImperativeNetworks = true;
@@ -17,9 +19,9 @@
       sae_pwe=2
     '';
 
-    secretsFile = config.sops.secrets.wireless.secrets.path;
+    secretsFile = secrets.wireless.secrets.path;
     networks = {
-      "${config.sops.secrets.wireless.wf1}" = {
+      "${secrets.wireless.wf1}" = {
         pskRaw = "ext:wf1";
       };
     };
