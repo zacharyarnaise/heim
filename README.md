@@ -24,8 +24,8 @@ This repository holds configuration files for my personal systems that runs on N
 ### Add a new host
 1. Generate a new SSH keypair and get a corresponding AGE public key
     ```sh
-    ssh-keygen -C user@hostname -t ed25519 -f hostname_id_ed25519
-    echo -e "# hostname\n$(ssh-to-age -i hostname_id_ed25519 -private-key)" >>  ~/.config/sops/age/keys.txt
+    ssh-keygen -C user@hostname -t ed25519 -f hostname_host_ed25519
+    echo -e "# hostname\n$(ssh-to-age -i hostname_host_ed25519 -private-key)" >>  ~/.config/sops/age/keys.txt
     ```
 
 ### Fresh Install
@@ -35,7 +35,7 @@ This repository holds configuration files for my personal systems that runs on N
 4. Do the installation:
     - If the hosts uses [`disko`](https://github.com/nix-community/disko):
         ```sh
-        nix --experimental-features "nix-command flakes" run github:nix-community/disko#disko-install -- -f github:zacharyarnaise/heim#hostname --write-efi-boot-entries --disk main /dev/<my-disk>
+        nix --experimental-features "nix-command flakes" run github:nix-community/disko#disko-install -- -f github:zacharyarnaise/heim#laptop-gb --write-efi-boot-entries --disk main /dev/nvme0n1
         ```
     - Otherwise, [partition and mount the disk manually](https://nixos.org/manual/nixos/stable/#sec-installation-manual-partitioning) and run the following command:
         ```sh
