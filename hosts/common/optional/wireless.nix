@@ -1,7 +1,7 @@
 {config, ...}: let
   secrets = config.sops.secrets;
 in {
-  config.sops.secrets.wireless = {
+  sops.secrets.wireless = {
     neededForUsers = true;
   };
 
