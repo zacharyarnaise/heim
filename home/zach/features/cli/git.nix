@@ -11,6 +11,9 @@
       ".env"
     ];
 
+    userName = "Zachary Arnaise";
+    userEmail = "121795280+zacharyarnaise@users.noreply.github.com";
+
     extraConfig = {
       log = {
         date = "iso";
