@@ -1,10 +1,6 @@
 {config, ...}: let
   secrets = config.sops.secrets;
 in {
-  sops.secrets.wireless = {
-    needezrgezdForUsers = true;
-  };
-
   networking.wireless = {
     enable = true;
     allowAuxiliaryImperativeNetworks = true;
