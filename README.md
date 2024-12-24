@@ -24,8 +24,8 @@ This repository holds configuration files for my personal systems that runs on N
 ### Add a new host
 1. Generate a new SSH keypair and get a corresponding AGE public key
     ```sh
-    ssh-keygen -C user@hostname -t ed25519 -f hostname_id_ed25519
-    echo -e "# hostname\n$(ssh-to-age -i hostname_id_ed25519 -private-key)" >>  ~/.config/sops/age/keys.txt
+    ssh-keygen -C user@hostname -t ed25519 -f hostname_host_ed25519
+    echo -e "# hostname\n$(ssh-to-age -i hostname_host_ed25519 -private-key)" >>  ~/.config/sops/age/keys.txt
     ```
 
 ### Fresh Install
