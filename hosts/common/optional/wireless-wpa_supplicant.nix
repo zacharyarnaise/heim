@@ -1,6 +1,10 @@
 {config, ...}: let
   secrets = config.sops.secrets;
 in {
+  secrets.wireless = {
+    neededForUsers = true;
+  };
+
   networking.wireless = {
     enable = true;
     allowAuxiliaryImperativeNetworks = true;
