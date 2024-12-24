@@ -1,4 +1,4 @@
-{config}: let
+{config, ...}: let
   secrets = config.sops.secrets;
 in {
   networking.wireless = {
