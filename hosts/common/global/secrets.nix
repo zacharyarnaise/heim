@@ -21,9 +21,6 @@ in {
     secrets =
       {
         sopsFile = "${secretsDir}/hosts/${hostName}/secrets.yaml";
-        "passwords/zach" = {
-          neededForUsers = true;
-        };
       };
   };
 }
