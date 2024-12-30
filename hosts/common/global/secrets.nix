@@ -18,18 +18,18 @@ in {
   ];
 
     sops = {
-    secrets = {
-      host =
-        {
-          sopsFile = "${secretsDir}/hosts/${hostName}/secrets.yaml";
-        }
-        // (
-          lib.mapAttrs' (n: _: {
-            name = "passwords/${n}";
-            value = {neededForUsers = true;};
-          })
-          normalUsers
-        );
-    };
+      secrets = {
+        host =
+          {
+            sopsFile = "${secretsDir}/hosts/${hostName}/secrets.yaml";
+          }
+          // (
+            lib.mapAttrs' (n: _: {
+              name = "passwords/${n}";
+              value = {neededForUsers = true;};
+            })
+            normalUsers
+          );
+      };
   };
 }
