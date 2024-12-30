@@ -12,6 +12,8 @@ in {
   home-manager.users.zach =
     import ../../../../home/zach/${config.networking.hostName}.nix;
 
+  programs.zsh.enable = true;
+
   users.groups.zach = {};
   users.users.zach = {
     isNormalUser = true;
