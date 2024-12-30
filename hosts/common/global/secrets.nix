@@ -16,16 +16,4 @@ in {
     ssh-to-age
     sops
   ];
-
-  sops = {
-    secrets =
-      {sopsFile = "${secretsDir}/hosts/${hostName}/secrets.yaml";}
-      // (
-        lib.mapAttrs' (n: _: {
-          name = "passwords/${n}";
-          value = {neededForUsers = true;};
-        })
-        normalUsers
-      );
-  };
 }
