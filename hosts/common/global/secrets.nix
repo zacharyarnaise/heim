@@ -18,7 +18,6 @@ in {
   ];
 
   sops = {
-    validateSopsFiles = false;
     secrets =
       {sopsFile = "${secretsDir}/hosts/${hostName}/secrets.yaml";}
       // (
