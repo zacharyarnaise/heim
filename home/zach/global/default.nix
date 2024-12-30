@@ -7,7 +7,9 @@
     [
       inputs.impermanence.homeManagerModules.impermanence
 
-       ../features/cli
+      ./secrets.nix
+
+      ../features/cli
     ]
     ++ (builtins.attrValues outputs.homeManagerModules);
 
