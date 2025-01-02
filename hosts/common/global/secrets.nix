@@ -17,9 +17,9 @@ in {
     sops
   ];
 
-  sops.secrets = {
+  sops = {
     defaultSopsFile = "${secretsDir}/hosts/${hostName}/secrets.yaml";
-    "passwords/zach" = {
+    secrets."passwords/zach" = {
       neededForUsers = true;
     };
   };
