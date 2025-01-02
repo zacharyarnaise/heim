@@ -19,12 +19,10 @@ in {
 
   sops = {
     defaultSopsFile = "${secretsDir}/hosts/${hostName}/secrets.yaml";
-    secrets = (
-        lib.mapAttrs' (n: _: {
-          name = "passwords/${n}";
-          value = {neededForUsers = true;};
-        })
-        normalUsers
-      );
+    secrets = 
+      lib.mapAttrs' (n: _: {
+        name = "passwords/${n}";
+        value = {neededForUsers = true;};
+      }) normalUsers;
   };
 }
