@@ -77,36 +77,18 @@
 
     # -- NixOS configurations --------------------------------------------------
     nixosConfigurations = {
-      "calcifer" = lib.nixosSystem {
-        modules = [./hosts/calcifer];
-        specialArgs = {
-          inherit inputs outputs;
-        };
-      };
-      "laptop-gb" = lib.nixosSystem {
-        modules = [./hosts/laptop-gb];
-        specialArgs = {
-          inherit inputs outputs;
-        };
-      };
+      "calcifer" = mkNixos [./hosts/calcifer];
+      "howl" = mkNixos [./hosts/howl];
+      "laptop-gb" = mkNixos [./hosts/laptop-gb];
+      "noface" = mkNixos [./hosts/noface];
     };
 
     # -- home-manager configurations -------------------------------------------
     homeConfigurations = {
-      "zach@calcifer" = lib.homeManagerConfiguration {
-        modules = [./home/zach/calcifer.nix];
-        pkgs = pkgsFor.x86_64-linux;
-        extraSpecialArgs = {
-          inherit inputs outputs;
-        };
-      };
-      "zach@laptop-gb" = lib.homeManagerConfiguration {
-        modules = [./home/zach/laptop-gb.nix];
-        pkgs = pkgsFor.x86_64-linux;
-        extraSpecialArgs = {
-          inherit inputs outputs;
-        };
-      };
+      "zach@calcifer" = mkHome [./home/zach/calcifer.nix] "x86_64-linux";
+      "zach@howl" = mkHome [./home/zach/howl.nix] "aarch64-linux";
+      "zach@laptop-gb" = mkHome [./home/zach/laptop-gb.nix] "x86_64-linux";
+      "zach@noface" = mkHome [./home/zach/noface.nix] "x86_64-linux";
     };
   };
 }
