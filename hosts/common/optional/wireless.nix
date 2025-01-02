@@ -1,9 +1,9 @@
 {config, ...}: let
   secrets = config.sops.secrets;
 in {
-  sops.secrets.wireless = {
-    secrets = {};
-    wf1 = {};
+  sops.secrets = {
+    "wireless/secrets" = {};
+    "wireless/wf1" = {};
   };
 
   networking.wireless = {
@@ -24,9 +24,9 @@ in {
       sae_pwe=2
     '';
 
-    secretsFile = secrets.wireless.secrets.path;
+    secretsFile = secrets."wireless/secrets".path;
     networks = {
-      "${secrets.wireless.wf1}" = {
+      "${secrets."wireless/wf1"}" = {
         pskRaw = "ext:wf1";
       };
     };
