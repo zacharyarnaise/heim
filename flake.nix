@@ -1,15 +1,6 @@
 {
   description = "My NixOS configurations";
 
-  nixConfig = {
-    extra-substituters = [
-      "https://nix-community.cachix.org"
-    ];
-    extra-trusted-public-keys = [
-      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-    ];
-  };
-
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
     nixos-hardware.url = "github:nixos/nixos-hardware";
@@ -86,18 +77,36 @@
 
     # -- NixOS configurations --------------------------------------------------
     nixosConfigurations = {
-      "calcifer" = mkNixos [./hosts/calcifer];
-      "howl" = mkNixos [./hosts/howl];
-      "laptop-gb" = mkNixos [./hosts/laptop-gb];
-      "noface" = mkNixos [./hosts/noface];
+      "calcifer" = lib.nixosSystem {
+        modules = [./hosts/calcifer];
+        specialArgs = {
+          inherit inputs outputs;
+        };
+      };
+      "laptop-gb" = lib.nixosSystem {
+        modules = [./hosts/laptop-gb];
+        specialArgs = {
+          inherit inputs outputs;
+        };
+      };
     };
 
     # -- home-manager configurations -------------------------------------------
     homeConfigurations = {
-      "zach@calcifer" = mkHome [./home/zach/calcifer.nix] "x86_64-linux";
-      "zach@howl" = mkHome [./home/zach/howl.nix] "aarch64-linux";
-      "zach@laptop-gb" = mkHome [./home/zach/laptop-gb.nix] "x86_64-linux";
-      "zach@noface" = mkHome [./home/zach/noface.nix] "x86_64-linux";
+      "zach@calcifer" = lib.homeManagerConfiguration {
+        modules = [./home/zach/calcifer.nix];
+        pkgs = pkgsFor.x86_64-linux;
+        extraSpecialArgs = {
+          inherit inputs outputs;
+        };
+      };
+      "zach@laptop-gb" = lib.homeManagerConfiguration {
+        modules = [./home/zach/laptop-gb.nix];
+        pkgs = pkgsFor.x86_64-linux;
+        extraSpecialArgs = {
+          inherit inputs outputs;
+        };
+      };
     };
   };
 }
