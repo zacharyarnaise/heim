@@ -17,15 +17,10 @@ in {
     sops
   ];
 
-  sops = {
-    secrets =
-      {sopsFile = "${secretsDir}/hosts/${hostName}/secrets.yaml";}
-      // (
-        lib.mapAttrs' (n: _: {
-          name = "passwords/${n}";
-          value = {neededForUsers = true;};
-        })
-        normalUsers
-      );
+  sops.secrets = {
+    "passwords/zach" = {
+      sopsFile = "${secretsDir}/hosts/${hostName}/secrets.yaml";
+      neededForUsers = true;
+    };
   };
 }
