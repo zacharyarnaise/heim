@@ -7,9 +7,7 @@
   flakeSecrets = inputs.secrets;
 in {
   sops.secrets = {
-    "wireless/secrets" = {
-      neededForUsers = true;
-    };
+    "wireless" = {};
   };
 
   networking.wireless = {
@@ -30,10 +28,12 @@ in {
       sae_pwe=2
     '';
 
-    secretsFile = sopsSecrets."wireless/secrets".path;
+    secretsFile = sopsSecrets."wireless".path;
     networks = {
-      "${flakeSecrets.wireless.wf1}" = {
+      "${flakeSecrets.wireless.wf1.ssid}" = {
         pskRaw = "ext:wf1";
+        authProtocols = flakeSecrets.wireless.wf1.authProtocols;
+        extraConfig = flakeSecrets.wireless.wf1.extraConfig;
       };
     };
   };

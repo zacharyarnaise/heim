@@ -23,7 +23,6 @@
         identitiesOnly = true;
         identityFile = lib.lists.forEach [
           "id_zach"
-          "heim_deploy"
         ] (n: "${config.home.homeDirectory}/.ssh/${n}");
       };
     };
