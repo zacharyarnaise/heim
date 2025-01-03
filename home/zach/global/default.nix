@@ -5,7 +5,10 @@
 }: {
   imports =
     [
-      inputs.impermanence.nixosModules.home-manager.impermanence
+      inputs.impermanence.homeManagerModules.impermanence
+
+      ./secrets.nix
+
       ../features/cli
     ]
     ++ (builtins.attrValues outputs.homeManagerModules);
@@ -18,25 +21,24 @@
   systemd.user.startServices = "sd-switch";
 
   home = {
+    stateVersion = "24.11";
     username = "zach";
     homeDirectory = "/home/zach";
     sessionPath = ["$HOME/.local/bin"];
     sessionVariables = {
-      FLAKE = "$HOME/heim";
+      FLAKE = "$HOME/.nix-heim/heim";
     };
 
     persistence."/persist/home/zach" = {
+      allowOther = false;
       directories = [
         ".local/share/nix" # trusted settings and repl history
-        "heim"
+        ".nix-heim"
         "Documents"
         "Downloads"
         "Pictures"
         "Videos"
       ];
     };
-
-    # Should stay at the version originally installed.
-    stateVersion = "24.11";
   };
 }

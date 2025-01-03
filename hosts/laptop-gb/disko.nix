@@ -3,20 +3,20 @@
 
   disko.devices = {
     disk.main = {
-      device = "/dev/nvme0n1";
       type = "disk";
+      device = "/dev/nvme0n1";
 
       content = {
         type = "gpt";
         partitions = {
           ESP = {
             type = "EF00";
-            size = "500M";
+            size = "512M";
             content = {
               type = "filesystem";
               format = "vfat";
               mountpoint = "/boot";
-              mountOptions = ["defaults" "noexec"];
+              mountOptions = ["defaults" "noexec" "umask=0077"];
             };
           };
 
@@ -26,6 +26,16 @@
               type = "luks";
               name = "crypted";
               askPassword = true;
+              postCreateHook = ''
+                mkdir /tmp -p
+                MNTPOINT=$(mktemp -d)
+
+                mount -t btrfs -o subvol=/ /dev/mapper/crypted "$MNTPOINT"
+                trap 'umount "$MNTPOINT"; rm -rf "$MNTPOINT"' EXIT
+
+                btrfs subvolume snapshot -r "$MNTPOINT/@root" "$MNTPOINT/@root-blank"
+              '';
+
               settings = {
                 allowDiscards = true;
                 bypassWorkqueues = true;
@@ -33,25 +43,16 @@
               content = {
                 type = "btrfs";
                 extraArgs = ["-f"];
-                postCreateHook = ''
-                  mkdir /tmp -p
-                  MNTPOINT=$(mktemp -d)
-
-                  mount -t btrfs -o subvol=/ /dev/mapper/crypted "$MNTPOINT"
-                  trap 'umount "$MNTPOINT"; rm -rf "$MNTPOINT"' EXIT
-
-                  btrfs subvolume snapshot -r "$MNTPOINT/root" "$MNTPOINT/root-blank"
-                '';
                 subvolumes = {
-                  "/root" = {
+                  "@root" = {
                     mountpoint = "/";
                     mountOptions = ["compress=lzo" "noatime"];
                   };
-                  "/persist" = {
+                  "@persist" = {
                     mountpoint = "/persist";
                     mountOptions = ["compress=lzo" "noatime"];
                   };
-                  "/nix" = {
+                  "@nix" = {
                     mountpoint = "/nix";
                     mountOptions = [
                       "compress=lzo"
@@ -60,7 +61,7 @@
                       "noacl"
                     ];
                   };
-                  "/log" = {
+                  "@log" = {
                     mountpoint = "/var/log";
                     mountOptions = ["compress=lzo" "noatime" "lazytime"];
                   };
