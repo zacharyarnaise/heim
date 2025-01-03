@@ -7,7 +7,9 @@
   flakeSecrets = inputs.secrets;
 in {
   sops.secrets = {
-    "wireless/secrets" = {};
+    "wireless/secrets" = {
+      neededForUsers = true;
+    };
   };
 
   networking.wireless = {
