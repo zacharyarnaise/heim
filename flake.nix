@@ -22,7 +22,7 @@
     secrets = {
       type = "git";
       url = "git+ssh://git@github.com/zacharyarnaise/heim-secrets.git";
-      flake = false;
+      flake = true;
       ref = "main";
       shallow = true;
     };
