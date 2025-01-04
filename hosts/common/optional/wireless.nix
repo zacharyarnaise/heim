@@ -29,8 +29,8 @@ in {
     networks = {
       "${flakeSecrets.wireless.wf1.ssid}" = {
         pskRaw = "ext:wf1";
-        authProtocols = flakeSecrets.wireless.wf1.authProtocols;
-        extraConfig = flakeSecrets.wireless.wf1.extraConfig;
+        inherit (flakeSecrets.wireless.wf1) authProtocols;
+        inherit (flakeSecrets.wireless.wf1) extraConfig;
       };
     };
   };

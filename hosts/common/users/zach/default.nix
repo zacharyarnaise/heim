@@ -6,7 +6,7 @@
   ...
 }: let
   ifTheyExist = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
-  secrets = config.sops.secrets;
+  inherit (config.sops) secrets;
   secretsDir = builtins.toString inputs.secrets;
 in {
   home-manager.users.zach =
