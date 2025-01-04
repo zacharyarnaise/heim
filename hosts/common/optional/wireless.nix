@@ -23,7 +23,6 @@ in {
       ap_scan=1
       p2p_disabled=1
       interworking=0
-      sae_pwe=2
     '';
 
     secretsFile = sopsSecrets."wireless".path;
