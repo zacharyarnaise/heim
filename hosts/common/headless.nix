@@ -30,6 +30,4 @@
   systemd.services."serial-getty@hvc0".enable = false;
   systemd.services."getty@tty1".enable = false;
   systemd.services."autovt@".enable = false;
-
-  services.udisks2.enable = lib.mkDefault false;
 }
