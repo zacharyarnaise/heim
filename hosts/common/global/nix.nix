@@ -4,30 +4,21 @@
   ...
 }: {
   nix = {
-    enable = true;
-    checkAllErrors = true;
-    checkConfig = true;
     package = pkgs.nixVersions.latest;
 
     gc = {
       automatic = true;
       dates = "weekly";
-      options = "--delete-older-than 14d";
+      options = "--delete-older-than 10d";
       persistent = true;
     };
 
-    optimise = {
-      automatic = true;
-      dates = ["daily"];
-    };
-
     settings = {
+      accept-flake-config = true;
       auto-optimise-store = true;
       allow-import-from-derivation = lib.mkDefault false;
-      accept-flake-config = true;
       allowed-users = lib.mkDefault [""]; # Trusted users are always allowed to connect
-      trusted-users = lib.mkForce ["root" "@wheel"];
-      require-sigs = true;
+      trusted-users = lib.mkForce ["@wheel"];
       substituters = [
         "https://nix-config.cachix.org"
         "https://nix-community.cachix.org"

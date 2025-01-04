@@ -4,7 +4,6 @@
   ...
 }: {
   boot = {
-    kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
     plymouth.enable = false;
 
     initrd.systemd.strip = true;
