@@ -23,8 +23,6 @@ in {
       ap_scan=1
       p2p_disabled=1
       interworking=0
-      wps_cred_add_sae=1
-      pmf=1
       sae_pwe=2
     '';
 
