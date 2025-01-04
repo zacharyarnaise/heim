@@ -22,7 +22,7 @@
         user = "git";
         identitiesOnly = true;
         identityFile = lib.lists.forEach [
-          "id_zach"
+          "id_ed25519"
         ] (n: "${config.home.homeDirectory}/.ssh/${n}");
       };
     };
