@@ -24,6 +24,11 @@
 
     plugins = with pkgs; [
       {
+        name = "zsh-powerlevel10k-config";
+        src = ./files;
+        file = "p10k.zsh";
+      }
+      {
         name = "zsh-powerlevel10k";
         src = zsh-powerlevel10k;
         file = "/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
@@ -48,7 +53,6 @@
     initExtra = ''
       setopt hist_reduce_blanks
       setopt auto_list
-      setopt auto_menu
       setopt NO_HIST_SAVE_BY_COPY
     '';
   };
