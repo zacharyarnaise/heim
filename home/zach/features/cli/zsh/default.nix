@@ -41,13 +41,13 @@
     ];
 
     initExtraFirst = ''
-      if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
-        source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
+      if [[ -r "''$HOME/.cache/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
+        source "''$HOME/.cache/p10k-instant-prompt-''${(%):-%n}.zsh"
       fi
     '';
 
     initExtraBeforeCompInit = ''
-      ZSH_COMPDUMP=''${XDG_CACHE_HOME:-$HOME/.cache}/zsh/compdump-$ZSH_VERSION
+      export ZSH_COMPDUMP=$HOME/.cache/oh-my-zsh/compdump-$ZSH_VERSION
     '';
 
     initExtra = ''
