@@ -1,7 +1,5 @@
 {pkgs, ...}: {
   imports = [
-    ./zsh
-
     ./atuin.nix
     ./bat.nix
     ./direnv.nix

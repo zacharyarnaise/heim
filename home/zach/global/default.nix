@@ -9,7 +9,8 @@
 
       ./secrets.nix
 
-      ../features/cli
+      ../features/cli/common
+      ../features/cli/zsh
     ]
     ++ (builtins.attrValues outputs.homeManagerModules);
 
