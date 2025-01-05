@@ -4,12 +4,9 @@
   ...
 }: {
   home.persistence = {
-    "/persist/${config.home.homeDirectory}" = {
+    "/persist${config.home.homeDirectory}" = {
+      allowOther = false;
       directories = [".ssh/known_hosts.d"];
-      files = [
-        ".ssh/id_ed25519"
-        ".ssh/id_ed25519.pub"
-      ];
     };
   };
 
@@ -27,7 +24,7 @@
         identitiesOnly = true;
         identityFile = lib.lists.forEach [
           "id_ed25519"
-        ] (n: "${config.home.homeDirectory}/.ssh/${n}");
+        ] (n: "/persist${config.home.homeDirectory}/.ssh/${n}");
       };
     };
   };
