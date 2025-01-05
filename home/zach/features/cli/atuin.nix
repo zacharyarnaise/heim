@@ -1,13 +1,15 @@
-{
+{config, ...}: {
   programs.atuin = {
     enable = true;
 
     settings = {
+      update_check = false;
       auto_sync = false;
       sync_address = "";
-      update_check = false;
+      db_path = "/persist${config.home.homeDirectory}/.atuin.db";
 
-      style = "auto";
+      dialect = "uk";
+      style = "compact";
       inline_height = 20;
       filter_mode = "host";
       filter_mode_shell_up_key_binding = "session";
