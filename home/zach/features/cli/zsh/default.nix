@@ -11,7 +11,7 @@
     };
     history = {
       # History is managed by atuin
-      size= 0;
+      size = 0;
       save = 0;
       share = false;
     };
