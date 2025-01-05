@@ -6,7 +6,7 @@
     ../common/users/zach
 
     ../common/optional/bluetooth.nix
-    # ../common/optional/boot-quiet.nix
+    ../common/optional/boot-quiet.nix
     ../common/optional/powertop.nix
     ../common/optional/wireless.nix
   ];
