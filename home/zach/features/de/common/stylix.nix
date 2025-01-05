@@ -1,10 +1,15 @@
-{ inputs, pkgs, ... }: {
+{
+  inputs,
+  pkgs,
+  ...
+}: {
   imports = [inputs.stylix.homeManagerModules.stylix];
 
   stylix = {
     enable = true;
 
     base16Scheme = "${inputs.tinted-theming}/base16/tokyo-night-moon.yaml";
+    polarity = "dark";
     cursor = {
       package = pkgs.hackneyed;
       name = "Hackneyed-Dark";
@@ -37,6 +42,12 @@
         popups = 12;
         terminal = 14;
       };
+    };
+    iconTheme = {
+      enable = true;
+      package = pkgs.papirus-icon-theme.override {color = "carmine";};
+      dark = "Papirus-Dark";
+      light = "Papirus-Light";
     };
   };
 }
