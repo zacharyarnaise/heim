@@ -5,6 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
     nixos-hardware.url = "github:nixos/nixos-hardware";
 
+    # Inputs used by all configurations
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -18,7 +19,6 @@
       url = "github:mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
     secrets = {
       type = "git";
       url = "git+ssh://git@github.com/zacharyarnaise/heim-secrets.git";
@@ -26,6 +26,10 @@
       ref = "main";
       shallow = true;
     };
+
+    # Desktop specific inputs
+    stylix.url = "github:danth/stylix/release-24.11";
+    tinted-theming = { url = "github:tinted-theming/schemes"; flake = false; };
   };
 
   outputs = {
