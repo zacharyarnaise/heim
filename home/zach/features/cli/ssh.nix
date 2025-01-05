@@ -4,9 +4,13 @@
   ...
 }: {
   home.persistence = {
-    "/persist/${config.home.homeDirectory}".directories = [
-      ".ssh/known_hosts.d"
-    ];
+    "/persist/${config.home.homeDirectory}" = {
+      directories = [".ssh/known_hosts.d"];
+      files = [
+        ".ssh/id_ed25519"
+        ".ssh/id_ed25519.pub"
+      ];
+    };
   };
 
   programs.ssh = {
