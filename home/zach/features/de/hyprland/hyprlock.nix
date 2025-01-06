@@ -8,15 +8,6 @@
         grace = 10;
       };
 
-      background = [
-        {
-          path = "screenshot";
-          blur_passes = 4;
-          blur_size = 8;
-          vibrancy_darkness = 0.04;
-        }
-      ];
-
       input-field = [
         {
           size = "400, 80";
