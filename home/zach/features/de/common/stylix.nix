@@ -22,7 +22,7 @@
       };
 
       monospace = {
-        package = pkgs.nerdfonts.mononoki; 
+        package = pkgs.unstable.nerd-fonts.mononoki; 
         name = "Mononoki Nerd Font";
       };
 
