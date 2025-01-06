@@ -1,3 +1,8 @@
 {
-  imports = [./global];
+  imports = [
+    ./global
+
+    ./features/de/common
+    ./features/de/hyprland
+  ];
 }
