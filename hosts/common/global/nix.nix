@@ -30,7 +30,7 @@
 
       connect-timeout = 5;
       log-lines = 25;
-      max-silent-time = 60;
+      max-silent-time = 300;
       warn-dirty = false;
 
       system-features = [
