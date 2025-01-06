@@ -9,7 +9,6 @@
 
     config = {
       style = "numbers,changes,header";
-      theme = "base16";
     };
     extraPackages = with pkgs.bat-extras; [
       batdiff
