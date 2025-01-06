@@ -1,5 +1,4 @@
 {
-  self,
   inputs,
   pkgs,
   ...
@@ -10,7 +9,7 @@
     enable = true;
 
     base16Scheme = "${inputs.tinted-theming}/base16/tokyo-night-moon.yaml";
-    image = "${self}/home/zach/assets/13.jpg";
+    image = "./13.jpg";
     polarity = "dark";
     cursor = {
       package = pkgs.hackneyed;
