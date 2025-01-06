@@ -45,7 +45,7 @@
       };
     };
     iconTheme = {
-      enable = true;
+      enable = false;
       package = pkgs.papirus-icon-theme.override {color = "carmine";};
       dark = "Papirus-Dark";
       light = "Papirus-Light";
