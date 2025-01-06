@@ -2,6 +2,7 @@
   imports = [
     ./global
 
+    ./optional/dconf.nix
     ./optional/pipewire.nix
     ./optional/resolved.nix
     ./optional/impermanence.nix

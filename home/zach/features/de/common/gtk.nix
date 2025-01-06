@@ -1,8 +1,4 @@
 {
-  programs.dconf = {
-    enable = true;
-  };
-
   gtk = rec {
     enable = true;
 
