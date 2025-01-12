@@ -1,4 +1,4 @@
-{
+{pkgs, ...}: {
   imports = [
     ./gtk.nix
     ./mako.nix
@@ -6,5 +6,9 @@
     ./stylix.nix
     ./wayland.nix
     ./xdg.nix
+  ];
+
+  home.packages = with pkgs; [
+    brightnessctl
   ];
 }

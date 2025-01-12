@@ -2,6 +2,8 @@
   xdg = {
     enable = true;
 
+    mimeApps.enable = true;
+
     portal = {
       enable = true;
       xdgOpenUsePortal = true;
