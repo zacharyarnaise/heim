@@ -5,5 +5,6 @@
     ./qt.nix
     ./stylix.nix
     ./wayland.nix
+    ./xdg.nix
   ];
 }

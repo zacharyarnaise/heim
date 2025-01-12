@@ -6,8 +6,8 @@
 
   home.sessionVariables = {
     MOZ_ENABLE_WAYLAND = 1;
+    NIXOS_OZONE_WL = 1;
     QT_QPA_PLATFORM = "wayland";
-    NIXOS_OZONE_WAYLAND = 1;
     SDL_VIDEODRIVER = "wayland";
   };
 }
