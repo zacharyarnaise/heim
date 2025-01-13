@@ -1,5 +1,6 @@
 {config, ...}: {
   users.extraUsers.greetr = {
+    isSystemUser = true;
     home = "/tmp/greetr";
     createHome = true;
   };
