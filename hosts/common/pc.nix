@@ -3,6 +3,7 @@
     ./global
 
     ./optional/dconf.nix
+    ./optional/greetd.nix
     ./optional/pipewire.nix
     ./optional/resolved.nix
     ./optional/impermanence.nix
