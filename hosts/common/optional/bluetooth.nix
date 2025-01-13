@@ -1,4 +1,10 @@
 {
+  environment.persistence."/persist" = {
+    directories = [
+      "/var/lib/bluetooth"
+    ];
+  };
+
   hardware.bluetooth = {
     disabledPlugins = ["sap"];
     enable = true;
