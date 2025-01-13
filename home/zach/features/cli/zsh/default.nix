@@ -24,6 +24,10 @@
       ns = "nix-shell";
     };
 
+    dirHashes = {
+      heim = "$HOME/.nix-heim/heim";
+    };
+
     plugins = with pkgs; [
       {
         name = "zsh-powerlevel10k-config";
