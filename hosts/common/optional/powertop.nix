@@ -3,7 +3,7 @@
   lib,
   ...
 }: {
-  environment.persistence."/persist/var/cache/powertop" = {
+  environment.persistence."/persist" = {
     files = [
       "/var/cache/powertop/saved_parameters.powertop"
       "/var/cache/powertop/saved_results.powertop"
