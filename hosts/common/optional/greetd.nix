@@ -1,12 +1,4 @@
 {config, ...}: {
-  users.groups.greetr = {};
-  users.extraUsers.greetr = {
-    isSystemUser = true;
-    group = "greetr";
-    home = "/tmp/greetr";
-    createHome = true;
-  };
-
   programs.uwsm = {
     enable = true;
 
@@ -23,11 +15,11 @@
     settings = {
       default_session = {
         command = "${config.programs.uwsm.package}/bin/uwsm start hyprland-uwsm.desktop";
-        user = "greetr";
+        user = "greeter";
       };
       initial_session = {
         command = "${config.programs.uwsm.package}/bin/uwsm start hyprland-uwsm.desktop";
-        user = "greetr";
+        user = "greeter";
       };
     };
   };
