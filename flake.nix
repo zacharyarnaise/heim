@@ -17,7 +17,7 @@
     };
     impermanence.url = "github:nix-community/impermanence";
     sops-nix = {
-      url = "github:mic92/sops-nix";
+      url = "github:mic92/sops-nix/c9c88f0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     secrets = {
@@ -30,7 +30,10 @@
 
     # Desktop specific inputs
     stylix.url = "github:danth/stylix/release-24.11";
-    tinted-theming = { url = "github:tinted-theming/schemes"; flake = false; };
+    tinted-theming = {
+      url = "github:tinted-theming/schemes";
+      flake = false;
+    };
   };
 
   outputs = {
