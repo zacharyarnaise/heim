@@ -1,26 +1,38 @@
-{config, ...}: {
-  programs.uwsm = {
+{
+  config,
+  pkgs,
+  ...
+}: {
+  services.greetd = {
     enable = true;
-
-    waylandCompositors.hyprland = {
-      binPath = "/run/current-system/sw/bin/Hyprland";
-      prettyName = "Hyprland";
-      comment = "Hyprland managed by UWSM";
+    settings = {
+      default_session = {
+        command = ''
+          ${pkgs.greetd.tuigreet}/bin/tuigreet \
+          -g 'wake up...' \
+          -t --time-format '%-d %B %H:%M:%S' \
+          -r --remember-session \
+          --asterisks \
+          --sessions ${config.services.displayManager.sessionData.desktops}/share/wayland-sessions
+        '';
+        user = "greeter";
+      };
     };
   };
 
-  services.greetd = {
-    enable = true;
+  # https://github.com/apognu/tuigreet/issues/68
+  systemd.services.greetd.serviceConfig = {
+    Type = "idle";
+  };
 
-    settings = {
-      default_session = {
-        command = "${config.programs.uwsm.package}/bin/uwsm start hyprland-uwsm.desktop";
+  environment.persistence."/persist" = {
+    directories = [
+      {
+        directory = "/var/cache/tuigreet";
         user = "greeter";
-      };
-      initial_session = {
-        command = "${config.programs.uwsm.package}/bin/uwsm start hyprland-uwsm.desktop";
-        user = "greeter";
-      };
-    };
+        group = "greeter";
+        mode = "0755";
+      }
+    ];
   };
 }
