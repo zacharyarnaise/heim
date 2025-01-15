@@ -18,7 +18,7 @@
           --time --time-format '%-d %B %H:%M:%S' \
           --remember \
           --asterisks \
-          --cmd ${pkgs.uwsm} start hyprland-uwsm.desktop
+          --cmd ${pkgs.uwsm}/bin/uwsm start hyprland-uwsm.desktop
         '';
         user = "greeter";
       };
