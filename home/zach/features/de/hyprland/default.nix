@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   imports = [
     ./hypridle.nix
     ./hyprlock.nix
@@ -14,14 +18,18 @@
     enable = true;
     package = pkgs.hyprland.override {wrapRuntimeDeps = false;};
 
-    settings = {
-      exec-once = [
-        "uwsm finalize"
-        "hyprlock"
+    systemd = {
+      enable = true;
+      extraCommands = lib.mkBefore [
+        "systemctl --user stop graphical-session.target"
+        "systemctl --user start hyprland-session.target"
       ];
     };
 
-    # Conflicts with uwsm
-    systemd.enable = false;
+    settings = {
+      exec-once = [
+        "hyprlock"
+      ];
+    };
   };
 }

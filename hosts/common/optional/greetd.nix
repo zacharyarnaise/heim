@@ -3,15 +3,6 @@
   pkgs,
   ...
 }: {
-  programs.uwsm = {
-    enable = true;
-    waylandCompositors.hyprland = {
-      prettyName = "Hyprland";
-      comment = "Hyprland (uwsm-managed)";
-      binPath = "/run/current-system/sw/bin/Hyprland";
-    };
-  };
-
   services.greetd = {
     enable = true;
     settings = {
@@ -20,9 +11,10 @@
           ${pkgs.greetd.tuigreet}/bin/tuigreet \
           --greeting 'wake up...' \
           --time --time-format '%-d %B %H:%M:%S' \
-          --remember \
+          --remember --remember-session \
           --asterisks \
-          --cmd ${config.programs.uwsm.package}/bin/uwsm start hyprland-uwsm.desktop
+          --no-xsession-wrapper \
+          --sessions ${config.services.displayManager.sessionData.desktops}/share/wayland-sessions
         '';
         user = "greeter";
       };
