@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   services.greetd = {
     enable = true;
     settings = {
@@ -14,7 +10,7 @@
           --remember --remember-session \
           --asterisks \
           --no-xsession-wrapper \
-          --sessions ${config.services.displayManager.sessionData.desktops}/share/wayland-sessions
+          --sessions ${pkgs.hyprland}/share/wayland-sessions
         '';
         user = "greeter";
       };
