@@ -19,6 +19,7 @@
   # https://github.com/apognu/tuigreet/issues/68
   systemd.services.greetd.serviceConfig = {
     Type = "idle";
+    TTYReset = true;
   };
 
   environment.persistence."/persist" = {

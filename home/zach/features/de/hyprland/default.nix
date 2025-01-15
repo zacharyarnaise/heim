@@ -20,13 +20,12 @@
 
     settings = {
       exec-once = [
-        "uwsm finalize"
         "hyprlock"
       ];
     };
 
     systemd = {
-      enable = false;
+      enable = true;
       extraCommands = lib.mkBefore [
         "systemctl --user stop graphical-session.target"
         "systemctl --user start hyprland-session.target"
