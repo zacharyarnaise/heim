@@ -29,6 +29,7 @@
   systemd.services.greetd.serviceConfig = {
     Type = "idle";
     TTYReset = true;
+    TTYVTDisallocate = true;
   };
 
   environment.persistence."/persist" = {
