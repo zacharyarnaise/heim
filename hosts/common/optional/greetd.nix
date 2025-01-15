@@ -1,4 +1,13 @@
 {pkgs, ...}: {
+  programs.uwsm = {
+    enable = true;
+    waylandCompositors.hyprland = {
+      prettyName = "Hyprland";
+      comment = "Hyprland (uwsm-managed)";
+      binPath = "${pkgs.hyprland}/bin/Hyprland";
+    };
+  };
+
   services.greetd = {
     enable = true;
     settings = {
@@ -9,7 +18,7 @@
           -t --time-format '%-d %B %H:%M:%S' \
           -r --remember-session \
           --asterisks \
-          --sessions ${pkgs.hyprland}/share/wayland-sessions
+          --sessions ${pkgs.uwsm}/share/wayland-sessions
         '';
         user = "greeter";
       };
