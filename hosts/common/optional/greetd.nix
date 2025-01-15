@@ -4,7 +4,7 @@
     waylandCompositors.hyprland = {
       prettyName = "Hyprland";
       comment = "Hyprland (uwsm-managed)";
-      binPath = "${pkgs.hyprland}/bin/Hyprland";
+      binPath = "/run/current-system/sw/bin/Hyprland";
     };
   };
 
@@ -14,11 +14,11 @@
       default_session = {
         command = ''
           ${pkgs.greetd.tuigreet}/bin/tuigreet \
-          -g 'wake up...' \
-          -t --time-format '%-d %B %H:%M:%S' \
-          -r --remember-session \
+          --greeting 'wake up...' \
+          --time --time-format '%-d %B %H:%M:%S' \
+          --remember \
           --asterisks \
-          --sessions ${pkgs.uwsm}/share/wayland-sessions
+          --cmd ${pkgs.uwsm} start hyprland-uwsm.desktop
         '';
         user = "greeter";
       };
