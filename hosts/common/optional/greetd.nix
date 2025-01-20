@@ -11,7 +11,7 @@
           --asterisks \
           --no-xsession-wrapper \
           --sessions ${pkgs.hyprland}/share/wayland-sessions \
-          --theme 'border=magenta;prompt=red;input=lightred'
+          --theme 'border=red;input=lightred'
         '';
         user = "greeter";
       };
