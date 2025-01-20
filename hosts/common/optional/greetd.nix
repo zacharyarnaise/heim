@@ -1,10 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: let
-  baseSessionsDir = "${config.services.displayManager.sessionData.desktops}";
-in {
+{pkgs, ...}: {
   services.greetd = {
     enable = true;
     settings = {
@@ -16,8 +10,8 @@ in {
           --remember --remember-session \
           --asterisks \
           --no-xsession-wrapper \
-          --sessions ${baseSessionsDir}/share/wayland-sessions \
-          --theme border=green;text=lightgreen;prompt=lightgreen;time=white;action=lightgreen;button=green;container=darkgray;input=green
+          --sessions ${pkgs.hyprland}/share/wayland-sessions \
+          --theme greet=green;container=gray
         '';
         user = "greeter";
       };
