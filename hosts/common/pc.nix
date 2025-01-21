@@ -4,6 +4,7 @@
 
     ./optional/dconf.nix
     ./optional/greetd.nix
+    ./optional/xdg-portal.nix
     ./optional/pipewire.nix
     ./optional/resolved.nix
     ./optional/impermanence.nix

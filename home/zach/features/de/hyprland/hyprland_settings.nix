@@ -12,12 +12,13 @@
       gaps_out = 10;
       gaps_workspaces = -10;
       resize_on_border = true;
-      extend_border_grab_area = 10;
+      extend_border_grab_area = 5;
     };
 
     dwindle = {
       pseudotile = true;
       preserve_split = true;
+      force_split = 2;
       split_width_multiplier = 1.5;
     };
 
@@ -64,23 +65,24 @@
       ];
       animation = [
         "windowsIn,   1, 3, easeOutBack, popin 20%"
-        "windowsOut,  1, 3, easeInBack,  popin"
-        "windowsMove, 1, 3, easeOutBack, slide"
+        "windowsOut,  1, 3, easeInBack,  popin 60%"
+        "windowsMove, 1, 4, easeOutBack, slide"
 
-        "layersIn,  1, 3, easeOutBack, fade"
-        "layersOut, 1, 3, easeInBack,  fade"
+        "layersIn,  1, 4, easeOutBack, fade"
+        "layersOut, 1, 4, easeInBack,  fade"
 
-        "fadeIn,        1, 2, easeOutQuad"
+        "fadeIn,        1, 3, easeOutQuad"
         "fadeOut,       1, 2, easeInQuad"
-        "fadeSwitch,    1, 3, easeInOutQuad"
+        "fadeSwitch,    0, 3, easeInOutQuad"
         "fadeShadow,    1, 3, easeInOutQuad"
-        "fadeDim,       1, 3, easeInOutQuad"
+        "fadeDim,       1, 4, easeInOutQuad"
         "fadeLayersIn,  1, 3, easeOutBack"
         "fadeLayersOut, 1, 3, easeInBack"
 
         "border, 1, 5, easeOutQuad"
 
-        "workspaces, 1, 3, easeOutBack, slidefade 10%"
+        "workspaces,       1, 3, easeOutBack, slidefade 10%"
+        "specialWorkspace, 1, 3, easeOutBack, slidefadevert 10%"
       ];
     };
 
@@ -92,7 +94,8 @@
       repeat_rate = 30;
       repeat_delay = 400;
 
-      accel_profile = "adaptive";
+      accel_profile = "flat";
+      sensitivity = 0;
       follow_mouse = 1;
       mouse_refocus = true;
 
