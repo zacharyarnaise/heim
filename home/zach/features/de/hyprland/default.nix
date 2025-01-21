@@ -12,10 +12,10 @@ in {
 
   xdg.portal = {
     configPackages = [hyprland];
-    extraPortals = [
-      pkgs.xdg-desktop-portal-hyprland.override
-      {inherit hyprland;}
-    ];
+
+    extraPortals = let
+      xdph = pkgs.xdg-desktop-portal-hyprland.override {inherit hyprland;};
+    in [xdph];
     config.hyprland.default = ["gtk" "hyprland"];
   };
 
