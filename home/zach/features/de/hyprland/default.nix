@@ -1,6 +1,8 @@
 {pkgs, ...}: let
   hyprland = pkgs.hyprland.override {wrapRuntimeDeps = false;};
 in {
+  wayland.windowManager.hyprland.package = hyprland;
+
   imports = [
     ./hyprland_bindings.nix
     ./hyprland_settings.nix
@@ -21,7 +23,6 @@ in {
 
   wayland.windowManager.hyprland = {
     enable = true;
-    package = hyprland;
 
     xwayland.enable = false;
     systemd = {
