@@ -70,13 +70,13 @@
         "layersIn,  1, 3, easeOutBack, fade"
         "layersOut, 1, 3, easeInBack,  fade"
 
-        "fadeIn,       1, 2, easeOutQuad"
-        "fadeOut,      1, 2, easeInQuad"
-        "fadeSwitch,   1, 3, easeInOutQuad"
-        "fadeShadow,   1, 3, easeInOutQuad"
-        "fadeDim,      1, 3, easeInOutQuad"
-        "fadeLayersIn  1, 3, easeOutBack"
-        "fadeLayersOut 1, 3, easeInBack"
+        "fadeIn,        1, 2, easeOutQuad"
+        "fadeOut,       1, 2, easeInQuad"
+        "fadeSwitch,    1, 3, easeInOutQuad"
+        "fadeShadow,    1, 3, easeInOutQuad"
+        "fadeDim,       1, 3, easeInOutQuad"
+        "fadeLayersIn,  1, 3, easeOutBack"
+        "fadeLayersOut, 1, 3, easeInBack"
 
         "border, 1, 5, easeOutQuad"
 
@@ -126,9 +126,9 @@
       new_window_takes_over_fullscreen = 2;
     };
 
-    ecosystem = {
-      no_update_news = true;
-      no_donation_nag = true;
-    };
+    #ecosystem = {
+    #  no_update_news = true;
+    #  no_donation_nag = true;
+    #};
   };
 }
