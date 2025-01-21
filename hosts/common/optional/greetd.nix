@@ -1,4 +1,6 @@
-{pkgs, ...}: {
+{pkgs, ...}: let
+  hyprland = pkgs.hyprland.override {wrapRuntimeDeps = false;};
+in {
   services.greetd = {
     enable = true;
     settings = {
@@ -10,7 +12,7 @@
           --remember --remember-session \
           --asterisks \
           --no-xsession-wrapper \
-          --sessions ${pkgs.hyprland}/share/wayland-sessions \
+          --sessions ${hyprland}/share/wayland-sessions \
           --theme 'border=red;input=lightred'
         '';
         user = "greeter";
