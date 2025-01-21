@@ -12,14 +12,21 @@
     ./hyprpaper.nix
   ];
 
-  xdg.portal = {
-    configPackages = [config.wayland.windowManager.hyprland.package];
-    extraPortals = [pkgs.xdg-desktop-portal-hyprland];
+  xdg.portal = let
+    hyprland = config.wayland.windowManager.hyprland.package;
+    xdph = pkgs.xdg-desktop-portal-hyprland.override {inherit hyprland;};
+  in {
+    configPackages = [hyprland];
+    extraPortals = [
+      xdph
+      pkgs.xdg-desktop-portal-gtk
+    ];
+    config.hyprland.default = ["hyprland" "gtk"];
   };
 
   wayland.windowManager.hyprland = {
     enable = true;
-    package = pkgs.hyprland;
+    package = pkgs.hyprland.override {wrapRuntimeDeps = false;};
 
     xwayland.enable = false;
     systemd = {
