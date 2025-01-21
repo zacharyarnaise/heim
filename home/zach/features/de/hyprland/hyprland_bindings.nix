@@ -1,8 +1,6 @@
-{pkgs, ...}: let
+let
   mod = "SUPER";
   modShift = "SUPER_SHIFT";
-
-  loginctl = "${pkgs.systemd}/bin/loginctl";
 in {
   wayland.windowManager.hyprland.settings = {
     binds = {
@@ -11,7 +9,7 @@ in {
 
     bindd = [
       # General
-      "${modShift}, Delete, Terminate session, exec, ${loginctl} terminate-session \"$XDG_SESSION_ID\""
+      "${modShift}, Delete, Terminate session, exec, pkill Hyprland"
 
       # Window control
       "${mod},      W, Closes the active window, killactive"
