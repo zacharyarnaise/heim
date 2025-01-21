@@ -41,8 +41,8 @@
         enabled = true;
         range = 16;
         render_power = 2;
-        color = "rgba(00000050)";
-        color_inactive = "rgba(00000070)";
+        # color = "rgba(00000050)";
+        # color_inactive = "rgba(00000070)";
         offset = "2 2";
         scale = 0.95;
       };
@@ -116,7 +116,7 @@
       disable_hyprland_logo = true;
       disable_splash_rendering = true;
       force_default_wallpaper = 0;
-      background_color = "rgb(000000)";
+      # background_color = "rgb(000000)";
       vfr = true;
       vrr = 1;
       mouse_move_enables_dpms = true;
