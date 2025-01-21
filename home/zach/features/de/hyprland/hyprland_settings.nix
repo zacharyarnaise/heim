@@ -75,7 +75,7 @@ in {
 
         "fadeIn,        1, 3, easeOutQuad"
         "fadeOut,       1, 2, easeInQuad"
-        "fadeSwitch,    0, 3, easeInOutQuad"
+        "fadeSwitch,    1, 3, easeInOutQuad"
         "fadeShadow,    1, 3, easeInOutQuad"
         "fadeDim,       1, 4, easeInOutQuad"
         "fadeLayersIn,  1, 3, easeOutBack"
