@@ -1,5 +1,12 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   imports = [
+    ./hyprland_bindings.nix
+    ./hyprland_settings.nix
+
     ./hypridle.nix
     ./hyprlock.nix
     ./hyprpaper.nix
@@ -18,11 +25,9 @@
     systemd = {
       enable = true;
       variables = ["--all"];
-    };
-
-    settings = {
-      exec-once = [
-        "hyprlock"
+      extraCommands = lib.mkBefore [
+        "systemctl --user stop graphical-session.target"
+        "systemctl --user start hyprland-session.target"
       ];
     };
   };

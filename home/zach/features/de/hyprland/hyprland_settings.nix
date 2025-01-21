@@ -1,0 +1,133 @@
+{
+  wayland.windowManager.hyprland.settings = {
+    exec-once = [
+      "hyprlock"
+    ];
+
+    general = {
+      layout = "dwindle";
+      border_size = 3;
+      gaps_in = 5;
+      gaps_out = 10;
+      gaps_workspaces = -10;
+      resize_on_border = true;
+      extend_border_grab_area = 10;
+    };
+
+    dwindle = {
+      pseudotile = true;
+      preserve_split = true;
+      split_width_multiplier = 1.5;
+    };
+
+    decoration = {
+      rounding = 8;
+      rounding_power = 3.0;
+      dim_inactive = true;
+      dim_strength = 0.25;
+
+      blur = {
+        enabled = true;
+        popups = true;
+        size = 8;
+        passes = 4;
+        contrast = 1.0;
+        brightness = 0.9;
+        vibrancy = 0.2;
+        vibrancy_darkness = 0.5;
+      };
+
+      shadow = {
+        enabled = true;
+        range = 16;
+        render_power = 2;
+        color = "rgba(00000050)";
+        color_inactive = "rgba(00000070)";
+        offset = "2 2";
+        scale = 0.95;
+      };
+    };
+
+    animations = {
+      enabled = true;
+      first_launch_animation = false;
+
+      bezier = [
+        "easeInQuad,  0.11, 0,   0.5,   0.6"
+        "easeInBack,  0.36, 0,   0.65, -0.6"
+
+        "easeOutQuad, 0.5,  1,   0.89,  1"
+        "easeOutBack, 0.4,  1.5, 0.65,  1"
+
+        "easeInOutQuad, 0.45, 0, 0.55, 1"
+      ];
+      animation = [
+        "windowsIn,   1, 3, easeOutBack, popin 20%"
+        "windowsOut,  1, 3, easeInBack,  popin"
+        "windowsMove, 1, 3, easeOutBack, slide"
+
+        "layersIn,  1, 3, easeOutBack, fade"
+        "layersOut, 1, 3, easeInBack,  fade"
+
+        "fadeIn,       1, 2, easeOutQuad"
+        "fadeOut,      1, 2, easeInQuad"
+        "fadeSwitch,   1, 3, easeInOutQuad"
+        "fadeShadow,   1, 3, easeInOutQuad"
+        "fadeDim,      1, 3, easeInOutQuad"
+        "fadeLayersIn  1, 3, easeOutBack"
+        "fadeLayersOut 1, 3, easeInBack"
+
+        "border, 1, 5, easeOutQuad"
+
+        "workspaces, 1, 3, easeOutBack, slidefade 10%"
+      ];
+    };
+
+    input = {
+      kb_model = "pc105";
+      kb_layout = "fr";
+      kb_variant = "oss";
+      numlock_by_default = true;
+      repeat_rate = 30;
+      repeat_delay = 400;
+
+      accel_profile = "adaptive";
+      follow_mouse = 1;
+      mouse_refocus = true;
+
+      scroll_method = "2fg";
+      touchpad = {
+        disable_while_typing = true;
+        middle_button_emulation = true;
+      };
+    };
+
+    gestures = {
+      workspace_swipe = true;
+      workspace_swipe_forever = true;
+    };
+
+    cursor = {
+      inactive_timeout = 5;
+      hide_on_key_press = true;
+    };
+
+    misc = {
+      disable_hyprland_logo = true;
+      disable_splash_rendering = true;
+      force_default_wallpaper = 0;
+      background_color = "rgb(000000)";
+      vfr = true;
+      vrr = 1;
+      mouse_move_enables_dpms = true;
+      key_press_enables_dpms = true;
+      disable_autoreload = true;
+      new_window_takes_over_fullscreen = 2;
+    };
+
+    ecosystem = {
+      no_update_news = true;
+      no_donation_nag = true;
+    };
+  };
+}
