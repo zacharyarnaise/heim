@@ -1,7 +1,9 @@
-{
+{config, ...}: let
+  hyprlock = "${config.programs.hyprlock.package}/bin/hyprlock";
+in {
   wayland.windowManager.hyprland.settings = {
     exec-once = [
-      "hyprlock"
+      "${hyprlock}"
     ];
     debug.disable_logs = false;
 
