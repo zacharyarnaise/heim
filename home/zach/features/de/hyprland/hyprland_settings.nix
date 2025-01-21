@@ -3,6 +3,7 @@
     exec-once = [
       "hyprlock"
     ];
+    debug.disable_logs = false;
 
     general = {
       layout = "dwindle";
