@@ -6,6 +6,9 @@
   nix = {
     package = pkgs.nixVersions.latest;
 
+    # https://github.com/NixOS/nix/issues/2982
+    channel.enable = false;
+
     gc = {
       automatic = true;
       dates = "weekly";
