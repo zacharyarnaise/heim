@@ -1,6 +1,6 @@
 {
+  config,
   pkgs,
-  lib,
   ...
 }: {
   imports = [
@@ -12,9 +12,14 @@
     ./hyprpaper.nix
   ];
 
-  xdg.portal = {
-    config.hyprland.default = ["gtk" "hyprland"];
-    extraPortals = [pkgs.xdg-desktop-portal-hyprland];
+  xdg.portal = let
+    hyprland = config.wayland.windowManager.hyprland.package;
+    xdph = pkgs.xdg-desktop-portal-hyprland.override {
+      inherit hyprland;
+    };
+  in {
+    configPackages = [hyprland];
+    extraPortals = [xdph];
   };
 
   wayland.windowManager.hyprland = {
