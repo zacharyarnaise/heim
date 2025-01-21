@@ -24,7 +24,7 @@
 
     decoration = {
       rounding = 8;
-      rounding_power = 3.0;
+      # rounding_power = 3.0;
       dim_inactive = true;
       dim_strength = 0.25;
 

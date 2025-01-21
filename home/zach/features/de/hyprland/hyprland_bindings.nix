@@ -1,6 +1,6 @@
 {pkgs, ...}: let
   mod = "SUPER";
-  modShift = "SUPER_SHIFT";
+  modShift = "SUPERSHIFT";
 
   loginctl = "${pkgs.systemd}/bin/loginctl";
 in {
@@ -14,16 +14,16 @@ in {
       "${modShift}, Delete, Terminate session, exec, ${loginctl} terminate-session \"$XDG_SESSION_ID\""
 
       # Window control
-      "${mod},      W, Closes the active window, killactive"
-      "${mod},      S, Toggle maximize, fullscreen, 1"
+      "${mod}, W, Closes the active window, killactive"
+      "${mod}, S, Toggle maximize, fullscreen, 1"
       "${modShift}, S, Toggle fullscreen, fullscreen, 0"
-      "${mod},      F, Toggle floating, togglefloating,"
+      "${mod}, F, Toggle floating, togglefloating,"
 
       # Movement
-      "${mod},      LEFT, movefocus, l"
-      "${mod},      RIGHT, movefocus, r"
-      "${mod},      UP, movefocus, u"
-      "${mod},      DOWN, movefocus, d"
+      "${mod}, LEFT, movefocus, l"
+      "${mod}, RIGHT, movefocus, r"
+      "${mod}, UP, movefocus, u"
+      "${mod}, DOWN, movefocus, d"
       "${modShift}, LEFT, movewindow, l"
       "${modShift}, RIGHT, movewindow, r"
       "${modShift}, UP, movewindow, u"
