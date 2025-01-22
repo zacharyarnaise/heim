@@ -1,4 +1,4 @@
-{
+{lib, ...}: {
   networking = {
     useDHCP = false;
     useNetworkd = true;
@@ -13,11 +13,11 @@
 
     networkmanager = {
       enable = true;
+      networkmanager.plugins = lib.mkForce [];
       dns = "systemd-resolved";
       unmanaged = [
         "interface-name:docker*"
         "interface-name:veth*"
-        "type:wifi"
       ];
     };
   };
@@ -44,14 +44,8 @@
     network = {
       wait-online.enable = false;
       networks = {
-        "30-wired" = {
-          enable = true;
-          name = "enp*";
-          networkConfig.DHCP = "yes";
-        };
-        "30-wireless" = {
-          enable = true;
-          name = "wlp*";
+        "20-wired" = {
+          matchConfig.Name = "en* | eth*";
           networkConfig.DHCP = "yes";
         };
       };

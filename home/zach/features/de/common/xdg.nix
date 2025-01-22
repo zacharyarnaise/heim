@@ -4,9 +4,13 @@
   ...
 }: let
   home = config.home.homeDirectory;
+  shadowedXdgOpen = pkgs.writeShellScriptBin "xdg-open" ''
+    handlr open "$@"
+  '';
 in {
   home.packages = with pkgs; [
-    xdg-utils
+    handlr-regex
+    shadowedXdgOpen
   ];
 
   xdg = {

@@ -1,6 +1,7 @@
 {
   inputs,
   config,
+  lib,
   ...
 }: let
   sopsSecrets = config.sops.secrets;
@@ -10,33 +11,39 @@ in {
     "wireless" = {};
   };
 
-  networking.wireless = {
-    enable = true;
-    allowAuxiliaryImperativeNetworks = true;
-    userControlled = {
-      enable = true;
-      group = "network";
-    };
-    fallbackToWPA2 = false;
-    scanOnLowSignal = false;
-    extraConfig = ''
-      ap_scan=1
-      p2p_disabled=1
-      interworking=0
-    '';
+  networking.networkmanager.wifi.backend = "iwd";
+  networking.wireless.iwd.settings = {
+    General.ManagementFrameProtection = 2;
+  };
 
-    secretsFile = sopsSecrets."wireless".path;
-    networks = {
-      "${flakeSecrets.wireless.wf1.ssid}" = {
-        pskRaw = "ext:wf1";
-        inherit (flakeSecrets.wireless.wf1) authProtocols;
-        inherit (flakeSecrets.wireless.wf1) extraConfig;
+  networking.networkmanager.ensureProfiles = {
+    environmentFiles = [sopsSecrets."wireless".path];
+    profiles = {
+      wf-1 = let
+        secretConfig = flakeSecrets.wireless.wf1;
+      in {
+        connection.id = "wf1";
+        connection.type = "wifi";
+        wifi.mode = "infrastructure";
+        wifi.ssid = "$WF1_SSID";
+        ipv4 = {
+          ignore-auto-dns = true;
+          may-fail = false;
+          method = "auto";
+        };
+        ipv6.ignore-auto-dns = true;
+        inherit secretConfig;
       };
     };
   };
 
-  # Ensure group exists
-  users.groups.network = {};
+  systemd.network.networks = {
+    "25-wireless" = {
+      matchConfig.Name = "wl*";
+      networkConfig.DHCP = "yes";
+    };
+  };
 
-  systemd.services.wpa_supplicant.preStart = "touch /etc/wpa_supplicant.conf";
+  # FIXME: for some reason, this breaks wireless networking when enabled
+  security.lockKernelModules = lib.mkForce false;
 }
