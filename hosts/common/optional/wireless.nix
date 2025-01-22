@@ -32,7 +32,7 @@ in {
           method = "auto";
         };
         ipv6.ignore-auto-dns = true;
-        inherit secretConfig;
+        inherit (secretConfig) wifi-security;
       };
     };
   };
