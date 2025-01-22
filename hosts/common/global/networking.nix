@@ -13,7 +13,7 @@
 
     networkmanager = {
       enable = true;
-      networkmanager.plugins = lib.mkForce [];
+      plugins = lib.mkForce [];
       dns = "systemd-resolved";
       unmanaged = [
         "interface-name:docker*"
