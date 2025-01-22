@@ -8,22 +8,6 @@
         grace = 3;
       };
 
-      animations = {
-        enabled = true;
-
-        bezier = [
-          "easeOutCirc,   0,     0.55, 0.45,  1"
-          "easeInSine,    0.12,  0,    0.39,  0"
-          "easeInOutQuad, 0.45,  0,    0.55,  1"
-        ];
-        animation = [
-          "fadeIn,   1, 10, easeOutCirc"
-          "fadeOut,  1, 4, easeInSine"
-
-          "inputFieldFade, 1, 5, easeInOutQuad"
-        ];
-      };
-
       background = {
         blur_passes = 4;
         blur_size = 8;
