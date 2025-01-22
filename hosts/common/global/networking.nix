@@ -17,6 +17,7 @@
       unmanaged = [
         "interface-name:docker*"
         "interface-name:veth*"
+        "type:wifi"
       ];
     };
   };
@@ -39,7 +40,21 @@
   };
 
   systemd = {
-    network.wait-online.enable = false;
     services.NetworkManager-wait-online.enable = false;
+    network = {
+      wait-online.enable = false;
+      networks = {
+        "30-wired" = {
+          enable = true;
+          name = "enp*";
+          networkConfig.DHCP = "yes";
+        };
+        "30-wireless" = {
+          enable = true;
+          name = "wlp*";
+          networkConfig.DHCP = "yes";
+        };
+      };
+    };
   };
 }
