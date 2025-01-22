@@ -6,6 +6,7 @@
       ./boot.nix
       ./hardening.nix
       ./locale.nix
+      ./networking.nix
       ./nix.nix
       ./openssh.nix
       ./secrets.nix

@@ -1,9 +1,7 @@
-{
-  lib,
-  pkgs,
-  ...
-}: {
+{lib, ...}: {
   boot = {
+    kernelParams = ["hibernate=no"];
+
     plymouth.enable = false;
 
     initrd.systemd.strip = true;
