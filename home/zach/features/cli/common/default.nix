@@ -19,6 +19,8 @@
     file
     ncdu
     jq
+    sysz
+    thefuck
     wget
 
     p7zip
