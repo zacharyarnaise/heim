@@ -31,7 +31,10 @@ in {
           may-fail = false;
           method = "auto";
         };
-        ipv6.ignore-auto-dns = true;
+        ipv6 = {
+          ignore-auto-dns = true;
+          method = "auto";
+        };
         inherit (secretConfig) wifi-security;
       };
     };
