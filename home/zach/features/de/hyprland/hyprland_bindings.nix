@@ -1,4 +1,8 @@
-{pkgs, ...}: let
+{
+  config,
+  pkgs,
+  ...
+}: let
   mod = "SUPER";
   modShift = "SUPER_SHIFT";
 
