@@ -30,11 +30,6 @@
       initrd.enable = true;
       legacySupport.enable = lib.mkForce false;
     };
-    graphics = {
-      # https://gitlab.freedesktop.org/mesa/mesa/-/issues/12039
-      package = pkgs.unstable.mesa.drivers;
-      package32 = pkgs.unstable.pkgsi686Linux.mesa.drivers;
-    };
   };
 
   nix.settings.max-jobs = 8;
