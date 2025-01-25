@@ -1,9 +1,11 @@
 {config, ...}: let
   hyprlock = "${config.programs.hyprlock.package}/bin/hyprlock";
 in {
+  
   wayland.windowManager.hyprland.settings = {
     exec-once = [
       "${hyprlock}"
+      "hyprctl setcursor ${config.gtk.cursorTheme.name} ${toString config.gtk.cursorTheme.size}"
     ];
     debug.disable_logs = false;
 

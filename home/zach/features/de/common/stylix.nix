@@ -12,16 +12,15 @@
     image = ../../../assets/13.jpg;
     polarity = "dark";
     cursor = {
-      package = pkgs.hackneyed;
-      name = "Hackneyed-Dark";
-      size = 32;
+      package = pkgs.catppuccin-cursors.mochaDark;
+      name = "catppuccin-mocha-dark-cursors";
+      size = 24;
     };
     fonts = {
       emoji = {
         package = pkgs.openmoji-color;
         name = "OpenMoji Color";
       };
-
       monospace = {
         package = pkgs.unstable.nerd-fonts.mononoki; 
         name = "Mononoki Nerd Font";
@@ -46,7 +45,7 @@
     };
     iconTheme = {
       enable = true;
-      package = pkgs.papirus-icon-theme.override {color = "carmine";};
+      package = pkgs.papirus-icon-theme.override {color = "indigo";};
       dark = "Papirus-Dark";
       light = "Papirus-Light";
     };
