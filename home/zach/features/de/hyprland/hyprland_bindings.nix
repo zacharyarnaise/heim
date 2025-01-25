@@ -11,7 +11,7 @@ in {
 
     bindd = [
       # General
-      "${modShift}, Delete, Terminate session, exec, pkill Hyprland"
+      "${modShift}, Delete, Terminate session, exit"
       "${modShift}, L, Lock session, exec, ${loginctl} lock-session"
 
       # Window control
