@@ -1,4 +1,8 @@
-{outputs, ...}: {
+{
+  outputs,
+  pkgs,
+  ...
+}: {
   imports =
     [
       ./home-manager.nix
@@ -18,6 +22,11 @@
     overlays = builtins.attrValues outputs.overlays;
     config.allowUnfree = true;
   };
+
+  environment.systemPackages = with pkgs; [
+    coreutils
+    pciutils
+  ];
 
   programs.nh = {
     enable = true;
