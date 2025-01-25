@@ -1,4 +1,4 @@
-{
+{pkgs, ...}: {
   wayland.sessions = [
     {
       name = "Hyprland";
