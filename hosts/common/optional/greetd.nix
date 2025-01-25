@@ -1,46 +1,33 @@
-{pkgs, ...}: {
-  wayland.sessions = [
-    {
-      name = "Hyprland";
-      exec = "Hyprland";
-    }
-  ];
+{pkgs, ...}: let
+  homeCfgs = config.home-manager.users;
+  homeSharePaths = lib.mapAttrsToList (_: v: "${v.home.path}/share") homeCfgs;
+  vars = ''XDG_DATA_DIRS="$XDG_DATA_DIRS:${lib.concatStringsSep ":" homeSharePaths}" GTK_USE_PORTAL=0'';
 
+  sway-kiosk = command: "${lib.getExe pkgs.sway} --unsupported-gpu --config ${pkgs.writeText "kiosk.config" ''
+    output * bg #000000 solid_color
+    xwayland disable
+    input "type:touchpad" {
+      tap enabled
+    }
+    exec '${vars} ${command}; ${pkgs.sway}/bin/swaymsg exit'
+  ''}";
+in {
   services.greetd = {
     enable = true;
     settings = {
       default_session = {
-        command = ''
-          ${pkgs.greetd.tuigreet}/bin/tuigreet \
-          --greeting 'wake up...' \
-          --time --time-format '%-d %B %H:%M:%S' \
-          --remember --remember-session \
-          --asterisks \
-          --no-xsession-wrapper \
-          --sessions /etc/wayland-sessions \
-          --theme 'border=red'
-        '';
-        user = "greetr";
+        command = sway-kiosk (lib.getExe config.programs.regreet.package);
       };
     };
   };
 
-  # https://github.com/apognu/tuigreet/issues/68
-  systemd.services.greetd.serviceConfig = {
-    Type = "idle";
-    StandardError = "journal";
-    TTYReset = true;
-    TTYVTDisallocate = true;
+  programs.regreet = {
+    enable = true;
   };
 
-  environment.persistence."/persist" = {
-    directories = [
-      {
-        directory = "/var/cache/tuigreet";
-        user = "greetr";
-        group = "greetr";
-        mode = "0755";
-      }
-    ];
+  users.extraUsers.greeter = {
+    # For caching and such
+    home = "/tmp/greeter-home";
+    createHome = true;
   };
 }
