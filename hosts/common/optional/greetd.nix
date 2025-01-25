@@ -1,4 +1,11 @@
-{pkgs, ...}: {
+{
+  wayland.sessions = [
+    {
+      name = "Hyprland";
+      exec = "Hyprland";
+    }
+  ];
+
   services.greetd = {
     enable = true;
     settings = {
@@ -10,10 +17,10 @@
           --remember --remember-session \
           --asterisks \
           --no-xsession-wrapper \
-          --sessions ${pkgs.hyprland}/share/wayland-sessions \
+          --sessions /etc/wayland-sessions \
           --theme 'border=red'
         '';
-        user = "greeter";
+        user = "greetr";
       };
     };
   };
@@ -30,8 +37,8 @@
     directories = [
       {
         directory = "/var/cache/tuigreet";
-        user = "greeter";
-        group = "greeter";
+        user = "greetr";
+        group = "greetr";
         mode = "0755";
       }
     ];
