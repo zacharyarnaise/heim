@@ -12,9 +12,11 @@
         monitor = "";
         blur_passes = 2;
         blur_size = 4;
+        noise = 0.02;
         contrast = 1.0;
         brightness = 0.8;
-        vibrancy_darkness = 0.6;
+        vibrancy = 0.2;
+        vibrancy_darkness = 0.2;
       };
 
       input-field = {
