@@ -5,7 +5,7 @@ in {
   wayland.windowManager.hyprland.settings = {
     exec-once = [
       "${hyprlock}"
-      "hyprctl setcursor ${config.gtk.cursorTheme.name} ${toString config.gtk.cursorTheme.size}"
+      "hyprctl setcursor ${config.stylix.cursor.name} ${toString config.stylix.cursor.size}"
     ];
     debug.disable_logs = false;
 
