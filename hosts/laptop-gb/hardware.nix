@@ -1,6 +1,7 @@
 {
   inputs,
   lib,
+  pkgs,
   ...
 }: {
   imports = with inputs.nixos-hardware.nixosModules; [
@@ -22,6 +23,16 @@
     kernelModules = ["kvm-amd"];
     # No ticks on cores 4-7, improves battery life
     kernelParams = ["nohz_full=4-7"];
+  };
+
+  hardware = {
+    amdgpu = {
+      initrd.enable = true;
+      legacySupport.enable = lib.mkForce false;
+    };
+    graphics = {
+      extraPackages = [pkgs.amdvlk];
+    };
   };
 
   nix.settings.max-jobs = 8;

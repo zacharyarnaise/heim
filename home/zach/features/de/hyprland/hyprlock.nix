@@ -9,11 +9,12 @@
       };
 
       background = {
-        blur_passes = 4;
-        blur_size = 8;
+        monitor = "";
+        blur_passes = 2;
+        blur_size = 4;
         contrast = 1.0;
         brightness = 0.8;
-        vibrancy_darkness = 0.8;
+        vibrancy_darkness = 0.6;
       };
 
       input-field = {
