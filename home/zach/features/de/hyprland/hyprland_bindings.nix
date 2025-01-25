@@ -12,6 +12,7 @@ in {
     bindd = [
       # General
       "${modShift}, Delete, Terminate session, exit"
+      "${modShift}, Backspace, Reload configuration, reload"
       "${modShift}, L, Lock session, exec, ${loginctl} lock-session"
 
       # Window control
