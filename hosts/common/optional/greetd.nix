@@ -1,4 +1,9 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: let
   homeCfgs = config.home-manager.users;
   homeSharePaths = lib.mapAttrsToList (_: v: "${v.home.path}/share") homeCfgs;
   vars = ''XDG_DATA_DIRS="$XDG_DATA_DIRS:${lib.concatStringsSep ":" homeSharePaths}" GTK_USE_PORTAL=0'';
