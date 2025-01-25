@@ -8,16 +8,8 @@
     ./hyprpaper.nix
   ];
 
-  home.sessionVariables = {
-    XDG_CURRENT_DESKTOP = "Hyprland";
-    XDG_SESSION_DESKTOP = "Hyprland";
-  };
-
   xdg.portal = {
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-wlr
-      xdg-desktop-portal-gtk
-    ];
+    extraPortals = [pkgs.xdg-desktop-portal-wlr];
     config.hyprland.default = ["wlr" "gtk"];
   };
 

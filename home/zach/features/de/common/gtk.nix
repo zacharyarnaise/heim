@@ -1,4 +1,4 @@
-{
+{pkgs, ...}: {
   gtk = rec {
     enable = true;
 
@@ -7,4 +7,6 @@
     };
     gtk4 = {inherit (gtk3) extraConfig;};
   };
+
+  xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
 }

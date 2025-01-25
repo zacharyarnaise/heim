@@ -20,6 +20,7 @@ in {
     portal = {
       enable = true;
       xdgOpenUsePortal = true;
+      config.common.default = ["gtk"];
     };
 
     userDirs = {
