@@ -20,7 +20,7 @@
           --sessions /etc/wayland-sessions \
           --theme 'border=red'
         '';
-        user = "greetr";
+        user = "greeter";
       };
     };
   };
@@ -37,8 +37,8 @@
     directories = [
       {
         directory = "/var/cache/tuigreet";
-        user = "greetr";
-        group = "greetr";
+        user = "greeter";
+        group = "greeter";
         mode = "0755";
       }
     ];
