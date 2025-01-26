@@ -3,7 +3,7 @@
     ./global
 
     ./optional/dconf.nix
-    #./optional/greetd.nix
+    ./optional/greetd.nix
     ./optional/xdg-portal.nix
     ./optional/pipewire.nix
     ./optional/impermanence.nix
