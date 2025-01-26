@@ -96,7 +96,7 @@
     # -- home-manager configurations -------------------------------------------
     homeConfigurations = {
       "zach@laptop-gb" = lib.homeManagerConfiguration {
-        modules = [./home/zach/laptop-gb.nix];
+        modules = [./home/zach/laptop-gb.nix ./home/nixpkgs.nix];
         pkgs = pkgsFor.x86_64-linux;
         extraSpecialArgs = {
           inherit inputs outputs;

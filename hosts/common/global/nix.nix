@@ -1,11 +1,5 @@
-{
-  lib,
-  pkgs,
-  ...
-}: {
+{lib, ...}: {
   nix = {
-    package = pkgs.nixVersions.latest;
-
     # https://github.com/NixOS/nix/issues/2982
     channel.enable = false;
 
@@ -22,11 +16,11 @@
       allow-import-from-derivation = lib.mkDefault false;
       allowed-users = lib.mkDefault [""]; # Trusted users are always allowed to connect
       trusted-users = lib.mkForce ["@wheel"];
-      substituters = [
+      extra-substituters = lib.mkAfter [
         "https://nix-community.cachix.org"
         "https://hyprland.cachix.org"
       ];
-      trusted-public-keys = [
+      extra-trusted-public-keys = [
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
         "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
       ];
@@ -36,14 +30,14 @@
       max-silent-time = 300;
       warn-dirty = false;
 
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
       system-features = [
         "kvm"
         "big-parallel"
         "nixos-test"
-      ];
-      experimental-features = [
-        "nix-command"
-        "flakes"
       ];
     };
   };
