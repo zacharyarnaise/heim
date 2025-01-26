@@ -1,11 +1,5 @@
-{
-  lib,
-  pkgs,
-  ...
-}: {
+{lib, ...}: {
   nix = {
-    package = lib.mkDefault pkgs.nix;
-
     # https://github.com/NixOS/nix/issues/2982
     channel.enable = false;
 

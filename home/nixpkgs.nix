@@ -1,10 +1,12 @@
 # This file should be included when using hm standalone
 {
   lib,
+  pkgs,
   outputs,
   ...
 }: {
   nix = {
+    package = lib.mkDefault pkgs.nix;
     settings = {
       extra-substituters = lib.mkAfter [
         "https://nix-community.cachix.org"
