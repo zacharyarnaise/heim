@@ -20,7 +20,7 @@ in {
     portal = {
       enable = true;
       xdgOpenUsePortal = true;
-      xtraPortals = [pkgs.xdg-desktop-portal-wlr];
+      extraPortals = [pkgs.xdg-desktop-portal-wlr];
     };
 
     userDirs = {
