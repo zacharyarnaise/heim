@@ -20,7 +20,7 @@ in {
     portal = {
       enable = true;
       xdgOpenUsePortal = true;
-      config.common.default = ["gtk"];
+      xtraPortals = [pkgs.xdg-desktop-portal-wlr];
     };
 
     userDirs = {
