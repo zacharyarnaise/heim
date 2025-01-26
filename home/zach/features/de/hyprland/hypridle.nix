@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  #hyprctl = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl";
+  hyprctl = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl";
   hyprlock = "${config.programs.hyprlock.package}/bin/hyprlock";
   loginctl = "${pkgs.systemd}/bin/loginctl";
 in {
@@ -15,7 +15,7 @@ in {
       general = {
         lock_cmd = "${hyprlock}";
         before_sleep_cmd = "${loginctl} lock-session";
-        after_sleep_cmd = "hyprctl dispatch dpms on";
+        after_sleep_cmd = "${hyprctl} dispatch dpms on";
       };
 
       listener = [
@@ -27,8 +27,8 @@ in {
         # Turn display off after 10 minutes of inactivity
         {
           timeout = 600;
-          on-timeout = "hyprctl dispatch dpms off";
-          on-resume = "hyprctl dispatch dpms on";
+          on-timeout = "${hyprctl} dispatch dpms off";
+          on-resume = "${hyprctl} dispatch dpms on";
         }
       ];
     };

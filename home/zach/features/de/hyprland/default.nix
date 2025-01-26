@@ -10,12 +10,11 @@ in {
     ./hyprpaper.nix
   ];
 
-  xdg.portal = {
+  xdg.portal = let
+    xdph = pkgs.xdg-desktop-portal-hyprland.override {inherit hyprland;};
+  in {
     configPackages = [hyprland];
-    extraPortals = [
-      pkgs.xdg-desktop-portal-hyprland.override
-      {inherit hyprland;}
-    ];
+    extraPortals = [xdph];
   };
 
   wayland.windowManager.hyprland = {
