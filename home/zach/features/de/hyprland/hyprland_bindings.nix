@@ -6,7 +6,7 @@
   mod = "SUPER";
   modShift = "SUPER_SHIFT";
 
-  hyprctl = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl";
+  #hyprctl = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl";
   loginctl = "${pkgs.systemd}/bin/loginctl";
 in {
   wayland.windowManager.hyprland.settings = {
@@ -17,7 +17,7 @@ in {
     bindd = [
       # General
       "${modShift}, Delete, Terminate session, exit"
-      "${modShift}, Backspace, Reload configuration, exec, ${hyprctl} reload"
+      "${modShift}, Backspace, Reload configuration, exec, hyprctl reload"
       "${modShift}, L, Lock session, exec, ${loginctl} lock-session"
 
       # Window control
