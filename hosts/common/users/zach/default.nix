@@ -16,6 +16,7 @@ in {
 
   users.groups.zach = {};
   users.users.zach = {
+    packages = [pkgs.home-manager];
     isNormalUser = true;
     shell = pkgs.zsh;
     group = "zach";

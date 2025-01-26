@@ -1,7 +1,6 @@
 {
   inputs,
   lib,
-  pkgs,
   ...
 }: {
   imports = with inputs.nixos-hardware.nixosModules; [
@@ -22,7 +21,7 @@
     ];
     kernelModules = ["kvm-amd"];
     # No ticks on cores 4-7, improves battery life
-    kernelParams = ["nohz_full=4-7"];
+    # kernelParams = ["nohz_full=4-7"];
   };
 
   hardware = {
