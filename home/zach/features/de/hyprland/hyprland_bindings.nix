@@ -6,7 +6,7 @@
   mod = "SUPER";
   modShift = "SUPER_SHIFT";
 
-  hyprctl = "hyprctl";
+  hyprctl = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl";
   loginctl = "${pkgs.systemd}/bin/loginctl";
 in {
   wayland.windowManager.hyprland.settings = {

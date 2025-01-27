@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  hyprctl = "hyprctl";
+  hyprctl = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl";
   hyprlock = "${config.programs.hyprlock.package}/bin/hyprlock";
   loginctl = "${pkgs.systemd}/bin/loginctl";
 in {
