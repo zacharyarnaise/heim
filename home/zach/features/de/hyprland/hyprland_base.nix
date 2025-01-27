@@ -1,23 +1,20 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: let
+  hyprland = pkgs.hyprland.override {enableXWayland = false;};
+in {
+  xdg.portal = let
+    xdph = pkgs.xdg-desktop-portal-hyprland.override {inherit hyprland;};
+  in {
+    config.hyprland.default = ["hyprland" "gtk"];
+    extraPortals = [xdph];
+  };
+
   wayland.windowManager.hyprland = {
     enable = true;
-    package = pkgs.hyprland.override {enableXWayland = false;};
+    package = hyprland;
 
     systemd = {
       enable = true;
       variables = ["--all"];
     };
-  };
-
-  xdg.portal = let
-    hyprland = config.wayland.windowManager.hyprland.package;
-    xdph = pkgs.xdg-desktop-portal-hyprland.override {inherit hyprland;};
-  in {
-    configPackages = [hyprland];
-    extraPortals = [xdph];
   };
 }
