@@ -15,7 +15,6 @@
   wayland.windowManager.hyprland = {
     enable = true;
 
-    xwayland.enable = false;
     systemd = {
       enable = true;
       variables = ["--all"];
