@@ -8,7 +8,7 @@
     xdph = pkgs.xdg-desktop-portal-hyprland.override {inherit hyprland;};
   in {
     extraPortals = [xdph];
-    configPackages = [hyprland];
+    #configPackages = [hyprland];
   };
 
   wayland.windowManager.hyprland = {
