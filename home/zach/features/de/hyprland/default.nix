@@ -9,7 +9,7 @@
   ];
 
   xdg.portal = {
-    configPackages = [pkgs.hyprland];
+    #configPackages = [pkgs.hyprland];
     extraPortals = [pkgs.xdg-desktop-portal-hyprland];
   };
 
