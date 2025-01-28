@@ -9,7 +9,7 @@
     enable = true;
 
     base16Scheme = "${inputs.tinted-theming}/base16/tokyo-night-moon.yaml";
-    image = ../../../assets/13.jpg;
+    image = ../../../assets/13.jpeg;
     polarity = "dark";
     cursor = {
       package = pkgs.catppuccin-cursors.mochaDark;
