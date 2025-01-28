@@ -7,7 +7,8 @@
       mainBar = {
         layer = "top";
         position = "top";
-        height = 30;
+        height = 32;
+        margin = "6";
         mode = "dock";
         exclusive = true;
         passthrough = false;

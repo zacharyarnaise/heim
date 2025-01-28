@@ -18,7 +18,6 @@ in {
       border_size = 3;
       gaps_in = 15;
       gaps_out = 20;
-      gaps_workspaces = -10;
       resize_on_border = true;
       extend_border_grab_area = 5;
     };
