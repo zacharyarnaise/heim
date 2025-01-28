@@ -1,4 +1,8 @@
-{config, ...}: let
+{
+  config,
+  lib,
+  ...
+}: let
   hyprctl = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl";
   hyprlock = "${config.programs.hyprlock.package}/bin/hyprlock";
 in {
@@ -175,6 +179,10 @@ in {
           else "disable"
         }"
       ) (config.monitors));
+
+    workspace = map (m: "name:${m.workspace},monitor:${m.name}") (
+      lib.filter (m: m.enabled && m.workspace != null) config.monitors
+    );
 
     #ecosystem = {
     #  no_update_news = true;

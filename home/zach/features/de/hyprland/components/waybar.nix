@@ -44,7 +44,7 @@
       };
     };
 
-    style = lib.mkAfter ''
+    style = lib.mkBefore ''
       * {
         padding: 0;
         margin: 0 0.4em;
