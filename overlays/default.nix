@@ -8,9 +8,4 @@
       };
     };
   };
-
-  # Modifies existing packages
-  modifications = final: _prev: {
-    mesa = final.unstable.mesa;
-  };
 }

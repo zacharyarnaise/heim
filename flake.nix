@@ -17,7 +17,7 @@
     };
     impermanence.url = "github:nix-community/impermanence";
     sops-nix = {
-      url = "github:mic92/sops-nix/c9c88f0";
+      url = "github:mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     secrets = {

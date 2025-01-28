@@ -1,7 +1,6 @@
 {
   inputs,
   lib,
-  pkgs,
   ...
 }: {
   imports = with inputs.nixos-hardware.nixosModules; [
