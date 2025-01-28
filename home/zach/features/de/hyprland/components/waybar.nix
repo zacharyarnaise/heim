@@ -63,7 +63,7 @@
       }
 
       window#waybar {
-        border: 0.06em solid alpha(@base0D, 0.4);
+        border: 0.05em solid @base0D;
       }
       #clock {
         margin-top: 0;
