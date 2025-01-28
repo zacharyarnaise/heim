@@ -7,7 +7,7 @@
       mainBar = {
         layer = "top";
         position = "top";
-        height = 40;
+        height = 32;
         margin-bottom = 0;
         spacing = 4;
         mode = "dock";
@@ -24,7 +24,7 @@
 
         "clock" = {
           "format" = "{:L%H:%M}";
-          "tooltip-format" = "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>";
+          "tooltip-format" = "<tt><small>{calendar}</small></tt>";
           "calendar" = {
             "mode" = "year";
             "mode-mon-col" = 3;

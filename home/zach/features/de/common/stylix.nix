@@ -8,7 +8,7 @@
   stylix = {
     enable = true;
 
-    base16Scheme = "${inputs.tinted-theming}/base16/tokyo-night-moon.yaml";
+    #base16Scheme = "${inputs.tinted-theming}/base16/tokyo-night-moon.yaml";
     image = ../../../assets/13.jpg;
     polarity = "dark";
     cursor = {
