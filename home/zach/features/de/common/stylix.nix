@@ -14,7 +14,7 @@
     cursor = {
       package = pkgs.catppuccin-cursors.mochaDark;
       name = "catppuccin-mocha-dark-cursors";
-      size = 24;
+      size = 16;
     };
     fonts = {
       emoji = {
@@ -22,17 +22,17 @@
         name = "OpenMoji Color";
       };
       monospace = {
-        package = pkgs.unstable.nerd-fonts.mononoki; 
+        package = pkgs.unstable.nerd-fonts.mononoki;
         name = "Mononoki Nerd Font";
       };
 
       sansSerif = {
-        package = pkgs.fira; 
+        package = pkgs.fira;
         name = "Fira Sans";
       };
 
       serif = {
-        package = pkgs.fira; 
+        package = pkgs.fira;
         name = "Fira Sans";
       };
 
