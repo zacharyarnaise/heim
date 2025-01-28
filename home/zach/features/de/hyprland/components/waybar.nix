@@ -62,6 +62,9 @@
         margin-right: -0.65em;
       }
 
+      window#waybar {
+        border: 0.1em solid alpha(@base0D, 0.5);
+      }
       #clock {
         margin-top: 0;
         margin-bottom: 0;
@@ -73,8 +76,8 @@
         font-family: "${config.stylix.fonts.monospace.name}";
         font-size: 11pt;
         font-weight: 600;
-        padding-right: 0.8em;
-        padding-left: 0.8em;
+        padding-right: 0.9em;
+        padding-left: 0.9em;
       }
     '';
   };
