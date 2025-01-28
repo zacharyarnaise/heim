@@ -26,6 +26,13 @@ in {
       split_width_multiplier = 1.5;
     };
 
+    layerrule = [
+      "animation fade,waybar"
+      "blur,waybar"
+      "ignorezero,waybar"
+      "noanim,wallpaper"
+    ];
+
     decoration = {
       rounding = 8;
       # rounding_power = 3.0;

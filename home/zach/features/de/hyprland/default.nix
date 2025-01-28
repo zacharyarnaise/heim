@@ -7,5 +7,7 @@
     ./hypridle.nix
     ./hyprlock.nix
     ./hyprpaper.nix
+
+    ./components/waybar.nix
   ];
 }
