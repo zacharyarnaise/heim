@@ -25,22 +25,29 @@
         modules-right = [
         ];
 
-        "clock" = {
+        cpu = {
+          format = " {load}";
+        };
+        memory = {
+          format = " {used:0.1f}G/{total:0.f}G";
+          interval = 5;
+        };
+        clock = {
           interval = 1;
           format = "{:L%H:%M:%S}";
           on-click-left = "mode";
           tooltip-format = "<tt><small>{calendar}</small></tt>";
           calendar = {
-            "mode" = "year";
-            "mode-mon-col" = 3;
-            "weeks-pos" = "right";
-            "on-scroll" = 0;
-            "format" = {
-              "months" = "<span color='#ffead3'><b>{}</b></span>";
-              "days" = "<span color='#ecc6d9'><b>{}</b></span>";
-              "weeks" = "<span color='#99ffdd'><b>S{}</b></span>";
-              "weekdays" = "<span color='#ffcc66'><b>{}</b></span>";
-              "today" = "<span color='#ff6699'><b><u>{}</u></b></span>";
+            mode = "year";
+            mode-mon-col = 3;
+            weeks-pos = "right";
+            on-scroll = 0;
+            format = {
+              months = "<span color='#ffead3'><b>{}</b></span>";
+              days = "<span color='#ecc6d9'><b>{}</b></span>";
+              weeks = "<span color='#99ffdd'><b>S{}</b></span>";
+              weekdays = "<span color='#ffcc66'><b>{}</b></span>";
+              today = "<span color='#ff6699'><b><u>{}</u></b></span>";
             };
           };
         };
@@ -49,6 +56,7 @@
 
     style = lib.mkAfter ''
       * {
+        font-family: "${config.stylix.fonts.monospace.name}";
         padding: 0;
         margin: 0 0.4em;
       }
@@ -63,7 +71,7 @@
       }
 
       window#waybar {
-        border: 0.04em solid @base0D;
+        border: 0.05em solid @base0D;
       }
       #clock {
         margin-top: 0;
@@ -73,7 +81,6 @@
       }
 
       #clock {
-        font-family: "${config.stylix.fonts.monospace.name}";
         font-size: 11pt;
         font-weight: 600;
         padding-right: 0.9em;
