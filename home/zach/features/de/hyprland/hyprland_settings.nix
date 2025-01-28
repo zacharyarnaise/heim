@@ -116,7 +116,8 @@ in {
     };
 
     cursor = {
-      inactive_timeout = 0;
+      no_hardware_cursors = true;
+      inactive_timeout = 5;
       hide_on_key_press = true;
     };
 
