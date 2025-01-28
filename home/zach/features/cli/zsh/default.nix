@@ -28,7 +28,7 @@
       heim = "$HOME/.nix-heim/heim";
     };
 
-    plugins = with pkgs; [
+    plugins = [
       {
         name = "zsh-powerlevel10k-config";
         src = ./files;
@@ -36,12 +36,12 @@
       }
       {
         name = "zsh-powerlevel10k";
-        src = zsh-powerlevel10k;
+        src = pkgs.zsh-powerlevel10k;
         file = "/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
       }
       {
         name = "zsh-you-should-use";
-        src = zsh-you-should-use;
+        src = pkgs.zsh-you-should-use;
         file = "share/zsh/plugins/you-should-use/you-should-use.plugin.zsh";
       }
     ];

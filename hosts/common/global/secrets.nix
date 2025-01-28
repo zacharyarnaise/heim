@@ -11,11 +11,14 @@
 in {
   imports = [inputs.sops-nix.nixosModules.sops];
 
-  environment.systemPackages = with pkgs; [
-    age
-    ssh-to-age
-    sops
-  ];
+  environment.systemPackages = builtins.attrValues {
+    inherit
+      (pkgs)
+      age
+      ssh-to-age
+      sops
+      ;
+  };
 
   sops = {
     defaultSopsFile = "${secretsDir}/hosts/${hostName}/secrets.yaml";

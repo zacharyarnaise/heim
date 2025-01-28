@@ -8,8 +8,8 @@
     handlr open "$@"
   '';
 in {
-  home.packages = with pkgs; [
-    handlr-regex
+  home.packages = [
+    pkgs.handlr-regex
     shadowedXdgOpen
   ];
 

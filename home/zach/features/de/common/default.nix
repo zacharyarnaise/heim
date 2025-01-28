@@ -8,7 +8,10 @@
     ./xdg.nix
   ];
 
-  home.packages = with pkgs; [
-    brightnessctl
-  ];
+  home.packages = builtins.attrValues {
+    inherit
+      (pkgs)
+      brightnessctl
+      ;
+  };
 }

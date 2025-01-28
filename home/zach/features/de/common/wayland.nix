@@ -1,8 +1,11 @@
 {pkgs, ...}: {
-  home.packages = with pkgs; [
-    wf-recorder
-    wl-clipboard
-  ];
+  home.packages = builtins.attrValues {
+    inherit
+      (pkgs)
+      wf-recorder
+      wl-clipboard
+      ;
+  };
 
   home.sessionVariables = {
     LIBSEAT_BACKEND = "logind";

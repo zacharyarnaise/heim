@@ -23,10 +23,13 @@
     config.allowUnfree = true;
   };
 
-  environment.systemPackages = with pkgs; [
-    coreutils
-    pciutils
-  ];
+  environment.systemPackages = builtins.attrValues {
+    inherit
+      (pkgs)
+      coreutils
+      pciutils
+      ;
+  };
 
   programs.nh = {
     enable = true;
