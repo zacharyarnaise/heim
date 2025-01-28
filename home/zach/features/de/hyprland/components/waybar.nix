@@ -43,7 +43,7 @@
       };
     };
 
-    style = lib.mkBefore ''
+    style = lib.mkAfter ''
       * {
         padding: 0;
         margin: 0 0.4em;
@@ -59,7 +59,6 @@
       }
 
       #clock {
-        display: block;
         margin-top: 0;
         margin-bottom: 0;
         border-radius: 0.6em;
