@@ -59,6 +59,7 @@
       }
 
       #clock {
+        display: block;
         margin-top: 0;
         margin-bottom: 0;
         border-radius: 0.6em;
