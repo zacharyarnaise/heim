@@ -30,6 +30,7 @@
     Type = "idle";
     StandardError = "journal";
     TTYReset = true;
+    TTYVHangup = true;
     TTYVTDisallocate = true;
   };
 
