@@ -31,7 +31,7 @@
           format = " {load}";
         };
         memory = {
-          format = " {used:0.1f}G/{total:0.f}G";
+          format = " {used:0.1f}G/{total:0.0f}G";
           interval = 5;
         };
         clock = {
@@ -71,9 +71,13 @@
       .modules-right {
         margin-right: -0.65em;
       }
-
       window#waybar {
         border: 0.05em solid @base0D;
+      }
+
+      #cpu, #memory {
+        margin-left: 0.05em;
+        margin-right: 0.55em;
       }
       #clock {
         margin-top: 0;
