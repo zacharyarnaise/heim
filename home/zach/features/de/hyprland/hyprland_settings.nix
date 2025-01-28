@@ -16,8 +16,8 @@ in {
     general = {
       layout = "dwindle";
       border_size = 3;
-      gaps_in = 5;
-      gaps_out = 10;
+      gaps_in = 15;
+      gaps_out = 20;
       gaps_workspaces = -10;
       resize_on_border = true;
       extend_border_grab_area = 5;
