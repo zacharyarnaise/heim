@@ -8,7 +8,6 @@
         layer = "top";
         position = "top";
         height = 30;
-        margin-bottom = 0;
         mode = "dock";
         exclusive = true;
         passthrough = false;
