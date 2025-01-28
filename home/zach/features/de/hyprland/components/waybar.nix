@@ -7,7 +7,7 @@
       mainBar = {
         layer = "top";
         position = "top";
-        height = 32;
+        height = 30;
         margin-bottom = 0;
         spacing = 4;
         mode = "dock";
