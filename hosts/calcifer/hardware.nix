@@ -3,10 +3,10 @@
   lib,
   ...
 }: {
-  imports = with inputs.nixos-hardware.nixosModules; [
-    common-cpu-intel-cpu-only
-    common-gpu-amd
-    common-pc-ssd
+  imports = [
+    inputs.nixos-hardware.nixosModules.common-cpu-intel-cpu-only
+    inputs.nixos-hardware.nixosModules.common-gpu-amd
+    inputs.nixos-hardware.nixosModules.common-pc-ssd
 
     ./filesystems.nix
   ];

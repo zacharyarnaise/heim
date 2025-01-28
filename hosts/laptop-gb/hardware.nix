@@ -3,11 +3,11 @@
   lib,
   ...
 }: {
-  imports = with inputs.nixos-hardware.nixosModules; [
-    common-cpu-amd
-    common-cpu-amd-pstate
-    common-gpu-amd
-    common-pc-laptop-ssd
+  imports = [
+    inputs.nixos-hardware.nixosModules.common-cpu-amd
+    inputs.nixos-hardware.nixosModules.common-cpu-amd-pstate
+    inputs.nixos-hardware.nixosModules.common-gpu-amd
+    inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
 
     ./disko.nix
   ];
