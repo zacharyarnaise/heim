@@ -50,7 +50,7 @@
         margin: 0 0.4em;
       }
       window#waybar, tooltip {
-        broder-radius: 0.5em;
+        border-radius: 0.5em;
       }
       .modules-left {
         margin-left: -0.6em;
