@@ -67,7 +67,7 @@
       };
     mkHome = modules: systemName:
       lib.homeManagerConfiguration {
-        modules = "./home/nixpkgs.nix" // modules;
+        modules = [./home/nixpkgs.nix] ++ modules;
         pkgs = pkgsFor.${systemName};
         extraSpecialArgs = specialArgs;
       };
