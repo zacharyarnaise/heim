@@ -5,7 +5,8 @@
     settings = {
       general = {
         disable_loading_bar = true;
-        hide_cursor = true;
+        # https://github.com/hyprwm/hyprlock/issues/494
+        hide_cursor = false;
         grace = 1;
       };
 
