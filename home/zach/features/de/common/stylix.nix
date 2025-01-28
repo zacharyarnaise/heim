@@ -38,7 +38,7 @@
 
       sizes = {
         applications = 12;
-        desktop = 10;
+        desktop = 11;
         popups = 12;
         terminal = 14;
       };
@@ -50,7 +50,7 @@
       light = "Papirus-Light";
     };
     opacity = {
-      desktop = 0.7; # bars/widgets
+      desktop = 0.75; # bars/widgets
     };
   };
 }
