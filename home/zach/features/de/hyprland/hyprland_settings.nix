@@ -130,7 +130,7 @@ in {
       vrr = 1;
       mouse_move_enables_dpms = true;
       key_press_enables_dpms = true;
-      disable_autoreload = true;
+      disable_autoreload = false;
       new_window_takes_over_fullscreen = 2;
     };
 
