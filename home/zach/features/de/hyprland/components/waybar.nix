@@ -24,8 +24,6 @@
         "clock" = {
           interval = 1;
           format = "{:L%H:%M:%S}";
-          format-alt = "{:%A %d %B %Y}";
-
           on-click-left = "mode";
           tooltip-format = "<tt><small>{calendar}</small></tt>";
           calendar = {
@@ -61,10 +59,17 @@
       }
 
       #clock {
+        margin-top: 0;
+        margin-bottom: 0;
+        border-radius: 0.6em;
+        background-color: alpha(@base0D, 0.9);
+      }
+
+      #clock {
         font-size: 12pt;
+        font-weight: 800;
         padding-right: 1em;
         padding-left: 1em;
-        border-radius: 0.5em;
       }
     '';
   };
