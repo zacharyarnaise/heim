@@ -17,12 +17,16 @@
         exclusive = true;
         passthrough = false;
 
+        "custom/spacer".format = " ";
+
         modules-left = [
         ];
         modules-center = [
           "cpu"
           "memory"
           "clock"
+          "custom/spacer"
+          "custom/spacer"
         ];
         modules-right = [
         ];
