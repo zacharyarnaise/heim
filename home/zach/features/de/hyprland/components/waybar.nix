@@ -9,7 +9,6 @@
         position = "top";
         height = 30;
         margin-bottom = 0;
-        spacing = 4;
         mode = "dock";
         exclusive = true;
         passthrough = false;
@@ -44,5 +43,21 @@
         };
       };
     };
+
+    style = lib.mkAfter ''
+      * {
+        padding: 0;
+        margin: 0 0.4em;
+      }
+      window#waybar, tooltip {
+        broder-radius: 0.5em;
+      }
+      .modules-left {
+        margin-left: -0.6em;
+      }
+      .modules-right {
+        margin-right: -0.6em;
+      }
+    '';
   };
 }

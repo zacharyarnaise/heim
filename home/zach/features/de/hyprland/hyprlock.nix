@@ -5,9 +5,10 @@
     settings = {
       general = {
         disable_loading_bar = true;
+        ignore_empty_input = true;
         # https://github.com/hyprwm/hyprlock/issues/494
         hide_cursor = false;
-        grace = 1;
+        grace = 3;
       };
 
       background = {
