@@ -71,10 +71,10 @@
 
       #clock {
         font-family: "${config.stylix.fonts.monospace.name}";
-        font-size: 12pt;
-        font-weight: 500;
-        padding-right: 1em;
-        padding-left: 1em;
+        font-size: 11pt;
+        font-weight: 600;
+        padding-right: 0.8em;
+        padding-left: 0.8em;
       }
     '';
   };
