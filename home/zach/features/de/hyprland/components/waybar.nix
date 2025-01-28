@@ -17,25 +17,28 @@
         exclusive = true;
         passthrough = false;
 
-        "custom/spacer".format = " ";
-
         modules-left = [
         ];
         modules-center = [
+          "temperature"
           "cpu"
-          "memory"
           "clock"
-          "custom/spacer"
-          "custom/spacer"
+          "memory"
         ];
         modules-right = [
         ];
 
+        temperature = {
+          interval = 5;
+          hwmon-path = "/sys/class/hwmon/hwmon5/temp1_input";
+          format = "󰏈 {temperatureC}°C";
+        };
         cpu = {
-          format = " {load}";
+          format = " {usage}%";
+          interval = 5;
         };
         memory = {
-          format = " {used:0.1f}G/{total:0.0f}G";
+          format = " {used:00.1f}G/{total:0.0f}G";
           interval = 5;
         };
         clock = {
