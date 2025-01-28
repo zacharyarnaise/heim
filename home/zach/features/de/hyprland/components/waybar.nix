@@ -20,6 +20,8 @@
         modules-left = [
         ];
         modules-center = [
+          "cpu"
+          "memory"
           "clock"
         ];
         modules-right = [
