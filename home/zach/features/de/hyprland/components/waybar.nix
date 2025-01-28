@@ -1,4 +1,8 @@
-{lib, ...}: {
+{
+  lib,
+  config,
+  ...
+}: {
   programs.waybar = {
     enable = true;
     systemd.enable = true;
@@ -8,7 +12,7 @@
         layer = "top";
         position = "top";
         height = 35;
-        margin = "8 8 4 8";
+        margin = "8 10 4 10";
         mode = "dock";
         exclusive = true;
         passthrough = false;
@@ -66,10 +70,11 @@
       }
 
       #clock {
+        font-family: "${config.stylix.fonts.monospace.name}";
         font-size: 12pt;
         font-weight: 500;
-        padding-right: 2em;
-        padding-left: 2em;
+        padding-right: 1em;
+        padding-left: 1em;
       }
     '';
   };
