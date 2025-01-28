@@ -67,9 +67,9 @@
 
       #clock {
         font-size: 12pt;
-        font-weight: 800;
-        padding-right: 1em;
-        padding-left: 1em;
+        font-weight: 500;
+        padding-right: 1.2em;
+        padding-left: 1.2em;
       }
     '';
   };
