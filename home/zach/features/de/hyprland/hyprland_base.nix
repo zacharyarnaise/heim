@@ -3,7 +3,10 @@
   pkgs,
   ...
 }: let
-  hyprlandOverride = pkgs.hyprland.override {hyprcursor = pkgs.unstable.hyprcursor;};
+  hyprlandOverride = pkgs.hyprland.override {
+    hyprcursor = pkgs.unstable.hyprcursor;
+    enableXWayland = false;
+  };
 in {
   wayland.windowManager.hyprland = {
     enable = true;
