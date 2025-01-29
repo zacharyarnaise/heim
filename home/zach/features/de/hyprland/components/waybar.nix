@@ -88,29 +88,24 @@ in {
           tooltip = false;
         };
         "custom/lock" = {
-          exec = "${loginctl} lock-session";
+          on-click = "${loginctl} lock-session";
           format = "<span weight='bold'>󰌾</span>";
-          tooltip = false;
         };
         "custom/sleep" = {
-          exec = "${systemctl} sleep";
+          on-click = "${systemctl} sleep";
           format = "<span weight='bold'>󰤄</span>";
-          tooltip = false;
         };
         "custom/poweroff" = {
-          exec = "${systemctl} poweroff";
+          on-click = "${systemctl} poweroff";
           format = "<span weight='bold'>󰐥</span>";
-          tooltip = false;
         };
         "custom/reboot" = {
-          exec = "${systemctl} reboot";
+          on-click = "${systemctl} reboot";
           format = "<span weight='bold'>󰜉</span>";
-          tooltip = false;
         };
         "custom/reboot-uefi" = {
-          exec = "${systemctl} reboot --firmware-setup";
+          on-click = "${systemctl} reboot --firmware-setup";
           format = "<span weight='bold'>󱄌</span>";
-          tooltip = false;
         };
       };
     };
