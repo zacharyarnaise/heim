@@ -31,14 +31,14 @@
         temperature = {
           interval = 5;
           hwmon-path = "/sys/class/hwmon/hwmon5/temp1_input";
-          format = "󰏈 {temperatureC:3}°C";
+          format = "󰏈 {temperatureC:3.0g}°C";
         };
         cpu = {
           format = " {usage:3}%";
           interval = 5;
         };
         memory = {
-          format = " {used:3.1f}G/{total:0.0f}G";
+          format = " {used:4.1f}G/{total:2.0g}G";
           interval = 10;
         };
         clock = {
