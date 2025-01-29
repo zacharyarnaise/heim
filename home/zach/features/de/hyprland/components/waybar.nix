@@ -69,10 +69,10 @@ in {
 
         # ------------------------------- Right -------------------------------
         "group/power" = {
-          orientation = "vertical";
+          orientation = "inherit";
           drawer = {
             transition-duration = 600;
-            transition-left-to-right = true;
+            transition-left-to-right = false;
           };
           modules = [
             "custom/hostname"
@@ -85,6 +85,7 @@ in {
         };
         "custom/hostname" = {
           exec = "echo $USER@$HOSTNAME";
+          interval = "once";
           tooltip = false;
         };
         "custom/lock" = {
@@ -125,7 +126,7 @@ in {
       window#waybar {
         border: 0.05em solid @base0D;
       }
-      #clock, #group-power {
+      #clock, #custom-hostname {
         border-radius: 0.6em;
         background-color: alpha(@base0D, 0.9);
       }
@@ -147,6 +148,7 @@ in {
       #custom-hostname {
         font-family: "${config.stylix.fonts.sansSerif.name}";
         font-size: 10pt;
+        min-width: 9em;
       }
     '';
   };
