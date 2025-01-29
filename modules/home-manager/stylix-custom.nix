@@ -11,9 +11,7 @@
     };
   };
 
-  config = lib.mkMerge config {
-    home.sessionVariables = lib.mkMerge config.home.sessionVariables {
-      XCURSOR_SIZE = toString config.options.stylix.cursor.xcursor-size;
-    };
+  config.home.sessionVariables = {
+    XCURSOR_SIZE = toString config.stylix.cursor.xcursor-size;
   };
 }
