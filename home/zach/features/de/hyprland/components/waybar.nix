@@ -12,7 +12,6 @@
         layer = "top";
         position = "top";
         height = 35;
-        margin = "8 10 4 10";
         mode = "dock";
         exclusive = true;
         passthrough = false;
@@ -67,13 +66,16 @@
       * {
         font-family: "${config.stylix.fonts.monospace.name}";
         padding: 0;
-        margin: 0 0.4em;
+        margin: 0;
       }
       window#waybar, tooltip {
         border-radius: 0.5em;
       }
       .modules-left {
         margin-left: -0.65em;
+      }
+       .modules-center {
+        padding-right: 1.6em;
       }
       .modules-right {
         margin-right: -0.65em;
@@ -82,9 +84,11 @@
         border: 0.05em solid @base0D;
       }
 
-      #temperature, #cpu, #memory {
-        margin: 0 0.5em 0 0.5em;
-        padding: 0 0.1em 0 0.1em;
+      #temperature, #cpu {
+        margin-right: 0.6em;
+      }
+      #memory {
+        margin-left: 0.6em;
       }
       #clock {
         margin-top: 0;
