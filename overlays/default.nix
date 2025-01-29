@@ -10,7 +10,7 @@
   };
 
   modifications = let
-    unstable = import inputs.nixpkgs-unstable;
+    unstable = import inputs.nixpkgs-unstable {};
   in
     final: prev: {
       hyprland = unstable.hyprland.override {
