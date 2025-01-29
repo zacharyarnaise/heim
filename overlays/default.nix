@@ -12,7 +12,7 @@
   modifications = final: prev: {
     hyprland = prev.hyprland.override (_: {
       enableXWayland = false;
-      hyprcursor = inputs.unstable.hyprcursor;
+      hyprcursor = inputs.nixpkgs-unstable.hyprcursor;
     });
   };
 }
