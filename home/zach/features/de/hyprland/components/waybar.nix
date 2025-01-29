@@ -79,7 +79,7 @@
         margin-right: -0.65em;
       }
       window#waybar {
-        border: 0.05em solid @base0D;
+        border: 0.05em solid @base0C;
       }
 
       #cpu, #memory {
@@ -90,7 +90,7 @@
         margin-top: 0;
         margin-bottom: 0;
         border-radius: 0.6em;
-        background-color: alpha(@base0D, 0.9);
+        background-color: alpha(@base0C, 0.9);
       }
 
       #clock {
