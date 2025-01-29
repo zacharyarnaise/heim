@@ -1,7 +1,12 @@
-{pkgs, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   gtk = let
     commonExtraConfig = {
       gtk-xft-hinting = 1;
+      gtk-cursor-theme-size = config.stylix.cursor.gtk-size;
     };
   in {
     enable = true;
