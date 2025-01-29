@@ -3,7 +3,8 @@
   pkgs,
   ...
 }: let
-  hyprlandOverride = pkgs.unstable.hyprland.override {
+  hyprlandOverride = pkgs.hyprland.override {
+    hyprcursor = pkgs.unstable.hyprcursor;
     enableXWayland = false;
   };
 in {
