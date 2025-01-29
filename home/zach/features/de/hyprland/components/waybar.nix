@@ -92,22 +92,27 @@ in {
         "custom/lock" = {
           on-click = "${loginctl} lock-session";
           format = "󰌾";
+          tooltip = false;
         };
         "custom/sleep" = {
           on-click = "${systemctl} sleep";
           format = "󰤄";
+          tooltip = false;
         };
         "custom/poweroff" = {
           on-click = "${systemctl} poweroff";
           format = "󰐥";
+          tooltip = false;
         };
         "custom/reboot" = {
           on-click = "${systemctl} reboot";
           format = "󰜉";
+          tooltip = false;
         };
         "custom/reboot-uefi" = {
           on-click = "${systemctl} reboot --firmware-setup";
           format = "󱄌";
+          tooltip = false;
         };
       };
     };
@@ -151,16 +156,18 @@ in {
         font-size: 10pt;
         min-width: 9em;
       }
-      .group-power-element {
-        padding: 0.2em 0.4em;
-        color: @base04;
-        font-size: 13pt;
-        font-weight: 600;
-      }
-      .group-power-element:hover {
-        background-color: alpha(@base0D, 0.3);
+      .group-power-element > * {
+        min-width: 1.4em;
+        font-size: 1.3em;
         color: @base07;
-        font-weight: 800;
+        background-color: alpha(@base0D, 0.2);
+        border-radius: 0.1em;
+      }
+      .group-power-element > *:hover {
+        transition: 0.2s;
+        color: @base09;
+        background-color: alpha(@base0D, 0.4);
+        border-radius: 0.2em;
       }
     '';
   };
