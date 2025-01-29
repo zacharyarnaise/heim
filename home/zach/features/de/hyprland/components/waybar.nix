@@ -68,27 +68,6 @@ in {
         };
 
         # ------------------------------- Right -------------------------------
-        "custom/hostname".exec = "echo $USER@$HOSTNAME";
-        "custom/lock" = {
-          exec = "${loginctl} lock-session";
-          format = "<span weight='bold'>󰌾</span>";
-        };
-        "custom/sleep" = {
-          exec = "${systemctl} sleep";
-          format = "<span weight='bold'>󰤄</span>";
-        };
-        "custom/poweroff" = {
-          exec = "${systemctl} poweroff";
-          format = "<span weight='bold'>󰐥</span>";
-        };
-        "custom/reboot" = {
-          exec = "${systemctl} reboot";
-          format = "<span weight='bold'>󰜉</span>";
-        };
-        "custom/reboot-uefi" = {
-          exec = "${systemctl} reboot --firmware-setup";
-          format = "<span weight='bold'>󱄌</span>";
-        };
         "group/power" = {
           orientation = "vertical";
           drawer = {
@@ -103,6 +82,35 @@ in {
             "custom/reboot"
             "custom/reboot-uefi"
           ];
+        };
+        "custom/hostname" = {
+          exec = "echo $USER@$HOSTNAME";
+          tooltip = false;
+        };
+        "custom/lock" = {
+          exec = "${loginctl} lock-session";
+          format = "<span weight='bold'>󰌾</span>";
+          tooltip = false;
+        };
+        "custom/sleep" = {
+          exec = "${systemctl} sleep";
+          format = "<span weight='bold'>󰤄</span>";
+          tooltip = false;
+        };
+        "custom/poweroff" = {
+          exec = "${systemctl} poweroff";
+          format = "<span weight='bold'>󰐥</span>";
+          tooltip = false;
+        };
+        "custom/reboot" = {
+          exec = "${systemctl} reboot";
+          format = "<span weight='bold'>󰜉</span>";
+          tooltip = false;
+        };
+        "custom/reboot-uefi" = {
+          exec = "${systemctl} reboot --firmware-setup";
+          format = "<span weight='bold'>󱄌</span>";
+          tooltip = false;
         };
       };
     };
@@ -122,7 +130,7 @@ in {
       window#waybar {
         border: 0.05em solid @base0D;
       }
-      #clock, #custom-hostname {
+      #clock, #group-power {
         border-radius: 0.6em;
         background-color: alpha(@base0D, 0.9);
       }
