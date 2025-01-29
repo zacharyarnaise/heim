@@ -9,5 +9,6 @@
     ./hyprpaper.nix
 
     ./components/waybar.nix
+    ./components/ghostty.nix
   ];
 }

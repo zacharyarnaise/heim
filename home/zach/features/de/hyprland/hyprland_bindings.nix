@@ -8,6 +8,7 @@
 
   hyprctl = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl";
   loginctl = "${pkgs.systemd}/bin/loginctl";
+  handlr = type: "${pkgs.handlr-regex}/bin/handlr launch ${type}";
 in {
   wayland.windowManager.hyprland.settings = {
     binds = {
@@ -35,6 +36,9 @@ in {
       "${modShift}, RIGHT, Moves the active window right, movewindow, r"
       "${modShift}, UP, Moves the active window up, movewindow, u"
       "${modShift}, DOWN, Moves the active window down, movewindow, d"
+
+      # Programs
+      "${mod},      Space, Opens terminal, exec, ${handlr "x-scheme-handler/terminal"}"
     ];
   };
 }
