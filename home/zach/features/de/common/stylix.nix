@@ -14,7 +14,7 @@
     cursor = {
       package = pkgs.catppuccin-cursors.mochaDark;
       name = "catppuccin-mocha-dark-cursors";
-      size = 24;
+      size = 32;
     };
     fonts = {
       emoji = {
@@ -50,7 +50,7 @@
       light = "Papirus-Light";
     };
     opacity = {
-      desktop = 0.75; # bars/widgets
+      desktop = 0.7; # bars/widgets
     };
   };
 }
