@@ -65,8 +65,8 @@
 
         # ------------------------------- Right -------------------------------
         "custom/hostname" = {
-          exec = "echo $USER@$HOST";
-          format = "<span weight='bold'></span> {}";
+          exec = "echo $USER@$HOSTNAME";
+          format = "{}";
         };
       };
     };
@@ -92,6 +92,10 @@
       window#waybar {
         border: 0.05em solid @base0D;
       }
+      #clock, #custom-hostname {
+        border-radius: 0.6em;
+        background-color: alpha(@base0D, 0.9);
+      }
 
       #temperature, #cpu {
         margin-right: 0.6em;
@@ -99,17 +103,18 @@
       #memory {
         margin-left: 0.6em;
       }
-      #clock, #custom-hostname {
-        border-radius: 0.6em;
-        background-color: alpha(@base0D, 0.9);
-      }
-
       #clock {
         min-width: 4.5em;
         font-size: 11pt;
         font-weight: 600;
         padding-right: 0.8em;
         padding-left: 0.8em;
+      }
+
+      #custom-hostname {
+        min-width: 10em;
+        font-family: "${config.stylix.fonts.sansSerif.name}";
+        font-size: 10pt;
       }
     '';
   };
