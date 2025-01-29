@@ -71,8 +71,8 @@ in {
         "group/power" = {
           orientation = "vertical";
           drawer = {
-            transition-duration = 400;
-            transition-left-to-right = false;
+            transition-duration = 600;
+            transition-left-to-right = true;
           };
           modules = [
             "custom/hostname"
