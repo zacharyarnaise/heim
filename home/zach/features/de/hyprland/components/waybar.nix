@@ -91,8 +91,6 @@
         margin-left: 0.6em;
       }
       #clock {
-        margin-top: 0;
-        margin-bottom: 0;
         border-radius: 0.6em;
         background-color: alpha(@base0D, 0.9);
       }
