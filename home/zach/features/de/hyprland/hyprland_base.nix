@@ -10,8 +10,10 @@
 
   wayland.windowManager.hyprland = {
     enable = true;
-    enableXWayland = false;
     package = pkgs.hyprland;
+
+    enableXWayland = false;
+    settings.xwayland.enabled = false;
 
     systemd = {
       enable = true;
