@@ -9,9 +9,12 @@
     };
   };
 
-  modifications = final: prev: {
-    hyprland = import inputs.nixpkgs-unstable.hyprland.override {
-      enableXWayland = false;
+  modifications = let
+    unstable = import <unstable> {};
+  in
+    final: prev: {
+      hyprland = unstable.hyprland.override {
+        enableXWayland = false;
+      };
     };
-  };
 }
