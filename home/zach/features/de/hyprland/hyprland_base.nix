@@ -2,15 +2,12 @@
   config,
   pkgs,
   ...
-}: let
-  hyprlandOverride = pkgs.hyprland.override {
-    hyprcursor = pkgs.unstable.hyprcursor;
-    enableXWayland = false;
-  };
-in {
+}: {
   wayland.windowManager.hyprland = {
     enable = true;
-    package = hyprlandOverride;
+    package = pkgs.unstable.hyprland.override {
+      enableXWayland = false;
+    };
 
     xwayland.enable = false;
     settings.xwayland.enabled = false;
