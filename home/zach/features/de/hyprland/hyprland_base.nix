@@ -5,10 +5,7 @@
 }: {
   wayland.windowManager.hyprland = {
     enable = true;
-    package = pkgs.hyprland.override {
-      enableXWayland = false;
-      hyprcursor = pkgs.unstable.hyprcursor;
-    };
+    package = pkgs.hyprland.override {enableXWayland = false;};
 
     xwayland.enable = false;
     settings.xwayland.enabled = false;
