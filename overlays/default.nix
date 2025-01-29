@@ -10,7 +10,7 @@
   };
 
   modifications = final: prev: {
-    hyprland = inputs.nixpkgs-unstable.hyprland.override {
+    hyprland = prev.unstable.hyprland.override {
       enableXWayland = false;
     };
   };
