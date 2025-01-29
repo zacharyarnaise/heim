@@ -15,8 +15,6 @@
       package = pkgs.catppuccin-cursors.mochaDark;
       name = "catppuccin-mocha-dark-cursors";
       size = 24;
-      # Not sure why I need a different size for GTK...
-      gtk-size = 16;
     };
     fonts = {
       emoji = {
