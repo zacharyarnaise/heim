@@ -71,8 +71,9 @@ in {
         "group/power" = {
           orientation = "inherit";
           drawer = {
-            transition-duration = 600;
+            transition-duration = 400;
             transition-left-to-right = false;
+            children-class = "group-power-element";
           };
           modules = [
             "custom/hostname"
@@ -90,23 +91,23 @@ in {
         };
         "custom/lock" = {
           on-click = "${loginctl} lock-session";
-          format = "<span weight='bold'>󰌾</span>";
+          format = "󰌾";
         };
         "custom/sleep" = {
           on-click = "${systemctl} sleep";
-          format = "<span weight='bold'>󰤄</span>";
+          format = "󰤄";
         };
         "custom/poweroff" = {
           on-click = "${systemctl} poweroff";
-          format = "<span weight='bold'>󰐥</span>";
+          format = "󰐥";
         };
         "custom/reboot" = {
           on-click = "${systemctl} reboot";
-          format = "<span weight='bold'>󰜉</span>";
+          format = "󰜉";
         };
         "custom/reboot-uefi" = {
           on-click = "${systemctl} reboot --firmware-setup";
-          format = "<span weight='bold'>󱄌</span>";
+          format = "󱄌";
         };
       };
     };
@@ -149,6 +150,17 @@ in {
         font-family: "${config.stylix.fonts.sansSerif.name}";
         font-size: 10pt;
         min-width: 9em;
+      }
+      #group-power-element {
+        padding: 0.2em 0.4em;
+        color: @base04;
+        font-size: 13pt;
+        font-weight: 600;
+      }
+      #group-power-element:hover {
+        background-color: alpha(@base0D, 0.3);
+        color: @base07;
+        font-weight: 800;
       }
     '';
   };
