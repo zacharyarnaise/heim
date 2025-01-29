@@ -11,18 +11,21 @@
     ./zoxide.nix
   ];
 
-  home.packages = with pkgs; [
-    bc
-    btop
-    coreutils
-    fd
-    file
-    ncdu
-    jq
-    wget
-
-    p7zip
-    unzip
-    zip
-  ];
+  home.packages = builtins.attrValues {
+    inherit
+      (pkgs)
+      bc
+      btop
+      fd
+      file
+      ncdu
+      jq
+      sysz
+      thefuck
+      wget
+      p7zip
+      unzip
+      zip
+      ;
+  };
 }

@@ -1,4 +1,8 @@
-{outputs, ...}: {
+{
+  outputs,
+  pkgs,
+  ...
+}: {
   imports =
     [
       ./home-manager.nix
@@ -6,6 +10,7 @@
       ./boot.nix
       ./hardening.nix
       ./locale.nix
+      ./networking.nix
       ./nix.nix
       ./openssh.nix
       ./secrets.nix
@@ -16,6 +21,14 @@
   nixpkgs = {
     overlays = builtins.attrValues outputs.overlays;
     config.allowUnfree = true;
+  };
+
+  environment.systemPackages = builtins.attrValues {
+    inherit
+      (pkgs)
+      coreutils
+      pciutils
+      ;
   };
 
   programs.nh = {

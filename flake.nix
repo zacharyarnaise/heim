@@ -3,8 +3,10 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
-    nixos-hardware.url = "github:nixos/nixos-hardware";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    # Inputs used by all configurations
+    nixos-hardware.url = "github:nixos/nixos-hardware";
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -18,13 +20,19 @@
       url = "github:mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
     secrets = {
       type = "git";
       url = "git+ssh://git@github.com/zacharyarnaise/heim-secrets.git";
       flake = true;
       ref = "main";
       shallow = true;
+    };
+
+    # Desktop specific inputs
+    stylix.url = "github:danth/stylix/release-24.11";
+    tinted-theming = {
+      url = "github:tinted-theming/schemes";
+      flake = false;
     };
   };
 
@@ -35,8 +43,9 @@
     ...
   } @ inputs: let
     inherit (self) outputs;
-    lib =
-      nixpkgs.lib.extend (l: _: {extras = import ./lib.nix;}) // home-manager.lib;
+
+    # nixpkgs.lib.extend (l: _: {extras = import ./lib.nix;}) // home-manager.lib;
+    lib = nixpkgs.lib // home-manager.lib;
 
     supportedSystems = [
       "x86_64-linux"
@@ -58,7 +67,7 @@
       };
     mkHome = modules: systemName:
       lib.homeManagerConfiguration {
-        inherit modules;
+        modules = [./home/nixpkgs.nix] ++ modules;
         pkgs = pkgsFor.${systemName};
         extraSpecialArgs = specialArgs;
       };

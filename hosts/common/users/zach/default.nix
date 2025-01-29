@@ -16,6 +16,7 @@ in {
 
   users.groups.zach = {};
   users.users.zach = {
+    packages = [pkgs.home-manager];
     isNormalUser = true;
     shell = pkgs.zsh;
     group = "zach";
@@ -34,5 +35,9 @@ in {
     hashedPasswordFile = secrets."passwords/zach".path;
     openssh.authorizedKeys.keys =
       lib.splitString "\n" (builtins.readFile "${secretsDir}/users/zach/id_ed25519.pub");
+  };
+
+  security.pam.services = {
+    hyprlock = {};
   };
 }

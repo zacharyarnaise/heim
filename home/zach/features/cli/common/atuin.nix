@@ -18,6 +18,7 @@
 
       history_filter = [
         "^base64"
+        "clear"
       ];
     };
   };

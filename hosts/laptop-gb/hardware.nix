@@ -3,11 +3,11 @@
   lib,
   ...
 }: {
-  imports = with inputs.nixos-hardware.nixosModules; [
-    common-cpu-amd
-    common-cpu-amd-pstate
-    common-gpu-amd
-    common-pc-laptop-ssd
+  imports = [
+    inputs.nixos-hardware.nixosModules.common-cpu-amd
+    inputs.nixos-hardware.nixosModules.common-cpu-amd-pstate
+    inputs.nixos-hardware.nixosModules.common-gpu-amd
+    inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
 
     ./disko.nix
   ];
@@ -22,6 +22,13 @@
     kernelModules = ["kvm-amd"];
     # No ticks on cores 4-7, improves battery life
     kernelParams = ["nohz_full=4-7"];
+  };
+
+  hardware = {
+    amdgpu = {
+      initrd.enable = true;
+      legacySupport.enable = lib.mkForce false;
+    };
   };
 
   nix.settings.max-jobs = 8;

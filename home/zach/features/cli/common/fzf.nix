@@ -7,7 +7,10 @@
   programs.fzf = {
     enable = true;
 
-    defaultOptions = ["--color 16"];
+    defaultOptions = [
+      "--color 16"
+      "--border"
+    ];
   };
 
   programs.zsh.plugins = lib.mkIf config.programs.zsh.enable [
