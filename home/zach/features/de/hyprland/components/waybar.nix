@@ -34,7 +34,7 @@
           format = "󰏈 {temperatureC}°C";
         };
         cpu = {
-          format = " {usage}%";
+          format = " {usage:3}%";
           interval = 5;
         };
         memory = {
@@ -82,9 +82,9 @@
         border: 0.05em solid @base0C;
       }
 
-      #cpu, #memory {
-        margin-left: 0.05em;
-        margin-right: 0.55em;
+      #temperature, #cpu, #memory {
+        margin: 0 0.5em 0 0.5em;
+        padding: 0 0.1em 0 0.1em;
       }
       #clock {
         margin-top: 0;
@@ -94,10 +94,11 @@
       }
 
       #clock {
+        min-width: 4.5em;
         font-size: 11pt;
         font-weight: 600;
-        padding-right: 0.9em;
-        padding-left: 0.9em;
+        padding-right: 0.8em;
+        padding-left: 0.8em;
       }
     '';
   };
