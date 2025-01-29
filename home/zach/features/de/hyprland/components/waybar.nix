@@ -151,13 +151,13 @@ in {
         font-size: 10pt;
         min-width: 9em;
       }
-      #group-power-element {
+      .group-power-element {
         padding: 0.2em 0.4em;
         color: @base04;
         font-size: 13pt;
         font-weight: 600;
       }
-      #group-power-element:hover {
+      .group-power-element:hover {
         background-color: alpha(@base0D, 0.3);
         color: @base07;
         font-weight: 800;
