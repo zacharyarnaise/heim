@@ -8,10 +8,4 @@
       };
     };
   };
-
-  modifications = final: prev: {
-    hyprland = inputs.nixpkgs-unstable.legacyPackages."${final.system}".hyprland.override {
-      enableXWayland = false;
-    };
-  };
 }

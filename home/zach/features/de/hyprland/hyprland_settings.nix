@@ -3,7 +3,7 @@
   lib,
   ...
 }: let
-  hyprctl = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl";
+  hyprctl = "${config.wayland.windowManager.hyprland.finalPackage}/bin/hyprctl";
   hyprlock = "${config.programs.hyprlock.package}/bin/hyprlock";
 in {
   wayland.windowManager.hyprland.settings = {
@@ -12,7 +12,6 @@ in {
       "${hyprctl} setcursor ${config.stylix.cursor.name} ${toString config.stylix.cursor.size}"
     ];
     debug.disable_logs = false;
-    xwayland.enabled = false;
 
     general = {
       layout = "dwindle";
