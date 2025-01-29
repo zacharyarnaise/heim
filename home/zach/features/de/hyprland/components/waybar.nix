@@ -31,14 +31,14 @@
         temperature = {
           interval = 5;
           hwmon-path = "/sys/class/hwmon/hwmon5/temp1_input";
-          format = "󰏈 {temperatureC}°C";
+          format = "󰏈 {temperatureC:3}°C";
         };
         cpu = {
           format = " {usage:3}%";
           interval = 5;
         };
         memory = {
-          format = " {used:0.1f}G/{total:0.0f}G";
+          format = " {used:00.1f}G/{total:0.0f}G";
           interval = 5;
         };
         clock = {
@@ -79,7 +79,7 @@
         margin-right: -0.65em;
       }
       window#waybar {
-        border: 0.05em solid @base0C;
+        border: 0.05em solid @base0D;
       }
 
       #temperature, #cpu, #memory {
@@ -90,7 +90,7 @@
         margin-top: 0;
         margin-bottom: 0;
         border-radius: 0.6em;
-        background-color: alpha(@base0C, 0.9);
+        background-color: alpha(@base0D, 0.9);
       }
 
       #clock {
