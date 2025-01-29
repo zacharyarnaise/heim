@@ -80,14 +80,8 @@
       window#waybar, tooltip {
         border-radius: 0.5em;
       }
-      .modules-left {
-        margin-left: -0.65em;
-      }
       .modules-center {
         padding-right: 2em;
-      }
-      .modules-right {
-        margin-right: -0.65em;
       }
       window#waybar {
         border: 0.05em solid @base0D;
@@ -112,7 +106,6 @@
       }
 
       #custom-hostname {
-        min-width: 10em;
         font-family: "${config.stylix.fonts.sansSerif.name}";
         font-size: 10pt;
       }
