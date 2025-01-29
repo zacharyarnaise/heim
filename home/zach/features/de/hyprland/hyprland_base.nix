@@ -7,6 +7,7 @@
 in {
   wayland.windowManager.hyprland = {
     enable = true;
+    package = pkgs.unstable.hyprland;
 
     xwayland.enable = false;
     settings.xwayland.enabled = false;
