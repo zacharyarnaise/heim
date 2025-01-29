@@ -15,6 +15,7 @@
     QT_QPA_PLATFORM = "wayland";
     SDL_VIDEODRIVER = "wayland";
     XDG_SESSION_TYPE = "wayland";
+    XCURSOR_SIZE = "24";
   };
 
   xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-wlr];
