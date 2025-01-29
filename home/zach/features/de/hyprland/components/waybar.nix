@@ -1,8 +1,12 @@
 {
   lib,
   config,
+  pkgs,
   ...
-}: {
+}: let
+  loginctl = "${pkgs.systemd}/bin/loginctl";
+  systemctl = "${pkgs.systemd}/bin/systemctl";
+in {
   programs.waybar = {
     enable = true;
     systemd.enable = true;
@@ -26,7 +30,7 @@
           "memory"
         ];
         modules-right = [
-          "custom/hostname"
+          "group/power"
         ];
 
         # ------------------------------- Center -------------------------------
@@ -64,9 +68,41 @@
         };
 
         # ------------------------------- Right -------------------------------
-        "custom/hostname" = {
-          exec = "echo $USER@$HOSTNAME";
-          format = "{}";
+        "custom/hostname".exec = "echo $USER@$HOSTNAME";
+        "custom/lock" = {
+          exec = "${loginctl} lock-session";
+          format = "<span weight='bold'>󰌾</span>";
+        };
+        "custom/sleep" = {
+          exec = "${systemctl} sleep";
+          format = "<span weight='bold'>󰤄</span>";
+        };
+        "custom/poweroff" = {
+          exec = "${systemctl} poweroff";
+          format = "<span weight='bold'>󰐥</span>";
+        };
+        "custom/reboot" = {
+          exec = "${systemctl} reboot";
+          format = "<span weight='bold'>󰜉</span>";
+        };
+        "custom/reboot-uefi" = {
+          exec = "${systemctl} reboot --firmware-setup";
+          format = "<span weight='bold'>󱄌</span>";
+        };
+        "group/power" = {
+          orientation = "vertical";
+          drawer = {
+            transition-duration = 400;
+            transition-left-to-right = false;
+          };
+          modules = [
+            "custom/hostname"
+            "custom/lock"
+            "custom/sleep"
+            "custom/poweroff"
+            "custom/reboot"
+            "custom/reboot-uefi"
+          ];
         };
       };
     };
