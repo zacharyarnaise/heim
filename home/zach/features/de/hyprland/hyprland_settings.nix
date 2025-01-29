@@ -172,12 +172,13 @@ in {
         ",addreserved,${toString waybarSpace.top},${toString waybarSpace.bottom},${toString waybarSpace.left},${toString waybarSpace.right}"
       ]
       ++ (map (
-        m: "${m.name},${
-          if m.enabled
-          then "${toString m.width}x${toString m.height}@${toString m.refreshRate},${m.position},1"
-          else "disable"
-        }"
-      ) (config.monitors));
+          m: "${m.name},${
+            if m.enabled
+            then "${toString m.width}x${toString m.height}@${toString m.refreshRate},${m.position},1"
+            else "disable"
+          }"
+        )
+        config.monitors);
 
     workspace = map (m: "name:${m.workspace},monitor:${m.name}") (
       lib.filter (m: m.enabled && m.workspace != null) config.monitors
