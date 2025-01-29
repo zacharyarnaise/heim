@@ -19,12 +19,11 @@ in {
   };
 
   xdg.portal = let
-    hyprlandFinal = config.wayland.windowManager.hyprland.finalPackage;
     xdph = pkgs.xdg-desktop-portal-hyprland.override {
-      hyprland = hyprlandFinal;
+      hyprland = hyprlandOverride;
     };
   in {
-    configPackages = [hyprlandFinal];
+    configPackages = [hyprlandOverride];
     extraPortals = [xdph];
   };
 }

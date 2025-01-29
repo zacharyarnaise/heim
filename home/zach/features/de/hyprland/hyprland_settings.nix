@@ -12,6 +12,7 @@ in {
       "${hyprctl} setcursor ${config.stylix.cursor.name} ${toString config.stylix.cursor.size}"
     ];
     debug.disable_logs = false;
+    xwayland.enabled = false;
 
     general = {
       layout = "dwindle";
