@@ -51,7 +51,7 @@
       light = "Papirus-Light";
     };
     opacity = {
-      desktop = 0.7; # bars/widgets
+      desktop = 0.6; # bars/widgets
     };
   };
 }

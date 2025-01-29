@@ -115,6 +115,23 @@ in {
           tooltip = false;
         };
       };
+
+      workspacesBar = {
+        position = "bottom";
+        height = 28;
+        width = 100;
+        margin = "8";
+        mode = "dock";
+        exclusive = true;
+        passthrough = false;
+
+        modules-center = ["hyprland/workspaces"];
+        "hyprland/workspaces" = {
+          format = "{name}";
+          on-click = "activate";
+          disable-scroll = true;
+        };
+      };
     };
 
     style = lib.mkAfter ''
