@@ -2,15 +2,14 @@
   config,
   pkgs,
   ...
-}: {
-  xdg.portal = {
-    configPackages = [config.wayland.windowManager.hyprland.finalPackage];
-    extraPortals = [pkgs.xdg-desktop-portal-hyprland];
+}: let
+  hyprlandOverride = pkgs.hyprland.override {
+    hyprcursor = pkgs.unstable.hyprcursor;
   };
-
+in {
   wayland.windowManager.hyprland = {
     enable = true;
-    package = pkgs.hyprland;
+    package = hyprlandOverride;
 
     xwayland.enable = false;
     settings.xwayland.enabled = false;
@@ -19,5 +18,14 @@
       enable = true;
       variables = ["--all"];
     };
+  };
+
+  xdg.portal = let
+    xdph = pkgs.xdg-desktop-portal-hyprland.override {
+      hyprland = config.wayland.windowManager.hyprland.finalPackage;
+    };
+  in {
+    configPackages = [config.wayland.windowManager.hyprland.finalPackage];
+    extraPortals = [xdph];
   };
 }
