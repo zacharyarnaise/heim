@@ -28,8 +28,10 @@
   # https://github.com/apognu/tuigreet/issues/68
   systemd.services.greetd.serviceConfig = {
     Type = "idle";
+    StandardOutput = "tty";
     StandardError = "journal";
     TTYReset = true;
+    TTYVHangup = true;
     TTYVTDisallocate = true;
   };
 
