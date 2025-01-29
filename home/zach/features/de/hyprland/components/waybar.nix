@@ -26,19 +26,21 @@
           "memory"
         ];
         modules-right = [
+          "custom/hostname"
         ];
 
+        # ------------------------------- Center -------------------------------
         temperature = {
           interval = 5;
           hwmon-path = "/sys/class/hwmon/hwmon5/temp1_input";
-          format = "󰏈 {temperatureC:3}°C";
+          format = "<span weight='bold'>󰏈</span> {temperatureC:3}°C";
         };
         cpu = {
-          format = " {usage:3}%";
+          format = "<span weight='bold'></span> {usage:3}%";
           interval = 5;
         };
         memory = {
-          format = " {used:4.1f}G/{total:.2g}G";
+          format = "<span weight='bold'></span> {used:4.1f}G/{total:.2g}G";
           interval = 10;
         };
         clock = {
@@ -59,6 +61,12 @@
               today = "<span color='#ff6699'><b><u>{}</u></b></span>";
             };
           };
+        };
+
+        # ------------------------------- Right -------------------------------
+        "custom/hostname" = {
+          exec = "echo $USER@$HOST";
+          format = "<span weight='bold'></span> {}";
         };
       };
     };
@@ -91,7 +99,7 @@
       #memory {
         margin-left: 0.6em;
       }
-      #clock {
+      #clock, #custom-hostname {
         border-radius: 0.6em;
         background-color: alpha(@base0D, 0.9);
       }
