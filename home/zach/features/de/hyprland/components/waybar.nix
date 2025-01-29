@@ -38,8 +38,8 @@
           interval = 5;
         };
         memory = {
-          format = " {used:00.1f}G/{total:0.0f}G";
-          interval = 5;
+          format = " {used:.2g}G/{total:.2g}G";
+          interval = 10;
         };
         clock = {
           interval = 1;
