@@ -12,7 +12,7 @@
     enable = true;
     package = pkgs.hyprland;
 
-    enableXWayland = false;
+    xwayland = false;
     settings.xwayland.enabled = false;
 
     systemd = {
