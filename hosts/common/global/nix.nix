@@ -27,7 +27,7 @@
 
       connect-timeout = 5;
       log-lines = 25;
-      max-silent-time = 300;
+      max-silent-time = 600;
       warn-dirty = false;
 
       experimental-features = [
