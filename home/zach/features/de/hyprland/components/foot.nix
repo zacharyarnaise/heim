@@ -6,7 +6,6 @@
     settings = {
       main = {
         shell = "${pkgs.zsh}/bin/zsh";
-        dpi-aware = "yes";
       };
       cursor = {
         style = "block";
