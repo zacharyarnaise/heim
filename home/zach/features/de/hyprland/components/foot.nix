@@ -9,6 +9,7 @@
       };
       cursor = {
         style = "block";
+        beam-thickness = 2;
         blink = "yes";
       };
       url.protocols = "http,https";
