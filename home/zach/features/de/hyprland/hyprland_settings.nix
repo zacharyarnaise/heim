@@ -11,7 +11,6 @@ in {
       "${hyprlock}"
       "${hyprctl} setcursor ${config.stylix.cursor.name} ${toString config.stylix.cursor.size}"
     ];
-    debug.disable_logs = false;
 
     general = {
       layout = "dwindle";
