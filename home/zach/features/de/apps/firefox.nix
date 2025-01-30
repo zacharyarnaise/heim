@@ -9,7 +9,7 @@ in {
     enable = true;
     package = pkgs.firefox-bin;
 
-    polices = {
+    policies = {
       NoDefaultBookmarks = true;
     };
 
