@@ -1,0 +1,28 @@
+{pkgs, ...}: {
+  programs.foot = {
+    enable = true;
+    server.enable = true;
+
+    settings = {
+      main = {
+        shell = "${pkgs.zsh}/bin/zsh";
+        dpi-aware = "yes";
+      };
+      cursor = {
+        style = "block";
+        blink = "yes";
+      };
+      url.protocols = "http,https";
+      mouse.alternate-scroll-mode = "yes";
+    };
+  };
+
+  xdg.mimeApps = {
+    associations.added = {
+      "x-scheme-handler/terminal" = "foot.desktop";
+    };
+    defaultApplications = {
+      "x-scheme-handler/terminal" = "foot.desktop";
+    };
+  };
+}

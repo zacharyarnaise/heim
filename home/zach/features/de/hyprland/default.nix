@@ -8,7 +8,7 @@
     ./hyprlock.nix
     ./hyprpaper.nix
 
+    ./components/foot.nix
     ./components/waybar.nix
-    ./components/ghostty.nix
   ];
 }

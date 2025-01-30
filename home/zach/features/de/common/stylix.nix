@@ -52,6 +52,7 @@
     };
     opacity = {
       desktop = 0.6; # bars/widgets
+      terminal = 0.75;
     };
   };
 }
