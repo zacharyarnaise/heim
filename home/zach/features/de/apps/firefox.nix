@@ -220,12 +220,14 @@ in {
         "security.ssl.treat_unsafe_negotiation_as_broken" = true;
         "security.tls.version.enable-deprecated" = false;
         "security.xfocsp.errorReporting.enabled" = false;
+        "signon.management.page.breach-alerts.enabled" = false;
 
         # Misc.
         "browser.contentblocking.category" = "standard";
         "browser.ctrlTab.recentlyUsedOrder" = false;
         "browser.download.useDownloadDir" = false;
         "browser.download.manager.addToRecentDocs" = false;
+        "browser.meta_refresh_when_inactive.disabled" = true;
         "browser.quitShortcut.disabled" = true;
         "browser.search.suggest.enabled" = false;
         "browser.tabs.firefox-view.ui-state.recentlyclosed.open" = false;

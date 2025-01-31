@@ -40,12 +40,15 @@ in {
       # rounding_power = 3.0;
       dim_inactive = true;
       dim_strength = 0.25;
+      active_opacity = config.stylix.opacity.applications;
+      inactive_opacity = config.stylix.opacity.applications * 0.75;
+      fullscreen_opacity = 1.0;
 
       blur = {
         enabled = true;
         popups = true;
         size = 8;
-        passes = 4;
+        passes = 2;
         contrast = 1.0;
         brightness = 0.9;
         vibrancy = 0.2;
@@ -134,7 +137,6 @@ in {
       disable_hyprland_logo = true;
       disable_splash_rendering = true;
       force_default_wallpaper = 0;
-      # background_color = "rgb(000000)";
       vfr = true;
       vrr = 1;
       mouse_move_enables_dpms = true;
