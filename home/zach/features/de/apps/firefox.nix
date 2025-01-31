@@ -101,6 +101,7 @@ in {
         "browser.translations.automaticallyPopup" = false;
         "browser.translations.panelShown" = true;
         "browser.uitour.enabled" = false;
+        "devtools.everOpened" = true;
         "extensions.shield-recipe-client.enabled" = false;
         "extensions.update.enabled" = false;
         "messaging-system.rsexperimentloader.enabled" = false;
@@ -108,7 +109,36 @@ in {
         "signon.firefoxRelay.feature" = "disabled";
         "trailhead.firstrun.didSeeAboutWelcome" = true;
 
-        # Firefox Home + Suggestions
+        # URL bar
+        "browser.urlbar.addons.featureGate" = false;
+        "browser.urlbar.fakespot.featureGate" = false;
+        "browser.urlbar.pocket.featureGate" = false;
+        "browser.urlbar.yelp.featureGate" = false;
+        "browser.urlbar.weather.featureGate" = false;
+        "browser.urlbar.showSearchSuggestionsFirst" = false;
+        "browser.urlbar.speculativeConnect.enabled" = false;
+        "browser.urlbar.sponsoredTopSites" = false;
+        "browser.urlbar.suggest.addons" = false;
+        "browser.urlbar.suggest.engines" = false;
+        "browser.urlbar.suggest.fakespot" = false;
+        "browser.urlbar.suggest.mdn" = false;
+        "browser.urlbar.suggest.pocket" = false;
+        "browser.urlbar.suggest.topsites" = false;
+        "browser.urlbar.suggest.trending" = false;
+        "browser.urlbar.suggest.weather" = false;
+        "browser.urlbar.suggest.yelp" = false;
+        "browser.urlbar.trending.featureGate" = false;
+        "browser.urlbar.suggest.quicksuggest.nonsponsored" = false;
+        "browser.urlbar.suggest.quicksuggest.sponsored" = false;
+        "browser.urlbar.quicksuggest.dataCollection.enabled" = false;
+        "browser.urlbar.suggest.calculator" = true;
+        "browser.urlbar.unitConversion.enabled" = true;
+
+        # Homepage
+        "browser.startup.blankWindow" = true;
+        "browser.startup.homepage" = "about:home";
+        "browser.startup.page" = 0;
+        "startup.homepage_welcome_url" = "";
         "browser.aboutwelcome.enabled" = false;
         "browser.newtabpage.enabled" = false;
         "browser.newtabpage.activity-stream.showSearch" = false;
@@ -117,37 +147,16 @@ in {
         "browser.newtabpage.activity-stream.feeds.section.topstories" = false;
         "browser.newtabpage.activity-stream.showSponsored" = false;
         "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
-        "browser.urlbar.addons.featureGate" = false;
-        "browser.urlbar.fakespot.featureGate" = false;
-        "browser.urlbar.mdn.featureGate" = false;
-        "browser.urlbar.pocket.featureGate" = false;
-        "browser.urlbar.yelp.featureGate" = false;
-        "browser.urlbar.weather.featureGate" = false;
-        "browser.urlbar.shortcuts.bookmarks" = false;
-        "browser.urlbar.shortcuts.history" = false;
-        "browser.urlbar.shortcuts.tabs" = false;
-        "browser.urlbar.showSearchSuggestionsFirst" = false;
-        "browser.urlbar.speculativeConnect.enabled" = false;
-        "browser.urlbar.suggest.quicksuggest.nonsponsored" = false;
-        "browser.urlbar.suggest.quicksuggest.sponsored" = false;
-        "browser.urlbar.quicksuggest.dataCollection.enabled" = false;
-        "browser.urlbar.suggest.calculator" = true;
-        "browser.urlbar.unitConversion.enabled" = true;
-
-        # Homepage
-
-        "browser.startup.blankWindow" = true;
-        "browser.startup.homepage" = "about:home";
-        "browser.startup.page" = 0;
-        "startup.homepage_welcome_url" = "";
 
         # DevTools
         "devtools.cache.disabled" = true;
         "devtools.debugger.remote-enabled" = false;
-        "devtools.everOpened" = true;
+        "devtools.inspector.simple-highlighters-reduced-motion" = true;
+        "devtools.inspector.simple-highlighters.message-dismisser" = true;
         "devtools.memory.enabled" = false;
         "devtools.popup.disable_autohide" = true;
         "devtools.popups.debug" = true;
+        "devtools.toolbox.selectedTool" = "netmonitor";
         "devtools.theme" = "dark";
 
         # DNS-over-HTTPS
@@ -189,12 +198,11 @@ in {
         "browser.privatebrowsing.preserveClipboard" = false;
         "browser.search.update" = false;
         "browser.send_pings" = false;
+        "browser.topsites.component.enabled" = false;
+        "browser.topsites.contile.enabled" = false;
         "browser.translations.enabled" = false;
         "browser.urlbar.dnsResolveSingleWordsAfterSearch" = 0;
-        "browser.urlbar.suggest.addons" = false;
         "browser.urlbar.suggest.recentsearches" = false;
-        "browser.urlbar.suggest.trending" = false;
-        "browser.urlbar.suggest.weather" = false;
         "clipboard.copyPrivateDataToClipboardCloudOrHistory" = false;
         "dom.security.https_only_mode" = true;
         "dom.security.https_only_mode_send_http_background_request" = false;
@@ -223,7 +231,7 @@ in {
         "signon.management.page.breach-alerts.enabled" = false;
 
         # Misc.
-        "browser.contentblocking.category" = "standard";
+        "browser.contentblocking.category" = "strict";
         "browser.ctrlTab.recentlyUsedOrder" = false;
         "browser.download.useDownloadDir" = false;
         "browser.download.manager.addToRecentDocs" = false;
@@ -247,10 +255,10 @@ in {
         "widget.use-xdg-desktop-portal.file-picker" = 1;
 
         # Layout
+        "browser.compactmode.show" = true;
         "browser.tabs.drawInTitlebar" = false;
         "browser.tabs.inTitlebar" = 1;
         "browser.uidensity" = 1;
-        "browser.urlbar.hideGoButton" = true;
         "ui.prefersReducedMotion" = 1;
         "ui.systemUsesDarkTheme" = 1;
         "browser.uiCustomization.state" = builtins.toJSON {
