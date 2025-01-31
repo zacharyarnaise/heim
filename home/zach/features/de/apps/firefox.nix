@@ -107,13 +107,20 @@ in {
         "trailhead.firstrun.didSeeAboutWelcome" = true;
 
         # Firefox Home + Suggestions
+        "browser.aboutwelcome.enabled" = false;
         "browser.newtabpage.enabled" = false;
         "browser.newtabpage.activity-stream.showSearch" = false;
         "browser.newtabpage.activity-stream.feeds.topsites" = false;
         "browser.newtabpage.activity-stream.feeds.section.highlights" = false;
         "browser.newtabpage.activity-stream.feeds.section.topstories" = false;
-        "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
         "browser.newtabpage.activity-stream.showSponsored" = false;
+        "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
+        "browser.urlbar.addons.featureGate" = false;
+        "browser.urlbar.fakespot.featureGate" = false;
+        "browser.urlbar.mdn.featureGate" = false;
+        "browser.urlbar.pocket.featureGate" = false;
+        "browser.urlbar.yelp.featureGate" = false;
+        "browser.urlbar.weather.featureGate" = false;
         "browser.urlbar.shortcuts.bookmarks" = false;
         "browser.urlbar.shortcuts.history" = false;
         "browser.urlbar.shortcuts.tabs" = false;
@@ -126,13 +133,15 @@ in {
         "browser.urlbar.unitConversion.enabled" = true;
 
         # Homepage
+
         "browser.startup.blankWindow" = true;
         "browser.startup.homepage" = "about:home";
+        "browser.startup.page" = 0;
         "startup.homepage_welcome_url" = "";
-        "browser.aboutwelcome.enabled" = false;
 
         # DevTools
         "devtools.cache.disabled" = true;
+        "devtools.debugger.remote-enabled" = false;
         "devtools.everOpened" = true;
         "devtools.memory.enabled" = false;
         "devtools.popup.disable_autohide" = true;
@@ -147,14 +156,14 @@ in {
         "app.normandy.enabled" = false;
         "app.normandy.first_run" = false;
         "app.shield.optoutstudies.enabled" = false;
-        "browser.crashReports.unsubmittedCheck.enabled" = false;
-        "browser.discovery.containers.enabled" = false;
-        "browser.discovery.enabled" = false;
+        "browser.tabs.crashReporting.sendReport" = false;
+        "browser.crashReports.unsubmittedCheck.autoSubmit2" = false;
         "browser.newtabpage.activity-stream.feeds.telemetry" = false;
         "browser.newtabpage.activity-stream.telemetry" = false;
         "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons" = false;
         "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features" = false;
         "browser.ping-centre.telemetry" = false;
+        "browser.safebrowsing.downloads.remote.enabled" = false;
         "datareporting.healthreport.service.enabled" = false;
         "datareporting.healthreport.uploadEnabled" = false;
         "datareporting.policy.dataSubmissionEnabled" = false;
@@ -162,11 +171,15 @@ in {
         "devtools.onboarding.telemetry.logged" = false;
         "toolkit.coverage.enabled" = false;
         "toolkit.coverage.opt-out" = true;
+        "toolkit.telemetry.unified" = false;
         "toolkit.telemetry.enabled" = false;
         "toolkit.telemetry.archive.enabled" = false;
+        "toolkit.telemetry.coverage.opt-out" = true;
 
         # Security / Privacy
         "accessibility.force_disabled" = 1;
+        "browser.discovery.enabled" = false;
+        "browser.discovery.containers.enabled" = false;
         "browser.helperApps.deleteTempFileOnExit" = true;
         "browser.pagethumbnails.capturing_disabled" = true;
         "browser.preferences.moreFromMozilla" = false;
@@ -182,9 +195,15 @@ in {
         "browser.urlbar.suggest.weather" = false;
         "clipboard.copyPrivateDataToClipboardCloudOrHistory" = false;
         "dom.security.https_only_mode" = true;
+        "dom.security.https_only_mode_send_http_background_request" = false;
+        "extensions.getAddons.showPane" = false;
         "extensions.htmlaboutaddons.discover.enabled" = false;
         "extensions.htmlaboutaddons.recommendations.enabled" = false;
         "extensions.pocket.enabled" = false;
+        "network.auth.subresource-http-auth-allow" = 1;
+        "network.file.disable_unc_paths" = true;
+        "network.http.referer.XOriginTrimmingPolicy" = 2;
+        "pdfjs.enableScripting" = false;
         "permissions.default.camera" = 2;
         "permissions.default.desktop-notification" = 2;
         "permissions.default.xr" = 2;
@@ -192,7 +211,10 @@ in {
         "privacy.purge_trackers.enabled" = true;
         "privacy.resistFingerprinting" = true;
         "privacy.resistFingerprinting.randomDataOnCanvasExtract" = true;
+        "security.cert_pinning.enforcement_level" = 2;
         "security.ssl.require_safe_negotiation" = true;
+        "security.tls.enable_0rtt_data" = false;
+        "security.ssl.treat_unsafe_negotiation_as_broken" = true;
         "security.tls.version.enable-deprecated" = false;
         "security.xfocsp.errorReporting.enabled" = false;
 
@@ -202,7 +224,6 @@ in {
         "browser.download.useDownloadDir" = false;
         "browser.download.manager.addToRecentDocs" = false;
         "browser.search.suggest.enabled" = false;
-        "browser.tabs.crashReporting.sendReport" = false;
         "browser.tabs.firefox-view.ui-state.recentlyclosed.open" = false;
         "browser.tabs.insertAfterCurrent" = true;
         "browser.tabs.insertAfterCurrentExceptPinned" = true;
