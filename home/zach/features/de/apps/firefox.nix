@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  config,
   ...
 }: let
   firefox-addons = inputs.firefox-addons.packages.${pkgs.system};
@@ -89,8 +90,9 @@ in {
         "browser.download.panel.shown" = true;
         "browser.feeds.showFirstRunUI" = false;
         "browser.eme.ui.firstContentShown" = true;
-        "browser.newtabpage.introShown" = true;
+        "rowser.laterrun.enabled" = false;
         "browser.messaging-system.whatsNewPanel.enabled" = false;
+        "browser.newtabpage.introShown" = true;
         "browser.onboarding.enabled" = false;
         "browser.rights.3.shown" = true;
         "browser.shell.checkDefaultBrowser" = false;
@@ -211,6 +213,7 @@ in {
         "privacy.purge_trackers.enabled" = true;
         "privacy.resistFingerprinting" = true;
         "privacy.resistFingerprinting.randomDataOnCanvasExtract" = true;
+        "privacy.webrtc.legacyGlobalIndicator" = false;
         "security.cert_pinning.enforcement_level" = 2;
         "security.ssl.require_safe_negotiation" = true;
         "security.tls.enable_0rtt_data" = false;
@@ -219,28 +222,35 @@ in {
         "security.xfocsp.errorReporting.enabled" = false;
 
         # Misc.
-        "browser.uidensity" = 1;
         "browser.contentblocking.category" = "standard";
+        "browser.ctrlTab.recentlyUsedOrder" = false;
         "browser.download.useDownloadDir" = false;
         "browser.download.manager.addToRecentDocs" = false;
+        "browser.quitShortcut.disabled" = true;
         "browser.search.suggest.enabled" = false;
         "browser.tabs.firefox-view.ui-state.recentlyclosed.open" = false;
         "browser.tabs.insertAfterCurrent" = true;
         "browser.tabs.insertAfterCurrentExceptPinned" = true;
         "browser.toolbars.bookmarks.visibility" = "always";
         "browser.touchmode.auto" = false;
-        "browser.urlbar.hideGoButton" = true;
         "media.autoplay.blocking_policy" = 2;
         "media.autoplay.default" = 5;
         "network.notify.checkForProxies" = false;
+        "general.smoothScroll" = false;
         "gfx.webrender.all" = true;
         "layers.acceleration.disabled" = false;
         "layers.acceleration.force-enabled" = true;
         "toolkit.cosmeticAnimations.enable" = false;
         "ui.osk.enabled" = false;
-        "ui.prefersReducedMotion" = 1;
+        "widget.use-xdg-desktop-portal.file-picker" = 1;
 
         # Layout
+        "browser.tabs.drawInTitlebar" = false;
+        "browser.tabs.inTitlebar" = 1;
+        "browser.uidensity" = 1;
+        "browser.urlbar.hideGoButton" = true;
+        "ui.prefersReducedMotion" = 1;
+        "ui.systemUsesDarkTheme" = 1;
         "browser.uiCustomization.state" = builtins.toJSON {
           currentVersion = 21;
           newElementCount = 3;
@@ -265,5 +275,10 @@ in {
     "text/xml" = ["firefox.desktop"];
     "x-scheme-handler/http" = ["firefox.desktop"];
     "x-scheme-handler/https" = ["firefox.desktop"];
+  };
+
+  # Until I find a cleaner way to manage my bookmarks and stuff
+  home.persistence = {
+    "/persist/${config.home.homeDirectory}".directories = [".mozilla/firefox"];
   };
 }
