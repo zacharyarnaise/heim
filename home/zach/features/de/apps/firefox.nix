@@ -281,6 +281,9 @@ in {
 
   # Until I find a cleaner way to manage my bookmarks and stuff
   home.persistence = {
-    "/persist/${config.home.homeDirectory}".directories = [".mozilla/firefox"];
+    "/persist/${config.home.homeDirectory}" = {
+      allowOther = false;
+      directories = [".mozilla/firefox"];
+    };
   };
 }
