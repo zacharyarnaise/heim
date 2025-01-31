@@ -35,7 +35,7 @@ in {
       "noanim,wallpaper"
     ];
     windowrulev2 = [
-      "opacity 1.0 override 1.0 override,^(firefox)$"
+      "opacity 1.0 override 0.9 override, class:^(firefox)$"
 
       # make pop-up file dialogs floating, centred, and pinned
       "float, title:(Open|Progress|Save File)"
