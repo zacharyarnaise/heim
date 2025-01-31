@@ -11,7 +11,6 @@ in {
       "${hyprlock}"
       "${hyprctl} setcursor ${config.stylix.cursor.name} ${toString config.stylix.cursor.size}"
     ];
-    debug.disable_logs = false;
 
     general = {
       layout = "dwindle";
@@ -35,18 +34,32 @@ in {
       "ignorezero,waybar"
       "noanim,wallpaper"
     ];
+    windowrulev2 = [
+      "opacity 1.0 override 0.9 override, class:^(firefox)$"
+
+      # make pop-up file dialogs floating, centred, and pinned
+      "float, title:(Open|Progress|Save File)"
+      "center, title:(Open|Progress|Save File)"
+      "pin, title:(Open|Progress|Save File)"
+      "float, class:(xdg-desktop-portal-gtk)"
+      "center, class:(xdg-desktop-portal-gtk)"
+      "pin, class:(xdg-desktop-portal-gtk)"
+    ];
 
     decoration = {
       rounding = 8;
       # rounding_power = 3.0;
       dim_inactive = true;
       dim_strength = 0.25;
+      active_opacity = config.stylix.opacity.applications;
+      inactive_opacity = config.stylix.opacity.applications * 0.75;
+      fullscreen_opacity = 1.0;
 
       blur = {
         enabled = true;
         popups = true;
         size = 8;
-        passes = 4;
+        passes = 2;
         contrast = 1.0;
         brightness = 0.9;
         vibrancy = 0.2;
@@ -135,7 +148,6 @@ in {
       disable_hyprland_logo = true;
       disable_splash_rendering = true;
       force_default_wallpaper = 0;
-      # background_color = "rgb(000000)";
       vfr = true;
       vrr = 1;
       mouse_move_enables_dpms = true;

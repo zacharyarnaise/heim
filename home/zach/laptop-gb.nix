@@ -4,6 +4,7 @@
 
     ./features/de/common
     ./features/de/hyprland
+    ./features/de/apps
   ];
 
   monitors = [

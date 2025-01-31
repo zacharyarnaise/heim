@@ -8,14 +8,14 @@
   stylix = {
     enable = true;
 
-    base16Scheme = "${inputs.tinted-theming}/base16/tokyo-night-moon.yaml";
+    base16Scheme = "${inputs.tinted-theming}/base16/pasque.yaml";
     image = ../../../assets/13.jpeg;
     polarity = "dark";
     cursor = {
       package = pkgs.catppuccin-cursors.mochaDark;
       name = "catppuccin-mocha-dark-cursors";
       size = 32;
-      xcursor-size = 24;
+      xcursor-size = 16;
     };
     fonts = {
       emoji = {
@@ -40,8 +40,8 @@
       sizes = {
         applications = 12;
         desktop = 11;
-        popups = 12;
-        terminal = 14;
+        popups = 11;
+        terminal = 12;
       };
     };
     iconTheme = {
@@ -51,8 +51,13 @@
       light = "Papirus-Light";
     };
     opacity = {
-      desktop = 0.5; # bars/widgets
-      terminal = 0.7;
+      applications = 0.9;
+      desktop = 0.4;
+      terminal = 0.5;
     };
+    targets = {
+      # https://github.com/danth/stylix/issues/253
+      gnome.enable = true;
+    };    
   };
 }
