@@ -51,6 +51,7 @@ in {
       # rounding_power = 3.0;
       dim_inactive = true;
       dim_strength = 0.25;
+      active_opacity = config.stylix.opacity.applications;
       inactive_opacity = config.stylix.opacity.applications * 0.75;
       fullscreen_opacity = 1.0;
 
