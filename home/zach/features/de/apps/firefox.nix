@@ -194,7 +194,6 @@ in {
         "privacy.donottrackheader.enabled" = true;
         "privacy.donottrackheader.value" = 1;
         "privacy.purge_trackers.enabled" = true;
-        "privacy.resistFingerprinting" = true;
         "security.cert_pinning.enforcement_level" = 2;
         "security.ssl.require_safe_negotiation" = true;
         "security.tls.enable_0rtt_data" = false;
