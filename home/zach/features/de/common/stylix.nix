@@ -58,6 +58,6 @@
     targets = {
       # https://github.com/danth/stylix/issues/253
       gnome.enable = true;
-    };    
+    };
   };
 }
