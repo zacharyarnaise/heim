@@ -12,7 +12,7 @@
 
     settings = {
       accept-flake-config = true;
-      auto-optimise-store = true;
+      auto-optimise-sotre = lib.mkDefault false;
       allow-import-from-derivation = lib.mkDefault false;
       allowed-users = lib.mkDefault [""]; # Trusted users are always allowed to connect
       trusted-users = lib.mkForce ["@wheel"];
