@@ -88,22 +88,17 @@ in {
         "browser.bookmarks.addedImportButton" = true;
         "browser.disableResetPrompt" = true;
         "browser.download.panel.shown" = true;
-        "browser.feeds.showFirstRunUI" = false;
         "browser.eme.ui.firstContentShown" = true;
         "rowser.laterrun.enabled" = false;
-        "browser.messaging-system.whatsNewPanel.enabled" = false;
-        "browser.newtabpage.introShown" = true;
-        "browser.onboarding.enabled" = false;
-        "browser.rights.3.shown" = true;
+        "browser.preonboarding.enabled" = false;
         "browser.shell.checkDefaultBrowser" = false;
-        "browser.shell.defaultBrowserCheckCount" = 1;
         "browser.startup.firstrunSkipsHomepage" = true;
         "browser.translations.automaticallyPopup" = false;
-        "browser.translations.panelShown" = true;
         "browser.uitour.enabled" = false;
         "devtools.everOpened" = true;
-        "extensions.shield-recipe-client.enabled" = false;
+        "extensions.update.autoUpdateDefault" = false;
         "extensions.update.enabled" = false;
+        "messaging-system.askForFeedback" = false;
         "messaging-system.rsexperimentloader.enabled" = false;
         "privacy.globalprivacycontrol.was_ever_enabled" = true;
         "signon.firefoxRelay.feature" = "disabled";
@@ -136,23 +131,16 @@ in {
 
         # Homepage
         "browser.startup.blankWindow" = true;
-        "browser.startup.homepage" = "about:home";
         "browser.startup.page" = 0;
         "startup.homepage_welcome_url" = "";
         "browser.aboutwelcome.enabled" = false;
         "browser.newtabpage.enabled" = false;
-        "browser.newtabpage.activity-stream.showSearch" = false;
-        "browser.newtabpage.activity-stream.feeds.topsites" = false;
-        "browser.newtabpage.activity-stream.feeds.section.highlights" = false;
-        "browser.newtabpage.activity-stream.feeds.section.topstories" = false;
-        "browser.newtabpage.activity-stream.showSponsored" = false;
-        "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
 
         # DevTools
         "devtools.cache.disabled" = true;
         "devtools.debugger.remote-enabled" = false;
         "devtools.inspector.simple-highlighters-reduced-motion" = true;
-        "devtools.inspector.simple-highlighters.message-dismisser" = true;
+        "devtools.inspector.simple-highlighters.message-dismissed" = true;
         "devtools.memory.enabled" = false;
         "devtools.popup.disable_autohide" = true;
         "devtools.popups.debug" = true;
@@ -168,21 +156,13 @@ in {
         "app.normandy.first_run" = false;
         "app.shield.optoutstudies.enabled" = false;
         "browser.tabs.crashReporting.sendReport" = false;
+        "browser.crashReports.unsubmittedCheck.enabled" = false;
         "browser.crashReports.unsubmittedCheck.autoSubmit2" = false;
-        "browser.newtabpage.activity-stream.feeds.telemetry" = false;
-        "browser.newtabpage.activity-stream.telemetry" = false;
-        "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons" = false;
-        "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features" = false;
-        "browser.ping-centre.telemetry" = false;
-        "browser.safebrowsing.downloads.remote.enabled" = false;
-        "datareporting.healthreport.service.enabled" = false;
+        "browser.safebrowsing.enabled" = false;
         "datareporting.healthreport.uploadEnabled" = false;
         "datareporting.policy.dataSubmissionEnabled" = false;
-        "datareporting.sessions.current.clean" = true;
-        "devtools.onboarding.telemetry.logged" = false;
         "toolkit.coverage.enabled" = false;
         "toolkit.coverage.opt-out" = true;
-        "toolkit.telemetry.unified" = false;
         "toolkit.telemetry.enabled" = false;
         "toolkit.telemetry.archive.enabled" = false;
         "toolkit.telemetry.coverage.opt-out" = true;
@@ -190,7 +170,6 @@ in {
         # Security / Privacy
         "accessibility.force_disabled" = 1;
         "browser.discovery.enabled" = false;
-        "browser.discovery.containers.enabled" = false;
         "browser.helperApps.deleteTempFileOnExit" = true;
         "browser.pagethumbnails.capturing_disabled" = true;
         "browser.preferences.moreFromMozilla" = false;
@@ -201,13 +180,8 @@ in {
         "browser.topsites.component.enabled" = false;
         "browser.topsites.contile.enabled" = false;
         "browser.translations.enabled" = false;
-        "browser.urlbar.dnsResolveSingleWordsAfterSearch" = 0;
-        "browser.urlbar.suggest.recentsearches" = false;
-        "clipboard.copyPrivateDataToClipboardCloudOrHistory" = false;
         "dom.security.https_only_mode" = true;
-        "dom.security.https_only_mode_send_http_background_request" = false;
         "extensions.getAddons.showPane" = false;
-        "extensions.htmlaboutaddons.discover.enabled" = false;
         "extensions.htmlaboutaddons.recommendations.enabled" = false;
         "extensions.pocket.enabled" = false;
         "network.auth.subresource-http-auth-allow" = 1;
@@ -217,11 +191,10 @@ in {
         "permissions.default.camera" = 2;
         "permissions.default.desktop-notification" = 2;
         "permissions.default.xr" = 2;
-        "privacy.donottrackheader.enabled" = false;
+        "privacy.donottrackheader.enabled" = true;
+        "privacy.donottrackheader.value" = 1;
         "privacy.purge_trackers.enabled" = true;
         "privacy.resistFingerprinting" = true;
-        "privacy.resistFingerprinting.randomDataOnCanvasExtract" = true;
-        "privacy.webrtc.legacyGlobalIndicator" = false;
         "security.cert_pinning.enforcement_level" = 2;
         "security.ssl.require_safe_negotiation" = true;
         "security.tls.enable_0rtt_data" = false;
@@ -238,7 +211,6 @@ in {
         "browser.meta_refresh_when_inactive.disabled" = true;
         "browser.quitShortcut.disabled" = true;
         "browser.search.suggest.enabled" = false;
-        "browser.tabs.firefox-view.ui-state.recentlyclosed.open" = false;
         "browser.tabs.insertAfterCurrent" = true;
         "browser.tabs.insertAfterCurrentExceptPinned" = true;
         "browser.toolbars.bookmarks.visibility" = "always";
@@ -250,15 +222,18 @@ in {
         "gfx.webrender.all" = true;
         "layers.acceleration.disabled" = false;
         "layers.acceleration.force-enabled" = true;
-        "toolkit.cosmeticAnimations.enable" = false;
+        "signon.rememberSignons" = false;
+        "toolkit.cosmeticAnimations.enabled" = false;
         "ui.osk.enabled" = false;
         "widget.use-xdg-desktop-portal.file-picker" = 1;
 
-        # Layout
+        # Layout / UI
         "browser.compactmode.show" = true;
         "browser.tabs.drawInTitlebar" = false;
-        "browser.tabs.inTitlebar" = 1;
+        "browser.tabs.inTitlebar" = 0;
         "browser.uidensity" = 1;
+        "svg.context-properties.content.enabled" = true;
+        "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
         "ui.prefersReducedMotion" = 1;
         "ui.systemUsesDarkTheme" = 1;
         "browser.uiCustomization.state" = builtins.toJSON {
