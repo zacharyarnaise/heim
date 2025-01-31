@@ -34,13 +34,23 @@ in {
       "ignorezero,waybar"
       "noanim,wallpaper"
     ];
+    windowrulev2 = [
+      "opacity 1.0 override 1.0 override,^(firefox)$"
+
+      # make pop-up file dialogs floating, centred, and pinned
+      "float, title:(Open|Progress|Save File)"
+      "center, title:(Open|Progress|Save File)"
+      "pin, title:(Open|Progress|Save File)"
+      "float, class:(xdg-desktop-portal-gtk)"
+      "center, class:(xdg-desktop-portal-gtk)"
+      "pin, class:(xdg-desktop-portal-gtk)"
+    ];
 
     decoration = {
       rounding = 8;
       # rounding_power = 3.0;
       dim_inactive = true;
       dim_strength = 0.25;
-      active_opacity = config.stylix.opacity.applications;
       inactive_opacity = config.stylix.opacity.applications * 0.75;
       fullscreen_opacity = 1.0;
 
