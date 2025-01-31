@@ -102,6 +102,7 @@ in {
         "extensions.shield-recipe-client.enabled" = false;
         "extensions.update.enabled" = false;
         "messaging-system.rsexperimentloader.enabled" = false;
+        "privacy.globalprivacycontrol.was_ever_enabled" = true;
         "signon.firefoxRelay.feature" = "disabled";
         "trailhead.firstrun.didSeeAboutWelcome" = true;
 
@@ -200,17 +201,22 @@ in {
         "browser.contentblocking.category" = "standard";
         "browser.download.useDownloadDir" = false;
         "browser.download.manager.addToRecentDocs" = false;
+        "browser.search.suggest.enabled" = false;
         "browser.tabs.crashReporting.sendReport" = false;
+        "browser.tabs.firefox-view.ui-state.recentlyclosed.open" = false;
         "browser.tabs.insertAfterCurrent" = true;
         "browser.tabs.insertAfterCurrentExceptPinned" = true;
         "browser.toolbars.bookmarks.visibility" = "always";
         "browser.touchmode.auto" = false;
         "browser.urlbar.hideGoButton" = true;
+        "media.autoplay.blocking_policy" = 2;
+        "media.autoplay.default" = 5;
         "network.notify.checkForProxies" = false;
         "gfx.webrender.all" = true;
         "layers.acceleration.disabled" = false;
         "layers.acceleration.force-enabled" = true;
         "toolkit.cosmeticAnimations.enable" = false;
+        "ui.osk.enabled" = false;
         "ui.prefersReducedMotion" = 1;
 
         # Layout
