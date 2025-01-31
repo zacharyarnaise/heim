@@ -2,6 +2,7 @@
   imports = [
     ./atuin.nix
     ./bat.nix
+    ./btop.nix
     ./direnv.nix
     ./eza.nix
     ./fzf.nix
@@ -15,7 +16,6 @@
     inherit
       (pkgs)
       bc
-      btop
       fd
       file
       ncdu
