@@ -9,7 +9,7 @@ in {
   wayland.windowManager.hyprland.settings = {
     exec-once = [
       "${hyprlock}"
-      "${hyprctl} setcursor ${config.stylix.cursor.name} 24"
+      "${hyprctl} setcursor ${config.stylix.cursor.name} 32"
     ];
 
     general = {
