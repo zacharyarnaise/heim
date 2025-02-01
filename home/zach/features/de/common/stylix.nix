@@ -8,7 +8,7 @@
   stylix = {
     enable = true;
 
-    base16Scheme = "${inputs.tinted-theming}/base16/pasque.yaml";
+    #base16Scheme = "${inputs.tinted-theming}/base16/pasque.yaml";
     image = ../../../assets/13.jpeg;
     polarity = "dark";
     cursor = {
