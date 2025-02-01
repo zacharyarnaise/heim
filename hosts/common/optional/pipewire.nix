@@ -4,7 +4,7 @@
   ...
 }: {
   # PipeWire requires pulseaudio to be disabled
-  hardware.pulseaudio.enable = lib.mkForce false;
+  #hardware.pulseaudio.enable = lib.mkForce false;
   # Enable realtime to avoid audio glitches
   security.rtkit.enable = true;
 
