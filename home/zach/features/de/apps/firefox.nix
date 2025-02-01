@@ -8,8 +8,9 @@
   firefox-ui-fix = pkgs.fetchFromGitHub {
     owner = "black7375";
     repo = "Firefox-UI-Fix";
-    tag = "v8.6.6";
-    hash = "sha256-9pNphWnxiIe0bCpPdNQk/7y/zPvFKBM/djQoED+PJJ0=";
+    rev = "v8.6.6";
+    fetchSubmodules = false;
+    sha256 = "sha256-9pNphWnxiIe0bCpPdNQk/7y/zPvFKBM/djQoED+PJJ0=";
   };
 in {
   programs.firefox = {
