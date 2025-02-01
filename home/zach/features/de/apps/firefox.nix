@@ -5,6 +5,12 @@
   ...
 }: let
   firefox-addons = inputs.firefox-addons.packages.${pkgs.system};
+  firefox-ui-fix = pkgs.fetchFromGitHub {
+    owner = "black7375";
+    repo = "Firefox-UI-Fix";
+    tag = "v8.6.6";
+    hash = "sha256-9pNphWnxiIe0bCpPdNQk/7y/zPvFKBM/djQoED+PJJ0=";
+  };
 in {
   programs.firefox = {
     enable = true;
@@ -53,6 +59,11 @@ in {
             urls = [{template = "https://home-manager-options.extranix.com?release=release-24.11&query={searchTerms}";}];
             icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
             definedAliases = ["@nxh"];
+          };
+          "Noogle" = {
+            urls = [{template = "https://noogle.dev/q?term={searchTerms}";}];
+            icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+            definedAliases = ["@ngl"];
           };
           "Grep.app" = {
             urls = [{template = "https://grep.app/search?q={searchTerms}";}];
@@ -169,12 +180,14 @@ in {
 
         # Security / Privacy
         "accessibility.force_disabled" = 1;
+        "browser.contentblocking.category" = "strict";
         "browser.discovery.enabled" = false;
         "browser.helperApps.deleteTempFileOnExit" = true;
         "browser.pagethumbnails.capturing_disabled" = true;
         "browser.preferences.moreFromMozilla" = false;
         "browser.privatebrowsing.forceMediaMemoryCache" = true;
         "browser.privatebrowsing.preserveClipboard" = false;
+        "browser.search.suggest.enabled" = false;
         "browser.search.update" = false;
         "browser.send_pings" = false;
         "browser.topsites.component.enabled" = false;
@@ -190,6 +203,7 @@ in {
         "pdfjs.enableScripting" = false;
         "permissions.default.camera" = 2;
         "permissions.default.desktop-notification" = 2;
+        "permissions.default.geo" = 2;
         "permissions.default.xr" = 2;
         "privacy.donottrackheader.enabled" = true;
         "privacy.donottrackheader.value" = 1;
@@ -201,15 +215,14 @@ in {
         "security.tls.version.enable-deprecated" = false;
         "security.xfocsp.errorReporting.enabled" = false;
         "signon.management.page.breach-alerts.enabled" = false;
+        "signon.rememberSignons" = false;
 
         # Misc.
-        "browser.contentblocking.category" = "strict";
         "browser.ctrlTab.recentlyUsedOrder" = false;
         "browser.download.useDownloadDir" = false;
         "browser.download.manager.addToRecentDocs" = false;
         "browser.meta_refresh_when_inactive.disabled" = true;
         "browser.quitShortcut.disabled" = true;
-        "browser.search.suggest.enabled" = false;
         "browser.tabs.insertAfterCurrent" = true;
         "browser.tabs.insertAfterCurrentExceptPinned" = true;
         "browser.toolbars.bookmarks.visibility" = "always";
@@ -221,18 +234,15 @@ in {
         "gfx.webrender.all" = true;
         "layers.acceleration.disabled" = false;
         "layers.acceleration.force-enabled" = true;
-        "signon.rememberSignons" = false;
         "toolkit.cosmeticAnimations.enabled" = false;
         "ui.osk.enabled" = false;
         "widget.use-xdg-desktop-portal.file-picker" = 1;
 
         # Layout / UI
-        "browser.compactmode.show" = true;
         "browser.tabs.drawInTitlebar" = false;
         "browser.tabs.inTitlebar" = 0;
         "browser.uidensity" = 1;
         "svg.context-properties.content.enabled" = true;
-        "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
         "ui.prefersReducedMotion" = 1;
         "ui.systemUsesDarkTheme" = 1;
         "browser.uiCustomization.state" = builtins.toJSON {
@@ -251,6 +261,17 @@ in {
           };
         };
       };
+
+      # Lepton style from firefox-ui-fix
+      extraConfig = ''
+        ${builtins.readFile "${firefox-ui-fix}/user.js"}
+      '';
+      userChrome = ''
+        @import "${firefox-ui-fix}/userChrome.css";
+      '';
+      userContent = ''
+        @import "${firefox-ui-fix}/userContent.css";
+      '';
     };
   };
 
