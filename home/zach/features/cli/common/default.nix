@@ -1,8 +1,12 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
   imports = [
     ./atuin.nix
     ./bat.nix
-    ./btop.nix
     ./direnv.nix
     ./eza.nix
     ./fzf.nix
@@ -28,4 +32,6 @@
       zip
       ;
   };
+
+  prorgams.btop.enable = true;
 }
