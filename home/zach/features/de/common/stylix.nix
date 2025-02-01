@@ -14,8 +14,7 @@
     cursor = {
       package = pkgs.catppuccin-cursors.mochaDark;
       name = "catppuccin-mocha-dark-cursors";
-      size = 32;
-      xcursor-size = 16;
+      size = 24;
     };
     fonts = {
       emoji = {
