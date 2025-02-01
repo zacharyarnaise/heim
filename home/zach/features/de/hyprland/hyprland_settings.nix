@@ -48,7 +48,7 @@ in {
 
     decoration = {
       rounding = 8;
-      # rounding_power = 3.0;
+      rounding_power = 3.0;
       dim_inactive = true;
       dim_strength = 0.25;
       active_opacity = config.stylix.opacity.applications;
@@ -70,8 +70,6 @@ in {
         enabled = true;
         range = 16;
         render_power = 2;
-        # color = "rgba(00000050)";
-        # color_inactive = "rgba(00000070)";
         offset = "2 2";
         scale = 0.95;
       };
@@ -196,9 +194,9 @@ in {
       lib.filter (m: m.enabled && m.workspace != null) config.monitors
     );
 
-    #ecosystem = {
-    #  no_update_news = true;
-    #  no_donation_nag = true;
-    #};
+    ecosystem = {
+      no_update_news = true;
+      no_donation_nag = true;
+    };
   };
 }

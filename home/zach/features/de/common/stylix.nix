@@ -22,7 +22,7 @@
         name = "OpenMoji Color";
       };
       monospace = {
-        package = pkgs.unstable.nerd-fonts.mononoki;
+        package = pkgs.nerd-fonts.mononoki;
         name = "Mononoki Nerd Font";
       };
 
