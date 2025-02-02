@@ -1,24 +1,22 @@
 {
   config,
   pkgs,
-  lib,
   ...
 }: {
   programs.rofi = {
     enable = true;
     package = pkgs.rofi-wayland;
 
-    cycle = true;
+    location = "center";
     terminal = "${pkgs.foot}/bin/foot";
     extraConfig = {
-      modi = "drun,filebrowser,window,run";
+      modi = "drun,run,ssh";
       drun-display-format = "{name}";
       show-icons = true;
       window-format = "{w}{t}";
       display-drun = " ";
       display-run = " ";
-      display-filebrowser = "󱧶 ";
-      display-window = " ";
+      display-ssh = "󰣀 ";
     };
     # Reference: https://github.com/prasanthrangan/hyprdots
     theme = let
@@ -33,6 +31,7 @@
         spacing = mkLiteral "0em";
         padding = mkLiteral "0em";
         transparency = "real";
+        anchor = mkLiteral "center";
       };
       mainbox = {
         enabled = true;

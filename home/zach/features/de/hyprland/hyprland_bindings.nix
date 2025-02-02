@@ -38,6 +38,7 @@ in {
       "${modShift}, DOWN, Moves the active window down, movewindow, d"
 
       # Programs
+      "${mod},      Alt, Opens rofi, exec, rofi --show drun"
       "${mod},      Space, Opens terminal, exec, ${handlr "x-scheme-handler/terminal"}"
     ];
   };
