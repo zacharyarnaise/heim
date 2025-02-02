@@ -99,8 +99,6 @@
         children = ["textbox"];
       };
       textbox = {
-        text-color = lib.mkForce mkLiteral "inherit";
-        background-color = lib.mkForce mkLiteral "inherit";
         vertical-align = mkLiteral "0.5";
         horizontal-align = mkLiteral "0.5";
       };
