@@ -22,6 +22,7 @@ in {
         passthrough = false;
 
         modules-left = [
+          "hyprland/workspaces"
         ];
         modules-center = [
           "temperature"
@@ -30,8 +31,37 @@ in {
           "memory"
         ];
         modules-right = [
+          "battery"
           "group/power"
         ];
+
+        # -------------------------------- Left --------------------------------
+        "hyprland/workspaces" = {
+          on-click = "activate";
+          disable-scroll = true;
+          format = "{icon} {windows}";
+          format-icons = {
+            "1" = "󰲠";
+            "2" = "󰲢";
+            "3" = "󰲤";
+            "4" = "󰲦";
+            "5" = "󰲨";
+            "6" = "󰲪";
+            "7" = "󰲬";
+            "8" = "󰲮";
+            "9" = "󰲰";
+            "10" = "󰿬";
+            "default" = "󰔶";
+            "empty" = "";
+            "urgent" = "";
+          };
+          window-rewrite-default = "";
+          window-rewrite = {
+            "class<discord>" = "";
+            "class<firefox.*>" = "󰈹";
+            "class<foot>" = "";
+          };
+        };
 
         # ------------------------------- Center -------------------------------
         temperature = {
@@ -68,6 +98,25 @@ in {
         };
 
         # ------------------------------- Right -------------------------------
+        battery = {
+          bat = "BAT0";
+          interval = 10;
+          format-icons = [
+            "󰁺"
+            "󰁻"
+            "󰁼"
+            "󰁽"
+            "󰁾"
+            "󰁿"
+            "󰂀"
+            "󰂁"
+            "󰂂"
+            "󰁹"
+          ];
+          format = "{icon} {capacity}%";
+          format-charging = "󰂄 {capacity}%";
+          onclick = "";
+        };
         "group/power" = {
           orientation = "inherit";
           drawer = {
@@ -113,23 +162,6 @@ in {
           on-click = "${systemctl} reboot --firmware-setup";
           format = "󱄌";
           tooltip = false;
-        };
-      };
-
-      workspacesBar = {
-        position = "bottom";
-        height = 28;
-        width = 100;
-        margin = "8";
-        mode = "dock";
-        exclusive = true;
-        passthrough = false;
-
-        modules-center = ["hyprland/workspaces"];
-        "hyprland/workspaces" = {
-          format = "{name}";
-          on-click = "activate";
-          disable-scroll = true;
         };
       };
     };
