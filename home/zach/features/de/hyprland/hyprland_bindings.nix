@@ -58,7 +58,7 @@ in {
         "${modAlt}, DOWN, Moves focus to the lower monitor, focusmonitor, d"
 
         # Programs
-        "${mod},      Space, Opens rofi, exec, rofi --show drun"
+        "${mod},      Space, Opens rofi, exec, rofi -show drun"
         "${mod},      Return, Opens terminal, exec, ${handlr "x-scheme-handler/terminal"}"
       ]
       ++ (map (n: "${mod}, ${n}, Changes to workspace ${n}, workspace, name:${n}") workspaces)
