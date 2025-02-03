@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: let
   hyprctl = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl";
@@ -12,7 +13,18 @@
   modCtrl = "SUPER_CONTROL";
   modShift = "SUPER_SHIFT";
 
-  workspaces = ["1" "2" "3" "4" "5" "6" "7" "8" "9" "0"];
+  workspaces = {
+    "1" = "ampersand";
+    "2" = "eacute";
+    "3" = "quotedbl";
+    "4" = "apostrophe";
+    "5" = "parenleft";
+    "6" = "minus";
+    "7" = "egrave";
+    "8" = "underscore";
+    "9" = "ccedilla";
+    "10" = "agrave";
+  };
 in {
   wayland.windowManager.hyprland.settings = {
     binds = {
@@ -36,6 +48,7 @@ in {
         "${mod},      S, Toggle maximize, fullscreen, 1"
         "${modShift}, S, Toggle fullscreen, fullscreen, 0"
         "${mod},      F, Toggle floating, togglefloating,"
+        "${mod},      P, Toggle pseudotile, pseudo"
 
         # Window movement
         "${mod},      LEFT, Moves focus left, movefocus, l"
@@ -61,7 +74,7 @@ in {
         "${mod},      Space, Opens rofi, exec, rofi -show drun"
         "${mod},      Return, Opens terminal, exec, ${handlr "x-scheme-handler/terminal"}"
       ]
-      ++ (map (n: "${mod}, ${n}, Changes to workspace ${n}, workspace, name:${n}") workspaces)
-      ++ (map (n: "${modShift}, ${n}, Moves active window to workspace ${n}, movetoworkspacesilent, name:${n}") workspaces);
+      ++ (lib.mapAttrsToList (n: key: "${mod}, ${key}, Switch to workspace ${n}, workspace, name:${n}") workspaces)
+      ++ (lib.mapAttrsToList (n: key: "${modShift}, ${key}, Moves active window to workspace ${n}, movetoworkspacesilent, name:${n}") workspaces);
   };
 }
