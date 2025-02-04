@@ -99,8 +99,9 @@ in {
 
         # ------------------------------- Right -------------------------------
         battery = {
-          bat = "BAT0";
-          interval = 10;
+          full-at = 97;
+          interval = 60;
+          states.warning = 25;
           format-icons = [
             "󰁺"
             "󰁻"
@@ -114,7 +115,7 @@ in {
             "󰁹"
           ];
           format = "{icon} {capacity}%";
-          format-charging = "󰂄 {capacity}%";
+          format-charging = " {capacity:3}%";
           onclick = "";
         };
         "group/power" = {
@@ -186,6 +187,18 @@ in {
         background-color: alpha(@base0D, 0.9);
       }
 
+      #workspaces label {
+        font-size: 1.2em;
+      }
+      #workspaces button {
+        padding: 0 0.7em 0 0.7em;
+        margin-top: 0.1em;
+        border-radius: 0.3em;
+      }
+      #workspaces button.active {
+        color: @base0E;
+      }
+
       #temperature, #cpu {
         margin-right: 0.6em;
       }
@@ -200,6 +213,12 @@ in {
         padding-left: 0.8em;
       }
 
+      #battery {
+        padding-right: 0.6em;
+      }
+      #battery.warning {
+        background: @base0E;
+      }
       #custom-hostname {
         font-family: "${config.stylix.fonts.sansSerif.name}";
         font-size: 10pt;
