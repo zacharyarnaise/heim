@@ -29,8 +29,8 @@ in {
         modules-left = [
           "custom/nix"
           "custom/separator"
-          "memory"
           "cpu"
+          "memory"
           "temperature"
           "battery"
         ];
@@ -53,18 +53,18 @@ in {
         };
         memory = {
           interval = 10;
-          format = "{icon} {used:4.1f}G/{total:.2g}G";
+          format = "{used:4.1f}G/{total:.2g}G {icon} ";
           format-icons = [""];
         };
         cpu = {
           interval = 10;
-          format = "{icon} {usage:3}%";
+          format = "{usage:3}% {icon} ";
           format-icons = [""];
         };
         temperature = {
           interval = 10;
           hwmon-path = "/sys/class/hwmon/hwmon5/temp1_input";
-          format = "{icon} {temperatureC:2}°C";
+          format = "{temperatureC:2}°C {icon}";
           format-icons = ["󰏈"];
         };
 
