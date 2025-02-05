@@ -44,7 +44,7 @@ in {
         "custom/separator" = {
           interval = "once";
           tooltip = false;
-          format = "  ";
+          format = " ";
         };
 
         # -------------------------------- Left --------------------------------

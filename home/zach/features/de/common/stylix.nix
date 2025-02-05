@@ -9,8 +9,7 @@
     enable = true;
 
     #base16Scheme = "${inputs.tinted-theming}/base16/pasque.yaml";
-    image = ../../../assets/13.jpeg;
-    polarity = "dark";
+    image = ../../../wallpapers/jxzmzq.png;
     cursor = {
       package = pkgs.catppuccin-cursors.mochaDark;
       name = "catppuccin-mocha-dark-cursors";
