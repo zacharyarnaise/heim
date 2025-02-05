@@ -8,8 +8,8 @@
   stylix = {
     enable = true;
 
-    base16Scheme = "${inputs.tinted-theming}/base16/papercolor-dark.yaml";
-    image = ../../../wallpapers/jxzmzq.png;
+    base16Scheme = "${inputs.tinted-theming}/base16/summercamp.yaml";
+    image = ../../../wallpapers/l8kmop.png;
     cursor = {
       package = pkgs.catppuccin-cursors.mochaDark;
       name = "catppuccin-mocha-dark-cursors";
