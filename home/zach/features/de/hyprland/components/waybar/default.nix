@@ -155,6 +155,6 @@ in {
       };
     };
 
-    style = lib.mkAfter builtins.readFile ./style.css;
+    style = lib.mkAfter ./style.css;
   };
 }
