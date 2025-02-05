@@ -1,0 +1,94 @@
+* {
+    font-family: "DepartureMono Nerd Font";
+    font-weight: bold;
+}
+
+window#waybar {
+    background: transparent;
+}
+
+window#waybar.empty,
+window#waybar.empty #window {
+    background-color: transparent;
+}
+
+#window {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    border-radius: 0.6em;
+    transition: none;
+    color: transparent;
+    background: transparent;
+}
+
+#taskbar button,
+#workspaces button {
+    color: @base04;
+    border-radius: 0.6em;
+    padding-left: 0.3em;
+    padding-right: 0.3em;
+    animation: gradient_f 20s ease-in infinite;
+    transition: all 0.5s cubic-bezier(.55, -0.68, .48, 1.682);
+}
+
+#taskbar button.active,
+#workspaces button.active {
+    color: @base0C;
+    background-color: @base04;
+    padding-left: 0.3em;
+    padding-right: 0.6em;
+    animation: gradient_f 20s ease-in infinite;
+    transition: all 0.3s cubic-bezier(.55, -0.68, .48, 1.682);
+}
+
+#taskbar button.focused,
+#workspaces button.focused {
+    color: @base04;
+}
+
+#workspaces button.urgent {
+    color: @base0E;
+    border-radius: 0.6em;
+}
+
+#taskbar button:hover,
+#workspaces button:hover {
+    color: @base04;
+    padding-left: 0.1em;
+    padding-right: 0.6em;
+    animation: gradient_f 20s ease-in infinite;
+    transition: all 0.3s cubic-bezier(.55, -0.68, .48, 1.682);
+}
+
+#backlight,
+#backlight-slider,
+#battery,
+#bluetooth,
+#clock,
+#cpu,
+#disk,
+#idle_inhibitor,
+#keyboard-state,
+#memory,
+#mode,
+#mpris,
+#network,
+#power-profiles-daemon,
+#pulseaudio,
+#pulseaudio-slider,
+#taskbar,
+#temperature,
+#tray,
+#window,
+#wireplumber,
+#workspaces,
+#custom-nix {
+    padding: 0.3em 0.5em 0.3em 0.6em;
+    border-radius: 0.6em;
+    transition: none;
+    color: @base04;
+    background: @base00;
+    border-bottom-width: 0.54em;
+    border-bottom-color: @base0C;
+    border-bottom-style: solid;
+}
