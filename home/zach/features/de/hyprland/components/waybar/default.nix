@@ -74,6 +74,7 @@ in {
           on-scroll-up = "${hyprctl} dispatch workspace e+1";
           on-scroll-down = "${hyprctl} dispatch workspace e-1";
           show-special = false;
+          persistent-workspaces."*" = 5;
           format = "{icon}";
           format-icons = {
             empty = "";
