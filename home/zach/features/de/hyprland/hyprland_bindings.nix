@@ -6,7 +6,7 @@
 }: let
   hyprctl = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl";
   loginctl = "${pkgs.systemd}/bin/loginctl";
-  rofi = "${pkgs.rofi-wayland}/bin/rofi";
+  rofi = "${config.rofi.package}/bin/rofi";
   handlr = type: "${pkgs.handlr-regex}/bin/handlr launch ${type}";
 
   mod = "SUPER";
