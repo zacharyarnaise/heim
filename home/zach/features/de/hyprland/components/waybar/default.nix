@@ -53,7 +53,7 @@ in {
         };
         memory = {
           interval = 10;
-          format = "{used:4.1f}G/{total:.2g}G {icon} ";
+          format = "{used:4.1f}G {icon}";
           format-icons = [""];
         };
         cpu = {
@@ -66,6 +66,27 @@ in {
           hwmon-path = "/sys/class/hwmon/hwmon5/temp1_input";
           format = "{temperatureC:2}°C {icon}";
           format-icons = ["󰏈"];
+        };
+        battery = {
+          full-at = 98;
+          interval = 60;
+          states.warning = 30;
+          format-icons = [
+            "󰁺"
+            "󰁻"
+            "󰁼"
+            "󰁽"
+            "󰁾"
+            "󰁿"
+            "󰂀"
+            "󰂁"
+            "󰂂"
+            "󰁹"
+          ];
+          format = "{capacity:3}% {icon}";
+          format-charging = "{capacity:3}% 󰢝";
+          format-plugged = "{capacity:3}% 󰚥";
+          onclick = "";
         };
 
         # ------------------------------- Center -------------------------------
@@ -85,27 +106,6 @@ in {
         };
 
         # ------------------------------- Right -------------------------------
-        battery = {
-          full-at = 98;
-          interval = 60;
-          states.warning = 30;
-          format-icons = [
-            "󰁺"
-            "󰁻"
-            "󰁼"
-            "󰁽"
-            "󰁾"
-            "󰁿"
-            "󰂀"
-            "󰂁"
-            "󰂂"
-            "󰁹"
-          ];
-          format = "{icon} {capacity:3}%";
-          format-charging = "󰢝 {capacity:3}%";
-          format-plugged = "󰚥 {capacity:3}%";
-          onclick = "";
-        };
         "group/power" = {
           orientation = "inherit";
           drawer = {

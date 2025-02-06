@@ -1,5 +1,5 @@
 * {
-  font-family: "DepartureMono Nerd Font";
+  font-family: "Mononoki Nerd Font";
   font-weight: 600;
   padding: 0 0.35em 0 0.35em;
 }
@@ -9,8 +9,8 @@ window#waybar, #window {
 }
 
 .modules-left, .modules-center, .modules-right {
-  background: alpha(@base00, 0.6);
-  border: 0.1em solid alpha(@base0D, 0.6);
+  background: alpha(@base00, 0.4);
+  border: 0.1em solid alpha(@base0D, 0.3);
   border-radius: 0.8em;
   padding: unset;
 }
@@ -19,10 +19,10 @@ window#waybar, #window {
   padding-top: 0.5em;
   padding-bottom: 0.5em;
 }
-.modules-left {
-  padding-right: 0.5em;
-}
 
+.modules-left > :not(:first-child) .module {
+  font-size: 1em;
+}
 #custom-nix {
   color: @base07;
   font-size: 1.8em;
