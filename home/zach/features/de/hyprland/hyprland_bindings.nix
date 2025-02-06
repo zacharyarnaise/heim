@@ -6,6 +6,7 @@
 }: let
   hyprctl = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl";
   loginctl = "${pkgs.systemd}/bin/loginctl";
+  rofi = "${pkgs.rofi-wayland}/bin/rofi";
   handlr = type: "${pkgs.handlr-regex}/bin/handlr launch ${type}";
 
   mod = "SUPER";
@@ -71,7 +72,7 @@ in {
         "${modAlt}, DOWN, Moves focus to the lower monitor, focusmonitor, d"
 
         # Programs
-        "${mod},      Space, Opens rofi, exec, rofi -show drun"
+        "${mod},      Space, Opens rofi, exec, ${rofi} -show drun"
         "${mod},      Return, Opens terminal, exec, ${handlr "x-scheme-handler/terminal"}"
       ]
       ++ (lib.mapAttrsToList (n: key: "${mod}, ${key}, Switch to workspace ${n}, workspace, name:${n}") workspaces)
