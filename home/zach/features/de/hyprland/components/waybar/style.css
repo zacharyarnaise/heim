@@ -16,7 +16,7 @@ window#waybar, #window {
 }
 
 #custom-separator {
-  opacity: 0.6;
+  opacity: 0.9;
 }
 
 .modules-left > :not(:first-child) .module {

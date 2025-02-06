@@ -122,12 +122,15 @@ in {
         };
         bluetooth = {
           on-click = "overskride";
+          on-click-right = "rfkill toggle bluetooth";
           format = "";
           format-connected = "󰂱";
           format-disabled = "󰂲";
+          format-off = "󰂲";
           tooltip-format = "{controller_alias}\t{controller_address}";
           tooltip-format-connected = "{controller_alias}\t{controller_address}\n\n{device_enumerate}";
           tooltip-format-disabled = "";
+          tooltip-format-off = "";
           tooltip-format-enumerate-connected = "{device_alias}\t{device_address}";
         };
         idle_inhibitor = {
@@ -138,6 +141,7 @@ in {
           };
         };
         network = {
+          on-click-right = "rfkill toggle wlan";
           interval = 5;
           format-ethernet = "<small>{ifname}</small> 󰈀";
           format-wifi = "<small>{essid}</small> 󰖩";
@@ -150,7 +154,7 @@ in {
         };
         pulseaudio = {
           on-click = "pavucontrol";
-          format = "{volume}% {icon}";
+          format = "{volume}% {icon} {format_source}";
           format-bluetooth = "{volume}% {icon}󰂯";
           format-muted = "0% 󰝟";
           format-source = "{volume}% 󰍬";
