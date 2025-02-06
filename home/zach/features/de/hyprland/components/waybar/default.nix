@@ -37,12 +37,24 @@ in {
           "hyprland/workspaces"
         ];
         modules-right = [
-          "group/power"
+          "tray"
+          "group/applets"
+          "clock"
         ];
 
         # -------------------------------- Left --------------------------------
         "custom/nix" = {
           format = "󱄅";
+          tooltip = false;
+          menu = "on-click";
+          menu-file = ./powermenu.xml;
+          menu-actions = {
+            lock = "${loginctl} lock-session";
+            sleep = "${systemctl} sleep";
+            poweroff = "${systemctl} poweroff";
+            reboot = "${systemctl} reboot";
+            reboot-uefi = "${systemctl} reboot --firmware-setup";
+          };
         };
         memory = {
           interval = 10;
@@ -99,20 +111,57 @@ in {
         };
 
         # ------------------------------- Right -------------------------------
-        "group/power" = {
-          orientation = "inherit";
-          drawer = {
-            transition-duration = 400;
-            transition-left-to-right = false;
-            children-class = "group-power-element";
+        tray = {
+          icon-size = 16;
+          spacing = 4;
+        };
+        bluetooth = {
+          on-click = "blueman-manager";
+          format = "";
+          format-connected = "󰂱";
+          format-disabled = "󰂲";
+          tooltip-format = "{controller_alias}\t{controller_address}";
+          tooltip-format-connected = "{controller_alias}\t{controller_address}\n\n{device_enumerate}";
+          tooltip-format-disabled = "";
+          tooltip-format-enumerate-connected = "{device_alias}\t{device_address}";
+        };
+        idle_inhibitor = {
+          format = "{icon}";
+          format-icons = {
+            activated = "󰒳";
+            deactivated = "󰒲";
           };
+        };
+        network = {
+          interval = 5;
+          format-ethernet = "{ifname} 󰈀";
+          format-wifi = "{essid} 󰖩";
+          format-disconnected = "󰌙";
+          tooltip-format = ''
+            {ifname}
+            {ipaddr}/{cidr}
+            tx: {bandwidthUpOctets}
+            rx: {bandwidthDownOctets}'';
+        };
+        pulseaudio = {
+          on-click = "pavucontrol";
+          format = "{volume}% {icon}";
+          format-bluetooth = "{volume}% {icon}󰂯";
+          format-muted = "0% 󰝟";
+          format-source = "{volume}% 󰍬";
+          format-source-muted = "0% 󰍭";
+          format-icons = {
+            default = ["" ""];
+            headphone = "󰋋";
+          };
+        };
+        "group/applets" = {
+          orientation = "inherit";
           modules = [
-            "clock"
-            "custom/lock"
-            "custom/sleep"
-            "custom/poweroff"
-            "custom/reboot"
-            "custom/reboot-uefi"
+            "bluetooth"
+            "idle_inhibitor"
+            "network"
+            "pulseaudio"
           ];
         };
         clock = {
@@ -120,31 +169,19 @@ in {
           format = "{:%H:%M:%S}";
           on-click-left = "mode";
           tooltip-format = "<tt><small>{calendar}</small></tt>";
-        };
-        "custom/lock" = {
-          on-click = "${loginctl} lock-session";
-          format = "󰌾";
-          tooltip = false;
-        };
-        "custom/sleep" = {
-          on-click = "${systemctl} sleep";
-          format = "󰤄";
-          tooltip = false;
-        };
-        "custom/poweroff" = {
-          on-click = "${systemctl} poweroff";
-          format = "󰐥";
-          tooltip = false;
-        };
-        "custom/reboot" = {
-          on-click = "${systemctl} reboot";
-          format = "󰜉";
-          tooltip = false;
-        };
-        "custom/reboot-uefi" = {
-          on-click = "${systemctl} reboot --firmware-setup";
-          format = "󱄌";
-          tooltip = false;
+          calendar = {
+            mode = "year";
+            mode-mon-col = 2;
+            weeks-pos = "right";
+            on-scroll = 1;
+            format = {
+              months = "<span color='#ffead3'><b>{}</b></span>";
+              days = "<span color='#ecc6d9'><b>{}</b></span>";
+              weeks = "<span color='#99ffdd'><b>S{}</b></span>";
+              weekdays = "<span color='#ffcc66'><b>{}</b></span>";
+              today = "<span color='#ff6699'><b><u>{}</u></b></span>";
+            };
+          };
         };
       };
     };
