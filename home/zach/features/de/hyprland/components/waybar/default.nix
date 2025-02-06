@@ -8,7 +8,6 @@
   loginctl = "${pkgs.systemd}/bin/loginctl";
   systemctl = "${pkgs.systemd}/bin/systemctl";
 in {
-  home.packages = [pkgs.nerd-fonts.departure-mono];
   stylix.targets.waybar.addCss = false;
 
   programs.waybar = {
