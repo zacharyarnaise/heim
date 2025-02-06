@@ -2,9 +2,7 @@
   config,
   pkgs,
   ...
-}: let
-  hyprctl = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl";
-in {
+}: {
   programs.rofi = {
     enable = true;
     package = pkgs.rofi-wayland;
@@ -12,8 +10,6 @@ in {
     location = "center";
     terminal = "${pkgs.foot}/bin/foot";
     extraConfig = {
-      drun-url-launcher = "${hyprctl} dispatch exec ${pkgs.handlr-regex}/bin/handlr";
-      run-command = "${hyprctl} dispatch exec {cmd}";
       modi = "drun,run,ssh";
       drun-display-format = "{name}";
       show-icons = true;

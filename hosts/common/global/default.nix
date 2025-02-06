@@ -8,7 +8,7 @@
       ./home-manager.nix
 
       ./boot.nix
-      #./hardening.nix
+      ./hardening.nix
       ./locale.nix
       ./networking.nix
       ./nix.nix
