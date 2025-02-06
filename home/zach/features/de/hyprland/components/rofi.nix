@@ -5,7 +5,7 @@
 }: {
   programs.rofi = {
     enable = true;
-    package = pkgs.rofi-wayland-unwrapped;
+    package = pkgs.rofi-wayland;
 
     location = "center";
     terminal = "${pkgs.foot}/bin/foot";
