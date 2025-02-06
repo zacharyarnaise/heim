@@ -8,6 +8,7 @@
 in {
   wayland.windowManager.hyprland.settings = {
     exec-once = [
+      "uwsm finalize"
       "${hyprlock}"
       "${hyprctl} setcursor ${config.stylix.cursor.name} 32"
     ];

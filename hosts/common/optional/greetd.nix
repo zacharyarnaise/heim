@@ -3,30 +3,48 @@
   lib,
   config,
   ...
-}: let
-  homeCfgs = config.home-manager.users;
-  homeSharePaths = lib.mapAttrsToList (_: v: "${v.home.path}/share") homeCfgs;
-  vars = ''XDG_DATA_DIRS="$XDG_DATA_DIRS:${lib.concatStringsSep ":" homeSharePaths}" GTK_USE_PORTAL=0'';
-  sway-kiosk = command: "${lib.getExe pkgs.sway} --unsupported-gpu --config ${pkgs.writeText "kiosk.config" ''
-    output * bg #000000 solid_color
-    xwayland disable
-    input "type:touchpad" {
-      tap enabled
-    }
-    exec '${vars} ${command}; ${pkgs.sway}/bin/swaymsg exit'
-  ''}";
-in {
-  users.extraUsers.greeter = {
-    # For caching and such
-    home = "/tmp/greeter-home";
-    createHome = true;
+}: {
+  programs.uwsm = {
+    enable = true;
+    waylandCompositors.hyprland = {
+      binPath = "/run/current-system/sw/bin/Hyprland";
+      prettyName = "Hyprland";
+      comment = "Hyprland (uwsm)";
+    };
   };
 
-  programs.regreet = {
-    enable = true;
-  };
   services.greetd = {
     enable = true;
-    settings.default_session.command = sway-kiosk (lib.getExe config.programs.regreet.package);
+    settings = {
+      default_session = {
+        command = ''
+          ${pkgs.greetd.tuigreet}/bin/tuigreet \
+          --greeting 'wake up...' \
+          --time --time-format '%-d %B %H:%M:%S' \
+          --remember --remember-session \
+          --asterisks \
+          --no-xsession-wrapper \
+          --command "${lib.getExe config.programs.uwsm.package} start hyprland-uwsm.desktop";
+          --theme 'border=red'
+        '';
+        user = "greeter";
+      };
+    };
+  };
+
+  # https://github.com/apognu/tuigreet/issues/68
+  systemd.services.greetd.serviceConfig = {
+    Type = "idle";
+  };
+
+  environment.persistence."/persist" = {
+    directories = [
+      {
+        directory = "/var/cache/tuigreet";
+        user = "greeter";
+        group = "greeter";
+        mode = "0755";
+      }
+    ];
   };
 }

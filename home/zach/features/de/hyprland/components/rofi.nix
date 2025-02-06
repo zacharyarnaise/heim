@@ -10,6 +10,7 @@
     location = "center";
     terminal = "${pkgs.foot}/bin/foot";
     extraConfig = {
+      run-command = "uwsm app -- {cmd}";
       modi = "drun,run,ssh";
       drun-display-format = "{name}";
       show-icons = true;

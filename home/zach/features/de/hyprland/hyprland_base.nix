@@ -7,11 +7,7 @@
     enable = true;
     xwayland.enable = false;
     settings.xwayland.enabled = false;
-
-    systemd = {
-      enable = true;
-      variables = ["--all"];
-    };
+    systemd.enable = false;
   };
 
   xdg.portal = let

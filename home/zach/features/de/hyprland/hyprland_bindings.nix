@@ -73,7 +73,7 @@ in {
 
         # Programs
         "${mod},      Space, Opens rofi, exec, ${rofi} -show drun"
-        "${mod},      Return, Opens terminal, exec, ${handlr "x-scheme-handler/terminal"}"
+        "${mod},      Return, Opens terminal, exec, uwsm app -- ${handlr "x-scheme-handler/terminal"}"
       ]
       ++ (lib.mapAttrsToList (n: key: "${mod}, ${key}, Switch to workspace ${n}, workspace, name:${n}") workspaces)
       ++ (lib.mapAttrsToList (n: key: "${modShift}, ${key}, Moves active window to workspace ${n}, movetoworkspacesilent, name:${n}") workspaces);

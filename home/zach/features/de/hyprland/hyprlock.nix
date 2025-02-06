@@ -23,7 +23,7 @@
       };
 
       input-field = {
-        size = "400, 70";
+        size = "400, 60";
         position = "0, 0";
         outline_thickness = 2;
         dots_size = 0.2;
