@@ -11,6 +11,7 @@
     "/persist/${config.home.homeDirectory}" = {
       allowOther = false;
       directories = [
+        ".config/Vencord/settings"
         ".config/vesktop/sessionData"
         ".config/vesktop/settings"
       ];
