@@ -14,11 +14,6 @@ window#waybar, #window {
   border-radius: 0.8em;
   padding: unset;
 }
-.modules-center {
-  border-color: transparent;
-  padding-top: 0.5em;
-  padding-bottom: 0.5em;
-}
 
 .modules-left > :not(:first-child) .module {
   font-size: 1em;
@@ -30,6 +25,14 @@ window#waybar, #window {
   background: alpha(black, 0.3);
   border-radius: 0.5em;
   padding-right: 0.54em;
+}
+menu {
+  background: @base00;
+  padding: 0.2em;
+}
+menuitem {
+  color: @base07;
+  padding: 0.4em;
 }
 #cpu {
   color: @base0D;
@@ -44,6 +47,11 @@ window#waybar, #window {
   color: teal;
 }
 
+.modules-center {
+  border-color: transparent;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+}
 #workspaces button.active label {
   color: yellow;
   font-size: 1.2em;
@@ -51,4 +59,31 @@ window#waybar, #window {
 }
 #workspaces button:hover {
   background: alpha(white, 0.1);
+}
+
+.modules-right .module {
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
+#bluetooth {
+  font-size: 1.2em;
+  color: @base0D;
+}
+#idle_inhibitor {
+  font-size: 1.2em;
+  color: shade(@base0B, 0.8);
+  padding-right: 0.8em;
+  transition: color 0.5s;
+}
+#idle_inhibitor.activated {
+  color: shade(@base0B, 1.1);
+}
+#network {
+  color: shade(@base0E, 1.05);
+}
+#pulseaudio {
+  color: shade(@base0F, 0.95);
+}
+#clock {
+  color: shade(@base09, 1.3);
 }

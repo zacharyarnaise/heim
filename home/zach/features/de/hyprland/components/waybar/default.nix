@@ -133,8 +133,8 @@ in {
         };
         network = {
           interval = 5;
-          format-ethernet = "{ifname} 󰈀";
-          format-wifi = "{essid} 󰖩";
+          format-ethernet = "<small>{ifname}</small> 󰈀";
+          format-wifi = "<small>{essid}</small> 󰖩";
           format-disconnected = "󰌙";
           tooltip-format = ''
             {ifname}
