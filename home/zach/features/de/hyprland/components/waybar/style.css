@@ -38,9 +38,11 @@ window#waybar, #window {
 }
 #temperature {
   color: @base0E;
+  padding: 0 1em 0 1em;
 }
 #battery {
   color: teal;
+  padding-right: 1em;
 }
 
 #workspaces button.active label {

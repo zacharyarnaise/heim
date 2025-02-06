@@ -28,7 +28,6 @@ in {
 
         modules-left = [
           "custom/nix"
-          "custom/separator"
           "cpu"
           "memory"
           "temperature"
@@ -41,30 +40,24 @@ in {
           "group/power"
         ];
 
-        "custom/separator" = {
-          interval = "once";
-          tooltip = false;
-          format = " ";
-        };
-
         # -------------------------------- Left --------------------------------
         "custom/nix" = {
           format = "󱄅";
         };
         memory = {
           interval = 10;
-          format = "{used:4.1f}G {icon}";
+          format = "{used:4.1f}G<small> </small>{icon}";
           format-icons = [""];
         };
         cpu = {
           interval = 10;
-          format = "{usage:3}% {icon} ";
+          format = "{usage:3}%<small> </small>{icon}";
           format-icons = [""];
         };
         temperature = {
           interval = 10;
           hwmon-path = "/sys/class/hwmon/hwmon5/temp1_input";
-          format = "{temperatureC:2}°C {icon}";
+          format = "{temperatureC:2}°C<small> </small>{icon}";
           format-icons = ["󰏈"];
         };
         battery = {
@@ -83,9 +76,9 @@ in {
             "󰂂"
             "󰁹"
           ];
-          format = "{capacity:3}% {icon}";
-          format-charging = "{capacity:3}% 󰢝";
-          format-plugged = "{capacity:3}% 󰚥";
+          format = "{capacity:3}%<small> </small>{icon}";
+          format-charging = "{capacity:3}%<small> </small>󰢝";
+          format-plugged = "{capacity:3}%<small> </small>󰚥";
           onclick = "";
         };
 
