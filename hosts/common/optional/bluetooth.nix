@@ -8,7 +8,7 @@
   hardware.bluetooth = {
     disabledPlugins = ["sap"];
     enable = true;
-    powerOnBoot = true;
+    powerOnBoot = false;
 
     settings = {
       General = {

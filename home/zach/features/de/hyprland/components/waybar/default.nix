@@ -121,7 +121,7 @@ in {
           spacing = 4;
         };
         bluetooth = {
-          on-click = "blueman-manager";
+          on-click = "overskride";
           format = "";
           format-connected = "󰂱";
           format-disabled = "󰂲";

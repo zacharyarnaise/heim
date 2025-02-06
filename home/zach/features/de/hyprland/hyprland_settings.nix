@@ -162,11 +162,11 @@ in {
       in {
         top =
           if (position == "top")
-          then height + gap
+          then height
           else 0;
         bottom =
           if (position == "bottom")
-          then height + gap
+          then height
           else 0;
         left =
           if (position == "left")

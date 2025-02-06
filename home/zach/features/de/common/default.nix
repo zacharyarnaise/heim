@@ -12,6 +12,8 @@
     inherit
       (pkgs)
       brightnessctl
+      overskride
+      pavucontrol
       ;
   };
 }
