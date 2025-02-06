@@ -106,6 +106,7 @@ in {
           on-scroll-down = "${hyprctl} dispatch workspace e-1";
           show-special = false;
           persistent-workspaces."*" = 5;
+          sort-by = "number";
           format = "{icon}";
           format-icons = {
             empty = "";

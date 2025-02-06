@@ -57,6 +57,9 @@ menuitem {
   font-size: 1.2em;
   font-weight: 700;
 }
+#workspaces button:not(.active):not(.empty) label {
+  font-size: 1.1em;
+}
 #workspaces button:hover {
   background: alpha(white, 0.1);
 }
