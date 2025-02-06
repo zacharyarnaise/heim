@@ -155,8 +155,8 @@ in {
         pulseaudio = {
           on-click = "pavucontrol";
           format = "{volume}% {icon} {format_source}";
-          format-bluetooth = "{volume}% {icon}󰂯";
-          format-muted = "0% 󰝟";
+          format-bluetooth = "{volume}% {icon}󰂯 {format_source}";
+          format-muted = "0% 󰝟 {format_source}";
           format-source = "{volume}% 󰍬";
           format-source-muted = "0% 󰍭";
           format-icons = {
