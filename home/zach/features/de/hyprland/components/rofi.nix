@@ -17,7 +17,6 @@
       display-drun = " ";
       display-run = " ";
       display-ssh = "󰣀 ";
-      drun-search-paths = "/home/zach/.nix-profile/share/applciations,/home/zach/.nix-profile/share/wayland-sessions";
     };
     # Reference: https://github.com/prasanthrangan/hyprdots
     theme = let
