@@ -38,8 +38,14 @@ in {
         modules-right = [
           "tray"
           "group/applets"
+          "custom/separator"
           "clock"
         ];
+
+        "custom/separator" = {
+          format = "";
+          interval = "once";
+        };
 
         # -------------------------------- Left --------------------------------
         "custom/nix" = {

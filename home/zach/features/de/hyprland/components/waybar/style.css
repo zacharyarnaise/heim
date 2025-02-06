@@ -15,6 +15,10 @@ window#waybar, #window {
   padding: unset;
 }
 
+#custom-separator {
+  opacity: 0.4;
+}
+
 .modules-left > :not(:first-child) .module {
   font-size: 1em;
   padding-right: 1.2em;
@@ -83,6 +87,7 @@ menuitem {
 }
 #pulseaudio {
   color: shade(@base0F, 0.95);
+  padding-right: 0.65em;
 }
 #clock {
   color: shade(@base09, 1.3);
