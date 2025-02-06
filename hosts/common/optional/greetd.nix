@@ -24,7 +24,7 @@
           --remember --remember-session \
           --asterisks \
           --no-xsession-wrapper \
-          --cmd "${lib.getExe config.programs.uwsm.package} start hyprland-uwsm.desktop";
+          --cmd "${lib.getExe config.programs.uwsm.package} start hyprland-uwsm.desktop" \
           --theme 'border=red'
         '';
         user = "greeter";
