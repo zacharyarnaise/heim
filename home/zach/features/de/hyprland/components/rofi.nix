@@ -5,7 +5,7 @@
 }: {
   programs.rofi = {
     enable = true;
-    package = pkgs.rofi-wayland;
+    package = pkgs.rofi-wayland-unwrapped;
 
     location = "center";
     terminal = "${pkgs.foot}/bin/foot";
@@ -17,6 +17,7 @@
       display-drun = " ";
       display-run = " ";
       display-ssh = "󰣀 ";
+      click-to-exit = true;
     };
     # Reference: https://github.com/prasanthrangan/hyprdots
     theme = let
