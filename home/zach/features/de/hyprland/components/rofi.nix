@@ -12,6 +12,7 @@ in {
     location = "center";
     terminal = "${pkgs.foot}/bin/foot";
     extraConfig = {
+      drun-url-launcher = "${hyprctl} dispatch exec ${pkgs.handlr-regex}/bin/handlr";
       run-command = "${hyprctl} dispatch exec {cmd}";
       modi = "drun,run,ssh";
       drun-display-format = "{name}";
