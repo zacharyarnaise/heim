@@ -8,6 +8,7 @@
 in {
   wayland.windowManager.hyprland.settings = {
     exec-once = [
+      "uwsm finalize"
       "${hyprlock}"
       "${hyprctl} setcursor ${config.stylix.cursor.name} 32"
     ];
@@ -162,11 +163,11 @@ in {
       in {
         top =
           if (position == "top")
-          then height + gap
+          then height
           else 0;
         bottom =
           if (position == "bottom")
-          then height + gap
+          then height
           else 0;
         left =
           if (position == "left")

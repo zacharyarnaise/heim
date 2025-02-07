@@ -10,6 +10,6 @@
 
     ./components/foot.nix
     ./components/rofi.nix
-    ./components/waybar.nix
+    ./components/waybar
   ];
 }

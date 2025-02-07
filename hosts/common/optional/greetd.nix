@@ -1,10 +1,17 @@
-{pkgs, ...}: {
-  wayland.sessions = [
-    {
-      name = "Hyprland";
-      exec = "Hyprland";
-    }
-  ];
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
+  programs.uwsm = {
+    enable = true;
+    waylandCompositors.hyprland = {
+      binPath = "/run/current-system/sw/bin/Hyprland";
+      prettyName = "Hyprland";
+      comment = "Hyprland (uwsm)";
+    };
+  };
 
   services.greetd = {
     enable = true;
@@ -17,7 +24,7 @@
           --remember --remember-session \
           --asterisks \
           --no-xsession-wrapper \
-          --sessions /etc/wayland-sessions \
+          --cmd "${lib.getExe config.programs.uwsm.package} start hyprland-uwsm.desktop" \
           --theme 'border=red'
         '';
         user = "greeter";

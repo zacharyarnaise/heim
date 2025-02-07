@@ -8,6 +8,7 @@
   };
 
   home.sessionVariables = {
+    ELECTRON_OZONE_PLATFORM_HINT = "auto";
     LIBSEAT_BACKEND = "logind";
     MOZ_ENABLE_WAYLAND = 1;
     MOZ_WEBRENDER = 1;
@@ -16,6 +17,4 @@
     SDL_VIDEODRIVER = "wayland";
     XDG_SESSION_TYPE = "wayland";
   };
-
-  xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-wlr];
 }
