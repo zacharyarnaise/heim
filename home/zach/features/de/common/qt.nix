@@ -1,9 +1,9 @@
-{
+{lib, ...}: {
   qt = {
     enable = true;
 
     platformTheme = {
-      name = "gtk3";
+      name = lib.mkDefault "gtk3";
     };
   };
 }
