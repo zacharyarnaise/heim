@@ -44,6 +44,7 @@ in {
 
         "custom/separator" = {
           format = "";
+          tooltip = false;
           interval = "once";
         };
 
@@ -78,7 +79,7 @@ in {
           format-icons = ["󰏈"];
         };
         battery = {
-          full-at = 98;
+          full-at = 97;
           interval = 60;
           states.warning = 30;
           format-icons = [
