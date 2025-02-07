@@ -51,7 +51,8 @@ in {
     type = types.nullOr monitorOption;
     readOnly = true;
     default =
-      lib.optional config.monitors (lib.head (lib.filter (m: m.primary) config.monitors));
+      lib.optional ((lib.length config.monitors) != 0)
+      (lib.head (lib.filter (m: m.primary) config.monitors));
   };
 
   config = {
