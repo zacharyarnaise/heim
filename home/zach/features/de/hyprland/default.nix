@@ -10,7 +10,6 @@
 
     ./components/foot.nix
     ./components/rofi.nix
-    ./components/swayosd.nix
     ./components/waybar
   ];
 }
