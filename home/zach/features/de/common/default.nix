@@ -11,7 +11,6 @@
   home.packages = builtins.attrValues {
     inherit
       (pkgs)
-      brightnessctl
       overskride
       pavucontrol
       ;

@@ -31,6 +31,8 @@
     };
   };
 
+  programs.light.enable = true;
+
   nix.settings.max-jobs = 8;
   nixpkgs.hostPlatform = "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = true;

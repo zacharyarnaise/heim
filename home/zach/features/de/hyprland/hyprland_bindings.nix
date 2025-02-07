@@ -8,6 +8,7 @@
   loginctl = "${pkgs.systemd}/bin/loginctl";
   rofi = "${config.programs.rofi.finalPackage}/bin/rofi";
   handlr = type: "${pkgs.handlr-regex}/bin/handlr launch ${type}";
+  wpctl = "${pkgs.wireplumber}/bin/wpctl";
 
   mod = "SUPER";
   modAlt = "SUPER_ALT";
@@ -52,10 +53,10 @@ in {
         "${mod},      P, Toggle pseudotile, pseudo"
 
         # Window movement
-        "${mod},      LEFT, Moves focus left, movefocus, l"
-        "${mod},      RIGHT, Moves focus right, movefocus, r"
-        "${mod},      UP, Moves focus up, movefocus, u"
-        "${mod},      DOWN, Moves focus down, movefocus, d"
+        "${mod}, LEFT, Moves focus left, movefocus, l"
+        "${mod}, RIGHT, Moves focus right, movefocus, r"
+        "${mod}, UP, Moves focus up, movefocus, u"
+        "${mod}, DOWN, Moves focus down, movefocus, d"
         "${modCtrl}, LEFT, Swaps the active window left, swapwindow, l"
         "${modCtrl}, RIGHT, Swaps the active window right, swapwindow, r"
         "${modCtrl}, UP, Swaps the active window up, swapwindow, u"
@@ -72,10 +73,19 @@ in {
         "${modAlt}, DOWN, Moves focus to the lower monitor, focusmonitor, d"
 
         # Programs
-        "${mod},      Space, Opens rofi, exec, ${rofi} -show drun"
-        "${mod},      Return, Opens terminal, exec, uwsm app -- ${handlr "x-scheme-handler/terminal"}"
+        "${mod}, Space, Opens rofi, exec, ${rofi} -show drun"
+        "${mod}, Return, Opens terminal, exec, uwsm app -- ${handlr "x-scheme-handler/terminal"}"
       ]
       ++ (lib.mapAttrsToList (n: key: "${mod}, ${key}, Switch to workspace ${n}, workspace, name:${n}") workspaces)
       ++ (lib.mapAttrsToList (n: key: "${modShift}, ${key}, Moves active window to workspace ${n}, movetoworkspacesilent, name:${n}") workspaces);
+
+    binddle = [
+      ", XF86MonBrightnessUp,   Increase brightness, exec, light -A 5"
+      ", XF86MonBrightnessDown, Decrease brightness, exec, light -U 5"
+      ", XF86AudioRaiseVolume, Increase volume, exec, ${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 5%+"
+      ", XF86AudioLowerVolume, Decrease volume, exec, ${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+      ", XF86AudioMute, Toggle output mute, exec, ${wpctl} set-mute @DEFAULT_AUDIO_SINK@ toggle"
+      ", XF86AudioMicMute, Toggle input mute, exec, ${wpctl} set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+    ];
   };
 }
