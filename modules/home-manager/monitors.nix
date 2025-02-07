@@ -50,9 +50,7 @@ in {
   options.primaryMonitor = mkOption {
     type = types.nullOr monitorOption;
     readOnly = true;
-    default =
-      lib.optional ((lib.length config.monitors) != 0)
-      (lib.head (lib.filter (m: m.primary) config.monitors));
+    default = lib.head (lib.filter (m: m.primary) config.monitors);
   };
 
   config = {
