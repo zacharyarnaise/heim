@@ -18,13 +18,15 @@
       "nvme"
       "usb_storage"
       "sd_mod"
+    ];
+    kernelModules = ["kvm-amd"];
+    kernelParams = [
+      # No ticks on cores 4-7, improves battery life (hopefully).
+      "nohz_full=4-7"
       # Force use of the thinkpad_acpi driver for backlight control.
       # This allows the backlight save/load systemd service to work.
       "acpi_backlight=native"
     ];
-    kernelModules = ["kvm-amd"];
-    # No ticks on cores 4-7, improves battery life
-    kernelParams = ["nohz_full=4-7"];
   };
 
   hardware = {
