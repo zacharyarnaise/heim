@@ -20,7 +20,7 @@ in {
         layer = "top";
         position = "top";
         height = 35;
-        margin = "8 10 4 10";
+        margin = "8 10 0 10";
         mode = "dock";
         exclusive = true;
         passthrough = false;
