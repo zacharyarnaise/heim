@@ -15,9 +15,9 @@ in {
 
     general = {
       layout = "dwindle";
-      border_size = 3;
-      gaps_in = 15;
-      gaps_out = 20;
+      border_size = 1;
+      gaps_in = 10;
+      gaps_out = 15;
       resize_on_border = true;
       extend_border_grab_area = 5;
     };
@@ -49,7 +49,7 @@ in {
 
     decoration = {
       rounding = 8;
-      rounding_power = 3.0;
+      rounding_power = 4.0;
       dim_inactive = true;
       dim_strength = 0.25;
       active_opacity = config.stylix.opacity.applications;
@@ -59,7 +59,7 @@ in {
       blur = {
         enabled = true;
         popups = true;
-        size = 8;
+        size = 4;
         passes = 2;
         contrast = 1.0;
         brightness = 0.9;
@@ -70,9 +70,9 @@ in {
       shadow = {
         enabled = true;
         range = 16;
-        render_power = 2;
-        offset = "2 2";
-        scale = 0.95;
+        render_power = 4;
+        offset = "0 0";
+        scale = 0.98;
       };
     };
 
@@ -92,14 +92,14 @@ in {
       animation = [
         "windowsIn,   1, 3, easeOutBack, popin 20%"
         "windowsOut,  1, 3, easeInBack,  popin 60%"
-        "windowsMove, 1, 4, easeOutBack, slide"
+        "windowsMove, 1, 4, easeOutBack, slide 50%"
 
         "layersIn,  1, 4, easeOutBack, fade"
         "layersOut, 1, 4, easeInBack,  fade"
 
-        "fadeIn,        1, 3, easeOutQuad"
+        "fadeIn,        1, 2, easeOutQuad"
         "fadeOut,       1, 2, easeInQuad"
-        "fadeSwitch,    1, 3, easeInOutQuad"
+        "fadeSwitch,    1, 1, easeInOutQuad"
         "fadeShadow,    1, 3, easeInOutQuad"
         "fadeDim,       1, 4, easeInOutQuad"
         "fadeLayersIn,  1, 3, easeOutBack"
