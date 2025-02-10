@@ -50,16 +50,16 @@
         lightfg = mkRgba rofiOpacity "base06";
         foreground = mkRgba rofiOpacity "base05";
 
-        base-text = "100" "base05";
-        selected-normal-text = "100" "base01";
-        selected-active-text = "100" "base00";
-        selected-urgent-text = "100" "base00";
-        normal-text = "100" "base05";
-        active-text = "100" "base0D";
-        urgent-text = "100" "base08";
-        alternate-normal-text = "100" "base05";
-        alternate-active-text = "100" "base0D";
-        alternate-urgent-text = "100" "base08";
+        base-text = mkRgba "100" "base05";
+        selected-normal-text = mkRgba "100" "base01";
+        selected-active-text = mkRgba "100" "base00";
+        selected-urgent-text = mkRgba "100" "base00";
+        normal-text = mkRgba "100" "base05";
+        active-text = mkRgba "100" "base0D";
+        urgent-text = mkRgba "100" "base08";
+        alternate-normal-text = mkRgba "100" "base05";
+        alternate-active-text = mkRgba "100" "base0D";
+        alternate-urgent-text = mkRgba "100" "base08";
       };
 
       window = {
