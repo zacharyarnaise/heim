@@ -1,8 +1,11 @@
 {
+  lib,
   config,
   pkgs,
   ...
 }: {
+  stylix.targets.rofi.enable = lib.mkDefault false;
+
   programs.rofi = {
     enable = true;
     package = pkgs.rofi-wayland;
@@ -15,30 +18,34 @@
       drun-display-format = "{name}";
       show-icons = true;
       window-format = "{w}{t}";
+      font = "${config.stylix.fonts.serif.name} ${toString config.stylix.fonts.sizes.popups}";
       display-drun = " ";
       display-run = " ";
       display-ssh = "󰣀 ";
     };
 
-    # Reference: https://github.com/prasanthrangan/hyprdots
     theme = let
-      inherit (config.lib.formats.rasi) mkLiteral;
+      l = config.lib.formats.rasi.mkLiteral;
     in {
+      "*" = {
+        background-color = l "transparent";
+        border-color = l "transparent";
+      };
+
       window = {
         enabled = true;
         fullscreen = false;
         cursor = "default";
-        height = mkLiteral "30em";
-        width = mkLiteral "60em";
-        spacing = mkLiteral "0em";
-        padding = mkLiteral "0em";
+        height = l "30em";
+        width = l "60em";
+        spacing = l "0em";
+        padding = l "0em";
         transparency = "real";
-        anchor = mkLiteral "center";
       };
       mainbox = {
         enabled = true;
-        spacing = mkLiteral "0em";
-        padding = mkLiteral "0em";
+        spacing = l "0em";
+        padding = l "0em";
         orientation = "horizontal";
         children = ["listbox" "inputbar"];
       };
@@ -46,27 +53,28 @@
       inputbar = {
         enabled = true;
         expand = false;
-        width = mkLiteral "30em";
-        spacing = mkLiteral "0em";
-        padding = mkLiteral "0em";
+        width = l "30em";
+        spacing = l "0em";
+        padding = l "0em";
         children = ["entry"];
+        background-image = l "url(\"${../../../../wallpapers/l8kmop.rofi.png}\", width)";
       };
       entry.enabled = false;
 
       listbox = {
         expand = false;
-        width = mkLiteral "27em";
-        spacing = mkLiteral "0em";
-        padding = mkLiteral "0em";
+        width = l "27em";
+        spacing = l "0em";
+        padding = l "0em";
         children = ["dummy" "listview" "dummy"];
       };
       listview = {
         enabled = true;
-        spacing = mkLiteral "0em";
-        padding = mkLiteral "1em 2em 1em 2em";
+        spacing = l "0em";
+        padding = l "1em 2em 1em 2em";
         columns = 1;
         lines = 8;
-        layout = mkLiteral "vertical";
+        layout = l "vertical";
         cycle = true;
         dynamic = true;
         expand = false;
@@ -75,33 +83,31 @@
         reverse = false;
         scrollbar = false;
       };
-      dummy = {
-        expand = true;
-      };
+      dummy.expand = true;
 
       element = {
         enabled = true;
-        spacing = mkLiteral "1em";
-        padding = mkLiteral "0.5em";
-        cursor = mkLiteral "pointer";
+        spacing = l "1em";
+        padding = l "0.5em";
+        cursor = l "pointer";
       };
       element-icon = {
-        size = mkLiteral "2.2em";
-        cursor = mkLiteral "inherit";
+        size = l "2.2em";
+        cursor = l "inherit";
       };
       element-text = {
-        vertical-align = mkLiteral "0.5";
-        horizontal-align = mkLiteral "0.0";
-        cursor = mkLiteral "inherit";
+        vertical-align = l "0.5";
+        horizontal-align = l "0.0";
+        cursor = l "inherit";
       };
 
       error-message = {
-        text-transform = mkLiteral "capitalize";
+        text-transform = l "capitalize";
         children = ["textbox"];
       };
       textbox = {
-        vertical-align = mkLiteral "0.5";
-        horizontal-align = mkLiteral "0.5";
+        vertical-align = l "0.5";
+        horizontal-align = l "0.5";
       };
     };
   };
