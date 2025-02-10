@@ -8,10 +8,10 @@
     package = pkgs.rofi-wayland;
 
     location = "center";
-    terminal = "${pkgs.foot}/bin/foot";
+    terminal = "${pkgs.foot}/bin/footclient";
     extraConfig = {
-      run-command = "uwsm app -- {cmd}";
       modi = "drun,run,ssh";
+      run-command = "uwsm app -- {cmd}";
       drun-display-format = "{name}";
       show-icons = true;
       window-format = "{w}{t}";
@@ -19,6 +19,7 @@
       display-run = " ";
       display-ssh = "󰣀 ";
     };
+
     # Reference: https://github.com/prasanthrangan/hyprdots
     theme = let
       inherit (config.lib.formats.rasi) mkLiteral;
