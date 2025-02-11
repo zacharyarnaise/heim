@@ -30,15 +30,15 @@ in {
     };
 
     layerrule = [
-      # fuzzel
-      "blur, launcher"
-      "ignorezero, launcher"
+      "animation slide, launcher"
+      "ignorealpha 0.5, launcher"
 
       "animation fade, waybar"
-      "blur, waybar"
-      "ignorezero, waybar"
+      "ignorealpha 0.6, waybar"
 
-      "noanim, wallpaper"
+      "noanim, hyprpaper"
+      "noanim, overview"
+      "noanim, selection"
     ];
     windowrulev2 = [
       "opacity 1.0 override 0.9 override, class:^(firefox)$"
