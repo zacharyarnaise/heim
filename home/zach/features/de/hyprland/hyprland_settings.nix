@@ -34,7 +34,7 @@ in {
       "ignorealpha 0.5, launcher"
 
       "animation fade, waybar"
-      "ignorealpha 0.6, waybar"
+      "ignorealpha 0.5, waybar"
 
       "noanim, hyprpaper"
       "noanim, overview"

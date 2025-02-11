@@ -38,6 +38,19 @@
 
   programs.light.enable = true;
 
+  wayland.windowManager.hyprland.settings.device = [
+    {
+      name = "synps/2-synaptics-touchpad";
+      accel_profile = "adaptive";
+      sensitivity = 0.5;
+    }
+    {
+      name = "tpps/2-elan-trackpoint";
+      accel_profile = "adaptive";
+      sensitivity = 0;
+    }
+  ];
+
   nix.settings.max-jobs = 8;
   nixpkgs.hostPlatform = "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = true;
