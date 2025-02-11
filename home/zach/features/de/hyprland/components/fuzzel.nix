@@ -15,7 +15,7 @@
         terminal = "${pkgs.foot}/bin/footclient";
         launch-prefix = "uwsm app --";
         anchor = "top";
-        y-margin = 35;
+        y-margin = 30;
         width = 50;
         tabs = 2;
       };

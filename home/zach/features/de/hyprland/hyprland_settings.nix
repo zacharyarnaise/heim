@@ -99,8 +99,8 @@ in {
         "windowsOut,  1, 3, easeInBack,  popin 60%"
         "windowsMove, 1, 4, easeOutBack, slide 50%"
 
-        "layersIn,  1, 4, easeOutBack, fade"
-        "layersOut, 1, 4, easeInBack,  fade"
+        "layersIn,  1, 2, easeOutBack, fade"
+        "layersOut, 1, 3, easeInBack,  fade"
 
         "fadeIn,        1, 2, easeOutQuad"
         "fadeOut,       1, 2, easeInQuad"
