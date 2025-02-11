@@ -1,5 +1,6 @@
 {pkgs, ...}: {
   imports = [
+    ./cliphist.nix
     ./gtk.nix
     ./mako.nix
     ./qt.nix

@@ -1,6 +1,5 @@
 {
   config,
-  lib,
   pkgs,
   ...
 }: let
@@ -31,12 +30,6 @@ in {
           on-resume = "${hyprctl} dispatch dpms on";
         }
       ];
-    };
-  };
-
-  systemd.user.services.hypridle = {
-    Unit = {
-      After = lib.mkForce "graphical-session.target";
     };
   };
 }

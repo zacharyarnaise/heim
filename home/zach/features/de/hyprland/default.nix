@@ -9,7 +9,7 @@
     ./hyprpaper.nix
 
     ./components/foot.nix
-    ./components/rofi.nix
+    ./components/fuzzel.nix
     ./components/waybar
   ];
 }

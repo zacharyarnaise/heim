@@ -6,7 +6,8 @@
 }: let
   hyprctl = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl";
   loginctl = "${pkgs.systemd}/bin/loginctl";
-  rofi = "${config.programs.rofi.finalPackage}/bin/rofi";
+  fuzzel = "${config.programs.fuzzel.package}/bin/fuzzel";
+  cliphist = "${config.services.cliphist.package}/bin/cliphist";
   handlr = type: "${pkgs.handlr-regex}/bin/handlr launch ${type}";
   wpctl = "${pkgs.wireplumber}/bin/wpctl";
 
@@ -73,7 +74,8 @@ in {
         "${modAlt}, DOWN, Moves focus to the lower monitor, focusmonitor, d"
 
         # Programs
-        "${mod}, Space, Opens rofi, exec, ${rofi} -show drun"
+        "${mod}, Space, Opens fuzzel, exec, ${fuzzel} --show-actions"
+        "${mod}, C, Shows clipboard history, exec, ${cliphist} list | ${fuzzel} --dmenu --prompt 'c/v ' | ${cliphist} decode | wl-copy -p -n"
         "${mod}, Return, Opens terminal, exec, uwsm app -- ${handlr "x-scheme-handler/terminal"}"
       ]
       ++ (lib.mapAttrsToList (n: key: "${mod}, ${key}, Switch to workspace ${n}, workspace, name:${n}") workspaces)
