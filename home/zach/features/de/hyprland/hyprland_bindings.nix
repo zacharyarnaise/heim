@@ -74,7 +74,7 @@ in {
         "${modAlt}, DOWN, Moves focus to the lower monitor, focusmonitor, d"
 
         # Programs
-        "${mod}, Space, Opens fuzzel, exec, pkill fuzzel || ${fuzzel} --show-actions --prompt '󱓞 '"
+        "${mod}, Space, Opens fuzzel, exec, pkill fuzzel || ${fuzzel} --show-actions --prompt '󱓞 ' --launch-prefix 'uwsm app --'"
         "${mod}, V, Shows clipboard history, exec, pkill fuzzel || ${cliphist} list | ${fuzzel} --dmenu --prompt '󱉧 ' | ${cliphist} decode | wl-copy -p -n"
         "${mod}, Return, Opens terminal, exec, uwsm app -- ${handlr "x-scheme-handler/terminal"}"
       ]

@@ -21,7 +21,7 @@
     {
       name = "synps/2-synaptics-touchpad";
       accel_profile = "adaptive";
-      sensitivity = 0.5;
+      sensitivity = 0.4;
     }
     {
       name = "tpps/2-elan-trackpoint";
