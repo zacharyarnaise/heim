@@ -75,7 +75,7 @@ in {
 
         # Programs
         "${mod}, Space, Opens fuzzel, exec, ${fuzzel} --show-actions --prompt '󱓞 '"
-        "${mod}, C, Shows clipboard history, exec, ${cliphist} list | ${fuzzel} --dmenu --prompt '󱉧 ' | ${cliphist} decode | wl-copy -p -n"
+        "${mod}, V, Shows clipboard history, exec, ${cliphist} list | ${fuzzel} --dmenu --prompt '󱉧 ' | ${cliphist} decode | wl-copy -p -n"
         "${mod}, Return, Opens terminal, exec, uwsm app -- ${handlr "x-scheme-handler/terminal"}"
       ]
       ++ (lib.mapAttrsToList (n: key: "${mod}, ${key}, Switch to workspace ${n}, workspace, name:${n}") workspaces)
