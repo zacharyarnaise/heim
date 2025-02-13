@@ -30,10 +30,6 @@
 
     # Desktop specific inputs
     stylix.url = "github:danth/stylix";
-    tinted-theming = {
-      url = "github:tinted-theming/schemes";
-      flake = false;
-    };
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";

@@ -8,7 +8,8 @@
   stylix = {
     enable = true;
 
-    base16Scheme = "${inputs.tinted-theming}/base16/tokyo-night-moon.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+    polarity = "dark";
     image = ../../../wallpapers/l8kmop.png;
     cursor = {
       package = pkgs.catppuccin-cursors.mochaDark;
