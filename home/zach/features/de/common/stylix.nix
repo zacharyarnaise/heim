@@ -45,7 +45,10 @@
     };
     iconTheme = {
       enable = true;
-      package = pkgs.papirus-icon-theme.override {color = "indigo";};
+      package = pkgs.catppuccin-papirus-folders.override {
+        flavor = "mocha";
+        accent = "blue";
+      };
       dark = "Papirus-Dark";
       light = "Papirus-Light";
     };
@@ -54,10 +57,6 @@
       desktop = 0.4;
       popups = 0.6;
       terminal = 0.6;
-    };
-    targets = {
-      # https://github.com/danth/stylix/issues/253
-      gnome.enable = true;
     };
   };
 }
