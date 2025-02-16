@@ -9,6 +9,7 @@
   fuzzel = "${config.programs.fuzzel.package}/bin/fuzzel";
   cliphist = "${config.services.cliphist.package}/bin/cliphist";
   handlr = type: "${pkgs.handlr-regex}/bin/handlr launch ${type}";
+  grimblast = "${pkgs.grimblast}/bin/grimblast";
   wpctl = "${pkgs.wireplumber}/bin/wpctl";
 
   mod = "SUPER";
@@ -77,6 +78,10 @@ in {
         "${mod}, Space, Opens fuzzel, exec, pkill fuzzel || ${fuzzel} --show-actions --prompt '󱓞 '"
         "${mod}, V, Shows clipboard history, exec, pkill fuzzel || ${cliphist} list | ${fuzzel} --dmenu --prompt '󱉧 ' | ${cliphist} decode | wl-copy -n"
         "${mod}, Return, Opens terminal, exec, uwsm app -- ${handlr "x-scheme-handler/terminal"}"
+
+        # Screenshot
+        ",      Print, Takes a screenshot of a region, exec, ${grimblast} --notify --freeze copy area"
+        "SHIFT, Print, Takes a screenshot of the currently active output, exec, ${grimblast} --notify --freeze copy output"
       ]
       ++ (lib.mapAttrsToList (n: key: "${mod}, ${key}, Switch to workspace ${n}, workspace, name:${n}") workspaces)
       ++ (lib.mapAttrsToList (n: key: "${modShift}, ${key}, Moves active window to workspace ${n}, movetoworkspacesilent, name:${n}") workspaces);
