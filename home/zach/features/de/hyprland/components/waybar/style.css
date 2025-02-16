@@ -82,10 +82,10 @@ menuitem {
   color: shade(@base0B, 1.1);
 }
 #network {
-  color: shade(@base0E, 1.05);
+  color: shade(@base0E, 1.1);
 }
 #pulseaudio {
-  color: shade(@base0F, 0.95);
+  color: @base0F;
   padding-right: 0.1em;
 }
 #clock {
