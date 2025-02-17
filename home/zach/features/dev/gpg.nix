@@ -4,12 +4,17 @@
   pkgs,
   ...
 }: let
+  cacheTTL =
+    if !config.device.isLaptop
+    then 3600
+    else 0;
   secretsDir = builtins.toString inputs.secrets;
 in {
   services.gpg-agent = {
     enable = true;
 
-    defaultCacheTtl = 3600;
+    defaultCacheTtl = cacheTTL;
+    defaultCacheTtlSsh = cacheTTL;
     enableScDaemon = false;
     enableSshSupport = false;
     enableZshIntegration = config.programs.zsh.enable;
@@ -28,9 +33,20 @@ in {
       }
     ];
     settings = {
+      keyid-format = "long";
+      use-agent = true;
+      exit-on-status-write-error = true;
       no-greeting = true;
-      keyid-format = "0xlong";
-      with-fingerprint = true;
+      with-subkey-fingerprint = true;
+      no-comments = true;
+      export-options = "export-minimal";
+      personal-cipher-preferences = "AES256";
+      personal-digest-preferences = "SHA512";
+      cipher-algo = "AES256";
+      digest-algo = "SHA512";
+      cert-digest-algo = "SHA512";
+      s2k-mode = "3";
+      s2k-count = "65000000";
     };
   };
 }
