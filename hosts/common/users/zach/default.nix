@@ -37,6 +37,23 @@ in {
       lib.splitString "\n" (builtins.readFile "${secretsDir}/users/zach/id_ed25519.pub");
   };
 
+  environment.persistence."/persist".users.zach = {
+    directories = [
+      {
+        directory = ".config/sops";
+        mode = "0700";
+      }
+      {
+        directory = ".gnupg";
+        mode = "0700";
+      }
+      {
+        directory = ".kube";
+        mode = "0700";
+      }
+    ];
+  };
+
   security.pam.services = {
     hyprlock = {};
   };

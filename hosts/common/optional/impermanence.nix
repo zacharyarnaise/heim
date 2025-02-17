@@ -33,14 +33,6 @@ in {
     files = [
       "/etc/machine-id"
     ];
-    users.zach = {
-      directories = [
-        {
-          directory = ".gnupg";
-          mode = "0700";
-        }
-      ];
-    };
   };
 
   # Prevent sudo lecture at each reboot
