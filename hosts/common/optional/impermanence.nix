@@ -23,6 +23,16 @@
     btrfs subvolume snapshot "$MNTPOINT/@root-blank" "$MNTPOINT/@root"
   '';
   normalUsers = lib.filterAttrs (_: v: v.isNormalUser) config.users.users;
+  persistentUserDirs = [
+    {
+      directory = ".gnupg";
+      mode = "0700";
+    }
+    {
+      directory = ".ssh";
+      mode = "0700";
+    }
+  ];
 in {
   imports = [inputs.impermanence.nixosModule];
 
@@ -34,16 +44,10 @@ in {
     files = [
       "/etc/machine-id"
     ];
-
     users =
       lib.mapAttrs' (n: _: {
         name = n;
-        value = [
-          {
-            directory = ".gnupg";
-            mode = "0700";
-          }
-        ];
+        value = {directories = persistentUserDirs;};
       })
       normalUsers;
   };
