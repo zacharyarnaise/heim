@@ -28,10 +28,6 @@
       directory = ".gnupg";
       mode = "0700";
     }
-    {
-      directory = ".ssh";
-      mode = "0700";
-    }
   ];
 in {
   imports = [inputs.impermanence.nixosModule];
@@ -46,7 +42,7 @@ in {
     ];
     users =
       lib.mapAttrs' (n: _: {
-        name = n;
+        name = "${n}";
         value = {directories = persistentUserDirs;};
       })
       normalUsers;
