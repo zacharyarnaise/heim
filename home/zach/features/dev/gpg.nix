@@ -49,11 +49,4 @@ in {
       s2k-count = "65000000";
     };
   };
-
-  home.persistence = {
-    "/persist${config.home.homeDirectory}" = {
-      allowOther = false;
-      directories = [".gnupg"];
-    };
-  };
 }
