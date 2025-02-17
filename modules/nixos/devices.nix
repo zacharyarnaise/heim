@@ -2,11 +2,10 @@
   inherit (lib) mkOption types;
 in {
   options = {
-    deviceSpecific = {
-      isLaptop = mkOption {
-        type = types.bool;
-        default = false;
-      };
+    isLaptop = mkOption {
+      type = types.bool;
+      default = false;
+      description = "Whether the device is a laptop";
     };
   };
 }
