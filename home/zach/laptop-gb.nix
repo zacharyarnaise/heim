@@ -9,6 +9,8 @@
     ./features/dev
   ];
 
+  device.isLaptop = true;
+
   monitors = [
     {
       name = "eDP-1";
