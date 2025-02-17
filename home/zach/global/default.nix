@@ -33,10 +33,6 @@
     persistence."/persist/home/zach" = {
       allowOther = false;
       directories = [
-        {
-          directory = ".gnupg";
-          mode = "0700";
-        }
         ".local/share/nix" # trusted settings and repl history
         ".nix-heim"
         "Documents"

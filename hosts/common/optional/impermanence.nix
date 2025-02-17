@@ -22,19 +22,30 @@
     echo "Restoring @root from @root-blank snapshot"
     btrfs subvolume snapshot "$MNTPOINT/@root-blank" "$MNTPOINT/@root"
   '';
+  normalUsers = lib.filterAttrs (_: v: v.isNormalUser) config.users.users;
 in {
   imports = [inputs.impermanence.nixosModule];
 
   environment.persistence."/persist" = {
     hideMounts = true;
-
     directories = [
       "/var/lib/nixos"
     ];
-
     files = [
       "/etc/machine-id"
     ];
+
+    users =
+      lib.mapAttrs' (n: _: {
+        name = n;
+        value = [
+          {
+            directory = ".gnupg";
+            mode = "0700";
+          }
+        ];
+      })
+      normalUsers;
   };
 
   # Prevent sudo lecture at each reboot
