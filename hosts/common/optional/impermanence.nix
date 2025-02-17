@@ -41,9 +41,8 @@ in {
       "/etc/machine-id"
     ];
     users =
-      lib.mapAttrs' (n: _: {
-        name = "${n}";
-        value = {directories = persistentUserDirs;};
+      lib.mapAttrsToList (_: user: {
+        directories = persistentUserDirs;
       })
       normalUsers;
   };
