@@ -6,12 +6,7 @@
   home.persistence = {
     "/persist${config.home.homeDirectory}" = {
       allowOther = false;
-      directories = [
-        {
-          directory = ".ssh/known_hosts.d";
-          mode = "0700";
-        }
-      ];
+      directories = [".ssh/known_hosts.d"];
     };
   };
 

@@ -53,12 +53,7 @@ in {
   home.persistence = {
     "/persist${config.home.homeDirectory}" = {
       allowOther = false;
-      directories = [
-        {
-          directory = ".gnupg";
-          mode = "0700";
-        }
-      ];
+      directories = [".gnupg"];
     };
   };
 }
