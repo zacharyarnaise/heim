@@ -6,6 +6,11 @@
   hyprctl = "${config.wayland.windowManager.hyprland.finalPackage}/bin/hyprctl";
   hyprlock = "${config.programs.hyprlock.package}/bin/hyprlock";
   loginctl = "${pkgs.systemd}/bin/loginctl";
+
+  baseTimeout =
+    if config.device.isLaptop
+    then 300
+    else 900;
 in {
   services.hypridle = {
     enable = true;
@@ -18,14 +23,14 @@ in {
       };
 
       listener = [
-        # Lock after 5 minutes of inactivity
+        # Lock after 5 minutes on laptops, 15 minutes elsewhere
         {
-          timeout = 300;
+          timeout = baseTimeout;
           on-timeout = "${loginctl} lock-session";
         }
-        # Turn display off after 10 minutes of inactivity
+        # Display off after 10 minutes on laptops, 30 minutes elsewhere
         {
-          timeout = 600;
+          timeout = baseTimeout * 2;
           on-timeout = "${hyprctl} dispatch dpms off";
           on-resume = "${hyprctl} dispatch dpms on";
         }
