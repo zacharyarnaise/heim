@@ -5,7 +5,7 @@
   ...
 }: let
   cacheTTL =
-    if !config.device.isLaptop
+    if !config.hostSpec.isLaptop
     then 3600
     else 0;
   secretsDir = builtins.toString inputs.secrets;

@@ -13,7 +13,7 @@
       wheelNeedsPassword = true;
       extraConfig = let
         timeout =
-          if config.device.isLaptop
+          if config.hostSpec.isLaptop
           then "2"
           else "15";
       in "Defaults timestamp_timeout=${timeout}";

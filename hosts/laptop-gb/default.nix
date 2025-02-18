@@ -11,9 +11,11 @@
     ../common/optional/wireless.nix
   ];
 
-  device.isLaptop = true;
+  hostSpec = {
+    isLaptop = true;
+    isWork = true;
+  };
 
   networking.hostName = "laptop-gb";
-
   system.stateVersion = "24.11";
 }

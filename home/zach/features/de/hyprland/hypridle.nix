@@ -8,7 +8,7 @@
   loginctl = "${pkgs.systemd}/bin/loginctl";
 
   baseTimeout =
-    if config.device.isLaptop
+    if config.hostSpec.isLaptop
     then 300
     else 900;
 in {
