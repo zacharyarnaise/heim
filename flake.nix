@@ -75,8 +75,8 @@
     inherit lib;
 
     # Reusable custom modules for NixOS and home-manager
-    nixosModules = import ./modules/nixos ./modules/common;
-    homeManagerModules = import ./modules/home-manager ./modules/common;
+    nixosModules = (import ./modules/nixos) // (import ./modules/common);
+    homeManagerModules = (import ./modules/home-manager) // (import ./modules/common);
     # Custom modifications/override to upstream packages
     overlays = import ./overlays {inherit inputs outputs;};
     # Custom packages to be shared or upstreamed
