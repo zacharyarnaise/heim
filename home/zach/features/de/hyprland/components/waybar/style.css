@@ -86,7 +86,7 @@ menuitem {
 }
 #pulseaudio, #wireplumber {
   color: @base0F;
-  padding-right: 0.1em;
+  padding-right: 0.15em;
 }
 #clock {
   color: shade(@base09, 1.3);

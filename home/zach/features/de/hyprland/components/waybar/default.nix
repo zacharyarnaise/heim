@@ -7,6 +7,7 @@
   hyprctl = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl";
   loginctl = "${pkgs.systemd}/bin/loginctl";
   systemctl = "${pkgs.systemd}/bin/systemctl";
+  pavu = "${pkgs.pavucontrol}/bin/pavucontrol";
   wpctl = "${pkgs.wireplumber}/bin/wpctl";
 in {
   stylix.targets.waybar.addCss = false;
@@ -158,7 +159,7 @@ in {
         };
         wireplumber = {
           on-click = "${wpctl} set-mute @DEFAULT_AUDIO_SINK@ toggle";
-          on-right-click = "pavucontrol -t 3";
+          on-right-click = "${pavu} -t 3";
           format = "{volume}% {icon}";
           format-muted = "{volume}% 󰝟";
           format-bluetooth = "{volume}% {icon}󰂰";
@@ -169,7 +170,7 @@ in {
         };
         "pulseaudio#source" = {
           on-click = "${wpctl} set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
-          on-right-click = "pavucontrol -t 4";
+          on-right-click = "${pavu} -t 4";
           format = "{format_source}";
           format-source = "{volume}% 󰍬";
           format-source-muted = "{volume}% 󰍭";
