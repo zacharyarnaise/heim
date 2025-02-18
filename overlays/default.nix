@@ -8,4 +8,11 @@
       };
     };
   };
+
+  # Modifications to existing packages
+  modifications = final: prev: {
+    sudo = prev.sudo.override {
+      withInsults = true;
+    };
+  };
 }

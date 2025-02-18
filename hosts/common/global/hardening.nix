@@ -16,10 +16,7 @@
           if config.device.isLaptop
           then 2
           else 15;
-      in ''
-        Defaults timestamp_timeout=${timeout}
-        Defaults insults
-      '';
+      in "Defaults timestamp_timeout=${timeout}";
     };
   };
 
