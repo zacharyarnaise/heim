@@ -63,20 +63,29 @@
     specialArgs = {inherit inputs outputs;};
     mkNixos = modules:
       lib.nixosSystem {
-        inherit specialArgs modules;
+        inherit specialArgs;
+        modules =
+          [
+            ./modules/common
+            ./modules/nixos
+          ]
+          ++ modules;
       };
     mkHome = modules: systemName:
       lib.homeManagerConfiguration {
-        modules = [./home/nixpkgs.nix] ++ modules;
+        modules =
+          [
+            ./home/nixpkgs.nix
+            ./modules/common
+            ./modules/home-manager
+          ]
+          ++ modules;
         pkgs = pkgsFor.${systemName};
         extraSpecialArgs = specialArgs;
       };
   in {
     inherit lib;
 
-    # Reusable custom modules for NixOS and home-manager
-    nixosModules = import ./modules/nixos;
-    homeManagerModules = import ./modules/home-manager;
     # Custom modifications/override to upstream packages
     overlays = import ./overlays {inherit inputs outputs;};
     # Custom packages to be shared or upstreamed
