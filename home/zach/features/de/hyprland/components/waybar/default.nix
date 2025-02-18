@@ -7,6 +7,7 @@
   hyprctl = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl";
   loginctl = "${pkgs.systemd}/bin/loginctl";
   systemctl = "${pkgs.systemd}/bin/systemctl";
+  wpctl = "${pkgs.wireplumber}/bin/wpctl";
 in {
   stylix.targets.waybar.addCss = false;
 
@@ -123,6 +124,7 @@ in {
           spacing = 4;
         };
         bluetooth = {
+          interval = 10;
           on-click = "overskride";
           on-click-right = "rfkill toggle bluetooth";
           format = "";
@@ -145,22 +147,32 @@ in {
         network = {
           on-click-right = "rfkill toggle wlan";
           interval = 5;
-          format-ethernet = "<small>{ifname}</small> 󰈀";
+          format-ethernet = "<small>{ifname}</small> 󰈁";
           format-wifi = "<small>{essid}</small> 󰖩";
-          format-disconnected = "󰌙";
+          format-disconnected = "";
           tooltip-format = ''
             {ifname}
             {ipaddr}/{cidr}
             tx: {bandwidthUpOctets}
             rx: {bandwidthDownOctets}'';
         };
-        pulseaudio = {
-          on-click = "pavucontrol";
-          format = "{volume}% {icon} {format_source}";
-          format-bluetooth = "{volume}% {icon}󰂯 {format_source}";
-          format-muted = "0% 󰝟 {format_source}";
+        wireplumber = {
+          on-click = "${wpctl} set-mute @DEFAULT_AUDIO_SINK@ toggle";
+          on-right-click = "pavucontrol -t 3";
+          format = "{volume}% {icon}";
+          format-muted = "{volume}% 󰝟";
+          format-bluetooth = "{volume}% {icon}󰂰";
+          format-icons = {
+            default = ["" ""];
+            headphone = "󰋋";
+          };
+        };
+        "pulseaudio#source" = {
+          on-click = "${wpctl} set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
+          on-right-click = "pavucontrol -t 4";
+          format = "{format_source}";
           format-source = "{volume}% 󰍬";
-          format-source-muted = "0% 󰍭";
+          format-source-muted = "{volume}% 󰍭";
           format-icons = {
             default = ["" ""];
             headphone = "󰋋";
@@ -172,7 +184,8 @@ in {
             "bluetooth"
             "idle_inhibitor"
             "network"
-            "pulseaudio"
+            "wireplumber"
+            "pulseaudio#source"
           ];
         };
         clock = {
