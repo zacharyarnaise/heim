@@ -1,4 +1,8 @@
-{lib, ...}: {
+{
+  config,
+  lib,
+  ...
+}: {
   security = {
     lockKernelModules = true;
     protectKernelImage = true;
@@ -7,6 +11,15 @@
     sudo = {
       execWheelOnly = true;
       wheelNeedsPassword = true;
+      extraConfig = let
+        timeout =
+          if config.device.isLaptop
+          then 2
+          else 15;
+      in ''
+        Defaults timestamp_timeout=${timeout}
+        Defaults insults
+      '';
     };
   };
 
