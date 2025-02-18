@@ -95,7 +95,7 @@ in {
             "󰁹"
           ];
           format = "{capacity:3}%<small> </small>{icon}";
-          format-charging = "{capacity:2}%<small> </small>{icon}󰢝";
+          format-charging = "{capacity:2}%<small> </small>{icon}󱐋";
           format-plugged = "{capacity:3}%<small> </small>󰚥";
           onclick = "";
         };
