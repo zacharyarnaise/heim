@@ -8,4 +8,11 @@
       "50"
     ];
   };
+
+  systemd.user.services.cliphist = {
+    StartLimitBurst = 30;
+  };
+  systemd.user.services.cliphist-images = {
+    StartLimitBurst = 30;
+  };
 }
