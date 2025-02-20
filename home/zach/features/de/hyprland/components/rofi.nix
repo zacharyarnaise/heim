@@ -11,5 +11,5 @@
     };
   };
 
-  programs.gdk-pixbuf.modulePackages = [pkgs.librsvg];
+  #programs.gdk-pixbuf.modulePackages = [pkgs.librsvg];
 }
