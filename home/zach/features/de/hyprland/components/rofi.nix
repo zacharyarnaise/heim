@@ -24,22 +24,27 @@
     theme = let
       l = config.lib.formats.rasi.mkLiteral;
     in {
+      "*" = {
+        border = 0;
+        margin = 0;
+        padding = 0;
+        spacing = 0;
+      };
+
       window = {
         enabled = true;
         fullscreen = false;
         cursor = "default";
         height = l "30em";
         width = l "36em";
-        spacing = l "0em";
-        padding = l "0em";
         transparency = "real";
+        border-radius = l "4em";
+        border = l "1em solid";
       };
       mainbox = {
         enabled = true;
-        spacing = l "0em";
-        padding = l "0em";
         orientation = "horizontal";
-        children = ["inputbar" "mode-switcher" "listbox"];
+        children = l "[inputbar,mode-switcher,listbox]";
       };
 
       inputbar = {
