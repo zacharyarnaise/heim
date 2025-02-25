@@ -7,7 +7,8 @@
   programs.rofi = {
     enable = true;
     package = pkgs.rofi-wayland-unwrapped;
-
+    
+    font = lib.mkForce "${config.stylix.fonts.sansSerif.name} ${toString config.stylix.fonts.sizes.popups}";
     terminal = "${pkgs.foot}/bin/footclient";
     extraConfig = {
       modi = "drun,run,ssh";
@@ -18,7 +19,7 @@
 
       display-drun = "🚀";
       display-run = "🔨";
-      display-ssh = "🐱‍💻";
+      display-ssh = "🕷";
     };
 
     theme = let
