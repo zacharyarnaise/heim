@@ -1,23 +1,19 @@
 {
   pkgs,
   config,
+  lib,
   ...
 }: {
   programs.rofi = {
     enable = true;
     package = pkgs.rofi-wayland-unwrapped;
 
-    location = "center";
     terminal = "${pkgs.foot}/bin/footclient";
     extraConfig = {
       modi = "drun,run,ssh";
       run-command = "uwsm app -- {cmd}";
       show-icons = true;
       window-format = "{w}{t}";
-
-      display-drun = " ";
-      display-run = " ";
-      display-ssh = "󰣀 ";
       drun-display-format = "{name}";
     };
 
@@ -25,6 +21,7 @@
       l = config.lib.formats.rasi.mkLiteral;
     in {
       "*" = {
+        background-color = lib.mkForce (l "transparent");
         border = 0;
         margin = 0;
         padding = 0;
@@ -34,88 +31,53 @@
       window = {
         enabled = true;
         fullscreen = false;
-        cursor = "default";
-        height = l "30em";
-        width = l "36em";
-        transparency = "real";
-        border-radius = l "4em";
-        border = l "1em solid";
+        anchor = l "north";
+        location = l "north";
+        y-offset = 22;
+        width = l "32em";
+        border-radius = l "1.5em";
       };
       mainbox = {
         enabled = true;
-        orientation = "horizontal";
-        children = l "[inputbar,mode-switcher,listbox]";
+        padding = l "0.75em";
       };
-
       inputbar = {
         enabled = true;
-        width = l "0em";
-        children = ["entry"];
+        border = l "0.12em";
+        border-radius = l "1em";
+        padding = l "0.5em 1em";
+        spacing = l "0.5em";
+        children = ["prompt" "entry"];
       };
-      entry.enabled = false;
-
-      mode-switcher = {
-        expand = true;
-        width = l "8em";
-        orientation = "vertical";
-        spacing = l "1em";
-        padding = l "3em 1.8em 3em 1.8em";
+      message = {
+        border-radius = l "1em";
+        margin = l "0.75em 0 0";
       };
-      button = {
-        cursor = "pointer";
-        border-radius = l "3em";
-      };
-      button-selected = {
-        border-radius = l "3em";
-      };
-
-      listbox = {
-        orientation = "vertical";
-        spacing = l "0em";
-        padding = l "0em";
-        children = ["dummy" "listview" "dummy"];
-        background-color = l "transparent";
+      textbox = {
+        padding = l "0.5em 1em";
       };
       listview = {
-        enabled = true;
-        spacing = l "0em";
-        padding = l "1em";
+        fixed-height = false;
+        margin = l "0.75em 0 0";
+        lines = 8;
         columns = 1;
-        lines = 7;
-        layout = l "vertical";
-        cycle = true;
-        dynamic = true;
-        expand = false;
-        fixed-height = true;
-        fixed-columns = true;
-        reverse = false;
-        scrollbar = false;
       };
 
       element = {
-        enabled = true;
-        orientation = l "horizontal";
-        spacing = l "1.5em";
-        padding = l "0.5em";
-        cursor = l "pointer";
+        padding = l "0.5em 1em";
+        spacing = l "1em";
+        border-radius = l "1em";
+      };
+      "element normal.normal, element alternate.normal" = {
+        background-color = lib.mkForce (l "transparent");
       };
       element-icon = {
-        size = l "3em";
-        cursor = l "inherit";
+        background-color = lib.mkForce (l "transparent");
+        size = l "1.8em";
       };
       element-text = {
+        background-color = lib.mkForce (l "transparent");
         vertical-align = l "0.5";
-        horizontal-align = l "0";
-        cursor = l "inherit";
-      };
-
-      error-message = {
-        text-transform = l "capitalize";
-        children = ["textbox"];
-      };
-      textbox = {
-        vertical-align = l "0.5";
-        horizontal-align = l "0.5";
       };
     };
   };

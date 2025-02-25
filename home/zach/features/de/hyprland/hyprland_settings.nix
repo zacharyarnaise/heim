@@ -30,8 +30,8 @@ in {
     };
 
     layerrule = [
-      "animation slide, launcher"
-      "ignorealpha 0.5, launcher"
+      "animation slide, rofi"
+      "ignorealpha 0.5, rofi"
 
       "animation fade, waybar"
       "ignorealpha 0.5, waybar"
