@@ -15,6 +15,10 @@
       show-icons = true;
       window-format = "{w}{t}";
       drun-display-format = "{name}";
+
+      display-drun = "🚀";
+      display-run = "🔨";
+      display-ssh = "🐱‍💻";
     };
 
     theme = let
@@ -33,7 +37,7 @@
         fullscreen = false;
         anchor = l "north";
         location = l "north";
-        y-offset = 22;
+        y-offset = 15;
         width = l "32em";
         border-radius = l "1.5em";
       };
