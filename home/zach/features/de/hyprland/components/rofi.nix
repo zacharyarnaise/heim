@@ -19,7 +19,7 @@
 
       display-drun = "🚀";
       display-run = "🔨";
-      display-ssh = "🕷";
+      display-ssh = "🦖";
     };
 
     theme = let
