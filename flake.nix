@@ -60,27 +60,29 @@
         }
     );
 
-    mkNixos = {name}: {
-      ${name} = lib.nixosSystem {
+    mkNixos = {hostname}: {
+      name = hostname;
+      value = lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules =
-          ./hosts/${name}/spec.nix
-          ++ ./hosts/${name};
+          ./hosts/${hostname}/spec.nix
+          ++ ./hosts/${hostname};
       };
     };
 
     mkHome = {
-      user,
-      host,
+      username,
+      hostname,
       system,
     }: {
-      "${user}@${host}" = lib.homeManagerConfiguration {
+      name = "${username}@${hostname}";
+      value = lib.homeManagerConfiguration {
         specialArgs = {inherit inputs outputs;};
         pkgs = pkgsFor.${system};
         modules =
           ./home/nixpkgs.nix
-          ++ ./hosts/${host}/spec.nix
-          ++ ./home/${user}/${host}.nix;
+          ++ ./hosts/${hostname}/spec.nix
+          ++ ./home/${username}/${hostname}.nix;
       };
     };
   in {
@@ -97,7 +99,7 @@
     formatter = forEachSystem (pkgs: pkgs.alejandra);
 
     # -- NixOS configurations --------------------------------------------------
-    nixosConfigurations = lib.mkMerge [
+    nixosConfigurations = lib.listToAttrs [
       (mkNixos "calcifer")
       (mkNixos "howl")
       (mkNixos "laptop-gb")
