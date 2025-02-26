@@ -74,7 +74,7 @@
     mkHome = username: hostname: system: {
       name = "${username}@${hostname}";
       value = lib.homeManagerConfiguration {
-        specialArgs = {inherit inputs outputs;};
+        extraSpecialArgs = {inherit inputs outputs;};
         pkgs = pkgsFor.${system};
         modules = [
           ./home/nixpkgs.nix
