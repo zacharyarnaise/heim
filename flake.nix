@@ -60,17 +60,29 @@
         }
     );
 
-    specialArgs = {inherit inputs outputs;};
-    mkNixos = modules:
-      lib.nixosSystem {
-        inherit specialArgs modules;
+    mkNixos = {name}: {
+      ${name} = lib.nixosSystem {
+        specialArgs = {inherit inputs outputs;};
+        modules =
+          ./hosts/${name}/spec.nix
+          ++ ./hosts/${name};
       };
-    mkHome = modules: systemName:
-      lib.homeManagerConfiguration {
-        modules = [./home/nixpkgs.nix] ++ modules;
-        pkgs = pkgsFor.${systemName};
-        extraSpecialArgs = specialArgs;
+    };
+
+    mkHome = {
+      user,
+      host,
+      system,
+    }: {
+      "${user}@${host}" = lib.homeManagerConfiguration {
+        specialArgs = {inherit inputs outputs;};
+        pkgs = pkgsFor.${system};
+        modules =
+          ./home/nixpkgs.nix
+          ++ ./hosts/${host}/spec.nix
+          ++ ./home/${user}/${host}.nix;
       };
+    };
   in {
     inherit lib;
 
@@ -85,19 +97,38 @@
     formatter = forEachSystem (pkgs: pkgs.alejandra);
 
     # -- NixOS configurations --------------------------------------------------
-    nixosConfigurations = {
-      "calcifer" = mkNixos [./hosts/calcifer];
-      "howl" = mkNixos [./hosts/howl];
-      "laptop-gb" = mkNixos [./hosts/laptop-gb];
-      "noface" = mkNixos [./hosts/noface];
-    };
+    nixosConfigurations = lib.mkMerge [
+      (mkNixos "calcifer")
+      (mkNixos "howl")
+      (mkNixos "laptop-gb")
+      (mkNixos "noface")
+    ];
 
     # -- home-manager configurations -------------------------------------------
-    homeConfigurations = {
-      "zach@calcifer" = mkHome [./home/zach/calcifer.nix] "x86_64-linux";
-      "zach@howl" = mkHome [./home/zach/howl.nix] "aarch64-linux";
-      "zach@laptop-gb" = mkHome [./home/zach/laptop-gb.nix] "x86_64-linux";
-      "zach@noface" = mkHome [./home/zach/noface.nix] "x86_64-linux";
-    };
+    homeConfigurations = lib.mkMerge [
+      (mkHome {
+        user = "zach";
+        host = "calcifer";
+        system = "x86_64-linux";
+      })
+
+      (mkHome {
+        user = "zach";
+        host = "howl";
+        system = "x86_64-linux";
+      })
+
+      (mkHome {
+        user = "zach";
+        host = "laptop-gb";
+        system = "x86_64-linux";
+      })
+
+      (mkHome {
+        user = "zach";
+        host = "noface";
+        system = "x86_64-linux";
+      })
+    ];
   };
 }
