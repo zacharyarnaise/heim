@@ -23,7 +23,7 @@ in {
 
     profiles.default = {
       id = 0;
-      extensions = builtins.attrValues {
+      extensions.packages = builtins.attrValues {
         inherit
           (firefox-addons)
           french-dictionary
