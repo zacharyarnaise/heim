@@ -54,6 +54,9 @@
         spacing = l "0.5em";
         children = ["prompt" "entry"];
       };
+      prompt = {
+        font = "${config.stylix.fonts.emoji.name} 12";
+      };
       message = {
         border-radius = l "1em";
         margin = l "0.75em 0 0";
