@@ -105,30 +105,11 @@
     ];
 
     # -- home-manager configurations -------------------------------------------
-    homeConfigurations = lib.mkMerge [
-      (mkHome {
-        user = "zach";
-        host = "calcifer";
-        system = "x86_64-linux";
-      })
-
-      (mkHome {
-        user = "zach";
-        host = "howl";
-        system = "x86_64-linux";
-      })
-
-      (mkHome {
-        user = "zach";
-        host = "laptop-gb";
-        system = "x86_64-linux";
-      })
-
-      (mkHome {
-        user = "zach";
-        host = "noface";
-        system = "x86_64-linux";
-      })
+    homeConfigurations = lib.listToAttrs [
+      (mkHome "zach" "calcifer" "x86_64-linux")
+      (mkHome "zach" "howl" "x86_64-linux")
+      (mkHome "zach" "laptop-gb" "x86_64-linux")
+      (mkHome "zach" "noface" "x86_64-linux")
     ];
   };
 }
