@@ -60,7 +60,7 @@
         }
     );
 
-    mkNixos = {hostname}: {
+    mkNixos = hostname: {
       name = hostname;
       value = lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
@@ -70,11 +70,7 @@
       };
     };
 
-    mkHome = {
-      username,
-      hostname,
-      system,
-    }: {
+    mkHome = username: hostname: system: {
       name = "${username}@${hostname}";
       value = lib.homeManagerConfiguration {
         specialArgs = {inherit inputs outputs;};
