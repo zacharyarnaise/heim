@@ -81,12 +81,12 @@
     mkHome = username: hostname: system: {
       name = "${username}@${hostname}";
       value = lib.homeManagerConfiguration {
-        extraSpecialArgs = {inherit lib inputs;};
+        extraSpecialArgs = {
+          inherit lib inputs;
+          hostSpec = import ./hosts/${hostname}/spec.nix;
+        };
         pkgs = pkgsFor.${system};
-        modules = [
-          ./hosts/${hostname}/spec.nix
-          ./home/${username}/${hostname}.nix
-        ];
+        modules = [./home/${username}/${hostname}.nix];
       };
     };
   in {
