@@ -4,7 +4,7 @@
   ...
 }: {
   imports =
-    (map lib.custom.relativeToRoot [./modules/nixos ./modules/common])
+    (map lib.custom.relativeToRoot ["modules/nixos" "modules/common"])
     ++ [
       ./home-manager.nix
 
