@@ -72,6 +72,7 @@
           nixpkgs.nixosModules.readOnlyPkgs
           {nixpkgs.pkgs = pkgsFor.${system};}
 
+          ./hosts/${hostname}/spec.nix
           ./hosts/${hostname}
         ];
       };
@@ -82,7 +83,10 @@
       value = lib.homeManagerConfiguration {
         extraSpecialArgs = {inherit lib inputs;};
         pkgs = pkgsFor.${system};
-        modules = [./home/${username}/${hostname}.nix];
+        modules = [
+          ./hosts/${hostname}/spec.nix
+          ./home/${username}/${hostname}.nix
+        ];
       };
     };
   in {
