@@ -56,7 +56,7 @@
         import nixpkgs {
           inherit system;
           config.allowUnfree = true;
-          config.allowUnfreePredicate = _: true;
+          overlays = builtins.attrValues (import ./overlays {inherit inputs;});
         }
     );
     forEachSystem = f: lib.genAttrs supportedSystems (sys: f pkgsFor.${sys});
@@ -64,11 +64,25 @@
     mkNixos = hostname: system: {
       name = hostname;
       value = lib.nixosSystem {
-        modules = [./hosts/${hostname}];
-        specialArgs = {
-          inherit inputs outputs;
-          pkgs = pkgsFor.${system};
-        };
+        pkgs = pkgsFor.${system};
+        specialArgs = {inherit inputs outputs;};
+        modules = [
+          ./hosts/${hostname}/spec.nix
+          ./hosts/${hostname}
+        ];
+      };
+    };
+
+    mkHome = username: hostname: system: {
+      name = "${username}@${hostname}";
+      value = lib.homeManagerConfiguration {
+        pkgs = pkgsFor.${system};
+        extraSpecialArgs = {inherit inputs outputs;};
+        modules = [
+          ./home/nixpkgs.nix
+          ./hosts/${hostname}/spec.nix
+          ./home/${username}/${hostname}.nix
+        ];
       };
     };
   in {
@@ -77,8 +91,6 @@
     # Reusable custom modules for NixOS and home-manager
     nixosModules = (import ./modules/nixos) // (import ./modules/common);
     homeManagerModules = (import ./modules/home-manager) // (import ./modules/common);
-    # Custom modifications/override to upstream packages
-    overlays = import ./overlays {inherit inputs outputs;};
     # Custom packages to be shared or upstreamed
     packages = forEachSystem (pkgs: import ./pkgs {inherit pkgs;});
     # Nix formatter available through 'nix fmt'
@@ -87,9 +99,17 @@
     # -- NixOS configurations --------------------------------------------------
     nixosConfigurations = lib.listToAttrs [
       (mkNixos "calcifer" "x86_64-linux")
-      (mkNixos "howl" "aarch64-linux")
+      (mkNixos "howl" "x86_64-linux")
       (mkNixos "laptop-gb" "x86_64-linux")
       (mkNixos "noface" "x86_64-linux")
+    ];
+
+    # -- home-manager configurations -------------------------------------------
+    homeConfigurations = lib.listToAttrs [
+      (mkHome "zach" "calcifer" "x86_64-linux")
+      (mkHome "zach" "howl" "x86_64-linux")
+      (mkHome "zach" "laptop-gb" "x86_64-linux")
+      (mkHome "zach" "noface" "x86_64-linux")
     ];
   };
 }
