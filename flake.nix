@@ -80,7 +80,7 @@
     mkHome = username: hostname: system: {
       name = "${username}@${hostname}";
       value = lib.homeManagerConfiguration {
-        extraSpecialArgs = {inherit inputs;};
+        extraSpecialArgs = {inherit lib inputs;};
         pkgs = pkgsFor.${system};
         modules = [./home/${username}/${hostname}.nix];
       };
