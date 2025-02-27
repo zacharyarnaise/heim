@@ -66,10 +66,7 @@
       value = lib.nixosSystem {
         pkgs = pkgsFor.${system};
         specialArgs = {inherit inputs outputs;};
-        modules = [
-          ./hosts/${hostname}/spec.nix
-          ./hosts/${hostname}
-        ];
+        modules = [./hosts/${hostname}];
       };
     };
 
@@ -78,11 +75,7 @@
       value = lib.homeManagerConfiguration {
         pkgs = pkgsFor.${system};
         extraSpecialArgs = {inherit inputs outputs;};
-        modules = [
-          ./home/nixpkgs.nix
-          ./hosts/${hostname}/spec.nix
-          ./home/${username}/${hostname}.nix
-        ];
+        modules = [./home/${username}/${hostname}.nix];
       };
     };
   in {
