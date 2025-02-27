@@ -64,8 +64,11 @@
     mkNixos = hostname: system: {
       name = hostname;
       value = lib.nixosSystem {
-        pkgs = pkgsFor.${system};
-        specialArgs = {inherit inputs outputs;};
+        inherit system;
+        specialArgs = {
+          inherit inputs outputs;
+          pkgs = pkgsFor.${system};
+        };
         modules = [./hosts/${hostname}];
       };
     };
@@ -73,7 +76,6 @@
     mkHome = username: hostname: system: {
       name = "${username}@${hostname}";
       value = lib.homeManagerConfiguration {
-        pkgs = pkgsFor.${system};
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [./home/${username}/${hostname}.nix];
       };
