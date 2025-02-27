@@ -69,7 +69,10 @@
           inherit inputs outputs;
           pkgs = pkgsFor.${system};
         };
-        modules = [./hosts/${hostname}];
+        modules = [
+          nixpkgs.nixosModules.readOnlyPkgs
+          ./hosts/${hostname}
+        ];
       };
     };
 
