@@ -1,10 +1,11 @@
 {
-  outputs,
+  lib,
   pkgs,
   ...
 }: {
   imports =
-    [
+    (map lib.custom.relativeToRoot [./modules/nixos ./modules/common])
+    ++ [
       ./home-manager.nix
 
       ./boot.nix
@@ -15,8 +16,7 @@
       ./openssh.nix
       ./secrets.nix
       ./userborn.nix
-    ]
-    ++ (builtins.attrValues outputs.nixosModules);
+    ];
 
   environment.systemPackages = builtins.attrValues {
     inherit

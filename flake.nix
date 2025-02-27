@@ -44,8 +44,11 @@
   } @ inputs: let
     inherit (self) outputs;
 
-    # nixpkgs.lib.extend (l: _: {extras = import ./lib.nix;}) // home-manager.lib;
-    lib = nixpkgs.lib // home-manager.lib;
+    lib =
+      nixpkgs.lib.extend (self: super: {
+        custom = import ./lib.nix {inherit (nixpkgs) lib;};
+      })
+      // home-manager.lib;
 
     supportedSystems = [
       "x86_64-linux"
@@ -77,16 +80,13 @@
     mkHome = username: hostname: system: {
       name = "${username}@${hostname}";
       value = lib.homeManagerConfiguration {
-        extraSpecialArgs = {inherit inputs outputs;};
+        extraSpecialArgs = {inherit inputs;};
         modules = [./home/${username}/${hostname}.nix];
       };
     };
   in {
     inherit lib;
 
-    # Reusable custom modules for NixOS and home-manager
-    nixosModules = (import ./modules/nixos) // (import ./modules/common);
-    homeManagerModules = (import ./modules/home-manager) // (import ./modules/common);
     # Custom packages to be shared or upstreamed
     packages = forEachSystem (pkgs: import ./pkgs {inherit pkgs;});
     # Nix formatter available through 'nix fmt'
