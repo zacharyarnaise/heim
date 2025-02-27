@@ -44,27 +44,32 @@
   } @ inputs: let
     inherit (self) outputs;
 
-    # nixpkgs.lib.extend (l: _: {extras = import ./lib.nix;}) // home-manager.lib;
-    lib = nixpkgs.lib // home-manager.lib;
+    lib = nixpkgs.lib.extend (
+      _: _: (import ./lib {inherit (nixpkgs) lib;}) // home-manager.lib
+    );
 
     supportedSystems = [
       "x86_64-linux"
       "aarch64-linux"
     ];
-    forEachSystem = f: lib.genAttrs supportedSystems (sys: f pkgsFor.${sys});
     pkgsFor = lib.genAttrs supportedSystems (
       system:
         import nixpkgs {
           inherit system;
           config.allowUnfree = true;
+          overlays = builtins.attrValues (import ./overlays {inherit inputs;});
         }
     );
+    forEachSystem = f: lib.genAttrs supportedSystems (sys: f pkgsFor.${sys});
 
-    mkNixos = hostname: {
+    mkNixos = hostname: system: {
       name = hostname;
       value = lib.nixosSystem {
-        specialArgs = {inherit inputs outputs;};
+        specialArgs = {inherit lib inputs outputs;};
         modules = [
+          nixpkgs.nixosModules.readOnlyPkgs
+          {nixpkgs.pkgs = pkgsFor.${system};}
+
           ./hosts/${hostname}/spec.nix
           ./hosts/${hostname}
         ];
@@ -74,23 +79,15 @@
     mkHome = username: hostname: system: {
       name = "${username}@${hostname}";
       value = lib.homeManagerConfiguration {
-        extraSpecialArgs = {inherit inputs outputs;};
+        extraSpecialArgs = {
+          inherit lib inputs;
+          inherit (import ./hosts/${hostname}/spec.nix) hostSpec;
+        };
         pkgs = pkgsFor.${system};
-        modules = [
-          ./home/nixpkgs.nix
-          ./hosts/${hostname}/spec.nix
-          ./home/${username}/${hostname}.nix
-        ];
+        modules = [./home/${username}/${hostname}.nix];
       };
     };
   in {
-    inherit lib;
-
-    # Reusable custom modules for NixOS and home-manager
-    nixosModules = (import ./modules/nixos) // (import ./modules/common);
-    homeManagerModules = (import ./modules/home-manager) // (import ./modules/common);
-    # Custom modifications/override to upstream packages
-    overlays = import ./overlays {inherit inputs outputs;};
     # Custom packages to be shared or upstreamed
     packages = forEachSystem (pkgs: import ./pkgs {inherit pkgs;});
     # Nix formatter available through 'nix fmt'
@@ -98,10 +95,10 @@
 
     # -- NixOS configurations --------------------------------------------------
     nixosConfigurations = lib.listToAttrs [
-      (mkNixos "calcifer")
-      (mkNixos "howl")
-      (mkNixos "laptop-gb")
-      (mkNixos "noface")
+      (mkNixos "calcifer" "x86_64-linux")
+      (mkNixos "howl" "x86_64-linux")
+      (mkNixos "laptop-gb" "x86_64-linux")
+      (mkNixos "noface" "x86_64-linux")
     ];
 
     # -- home-manager configurations -------------------------------------------

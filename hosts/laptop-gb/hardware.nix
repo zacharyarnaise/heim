@@ -38,14 +38,10 @@
 
   # https://github.com/lwfinger/rtw88/issues/61 - fixes random disconnects
   networking.networkmanager.wifi.powersave = false;
-  boot.extraModprobeConfig = ''
-    options rtw88_core disable_lps_deep=y
-  '';
 
   programs.light.enable = true;
 
   nix.settings.max-jobs = 8;
-  nixpkgs.hostPlatform = "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = true;
   swapDevices = lib.mkForce [];
   powerManagement.cpuFreqGovernor = "powersave";

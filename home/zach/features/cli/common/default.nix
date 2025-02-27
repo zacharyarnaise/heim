@@ -20,7 +20,6 @@
       ncdu
       jq
       sysz
-      thefuck
       wget
       p7zip
       unzip
@@ -29,4 +28,5 @@
   };
 
   programs.btop.enable = true;
+  programs.thefuck.enable = true;
 }

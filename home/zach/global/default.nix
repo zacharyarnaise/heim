@@ -1,18 +1,21 @@
 {
   inputs,
-  outputs,
+  lib,
+  hostSpec,
   ...
 }: {
   imports =
-    [
+    (map lib.custom.relativeToRoot ["modules/home-manager" "modules/common"])
+    ++ [
       inputs.impermanence.homeManagerModules.impermanence
 
       ./secrets.nix
 
       ../features/cli/common
       ../features/cli/zsh
-    ]
-    ++ (builtins.attrValues outputs.homeManagerModules);
+    ];
+
+  inherit hostSpec;
 
   programs = {
     home-manager.enable = true;

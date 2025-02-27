@@ -1,4 +1,4 @@
-{
+{pkgs, ...}: {
   programs.hyprland = {
     enable = true;
     xwayland.enable = false;
@@ -13,4 +13,6 @@
     SDL_VIDEODRIVER = "wayland";
     XDG_SESSION_TYPE = "wayland";
   };
+
+  programs.gdk-pixbuf.modulePackages = [pkgs.librsvg];
 }

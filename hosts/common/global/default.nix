@@ -1,10 +1,11 @@
 {
-  outputs,
+  lib,
   pkgs,
   ...
 }: {
   imports =
-    [
+    (map lib.custom.relativeToRoot ["modules/nixos" "modules/common"])
+    ++ [
       ./home-manager.nix
 
       ./boot.nix
@@ -15,13 +16,7 @@
       ./openssh.nix
       ./secrets.nix
       ./userborn.nix
-    ]
-    ++ (builtins.attrValues outputs.nixosModules);
-
-  nixpkgs = {
-    overlays = builtins.attrValues outputs.overlays;
-    config.allowUnfree = true;
-  };
+    ];
 
   environment.systemPackages = builtins.attrValues {
     inherit
