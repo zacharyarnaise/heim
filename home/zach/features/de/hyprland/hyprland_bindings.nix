@@ -6,6 +6,7 @@
 }: let
   hyprctl = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl";
   loginctl = "${pkgs.systemd}/bin/loginctl";
+  rofi = "${config.programs.rofi.package}/bin/rofi";
   fuzzel = "${config.programs.fuzzel.package}/bin/fuzzel";
   cliphist = "${config.services.cliphist.package}/bin/cliphist";
   handlr = type: "${pkgs.handlr-regex}/bin/handlr launch ${type}";
@@ -75,7 +76,7 @@ in {
         "${modAlt}, DOWN, Moves focus to the lower monitor, focusmonitor, d"
 
         # Programs
-        "${mod}, Space, Opens fuzzel, exec, pkill fuzzel || ${fuzzel} --show-actions --prompt '󱓞 '"
+        "${mod}, Space, Opens rofi, exec, pkill rofi || ${rofi} -show drun"
         "${mod}, V, Shows clipboard history, exec, pkill fuzzel || ${cliphist} list | ${fuzzel} --dmenu --prompt '󱉧 ' | ${cliphist} decode | wl-copy -n"
         "${mod}, Return, Opens terminal, exec, uwsm app -- ${handlr "x-scheme-handler/terminal"}"
 

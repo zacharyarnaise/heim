@@ -12,14 +12,15 @@
     terminal = "${pkgs.foot}/bin/footclient";
     extraConfig = {
       modi = "drun,run,ssh";
+      display-drun = "󱓞";
+      display-run = "󰌧";
+      display-ssh = "󰢹";
+
       run-command = "uwsm app -- {cmd}";
       show-icons = true;
       window-format = "{w}{t}";
       drun-display-format = "{name}";
-
-      display-drun = "󱓞";
-      display-run = "󰌧";
-      display-ssh = "󰢹";
+      hover-select = true;
     };
 
     theme = let
