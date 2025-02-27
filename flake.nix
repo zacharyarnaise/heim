@@ -81,6 +81,7 @@
       name = "${username}@${hostname}";
       value = lib.homeManagerConfiguration {
         extraSpecialArgs = {inherit inputs;};
+        pkgs = pkgsFor.${system};
         modules = [./home/${username}/${hostname}.nix];
       };
     };
