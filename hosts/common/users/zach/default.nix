@@ -9,9 +9,8 @@
   inherit (config.sops) secrets;
   secretsDir = builtins.toString inputs.secrets;
 in {
-  home-manager.users.zach = import ../../../../home/zach/${config.networking.hostName}.nix {
-    inherit (config) hostSpec;
-  };
+  home-manager.users.zach =
+    import ../../../../home/zach/${config.networking.hostName}.nix;
 
   programs.zsh.enable = true;
 

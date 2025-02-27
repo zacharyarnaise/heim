@@ -1,5 +1,4 @@
 {
-  pkgs,
   inputs,
   outputs,
   config,
@@ -9,7 +8,7 @@
 
   home-manager.useGlobalPkgs = true;
   home-manager.extraSpecialArgs = {
-    inherit pkgs inputs outputs;
-    hostSpec = config.hostSpec;
+    inherit inputs outputs;
+    inherit (config) hostSpec;
   };
 }
