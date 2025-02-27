@@ -76,7 +76,7 @@
 
     mkHome = username: hostname: system: {
       name = "${username}@${hostname}";
-      value = home-manager.lib.homeManagerConfiguration {
+      value = lib.homeManagerConfiguration {
         extraSpecialArgs = {
           inherit lib inputs;
           inherit (import ./hosts/${hostname}/spec.nix) hostSpec;
