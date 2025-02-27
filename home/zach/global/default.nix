@@ -2,6 +2,8 @@
   inputs,
   outputs,
   hostSpec,
+  lib,
+  osConfig,
   ...
 }: {
   imports =
@@ -16,6 +18,11 @@
     ++ (builtins.attrValues outputs.homeManagerModules);
 
   inherit hostSpec;
+
+  nixpkgs = {
+    config = lib.mapAttrs (n: v: lib.mkDefault v) osConfig.nixpkgs.config;
+    overlays = lib.mkOrder 900 osConfig.nixpkgs.overlays;
+  };
 
   programs = {
     home-manager.enable = true;
