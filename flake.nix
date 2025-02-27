@@ -56,15 +56,19 @@
         import nixpkgs {
           inherit system;
           config.allowUnfree = true;
+          config.allowUnfreePredicate = _: true;
         }
     );
     forEachSystem = f: lib.genAttrs supportedSystems (sys: f pkgsFor.${sys});
 
-    mkNixos = hostname: {
+    mkNixos = hostname: system: {
       name = hostname;
       value = lib.nixosSystem {
-        specialArgs = {inherit inputs outputs;};
         modules = [./hosts/${hostname}];
+        specialArgs = {
+          inherit inputs outputs;
+          pkgs = pkgsFor.${system};
+        };
       };
     };
   in {
@@ -82,10 +86,10 @@
 
     # -- NixOS configurations --------------------------------------------------
     nixosConfigurations = lib.listToAttrs [
-      (mkNixos "calcifer")
-      (mkNixos "howl")
-      (mkNixos "laptop-gb")
-      (mkNixos "noface")
+      (mkNixos "calcifer" "x86_64-linux")
+      (mkNixos "howl" "aarch64-linux")
+      (mkNixos "laptop-gb" "x86_64-linux")
+      (mkNixos "noface" "x86_64-linux")
     ];
   };
 }
