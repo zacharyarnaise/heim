@@ -7,7 +7,7 @@
   programs.rofi = {
     enable = true;
     package = pkgs.rofi-wayland-unwrapped;
-    
+
     font = lib.mkForce "${config.stylix.fonts.sansSerif.name} ${toString config.stylix.fonts.sizes.popups}";
     terminal = "${pkgs.foot}/bin/footclient";
     extraConfig = {
@@ -46,17 +46,25 @@
         enabled = true;
         padding = l "0.75em";
       };
+
       inputbar = {
         enabled = true;
         border = l "0.12em";
         border-radius = l "1em";
         padding = l "0.5em 1em";
         spacing = l "0.5em";
-        children = ["prompt" "entry"];
+        children = map l ["prompt" "entry"];
       };
       prompt = {
         font = "${config.stylix.fonts.emoji.name} 12";
+        padding = l "0.5em";
+        margin = l "0 0.1em 0 0";
       };
+      entry = {
+        cursor = l "text";
+        placeholder = ". . .";
+      };
+
       message = {
         border-radius = l "1em";
         margin = l "0.75em 0 0";
@@ -71,20 +79,18 @@
         columns = 1;
       };
 
+      "element normal.normal, element alternate.normal, element-icon, element-text" = {
+        background-color = lib.mkForce (l "transparent");
+      };
       element = {
         padding = l "0.5em 1em";
         spacing = l "1em";
         border-radius = l "1em";
       };
-      "element normal.normal, element alternate.normal" = {
-        background-color = lib.mkForce (l "transparent");
-      };
       element-icon = {
-        background-color = lib.mkForce (l "transparent");
         size = l "1.8em";
       };
       element-text = {
-        background-color = lib.mkForce (l "transparent");
         vertical-align = l "0.5";
       };
     };
