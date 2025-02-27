@@ -5,15 +5,15 @@
   ...
 }: {
   imports =
-    [
+    (builtins.attrValues outputs.homeManagerModules)
+    ++ [
       inputs.impermanence.homeManagerModules.impermanence
 
       ./secrets.nix
 
       ../features/cli/common
       ../features/cli/zsh
-    ]
-    ++ (builtins.attrValues outputs.homeManagerModules);
+    ];
 
   inherit hostSpec;
 
