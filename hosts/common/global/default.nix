@@ -4,8 +4,7 @@
   ...
 }: {
   imports =
-    (builtins.attrValues outputs.nixosModules)
-    ++ [
+    [
       ./home-manager.nix
 
       ./boot.nix
@@ -16,7 +15,8 @@
       ./openssh.nix
       ./secrets.nix
       ./userborn.nix
-    ];
+    ]
+    ++ (builtins.attrValues outputs.nixosModules);
 
   nixpkgs = {
     overlays = builtins.attrValues outputs.overlays;
