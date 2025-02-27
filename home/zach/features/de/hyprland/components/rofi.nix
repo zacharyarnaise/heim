@@ -43,6 +43,7 @@
       mainbox.padding = l "0.75em";
 
       inputbar = {
+        background-color = l "@lightbg";
         border-radius = l "1em";
         margin = l "0 0 0.4em 0";
         children = map l ["prompt" "entry"];
@@ -51,7 +52,7 @@
         font = "${config.stylix.fonts.monospace.name} 19";
         padding = l "1em 1.2em 1em 1em";
         background-color = l "@blue";
-        text-color = lib.mkForce (l "@selected-normal-text");
+        text-color = lib.mkForce (l "@lightbg");
       };
       entry = {
         font = "${config.stylix.fonts.sansSerif.name} 11";
