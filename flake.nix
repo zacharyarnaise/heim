@@ -67,7 +67,7 @@
     mkNixos = hostname: system: {
       name = hostname;
       value = lib.nixosSystem {
-        specialArgs = {inherit inputs outputs;};
+        specialArgs = {inherit lib inputs outputs;};
         modules = [
           nixpkgs.nixosModules.readOnlyPkgs
           {nixpkgs.pkgs = pkgsFor.${system};}
@@ -86,8 +86,6 @@
       };
     };
   in {
-    inherit lib;
-
     # Custom packages to be shared or upstreamed
     packages = forEachSystem (pkgs: import ./pkgs {inherit pkgs;});
     # Nix formatter available through 'nix fmt'
