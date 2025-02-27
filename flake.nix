@@ -65,12 +65,11 @@
       name = hostname;
       value = lib.nixosSystem {
         inherit system;
-        specialArgs = {
-          inherit inputs outputs;
-          pkgs = pkgsFor.${system};
-        };
+        specialArgs = {inherit inputs outputs;};
         modules = [
           nixpkgs.nixosModules.readOnlyPkgs
+          {nixpkgs.pkgs = pkgsFor.${system};}
+
           ./hosts/${hostname}
         ];
       };
