@@ -1,6 +1,6 @@
 {lib, ...}: {
   custom = {
     # use path relative to the root of the project
-    relativeToRoot = lib.path.append ./.;
+    relativeToRoot = lib.path.append ../.;
   };
 }
