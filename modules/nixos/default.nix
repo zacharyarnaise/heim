@@ -1,3 +1,5 @@
 {
-  wayland-sessions = import ./wayland-sessions.nix;
+  imports = [
+    ./wayland-sessions.nix
+  ];
 }
