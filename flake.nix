@@ -44,7 +44,7 @@
   } @ inputs: let
     inherit (self) outputs;
 
-    lib = nixpkgs.lib.extend (final: prev: (import ./lib final) // home-manager.lib);
+    lib = nixpkgs.lib.extend (_: _: import ./lib {inherit (nixpkgs) lib;});
 
     supportedSystems = [
       "x86_64-linux"
