@@ -17,9 +17,9 @@
       window-format = "{w}{t}";
       drun-display-format = "{name}";
 
-      display-drun = "🚀";
-      display-run = "🔨";
-      display-ssh = "🦖";
+      display-drun = "󱓞";
+      display-run = "󰐣";
+      display-ssh = "󰢹";
     };
 
     theme = let
@@ -34,43 +34,37 @@
       };
 
       window = {
-        enabled = true;
-        fullscreen = false;
         anchor = l "north";
         location = l "north";
-        y-offset = 15;
+        y-offset = 6;
         width = l "32em";
         border-radius = l "1.5em";
       };
-      mainbox = {
-        enabled = true;
-        padding = l "0.75em";
-      };
+      mainbox.padding = l "0.75em";
 
       inputbar = {
-        enabled = true;
-        border = l "0.12em";
         border-radius = l "1em";
-        padding = l "0.5em 1em";
-        spacing = l "0.5em";
+        margin = l "0 0 0.4em 0";
         children = map l ["prompt" "entry"];
       };
       prompt = {
-        font = "${config.stylix.fonts.emoji.name} 12";
-        padding = l "0.5em";
-        margin = l "0 0.1em 0 0";
+        font = "${config.stylix.fonts.monospace.name} 19";
+        padding = l "1em 1.2em 1em 1em";
+        background-color = l "@blue";
+        text-color = lib.mkForce (l "@selected-normal-text");
       };
       entry = {
+        font = "${config.stylix.fonts.sansSerif.name} 11";
         cursor = l "text";
-        placeholder = ". . .";
+        placeholder = ".  .  .";
+        vertical-align = l "0.5";
+        margin = l "0 0 0 0.9em";
       };
 
+      textbox.padding = l "0.5em 1em";
       message = {
         border-radius = l "1em";
         margin = l "0.75em 0 0";
-      };
-      textbox = {
-        padding = l "0.5em 1em";
       };
       listview = {
         fixed-height = false;
@@ -79,18 +73,19 @@
         columns = 1;
       };
 
-      "element normal.normal, element alternate.normal, element-icon, element-text" = {
-        background-color = lib.mkForce (l "transparent");
-      };
+      "element normal.normal".background-color = lib.mkForce (l "transparent");
+      "element alternate.normal".background-color = lib.mkForce (l "transparent");
       element = {
         padding = l "0.5em 1em";
         spacing = l "1em";
         border-radius = l "1em";
       };
       element-icon = {
+        background-color = lib.mkForce (l "transparent");
         size = l "1.8em";
       };
       element-text = {
+        background-color = lib.mkForce (l "transparent");
         vertical-align = l "0.5";
       };
     };
