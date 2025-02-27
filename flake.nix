@@ -60,17 +60,29 @@
         }
     );
 
-    specialArgs = {inherit inputs outputs;};
-    mkNixos = modules:
-      lib.nixosSystem {
-        inherit specialArgs modules;
+    mkNixos = hostname: {
+      name = hostname;
+      value = lib.nixosSystem {
+        specialArgs = {inherit inputs outputs;};
+        modules = [
+          ./hosts/${hostname}/spec.nix
+          ./hosts/${hostname}
+        ];
       };
-    mkHome = modules: systemName:
-      lib.homeManagerConfiguration {
-        modules = [./home/nixpkgs.nix] ++ modules;
-        pkgs = pkgsFor.${systemName};
-        extraSpecialArgs = specialArgs;
+    };
+
+    mkHome = username: hostname: system: {
+      name = "${username}@${hostname}";
+      value = lib.homeManagerConfiguration {
+        extraSpecialArgs = {inherit inputs outputs;};
+        pkgs = pkgsFor.${system};
+        modules = [
+          ./home/nixpkgs.nix
+          ./hosts/${hostname}/spec.nix
+          ./home/${username}/${hostname}.nix
+        ];
       };
+    };
   in {
     inherit lib;
 
@@ -85,19 +97,19 @@
     formatter = forEachSystem (pkgs: pkgs.alejandra);
 
     # -- NixOS configurations --------------------------------------------------
-    nixosConfigurations = {
-      "calcifer" = mkNixos [./hosts/calcifer];
-      "howl" = mkNixos [./hosts/howl];
-      "laptop-gb" = mkNixos [./hosts/laptop-gb];
-      "noface" = mkNixos [./hosts/noface];
-    };
+    nixosConfigurations = lib.listToAttrs [
+      (mkNixos "calcifer")
+      (mkNixos "howl")
+      (mkNixos "laptop-gb")
+      (mkNixos "noface")
+    ];
 
     # -- home-manager configurations -------------------------------------------
-    homeConfigurations = {
-      "zach@calcifer" = mkHome [./home/zach/calcifer.nix] "x86_64-linux";
-      "zach@howl" = mkHome [./home/zach/howl.nix] "aarch64-linux";
-      "zach@laptop-gb" = mkHome [./home/zach/laptop-gb.nix] "x86_64-linux";
-      "zach@noface" = mkHome [./home/zach/noface.nix] "x86_64-linux";
-    };
+    homeConfigurations = lib.listToAttrs [
+      (mkHome "zach" "calcifer" "x86_64-linux")
+      (mkHome "zach" "howl" "x86_64-linux")
+      (mkHome "zach" "laptop-gb" "x86_64-linux")
+      (mkHome "zach" "noface" "x86_64-linux")
+    ];
   };
 }
