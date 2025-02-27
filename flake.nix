@@ -55,7 +55,6 @@
       system:
         import nixpkgs {
           inherit system;
-          config.allowUnfree = true;
         }
     );
     forEachSystem = f: lib.genAttrs supportedSystems (sys: f pkgsFor.${sys});
