@@ -18,7 +18,7 @@
       drun-display-format = "{name}";
 
       display-drun = "󱓞";
-      display-run = "󰐣";
+      display-run = "󰌧";
       display-ssh = "󰢹";
     };
 
@@ -50,7 +50,7 @@
       };
       prompt = {
         font = "${config.stylix.fonts.monospace.name} 19";
-        padding = l "1em 1.2em 1em 1em";
+        padding = l "1em 1.3em 1em 1em";
         background-color = l "@blue";
         text-color = lib.mkForce (l "@lightbg");
       };
