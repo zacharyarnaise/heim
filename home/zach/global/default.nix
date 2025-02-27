@@ -1,6 +1,7 @@
 {
   inputs,
   outputs,
+  hostSpec,
   ...
 }: {
   imports =
@@ -13,6 +14,8 @@
       ../features/cli/zsh
     ]
     ++ (builtins.attrValues outputs.homeManagerModules);
+
+  inherit hostSpec;
 
   programs = {
     home-manager.enable = true;
