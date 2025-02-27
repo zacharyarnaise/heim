@@ -12,7 +12,14 @@ in {
   home-manager.users.zach.imports = lib.flatten [
     (
       {config, ...}:
-        import ../../../../home/zach/${config.networking.hostName}.nix {}
+        import ../../../../home/zach/${config.networking.hostName}.nix {
+          inherit
+            pkgs
+            inputs
+            config
+            lib
+            ;
+        }
     )
   ];
 
