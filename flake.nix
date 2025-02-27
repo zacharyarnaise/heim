@@ -83,7 +83,7 @@
       value = lib.homeManagerConfiguration {
         extraSpecialArgs = {
           inherit lib inputs;
-          hostSpec = builtins.attrValues (import ./hosts/${hostname}/spec.nix);
+          inherit (import ./hosts/${hostname}/spec.nix) hostSpec;
         };
         pkgs = pkgsFor.${system};
         modules = [./home/${username}/${hostname}.nix];
