@@ -44,7 +44,9 @@
   } @ inputs: let
     inherit (self) outputs;
 
-    lib = nixpkgs.lib.extend (_: _: import ./lib {inherit (nixpkgs) lib;});
+    lib = nixpkgs.lib.extend (
+      (_: _: import ./lib {inherit (nixpkgs) lib;}) // home-manager.lib
+    );
 
     supportedSystems = [
       "x86_64-linux"
@@ -76,9 +78,9 @@
 
     mkHome = username: hostname: system: {
       name = "${username}@${hostname}";
-      value = home-manager.lib.homeManagerConfiguration {
+      value = lib.homeManagerConfiguration {
         extraSpecialArgs = {
-          inherit (lib // home-manager.lib) inputs;
+          inherit lib inputs;
           inherit (import ./hosts/${hostname}/spec.nix) hostSpec;
         };
         pkgs = pkgsFor.${system};
