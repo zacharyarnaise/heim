@@ -51,7 +51,6 @@
       "x86_64-linux"
       "aarch64-linux"
     ];
-    forEachSystem = f: lib.genAttrs supportedSystems (sys: f pkgsFor.${sys});
     pkgsFor = lib.genAttrs supportedSystems (
       system:
         import nixpkgs {
@@ -59,6 +58,7 @@
           config.allowUnfree = true;
         }
     );
+    forEachSystem = f: lib.genAttrs supportedSystems (sys: f pkgsFor.${sys});
 
     mkNixos = hostname: {
       name = hostname;
@@ -67,19 +67,6 @@
         modules = [
           ./hosts/${hostname}/spec.nix
           ./hosts/${hostname}
-        ];
-      };
-    };
-
-    mkHome = username: hostname: system: {
-      name = "${username}@${hostname}";
-      value = lib.homeManagerConfiguration {
-        extraSpecialArgs = {inherit inputs outputs;};
-        pkgs = pkgsFor.${system};
-        modules = [
-          ./home/nixpkgs.nix
-          ./hosts/${hostname}/spec.nix
-          ./home/${username}/${hostname}.nix
         ];
       };
     };
@@ -102,14 +89,6 @@
       (mkNixos "howl")
       (mkNixos "laptop-gb")
       (mkNixos "noface")
-    ];
-
-    # -- home-manager configurations -------------------------------------------
-    homeConfigurations = lib.listToAttrs [
-      (mkHome "zach" "calcifer" "x86_64-linux")
-      (mkHome "zach" "howl" "x86_64-linux")
-      (mkHome "zach" "laptop-gb" "x86_64-linux")
-      (mkHome "zach" "noface" "x86_64-linux")
     ];
   };
 }
