@@ -64,10 +64,7 @@
       name = hostname;
       value = lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
-        modules = [
-          ./hosts/${hostname}/spec.nix
-          ./hosts/${hostname}
-        ];
+        modules = [./hosts/${hostname}];
       };
     };
   in {
