@@ -6,19 +6,21 @@
   inherit (lib) mkOption types;
 
   session = types.submodule {
-    options.name = mkOption {
-      type = types.str;
-      example = "firefox-session";
-    };
-    options.desktopName = mkOption {
-      type = types.nullOr types.str;
-      example = "Firefox Session";
-      default = null;
-    };
-    options.exec = mkOption {
-      type = types.nullOr types.str;
-      example = "firefox-session";
-      default = null;
+    options = {
+      name = mkOption {
+        type = types.str;
+        example = "firefox-session";
+      };
+      desktopName = mkOption {
+        type = types.nullOr types.str;
+        example = "Firefox Session";
+        default = null;
+      };
+      exec = mkOption {
+        type = types.nullOr types.str;
+        example = "firefox-session";
+        default = null;
+      };
     };
   };
 in {
