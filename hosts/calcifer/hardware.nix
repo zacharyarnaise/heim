@@ -25,7 +25,6 @@
 
   nix.settings.max-jobs = 20;
 
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = true;
 
   swapDevices = lib.mkForce [];
