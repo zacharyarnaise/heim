@@ -38,11 +38,11 @@ jobs:
           purge-created: 0
           purge-primary-key: never
 
-      - name: Check Nix flake inputs
-        uses: DeterminateSystems/flake-checker-action@v9
+      - name: Check flake evaluation
+        run: nix flake check
 
       - name: Run statix
-        run: nix run nixpkgs#statix -- fix
+        run: nix run nixpkgs#statix -- check .
 
       - name: Run Alejandra
         run: nix run nixpkgs#alejandra -- .
