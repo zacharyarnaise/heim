@@ -6,7 +6,6 @@
     ../common/users/zach
 
     ../common/optional/bluetooth.nix
-    ../common/optional/wireless-wpa_supplicant.nix
   ];
 
   networking.hostName = "calcifer";

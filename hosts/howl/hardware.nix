@@ -16,7 +16,5 @@
 
   nix.settings.max-jobs = 4;
 
-  nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux";
-
   swapDevices = lib.mkForce [];
 }
