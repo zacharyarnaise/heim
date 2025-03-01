@@ -3,8 +3,6 @@
     ./hardware.nix
 
     ../common/headless.nix
-    ../common/optional/resolved.nix
-
     ../common/users/zach
   ];
 
