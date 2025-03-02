@@ -50,7 +50,7 @@ jobs:
       - name: Update flake.lock
         uses: DeterminateSystems/update-flake-lock@v24
         with:
-          pr-title: "Update flake.lock"
+          pr-title: "chore: update flake.lock"
           pr-labels: |
             dependencies
           pr-reviewers: zacharyarnaise
