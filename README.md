@@ -1,7 +1,6 @@
 # heim
-[![NixOS unstable](https://img.shields.io/badge/NixOS%20unstable-5277C3?logo=nixos&logoColor=FFFFFF)](https://nixos.org/)
 [![Built with Nix](https://img.shields.io/badge/Built%20with%20Nix%20and%20%E2%9D%A4%EF%B8%8F-5277C3?logo=nixos&logoColor=FFFFFF)](https://builtwithnix.org/)
-[![Lint action](https://github.com/zacharyarnaise/heim/actions/workflows/lint.yml/badge.svg)](https://github.com/zacharyarnaise/heim/actions/workflows/lint.yml)
+[![Lint workflow](https://github.com/zacharyarnaise/heim/actions/workflows/lint.yml/badge.svg)](https://github.com/zacharyarnaise/heim/actions/workflows/lint.yml)
 
 *Wie d'Heim* — An [Alsatian](https://en.wikipedia.org/wiki/Alsace) phrase meaning "being at home"
 
@@ -55,10 +54,9 @@ This repository holds configuration files for my personal systems that runs on N
   - [Nix Pills](https://nixos.org/guides/nix-pills/) a series of blog posts that provide an introduction to Nix
 
 - [NixOS & Flakes book](https://nixos-and-flakes.thiscute.world/)
-- [NixOS for the confused](https://cola-gang.industries/nixos-for-the-confused-part-i)
 - [How to learn Nix](https://ianthehenry.com/posts/how-to-learn-nix/) another series of blog posts, quite dense but nonetheless useful
-- [Zero to Nix guide](https://zero-to-nix.com/)
 - [Flakes introduction](https://www.tweag.io/blog/2020-05-25-flakes/) blog posts about Nix Flakes
 - [Awesome Nix](https://github.com/nix-community/awesome-nix) a curated list of Nix resources
 - [Nix Starter Config](https://github.com/Misterio77/nix-starter-configs)
 - hlissner's [dotfiles](https://github.com/hlissner/dotfiles)
+- [EmergentMind nix-config](https://github.com/EmergentMind/nix-config)
