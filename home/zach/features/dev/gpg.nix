@@ -18,7 +18,9 @@ in {
     enableScDaemon = false;
     enableSshSupport = false;
     enableZshIntegration = config.programs.zsh.enable;
-    pinentryPackage = pkgs.pinentry-tty;
+    pinentryPackage = pkgs.pinentry-rofi.override {
+      rofi = config.programs.rofi.package;
+    };
   };
 
   programs.gpg = {
