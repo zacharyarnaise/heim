@@ -30,8 +30,11 @@ in {
     };
 
     layerrule = [
+      "animation slide, clipse"
+      "ignorealpha 0.6, clipse"
+
       "animation slide, rofi"
-      "ignorealpha 0.5, rofi"
+      "ignorealpha 0.6, rofi"
 
       "animation fade, waybar"
       "ignorealpha 0.5, waybar"
@@ -41,6 +44,9 @@ in {
       "noanim, selection"
     ];
     windowrulev2 = [
+      "float, class:(clipse)"
+      "size 622 652, class:(clipse)"
+
       "opacity 1.0 override 0.9 override, class:^(firefox)$"
 
       # make pop-up file dialogs floating, centred, and pinned
