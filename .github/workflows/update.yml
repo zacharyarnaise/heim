@@ -14,6 +14,14 @@ jobs:
       pull-requests: write
 
     steps:
+      - name: Check Lint workflow
+        run : |
+          conclusion = $(gh run list --repo zacharyarnaise/heim --workflow=Lint --branch=main --limit=1 --json conclusion --jq '.[0].conclusion')
+          if [ "$conclusion" != "success" ]; then
+            echo "Skipping update, lint is currently failing."
+            exit 1
+          fi
+
       - name: Checkout code
         uses: actions/checkout@v4
 
@@ -36,9 +44,6 @@ jobs:
       - uses: webfactory/ssh-agent@v0.9.0
         with:
           ssh-private-key: ${{ secrets.PK }}
-
-      - name: Check flake evaluation
-        run: nix flake check
 
       - name: Update flake.lock
         uses: DeterminateSystems/update-flake-lock@v24
