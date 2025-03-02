@@ -30,9 +30,6 @@ in {
     };
 
     layerrule = [
-      "animation slide, clipse"
-      "ignorealpha 0.6, clipse"
-
       "animation slide, rofi"
       "ignorealpha 0.6, rofi"
 
@@ -45,8 +42,9 @@ in {
     ];
     windowrulev2 = [
       "float, class:(clipse)"
-      "size 622 652, class:(clipse)"
-      "move 50% 40, class:(clipse)"
+      "animation slide, class:(clipse)"
+      "size 600 400, class:(clipse)"
+      "move 35% 57, class:(clipse)"
       "pin, class:(clipse)"
 
       "opacity 1.0 override 0.9 override, class:^(firefox)$"
