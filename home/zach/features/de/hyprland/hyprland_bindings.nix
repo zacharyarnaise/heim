@@ -76,7 +76,7 @@ in {
 
         # Programs
         "${mod}, Space, Opens rofi, exec, pkill rofi || ${rofi} -show drun"
-        "${mod}, V, Open clipse, exec, ${foot} --class clipse -e ${clipse}"
+        "${mod}, V, Open clipse, exec, ${foot} -a clipse ${clipse}"
         "${mod}, Return, Opens terminal, exec, uwsm app -- ${foot}"
 
         # Screenshot

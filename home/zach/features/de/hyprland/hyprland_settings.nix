@@ -31,10 +31,10 @@ in {
 
     layerrule = [
       "animation slide, clipse"
-      "ignorealpha 0.6, clipse"
+      "ignorealpha 0.8, clipse"
 
       "animation slide, rofi"
-      "ignorealpha 0.6, rofi"
+      "ignorealpha 0.8, rofi"
 
       "animation fade, waybar"
       "ignorealpha 0.5, waybar"
@@ -45,6 +45,7 @@ in {
     ];
     windowrulev2 = [
       "float, class:(clipse)"
+      "move 0 0, class:(clipse)"
       "size 622 652, class:(clipse)"
 
       "opacity 1.0 override 0.9 override, class:^(firefox)$"
