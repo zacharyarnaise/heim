@@ -10,7 +10,7 @@ in {
     exec-once = [
       "uwsm finalize"
       "${hyprlock}"
-      "${hyprctl} setcursor ${config.stylix.cursor.name} 32"
+      "${hyprctl} setcursor ${config.stylix.cursor.name} ${toString config.stylix.cursor.size}"
     ];
 
     general = {
