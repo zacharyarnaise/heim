@@ -43,6 +43,7 @@ in {
     windowrulev2 = [
       "float, class:(clipse)"
       "animation slide, class:(clipse)"
+      "noborder, class:(clipse)"
       "size 600 400, class:(clipse)"
       "move 35% 57, class:(clipse)"
       "pin, class:(clipse)"
