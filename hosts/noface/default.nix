@@ -6,7 +6,6 @@
     ../common/users/zach
   ];
 
-  networking.hostName = "noface";
   system.stateVersion = "24.11";
 
   boot = {

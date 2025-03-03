@@ -1,5 +1,10 @@
-{lib, ...}: {
+{
+  config,
+  lib,
+  ...
+}: {
   networking = {
+    inherit (config.hostSpec) hostName;
     useDHCP = false;
     useNetworkd = true;
     usePredictableInterfaceNames = true;

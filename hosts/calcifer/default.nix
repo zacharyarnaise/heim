@@ -8,7 +8,5 @@
     ../common/optional/bluetooth.nix
   ];
 
-  networking.hostName = "calcifer";
-
   system.stateVersion = "24.11";
 }

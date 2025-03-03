@@ -11,6 +11,5 @@
     ../common/optional/wireless.nix
   ];
 
-  networking.hostName = "laptop-gb";
   system.stateVersion = "24.11";
 }

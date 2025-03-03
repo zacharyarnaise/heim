@@ -6,7 +6,5 @@
     ../common/users/zach
   ];
 
-  networking.hostName = "howl";
-
   system.stateVersion = "24.11";
 }

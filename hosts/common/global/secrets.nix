@@ -6,7 +6,7 @@
   ...
 }: let
   secretsDir = builtins.toString inputs.secrets;
-  inherit (config.networking) hostName;
+  inherit (config.hostSpec) hostName;
   normalUsers = lib.filterAttrs (_: v: v.isNormalUser) config.users.users;
 in {
   imports = [inputs.sops-nix.nixosModules.sops];

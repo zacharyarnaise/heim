@@ -4,6 +4,10 @@
 in {
   options.hostSpec = {
     # Configurable options
+    hostName = mkOption {
+      type = types.str;
+      description = "The name of the host";
+    };
     isLaptop = mkOption {
       type = types.bool;
       default = false;
