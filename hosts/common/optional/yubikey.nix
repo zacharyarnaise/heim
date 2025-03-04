@@ -6,4 +6,6 @@
       yubioath-flutter
       ;
   };
+
+  services.pcscd.enable = true;
 }
