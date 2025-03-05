@@ -41,12 +41,20 @@ in {
       no-greeting = true;
       with-subkey-fingerprint = true;
       no-comments = true;
+      no-emit-version = true;
       export-options = "export-minimal";
+      throw-keyids = true;
+      armor = true;
+      no-symkey-cache = true;
+      require-secmem = true;
+
       personal-cipher-preferences = "AES256";
       personal-digest-preferences = "SHA512";
-      cipher-algo = "AES256";
-      digest-algo = "SHA512";
+      personal-compress-preferences = "ZLIB BZIP2 ZIP Uncompressed";
+      default-preference-list = "SHA512 AES256 ZLIB BZIP2 ZIP Uncompressed";
       cert-digest-algo = "SHA512";
+      s2k-cipher-algo = "AES256";
+      s2k-digest-algo = "SHA512";
       s2k-mode = "3";
       s2k-count = "65000000";
     };
