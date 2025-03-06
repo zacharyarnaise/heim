@@ -4,7 +4,11 @@
 
     plymouth.enable = false;
 
-    initrd.systemd.strip = true;
+    initrd = {
+      systemd.strip = true;
+      compressor = "lz4";
+      compressorArgs = ["-l" "-10" "--favor-decSpeed"];
+    };
 
     loader = {
       timeout = lib.mkDefault 3;
