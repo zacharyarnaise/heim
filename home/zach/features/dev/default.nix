@@ -4,5 +4,6 @@
     ./golang.nix
     ./gpg.nix
     ./k9s.nix
+    ./ssh.nix
   ];
 }

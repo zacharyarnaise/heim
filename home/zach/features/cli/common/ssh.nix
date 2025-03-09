@@ -16,6 +16,8 @@
     forwardAgent = false;
     hashKnownHosts = true;
     userKnownHostsFile = "${config.home.homeDirectory}/.ssh/known_hosts.d/hosts";
+    serverAliveCountMax = 3;
+    serverAliveInterval = 5;
 
     matchBlocks = {
       "github.com" = {

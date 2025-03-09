@@ -11,6 +11,8 @@
   hasOptinPersistence = config.environment.persistence ? "/persist";
 in {
   programs.ssh = {
+    startAgent = true;
+    enableAskPassword = false;
     knownHosts =
       lib.genAttrs hosts (hostname: {
         extraHostNames = ["${hostname}.zzz"];

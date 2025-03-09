@@ -4,19 +4,15 @@
   pkgs,
   ...
 }: let
-  cacheTTL =
-    if !config.hostSpec.isLaptop
-    then 3600
-    else 0;
+  cacheTTL = 300;
   secretsDir = builtins.toString inputs.secrets;
 in {
   services.gpg-agent = {
     enable = true;
 
     defaultCacheTtl = cacheTTL;
-    defaultCacheTtlSsh = cacheTTL;
-    enableScDaemon = false;
-    enableSshSupport = false;
+    enableScDaemon = true;
+    enableSshSupport = true;
     enableZshIntegration = config.programs.zsh.enable;
     pinentryPackage = pkgs.pinentry-rofi.override {
       rofi = config.programs.rofi.package;
@@ -28,6 +24,7 @@ in {
 
     mutableKeys = false;
     mutableTrust = false;
+    scdaemonSettings.disable-ccid = true;
     publicKeys = [
       {
         source = "${secretsDir}/users/zach/gpg.pub";
