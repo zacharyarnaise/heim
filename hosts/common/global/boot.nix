@@ -1,14 +1,6 @@
 {lib, ...}: {
   boot = {
     kernelParams = ["hibernate=no"];
-    blacklistedKernelModules = [
-      "btusb"
-      "pcspkr"
-      "psmouse"
-      "snd_hda_codec_hdmi"
-      "snd_pcsp"
-    ];
-
     plymouth.enable = false;
 
     initrd = {

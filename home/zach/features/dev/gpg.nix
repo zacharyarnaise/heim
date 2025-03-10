@@ -11,8 +11,9 @@ in {
     enable = true;
 
     defaultCacheTtl = cacheTTL;
+    maxCacheTtl = cacheTTL;
     enableScDaemon = true;
-    enableSshSupport = true;
+    enableSshSupport = false;
     enableZshIntegration = config.programs.zsh.enable;
     pinentryPackage = pkgs.pinentry-rofi.override {
       rofi = config.programs.rofi.package;

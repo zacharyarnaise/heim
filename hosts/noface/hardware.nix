@@ -14,6 +14,11 @@
       ];
       kernelModules = [];
     };
+    blacklistedKernelModules = [
+      "pcspkr"
+      "snd_hda_codec_hdmi"
+      "snd_pcsp"
+    ];
     kernelModules = [];
     extraModulePackages = [];
   };
