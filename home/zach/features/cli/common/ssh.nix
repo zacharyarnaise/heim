@@ -4,6 +4,10 @@
   ...
 }: let
   isHeadless = config.hostSpec.kind == "headless";
+  identityFiles =
+    if isHeadless
+    then []
+    else ["id_zach_sk"];
 in {
   home.persistence = {
     "/persist${config.home.homeDirectory}" = {
@@ -27,9 +31,9 @@ in {
         user = "git";
         identitiesOnly = true;
         forwardAgent = isHeadless;
-        identityFile = lib.optional (!isHeadless) (lib.lists.forEach [
-          "id_ed25519"
-        ] (n: "/persist${config.home.homeDirectory}/.ssh/${n}"));
+        identityFile =
+          lib.lists.forEach
+          identityFiles (n: "/persist${config.home.homeDirectory}/.ssh/${n}");
       };
     };
   };
