@@ -1,8 +1,8 @@
 {
   hostSpec = {
-    hostName = "laptop-gb";
+    name = "laptop-gb";
+    kind = "laptop";
 
-    isLaptop = true;
     isWork = true;
   };
 }

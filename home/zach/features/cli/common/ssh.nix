@@ -23,6 +23,7 @@
       "github.com" = {
         host = "github.com";
         user = "git";
+        forwardAgent = true;
         identitiesOnly = true;
         identityFile = lib.lists.forEach [
           "id_ed25519"

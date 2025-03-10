@@ -4,7 +4,7 @@
   ...
 }: {
   networking = {
-    inherit (config.hostSpec) hostName;
+    hostName = config.hostSpec.name;
     useDHCP = false;
     useNetworkd = true;
     usePredictableInterfaceNames = true;

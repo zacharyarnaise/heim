@@ -1,5 +1,6 @@
 {
   hostSpec = {
-    hostName = "noface";
+    name = "noface";
+    kind = "headless";
   };
 }

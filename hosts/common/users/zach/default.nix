@@ -10,7 +10,7 @@
   secretsDir = builtins.toString inputs.secrets;
 in {
   home-manager.users.zach =
-    import ../../../../home/zach/${config.hostSpec.hostName}.nix;
+    import ../../../../home/zach/${config.hostSpec.name}.nix;
 
   programs.zsh.enable = true;
 
