@@ -23,15 +23,16 @@ in {
   programs.gpg = {
     enable = true;
 
-    mutableKeys = false;
-    mutableTrust = false;
-    scdaemonSettings.disable-ccid = true;
     publicKeys = [
       {
         source = "${secretsDir}/users/zach/gpg.pub";
         trust = 5;
       }
     ];
+
+    mutableKeys = false;
+    mutableTrust = false;
+    scdaemonSettings.disable-ccid = true;
     settings = {
       keyid-format = "long";
       use-agent = true;
