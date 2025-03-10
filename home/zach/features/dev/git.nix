@@ -1,9 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   home.packages = builtins.attrValues {
     inherit
       (pkgs)
@@ -31,15 +26,5 @@
       prompt = "false";
       difftastic.cmd = ''difft "$LOCAL" "$REMOTE"'';
     };
-  };
-
-  programs.zsh = lib.mkIf config.programs.zsh.enable {
-    plugins = [
-      {
-        name = "zsh-forgit";
-        src = pkgs.zsh-forgit;
-        file = "share/zsh/zsh-forgit/forgit.plugin.zsh";
-      }
-    ];
   };
 }
