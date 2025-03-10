@@ -80,7 +80,7 @@
       name = "${username}@${hostname}";
       value = lib.homeManagerConfiguration {
         extraSpecialArgs = {
-          inherit lib inputs;
+          inherit lib inputs outputs;
           inherit (import ./hosts/${hostname}/spec.nix) hostSpec;
         };
         pkgs = pkgsFor.${system};
