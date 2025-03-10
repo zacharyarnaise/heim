@@ -13,6 +13,7 @@
       ./locale.nix
       ./networking.nix
       ./nix.nix
+      ./openssh.nix
       ./secrets.nix
       ./ssh.nix
       ./userborn.nix
