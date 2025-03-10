@@ -28,6 +28,13 @@ in {
         source = "${secretsDir}/users/zach/gpg.pub";
         trust = 5;
       }
+      {
+        source = pkgs.fetchurl {
+          url = "https://github.com/web-flow.gpg";
+          hash = "sha256-bor2h/YM8/QDFRyPsbJuleb55CTKYMyPN4e9RGaj74Q=";
+        };
+        trust = 4;
+      }
     ];
 
     mutableKeys = false;
