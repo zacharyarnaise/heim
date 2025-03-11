@@ -11,7 +11,7 @@
   hardware.gpgSmartcards.enable = true;
   services = {
     pcscd.enable = true;
-    services.udev.packages = [pkgs.yubikey-personalization];
+    udev.packages = [pkgs.yubikey-personalization];
     yubikey-agent.enable = true;
   };
 
