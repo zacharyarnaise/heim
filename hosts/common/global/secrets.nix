@@ -22,6 +22,7 @@ in {
 
   sops = {
     defaultSopsFile = "${secretsDir}/hosts/${hostName}/secrets.yaml";
+
     secrets =
       lib.mapAttrs' (n: _: {
         name = "passwords/${n}";
