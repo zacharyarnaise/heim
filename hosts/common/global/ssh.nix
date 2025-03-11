@@ -1,7 +1,9 @@
 {pkgs, ...}: {
   programs.ssh = {
-    startAgent = false;
-    askPassword = "";
+    startAgent = true;
+    enableAskPassword = true;
+    askPassword = pkgs.lib.mkForce "${pkgs.ksshaskpass.out}/bin/ksshaskpass";
+
     knownHostsFiles = [
       (pkgs.writeText "known_hosts_github" ''
         github.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl
