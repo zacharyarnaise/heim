@@ -1,8 +1,4 @@
-{
-  inputs,
-  lib,
-  ...
-}: let
+{inputs, ...}: let
   addPatches = pkg: patches:
     pkg.overrideAttrs (oldAttrs: {
       patches = (oldAttrs.patches or []) ++ patches;
@@ -25,7 +21,7 @@ in {
 
     yubikey-agent = prev.yubikey-agent.overrideAttrs (oldAttrs: {
       patches = (oldAttrs.patches or []) ++ [./yubikey-agent_deps_update.diff];
-      vendorHash = lib.fakeHash;
+      vendorHash = "sha256-wE+vcEnj7LMLyoDsQVrTZEx8eIKqA6E6eNcToE3TgD4=";
     });
   };
 }
