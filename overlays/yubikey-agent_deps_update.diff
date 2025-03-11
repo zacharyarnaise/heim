@@ -1,5 +1,5 @@
 diff --git a/go.mod b/go.mod
-index a4e62c7..a9a94fc 100644
+index a4e62c7..3bec4b9 100644
 --- a/go.mod
 +++ b/go.mod
 @@ -1,12 +1,12 @@
@@ -10,7 +10,7 @@ index a4e62c7..a9a94fc 100644
  
  require (
 -	github.com/go-piv/piv-go v1.10.0
-+	github.com/go-piv/piv-go v1.11.0
++	github.com/go-piv/piv-go/v2 v2.3.0
  	github.com/twpayne/go-pinentry-minimal v0.0.0-20220113210447-2a5dc4396c2a
 -	golang.org/x/crypto v0.4.0
 -	golang.org/x/term v0.3.0
@@ -21,14 +21,14 @@ index a4e62c7..a9a94fc 100644
 -require golang.org/x/sys v0.3.0 // indirect
 +require golang.org/x/sys v0.31.0 // indirect
 diff --git a/go.sum b/go.sum
-index 465e662..eaa302f 100644
+index 465e662..3bebab2 100644
 --- a/go.sum
 +++ b/go.sum
 @@ -1,10 +1,10 @@
 -github.com/go-piv/piv-go v1.10.0 h1:P1Y1VjBI5DnXW0+YkKmTuh5opWnMIrKriUaIOblee9Q=
 -github.com/go-piv/piv-go v1.10.0/go.mod h1:NZ2zmjVkfFaL/CF8cVQ/pXdXtuj110zEKGdJM6fJZZM=
-+github.com/go-piv/piv-go v1.11.0 h1:5vAaCdRTFSIW4PeqMbnsDlUZ7odMYWnHBDGdmtU/Zhg=
-+github.com/go-piv/piv-go v1.11.0/go.mod h1:NZ2zmjVkfFaL/CF8cVQ/pXdXtuj110zEKGdJM6fJZZM=
++github.com/go-piv/piv-go/v2 v2.3.0 h1:kKkrYlgLQTMPA6BiSL25A7/x4CEh2YCG7rtb/aTkx+g=
++github.com/go-piv/piv-go/v2 v2.3.0/go.mod h1:ShZi74nnrWNQEdWzRUd/3cSig3uNOcEZp+EWl0oewnI=
  github.com/twpayne/go-pinentry-minimal v0.0.0-20220113210447-2a5dc4396c2a h1:a1bRrtgkiv0tytmDVXU5Dqse/WOTws7JvsY2WxPMZ6M=
  github.com/twpayne/go-pinentry-minimal v0.0.0-20220113210447-2a5dc4396c2a/go.mod h1:ARJJXqNuaxVS84jX6ST52hQh0TtuQZWABhTe95a6BI4=
 -golang.org/x/crypto v0.4.0 h1:UVQgzMY87xqpKNgb+kDsll2Igd33HszWHFLmpaRMq/8=
@@ -43,3 +43,51 @@ index 465e662..eaa302f 100644
 +golang.org/x/sys v0.31.0/go.mod h1:BJP2sWEmIv4KK5OTEluFJCKSidICx8ciO85XgH3Ak8k=
 +golang.org/x/term v0.30.0 h1:PQ39fJZ+mfadBm0y5WlL4vlM7Sx1Hgf13sMIY2+QS9Y=
 +golang.org/x/term v0.30.0/go.mod h1:NYYFdzHoI5wRh/h5tDMdMqCqPJZEuNqVR5xJLd/n67g=
+diff --git a/main.go b/main.go
+index f50d239..fc2273b 100644
+--- a/main.go
++++ b/main.go
+@@ -28,10 +28,10 @@ import (
+ 	"syscall"
+ 	"time"
+ 
+-	"github.com/go-piv/piv-go/piv"
++	"github.com/go-piv/piv-go/v2/piv"
+ 	"golang.org/x/crypto/ssh"
+ 	"golang.org/x/crypto/ssh/agent"
+-	"golang.org/x/crypto/ssh/terminal"
++	"golang.org/x/term"
+ )
+ 
+ func main() {
+@@ -75,7 +75,7 @@ func main() {
+ }
+ 
+ func runAgent(socketPath string) {
+-	if terminal.IsTerminal(int(os.Stdin.Fd())) {
++	if term.IsTerminal(int(os.Stdin.Fd())) {
+ 		log.Println("Warning: yubikey-agent is meant to run as a background daemon.")
+ 		log.Println("Running multiple instances is likely to lead to conflicts.")
+ 		log.Println("Consider using the launchd or systemd services.")
+diff --git a/setup.go b/setup.go
+index ec6d10a..416d9a6 100644
+--- a/setup.go
++++ b/setup.go
+@@ -21,7 +21,7 @@ import (
+ 	"runtime/debug"
+ 	"time"
+ 
+-	"github.com/go-piv/piv-go/piv"
++	"github.com/go-piv/piv-go/v2/piv"
+ 	"golang.org/x/crypto/ssh"
+ 	"golang.org/x/term"
+ )
+@@ -100,7 +100,7 @@ func runSetup(yk *piv.YubiKey) {
+ 	fmt.Println("")
+ 	fmt.Println("🧪 Reticulating splines...")
+ 
+-	var key [24]byte
++	key := make([]byte, 24)
+ 	if _, err := rand.Read(key[:]); err != nil {
+ 		log.Fatal(err)
+ 	}
