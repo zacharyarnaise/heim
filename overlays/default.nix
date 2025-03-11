@@ -1,4 +1,8 @@
-{inputs, ...}: let
+{
+  inputs,
+  lib,
+  ...
+}: let
   addPatches = pkg: patches:
     pkg.overrideAttrs (oldAttrs: {
       patches = (oldAttrs.patches or []) ++ patches;
@@ -19,7 +23,9 @@ in {
     sudo =
       prev.sudo.override {withInsults = true;};
 
-    yubikey-agent =
-      addPatches prev.yubikey-agent [./yubikey-agent_deps_update.diff];
+    yubikey-agent = prev.yubikey-agent.overrideAttrs (oldAttrs: {
+      patches = (oldAttrs.patches or []) ++ [./yubikey-agent_deps_update.diff];
+      vendorHash = lib.fakeHash;
+    });
   };
 }
