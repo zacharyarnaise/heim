@@ -25,7 +25,7 @@ in {
 
     yubikey-agent = prev.yubikey-agent.overrideAttrs (oldAttrs: {
       patches = (oldAttrs.patches or []) ++ [./yubikey-agent_deps_update.diff];
-      vendorHash = lib.fakeHash;
+      vendorHash = "sha256-lTBDgmG4vGiu0fW8/hdUOBsNiVQcC6nh+10MReFqA7M=";
     });
   };
 }
