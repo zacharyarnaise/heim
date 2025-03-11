@@ -4,7 +4,7 @@
 
     actions = true;
     icons = true;
-    defaultTimeout = 10000;
+    defaultTimeout = 4000;
     maxVisible = 5;
     layer = "overlay";
     anchor = "top-right";
