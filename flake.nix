@@ -57,7 +57,7 @@
         import nixpkgs {
           inherit system;
           config.allowUnfree = true;
-          overlays = builtins.attrValues (import ./overlays {inherit inputs;});
+          overlays = builtins.attrValues (import ./overlays {inherit inputs lib;});
         }
     );
     forEachSystem = f: lib.genAttrs supportedSystems (sys: f pkgsFor.${sys});
