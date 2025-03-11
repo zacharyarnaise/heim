@@ -1,0 +1,42 @@
+diff --git a/main.go b/main.go
+index fc2273b..272aeaa 100644
+--- a/main.go
++++ b/main.go
+@@ -10,6 +10,7 @@ import (
+ 	"bytes"
+ 	"context"
+ 	"crypto/ecdsa"
++	"crypto/ed25519"
+ 	"crypto/rand"
+ 	"crypto/rsa"
+ 	"errors"
+@@ -249,6 +250,7 @@ func getPublicKey(yk *piv.YubiKey, slot piv.Slot) (ssh.PublicKey, error) {
+ 	}
+ 	switch cert.PublicKey.(type) {
+ 	case *ecdsa.PublicKey:
++	case ed25519.PublicKey:
+ 	case *rsa.PublicKey:
+ 	default:
+ 		return nil, fmt.Errorf("unexpected public key type: %T", cert.PublicKey)
+diff --git a/setup.go b/setup.go
+index 416d9a6..aac0c01 100644
+--- a/setup.go
++++ b/setup.go
+@@ -100,7 +100,7 @@ func runSetup(yk *piv.YubiKey) {
+ 	fmt.Println("")
+ 	fmt.Println("🧪 Reticulating splines...")
+ 
+-	key := make([]byte, 24)
++	key := make([]byte, 32)
+ 	if _, err := rand.Read(key[:]); err != nil {
+ 		log.Fatal(err)
+ 	}
+@@ -138,7 +138,7 @@ func runSetup(yk *piv.YubiKey) {
+ 	}
+ 
+ 	pub, err := yk.GenerateKey(key, piv.SlotAuthentication, piv.Key{
+-		Algorithm:   piv.AlgorithmEC256,
++		Algorithm:   piv.AlgorithmEd25519,
+ 		PINPolicy:   piv.PINPolicyOnce,
+ 		TouchPolicy: piv.TouchPolicyAlways,
+ 	})
