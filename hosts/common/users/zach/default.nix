@@ -34,7 +34,7 @@ in {
     password = lib.mkForce null;
     hashedPasswordFile = secrets."passwords/zach".path;
     openssh.authorizedKeys.keys =
-      lib.splitString "\n" (builtins.readFile "${secretsDir}/users/zach/id_zach_sk.pub");
+      lib.splitString "\n" (builtins.readFile "${secretsDir}/users/zach/id_ed25519.pub");
   };
 
   environment.persistence."/persist".users.zach = {

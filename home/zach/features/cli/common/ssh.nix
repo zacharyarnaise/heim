@@ -6,7 +6,6 @@
   isHeadless = config.hostSpec.kind == "headless";
   identityFiles =
     lib.lists.forEach [
-      "id_ed25519"
       "id_zach_sk"
     ]
     (n: "/persist${config.home.homeDirectory}/.ssh/${n}");
