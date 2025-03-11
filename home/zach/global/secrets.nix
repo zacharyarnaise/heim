@@ -9,7 +9,7 @@ in {
   imports = [inputs.sops-nix.homeManagerModules.sops];
 
   sops = {
-    age.keyFile = "${homeDir}}/.config/sops/age/keys.txt";
+    age.keyFile = "${homeDir}/.config/sops/age/keys.txt";
     defaultSopsFile = "${secretsDir}/users/zach/secrets.yaml";
 
     secrets = {
