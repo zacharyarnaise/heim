@@ -7,6 +7,7 @@
 in {
   services.openssh = {
     enable = true;
+    startWhenNeeded = true;
     allowSFTP = lib.mkDefault false;
 
     hostKeys = [
