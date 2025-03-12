@@ -104,6 +104,7 @@ in {
         "browser.eme.ui.firstContentShown" = true;
         "rowser.laterrun.enabled" = false;
         "browser.preonboarding.enabled" = false;
+        "browser.sessionstore.resume_from_crash" = false;
         "browser.shell.checkDefaultBrowser" = false;
         "browser.startup.firstrunSkipsHomepage" = true;
         "browser.translations.automaticallyPopup" = false;
