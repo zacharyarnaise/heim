@@ -48,17 +48,17 @@ in {
 
         engines = {
           "NixOS packages" = {
-            urls = [{template = "https://search.nixos.org/packages?channel=24.11&query={searchTerms}";}];
+            urls = [{template = "https://search.nixos.org/packages?channel=unstable&query={searchTerms}";}];
             icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
             definedAliases = ["@nxp"];
           };
           "NixOS options" = {
-            urls = [{template = "https://search.nixos.org/options?channel=24.11&query={searchTerms}";}];
+            urls = [{template = "https://search.nixos.org/options?channel=unstable&query={searchTerms}";}];
             icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
             definedAliases = ["@nxo"];
           };
           "Home-Manager options" = {
-            urls = [{template = "https://home-manager-options.extranix.com?release=release-24.11&query={searchTerms}";}];
+            urls = [{template = "https://home-manager-options.extranix.com?release=master&query={searchTerms}";}];
             icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
             definedAliases = ["@nxh"];
           };
