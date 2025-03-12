@@ -13,7 +13,7 @@
     sha256 = "sha256-NBPSKIxTNSuJahySyLqD45R/UmeyvkJBKehUIE/dI0I=";
   };
 in {
-  tylix.targets.firefox.profileNames = ["default"];
+  stylix.targets.firefox.profileNames = ["default"];
   programs.firefox = {
     enable = true;
     package = pkgs.firefox-bin;
