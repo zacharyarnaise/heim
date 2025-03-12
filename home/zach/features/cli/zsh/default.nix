@@ -25,7 +25,7 @@
     };
 
     dirHashes = {
-      heim = "$HOME/.nix-heim/heim";
+      heim = "$HOME/Code/Nix/heim";
     };
 
     plugins = [
