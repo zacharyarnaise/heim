@@ -78,7 +78,7 @@ in {
         "${mod},     Space, Opens rofi drun mode, exec, pkill rofi || ${rofi} -show drun"
         "${modCtrl}, Space, Opens rofi ssh mod, exec, pkill rofi || ${rofi} -show ssh -no-show-icons"
         "${mod},     V, Open clipse, exec, pkill clipse || ${foot} -a clipse ${clipse}"
-        "${mod},     Return, Opens terminal, exec, uwsm app -- ${foot}"
+        "${mod},     Return, Opens terminal, exec, uwsm-app ${foot}"
 
         # Screenshot
         ",      Print, Takes a screenshot of a region, exec, ${grimblast} --notify --freeze copy area"
