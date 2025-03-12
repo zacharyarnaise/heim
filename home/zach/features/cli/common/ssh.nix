@@ -26,7 +26,7 @@ in {
     serverAliveInterval = 5;
 
     matchBlocks = {
-      "github.com" = lib.dag.entryAfter ["*"] {
+      "github.com" = lib.hm.dag.entryAfter ["*"] {
         host = "github.com";
         user = "git";
         forwardAgent = isHeadless;
