@@ -8,9 +8,9 @@
   firefox-ui-fix = pkgs.fetchFromGitHub {
     owner = "black7375";
     repo = "Firefox-UI-Fix";
-    rev = "v8.6.6";
+    rev = "v8.7.0";
     fetchSubmodules = false;
-    sha256 = "sha256-9pNphWnxiIe0bCpPdNQk/7y/zPvFKBM/djQoED+PJJ0=";
+    sha256 = "sha256-NBPSKIxTNSuJahySyLqD45R/UmeyvkJBKehUIE/dI0I=";
   };
 in {
   tylix.targets.firefox.profileNames = ["default"];
