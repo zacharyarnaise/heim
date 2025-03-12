@@ -30,11 +30,12 @@ in {
     };
 
     layerrule = [
+      "animation slide, notifications"
+
       "animation slide, rofi"
-      "ignorealpha 0.6, rofi"
 
       "animation fade, waybar"
-      "ignorealpha 0.5, waybar"
+      "ignorezero, waybar"
 
       "noanim, hyprpaper"
       "noanim, overview"
