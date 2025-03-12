@@ -22,6 +22,7 @@
       branch.sort = "committerdate";
       init.defaultBranch = "main";
       merge.conflictStyle = "zdiff3";
+      log.showSignature = "true";
       rerere.enabled = true;
       fetch.prune = true;
       pull.ff = "only";

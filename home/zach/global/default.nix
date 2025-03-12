@@ -30,14 +30,15 @@
     homeDirectory = "/home/zach";
     sessionPath = ["$HOME/.local/bin"];
     sessionVariables = {
-      FLAKE = "$HOME/.nix-heim/heim";
+      FLAKE = "$HOME/Code/Nix/heim";
     };
 
     persistence."/persist/home/zach" = {
       allowOther = false;
+      defaultDirectoryMethod = "symlink";
       directories = [
         ".local/share/nix" # trusted settings and repl history
-        ".nix-heim"
+        "Code"
         "Documents"
         "Downloads"
         "Pictures"
