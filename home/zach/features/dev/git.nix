@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  secrets = inputs.secrets;
+  inherit (inputs) secrets;
 in {
   home.packages = builtins.attrValues {
     inherit
