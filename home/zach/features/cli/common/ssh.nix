@@ -26,11 +26,11 @@ in {
     serverAliveInterval = 5;
 
     matchBlocks = {
-      "github.com" = lib.hm.dag.entryAfter ["*"] {
+      "github.com" = {
         host = "github.com";
         user = "git";
         forwardAgent = isHeadless;
-        identitiesOnly = true;
+        identitiesOnly = !isHeadless;
         identityFile =
           if isHeadless
           then []

@@ -12,18 +12,13 @@
     (n: "/persist${config.home.homeDirectory}/.ssh/${n}");
 
   hostNames = lib.attrNames outputs.nixosConfigurations;
-  hostsConfig = lib.attrsets.mergeAttrsList (
-    lib.lists.map (hname: {
-      "${hname}" = lib.hm.dag.entryAfter ["*"] {
-        host = hname;
-        hostname = "${inputs.secrets.hosts.${hname}.inet}";
-        forwardAgent = true;
-        identitiesOnly = true;
-        identityFile = identityFiles;
-      };
-    })
-    hostNames
-  );
+  hostsConfig = lib.genAttrs hostNames (hostname: {
+    host = hostname;
+    hostname = "${inputs.secrets.hosts.${hostname}.inet}";
+    forwardAgent = true;
+    identitiesOnly = true;
+    identityFile = identityFiles;
+  });
 in {
   programs.ssh = {
     addKeysToAgent = "yes";
