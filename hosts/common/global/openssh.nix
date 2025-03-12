@@ -1,31 +1,13 @@
 {
   config,
   lib,
-  inputs,
-  outputs,
   ...
 }: let
-  secretsDir = builtins.toString inputs.secrets;
-  hosts = lib.attrNames outputs.nixosConfigurations;
-
   hasOptinPersistence = config.environment.persistence ? "/persist";
 in {
-  programs.ssh = {
-    knownHosts =
-      lib.genAttrs hosts (hostname: {
-        extraHostNames = ["${hostname}.zzz"];
-        publicKey =
-          builtins.readFile "${secretsDir}/hosts/${hostname}/ssh_host_ed25519_key.pub";
-      })
-      // {
-        "github.com".publicKey = ''
-          ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl
-        '';
-      };
-  };
-
   services.openssh = {
     enable = true;
+    startWhenNeeded = true;
     allowSFTP = lib.mkDefault false;
 
     hostKeys = [
@@ -49,11 +31,10 @@ in {
         "sntrup761x25519-sha512@openssh.com"
       ];
     };
+  };
 
-    extraConfig = ''
-      AllowAgentForwarding no
-      AllowStreamLocalForwarding no
-      AllowTcpForwarding no
-    '';
+  security.pam = {
+    rssh.enable = true;
+    services.sudo.rssh = true;
   };
 }

@@ -1,5 +1,6 @@
 {
   hostSpec = {
-    hostName = "calcifer";
+    name = "calcifer";
+    kind = "desktop";
   };
 }

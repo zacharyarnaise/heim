@@ -4,18 +4,15 @@
   pkgs,
   ...
 }: let
-  cacheTTL =
-    if !config.hostSpec.isLaptop
-    then 3600
-    else 0;
+  cacheTTL = 300;
   secretsDir = builtins.toString inputs.secrets;
 in {
   services.gpg-agent = {
     enable = true;
 
     defaultCacheTtl = cacheTTL;
-    defaultCacheTtlSsh = cacheTTL;
-    enableScDaemon = false;
+    maxCacheTtl = cacheTTL;
+    enableScDaemon = true;
     enableSshSupport = false;
     enableZshIntegration = config.programs.zsh.enable;
     pinentryPackage = pkgs.pinentry-rofi.override {
@@ -26,14 +23,23 @@ in {
   programs.gpg = {
     enable = true;
 
-    mutableKeys = false;
-    mutableTrust = false;
     publicKeys = [
       {
         source = "${secretsDir}/users/zach/gpg.pub";
         trust = 5;
       }
+      {
+        source = pkgs.fetchurl {
+          url = "https://github.com/web-flow.gpg";
+          hash = "sha256-bor2h/YM8/QDFRyPsbJuleb55CTKYMyPN4e9RGaj74Q=";
+        };
+        trust = 4;
+      }
     ];
+
+    mutableKeys = false;
+    mutableTrust = false;
+    scdaemonSettings.disable-ccid = true;
     settings = {
       keyid-format = "long";
       use-agent = true;
@@ -41,12 +47,20 @@ in {
       no-greeting = true;
       with-subkey-fingerprint = true;
       no-comments = true;
+      no-emit-version = true;
       export-options = "export-minimal";
+      throw-keyids = true;
+      armor = true;
+      no-symkey-cache = true;
+      require-secmem = true;
+
       personal-cipher-preferences = "AES256";
       personal-digest-preferences = "SHA512";
-      cipher-algo = "AES256";
-      digest-algo = "SHA512";
+      personal-compress-preferences = "ZLIB BZIP2 ZIP Uncompressed";
+      default-preference-list = "SHA512 AES256 ZLIB BZIP2 ZIP Uncompressed";
       cert-digest-algo = "SHA512";
+      s2k-cipher-algo = "AES256";
+      s2k-digest-algo = "SHA512";
       s2k-mode = "3";
       s2k-count = "65000000";
     };

@@ -4,14 +4,13 @@
 in {
   options.hostSpec = {
     # Configurable options
-    hostName = mkOption {
+    name = mkOption {
       type = types.str;
       description = "The name of the host";
     };
-    isLaptop = mkOption {
-      type = types.bool;
-      default = false;
-      description = "Whether the host is a laptop";
+    kind = mkOption {
+      type = types.enum ["desktop" "laptop" "headless"];
+      description = "The kind of host";
     };
     isWork = mkOption {
       type = types.bool;

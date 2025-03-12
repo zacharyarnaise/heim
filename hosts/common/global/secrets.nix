@@ -6,7 +6,7 @@
   ...
 }: let
   secretsDir = builtins.toString inputs.secrets;
-  inherit (config.hostSpec) hostName;
+  hostName = config.hostSpec.name;
   normalUsers = lib.filterAttrs (_: v: v.isNormalUser) config.users.users;
 in {
   imports = [inputs.sops-nix.nixosModules.sops];
@@ -22,6 +22,7 @@ in {
 
   sops = {
     defaultSopsFile = "${secretsDir}/hosts/${hostName}/secrets.yaml";
+
     secrets =
       lib.mapAttrs' (n: _: {
         name = "passwords/${n}";

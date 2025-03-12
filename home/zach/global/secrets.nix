@@ -3,12 +3,17 @@
   config,
   ...
 }: let
+  homeDir = config.home.homeDirectory;
   secretsDir = builtins.toString inputs.secrets;
 in {
   imports = [inputs.sops-nix.homeManagerModules.sops];
 
   sops = {
-    age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
+    age.keyFile = "${homeDir}/.config/sops/age/keys.txt";
     defaultSopsFile = "${secretsDir}/users/zach/secrets.yaml";
+
+    secrets = {
+      "u2f".path = "${homeDir}/.config/Yubico/u2f_keys";
+    };
   };
 }

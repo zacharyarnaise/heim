@@ -1,7 +1,6 @@
 {lib, ...}: {
   boot = {
     kernelParams = ["hibernate=no"];
-
     plymouth.enable = false;
 
     initrd = {

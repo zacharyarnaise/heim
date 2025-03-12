@@ -10,7 +10,7 @@
   secretsDir = builtins.toString inputs.secrets;
 in {
   home-manager.users.zach =
-    import ../../../../home/zach/${config.hostSpec.hostName}.nix;
+    import ../../../../home/zach/${config.hostSpec.name}.nix;
 
   programs.zsh.enable = true;
 
@@ -41,10 +41,6 @@ in {
     directories = [
       {
         directory = ".config/sops";
-        mode = "0700";
-      }
-      {
-        directory = ".gnupg";
         mode = "0700";
       }
       {
