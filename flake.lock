@@ -438,10 +438,10 @@
     },
     "secrets": {
       "locked": {
-        "lastModified": 1741803322,
-        "narHash": "sha256-JYTskMrk/+zvyhkudkq2gVHBHg5aXyP9QsKr3UAMtfc=",
+        "lastModified": 1741811557,
+        "narHash": "sha256-kYIS7YJ6UupirdWoiq68RbzzQ9LMflU3vil2R/c9xj0=",
         "ref": "main",
-        "rev": "9135cc571c497c841b40b2c70b02c26ea1ea7dc5",
+        "rev": "a6dc358a26c6d376e1cdce2620f5bd2a1fd540e1",
         "shallow": true,
         "type": "git",
         "url": "git+ssh://git@github.com/zacharyarnaise/heim-secrets.git"

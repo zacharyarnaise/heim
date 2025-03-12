@@ -11,14 +11,21 @@
     ]
     (n: "/persist${config.home.homeDirectory}/.ssh/${n}");
 
+  inherit (inputs) secrets;
+
   hostNames = lib.attrNames outputs.nixosConfigurations;
   hostsConfig = lib.genAttrs hostNames (hostname: {
     host = hostname;
-    hostname = "${inputs.secrets.hosts.${hostname}.inet}";
+    hostname = "${secrets.hosts.${hostname}.inet}";
     forwardAgent = true;
     identitiesOnly = true;
     identityFile = identityFiles;
   });
+
+  privateConfig =
+    if config.hostSpec.isWork
+    then secrets.work.ssh.matchBlocks
+    else {};
 in {
   programs.ssh = {
     addKeysToAgent = "yes";
@@ -26,7 +33,7 @@ in {
     controlPath = "~/.ssh/sockets/control-%r@%h:%p";
     controlPersist = "15m";
 
-    matchBlocks = hostsConfig;
+    matchBlocks = hostsConfig // privateConfig;
   };
 
   home.file = {
