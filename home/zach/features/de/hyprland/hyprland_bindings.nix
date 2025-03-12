@@ -88,7 +88,7 @@ in {
 
     bindds = [
       "${mod}, Space&S, Opens rofi ssh mode, exec, pkill rofi || ${rofi} -show ssh -no-show-icons"
-    ]:
+    ];
 
     binddle = [
       ", XF86MonBrightnessUp,   Increase brightness, exec, light -A 5"
