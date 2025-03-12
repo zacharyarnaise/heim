@@ -75,9 +75,10 @@ in {
         "${modAlt}, DOWN, Moves focus to the lower monitor, focusmonitor, d"
 
         # Programs
-        "${mod}, Space, Opens rofi drun mode, exec, pkill rofi || ${rofi} -show drun"
-        "${mod}, V, Open clipse, exec, pkill clipse || ${foot} -a clipse ${clipse}"
-        "${mod}, Return, Opens terminal, exec, uwsm app -- ${foot}"
+        "${mod},     Space, Opens rofi drun mode, exec, pkill rofi || ${rofi} -show drun"
+        "${modCtrl}, Space, Opens rofi ssh mod, exec pkill rofi || ${rofi} -show ssh -no-show-icons"
+        "${mod},     V, Open clipse, exec, pkill clipse || ${foot} -a clipse ${clipse}"
+        "${mod},     Return, Opens terminal, exec, uwsm app -- ${foot}"
 
         # Screenshot
         ",      Print, Takes a screenshot of a region, exec, ${grimblast} --notify --freeze copy area"
@@ -85,10 +86,6 @@ in {
       ]
       ++ (lib.mapAttrsToList (n: key: "${mod}, ${key}, Switch to workspace ${n}, workspace, name:${n}") workspaces)
       ++ (lib.mapAttrsToList (n: key: "${modShift}, ${key}, Moves active window to workspace ${n}, movetoworkspacesilent, name:${n}") workspaces);
-
-    bindds = [
-      "${mod}, Space&S, Opens rofi ssh mode, exec, pkill rofi || ${rofi} -show ssh -no-show-icons"
-    ];
 
     binddle = [
       ", XF86MonBrightnessUp,   Increase brightness, exec, light -A 5"
