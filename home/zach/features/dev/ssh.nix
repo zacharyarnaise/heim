@@ -12,7 +12,7 @@
     (n: "/persist${config.home.homeDirectory}/.ssh/${n}");
 
   hostNames = lib.attrNames outputs.nixosConfigurations;
-  hostsConfig = lib.dag.entryAfter ["*"] lib.genAttrs hostNames (hostname: {
+  hostsConfig = lib.genAttrs (lib.dag.entryAfter ["*"] hostNames) (hostname: {
     host = hostname;
     hostname = "${inputs.secrets.hosts.${hostname}.inet}";
     forwardAgent = true;
