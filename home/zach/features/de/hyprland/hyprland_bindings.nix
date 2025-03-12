@@ -76,7 +76,7 @@ in {
 
         # Programs
         "${mod}, Space, Opens rofi drun mode, exec, pkill rofi || ${rofi} -show drun"
-        "${mod}, Space&S, Open rofi ssh mode, exec pkill rofi || ${rofi} -show ssh -no-show-icons"
+        "${mod}, Space&S, Open rofi ssh mode, exec, pkill rofi || ${rofi} -show ssh -no-show-icons"
         "${mod}, V, Open clipse, exec, pkill clipse || ${foot} -a clipse ${clipse}"
         "${mod}, Return, Opens terminal, exec, uwsm app -- ${foot}"
 
