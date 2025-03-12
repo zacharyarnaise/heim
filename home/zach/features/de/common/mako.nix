@@ -10,7 +10,7 @@ in {
     actions = true;
     icons = true;
     iconPath = "${config.stylix.iconTheme.package}/share/icons/${iconTheme}";
-    format = "<span font_scale='subscript' rise='6pt' text_transform='capitalize'>%a</span>\n<b>%s</b>\n%b";
+    format = "<span font_scale='subscript' rise='6pt' text_transform='capitalize'>%a</span>\\n<b>%s</b>\\n%b";
     defaultTimeout = 4000;
     maxVisible = 5;
     layer = "overlay";
