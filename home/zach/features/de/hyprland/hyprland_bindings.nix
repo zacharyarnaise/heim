@@ -76,7 +76,6 @@ in {
 
         # Programs
         "${mod}, Space, Opens rofi drun mode, exec, pkill rofi || ${rofi} -show drun"
-        "${mod}, Space&S, Open rofi ssh mode, exec, pkill rofi || ${rofi} -show ssh -no-show-icons"
         "${mod}, V, Open clipse, exec, pkill clipse || ${foot} -a clipse ${clipse}"
         "${mod}, Return, Opens terminal, exec, uwsm app -- ${foot}"
 
@@ -86,6 +85,10 @@ in {
       ]
       ++ (lib.mapAttrsToList (n: key: "${mod}, ${key}, Switch to workspace ${n}, workspace, name:${n}") workspaces)
       ++ (lib.mapAttrsToList (n: key: "${modShift}, ${key}, Moves active window to workspace ${n}, movetoworkspacesilent, name:${n}") workspaces);
+
+    bindds = [
+      "${mod}, Space&S, Opens rofi ssh mode, exec, pkill rofi || ${rofi} -show ssh -no-show-icons"
+    ]:
 
     binddle = [
       ", XF86MonBrightnessUp,   Increase brightness, exec, light -A 5"
