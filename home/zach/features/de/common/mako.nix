@@ -12,6 +12,7 @@ in {
 
     actions = true;
     icons = true;
+    maxIconSize = 48;
     iconPath = "${iconThemePath}:${iconHomePath}:${iconSystemPath}";
     format = "<span font_scale='subscript' rise='6pt' text_transform='capitalize'>%a</span>\\n<b>%s</b>\\n%b";
     defaultTimeout = 4000;

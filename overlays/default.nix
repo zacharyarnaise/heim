@@ -1,8 +1,4 @@
-{
-  inputs,
-  lib,
-  ...
-}: let
+{inputs, ...}: let
   addPatches = pkg: patches:
     pkg.overrideAttrs (oldAttrs: {
       patches = (oldAttrs.patches or []) ++ patches;
@@ -32,5 +28,8 @@ in {
         ];
       vendorHash = "sha256-lTBDgmG4vGiu0fW8/hdUOBsNiVQcC6nh+10MReFqA7M=";
     });
+    yubikey-touch-detector = addPatches prev.yubikey-touch-detector [
+      ./yubikey-touch-detector_notify.diff
+    ];
   };
 }

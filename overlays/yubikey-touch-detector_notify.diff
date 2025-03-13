@@ -1,0 +1,12 @@
+diff --git a/notifier/libnotify.go b/notifier/libnotify.go
+index b75cef6..6964eaa 100644
+--- a/notifier/libnotify.go
++++ b/notifier/libnotify.go
+@@ -33,7 +33,7 @@ func SetupLibnotifyNotifier(notifiers *sync.Map) {
+ 
+ 	notification := notify.Notification{
+ 		AppName: "yubikey-touch-detector",
+-		AppIcon: "yubikey-touch-detector",
++		AppIcon: "stock_lock",
+ 		Summary: "YubiKey is waiting for a touch",
+ 	}
