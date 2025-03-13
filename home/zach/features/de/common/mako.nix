@@ -5,13 +5,14 @@
     else config.stylix.iconTheme.light;
   iconThemePath = "${config.stylix.iconTheme.package}/share/icons/${iconThemeName}";
   iconHomePath = "${config.home.homeDirectory}/.nix-profile/share/icons/hicolor";
+  iconSystemPath = "/run/current-system/sw/share/icons/hicolor";
 in {
   services.mako = {
     enable = true;
 
     actions = true;
     icons = true;
-    iconPath = "${iconThemePath}:${iconHomePath}";
+    iconPath = "${iconThemePath}:${iconHomePath}:${iconSystemPath}";
     format = "<span font_scale='subscript' rise='6pt' text_transform='capitalize'>%a</span>\\n<b>%s</b>\\n%b";
     defaultTimeout = 4000;
     maxVisible = 5;
