@@ -3,7 +3,7 @@
     if (config.stylix.polarity == "dark")
     then config.stylix.iconTheme.dark
     else config.stylix.iconTheme.light;
-  iconThemePath = "${config.stylix.iconTheme.package}/share/icons/${iconTheme}";
+  iconThemePath = "${config.stylix.iconTheme.package}/share/icons/${iconThemeName}";
   iconHomePath = "${config.home.homeDirectory}/.nix-profile/share/icons/hicolor";
 in {
   services.mako = {
