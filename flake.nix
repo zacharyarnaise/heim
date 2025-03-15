@@ -28,6 +28,11 @@
       shallow = true;
     };
 
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.4.2";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Desktop specific inputs
     stylix.url = "github:danth/stylix";
     firefox-addons = {
