@@ -1,19 +1,15 @@
 {
   config,
-  lanzaboote,
+  inputs,
   lib,
   pkgs,
   ...
 }: let
   hasOptinPersistence = config.environment.persistence ? "/persist";
 in {
-  imports = [
-    lanzaboote.nixosModules.lanzaboote
-  ];
+  imports = [inputs.lanzaboote.nixosModules.lanzaboote];
 
-  environment.systemPackages = [
-    pkgs.sbctl
-  ];
+  environment.systemPackages = [pkgs.sbctl];
 
   boot = {
     lanzaboote = {
