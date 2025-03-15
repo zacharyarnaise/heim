@@ -9,6 +9,7 @@
     ./optional/pipewire.nix
     ./optional/impermanence.nix
     ./optional/yubikey.nix
+    ./otpional/secureboot.nix
   ];
 
   nix = {
