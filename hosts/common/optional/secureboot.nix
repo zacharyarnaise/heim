@@ -17,7 +17,7 @@ in {
       pkiBundle = "${lib.optionalString hasOptinPersistence "/persist"}/etc/secureboot";
     };
     loader = {
-      efi.canTouchEfiVariables = false;
+      efi.canTouchEfiVariables = lib.mkForce false;
       systemd-boot.enable = lib.mkForce false;
     };
   };
