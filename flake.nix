@@ -113,5 +113,10 @@
       (mkHome "zach" "laptop-gb" "x86_64-linux")
       (mkHome "zach" "noface" "x86_64-linux")
     ];
+
+    # -- dev shell -------------------------------------------------------------
+    devShells = forEachSystem (pkgs: {
+      default = import ./shell.nix {inherit pkgs;};
+    });
   };
 }
