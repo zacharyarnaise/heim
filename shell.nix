@@ -7,7 +7,7 @@ pkgs.mkShell {
       nix
       home-manager
       deadnix
-      stylix
+      statix
       git
       age
       sops
