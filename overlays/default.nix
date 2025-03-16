@@ -16,6 +16,10 @@ in {
 
   # Modifications to existing packages
   modifications = _final: prev: {
+    # FIXME: hardcoded path :(
+    sbctl =
+      prev.sbctl.override {databasePath = "/persist/etc/secureboot";};
+
     sudo =
       prev.sudo.override {withInsults = true;};
 
