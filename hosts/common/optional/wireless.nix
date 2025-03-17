@@ -46,6 +46,8 @@ in {
     "25-wireless" = {
       matchConfig.Name = "wl*";
       networkConfig.DHCP = "yes";
+      dhcpV4Config.RouteMetric = 1024;
+      dhcpV6Config.RouteMetric = 1024;
     };
   };
 

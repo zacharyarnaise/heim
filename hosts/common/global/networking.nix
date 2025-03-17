@@ -57,6 +57,9 @@
         "20-wired" = {
           matchConfig.Name = "en* | eth*";
           networkConfig.DHCP = "yes";
+          # Prefer wired connections
+          dhcpV4Config.RouteMetric = 2048;
+          dhcpV6Config.RouteMetric = 2048;
         };
       };
     };
