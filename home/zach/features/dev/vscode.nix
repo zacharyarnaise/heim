@@ -37,6 +37,8 @@ in {
         "editor.rulers" = [80];
         "extensions.ignoreRecommendations" = true;
         "git.confirmSync" = false;
+        "window.titleBarStyle" = "native";
+        "workbench.startupEditor" = "none";
 
         "nix.enableLanguageServer" = true;
         "nix.formatterPath" = "alejandra";
