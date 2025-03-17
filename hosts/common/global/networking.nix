@@ -3,6 +3,11 @@
   lib,
   ...
 }: {
+  boot.kernel.sysctl = {
+    # Avoid disconnects on long-running connections (e.g. some ssh sessions)
+    "net.ipv4.tcp_keepalive_time" = 120;
+  };
+
   networking = {
     hostName = config.hostSpec.name;
     useDHCP = false;
