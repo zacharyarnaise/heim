@@ -5,5 +5,6 @@
     ./gpg.nix
     ./k9s.nix
     ./ssh.nix
+    ./vscode.nix
   ];
 }
