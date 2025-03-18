@@ -1,6 +1,6 @@
-{pkgs, ...}: let
-  ext = pkgs.vscode-extensions;
-in {
+{pkgs, ...}: {
+  stylix.targets.vscode.profileNames = ["default"];
+
   programs.vscode = {
     enable = true;
 
