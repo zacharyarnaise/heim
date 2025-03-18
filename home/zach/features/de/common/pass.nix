@@ -21,6 +21,8 @@ in {
   };
 
   home.activation.gopassStore = ''
+    #!/usr/bin/env bash
+
     if [ ! -d ${storePath} ] ; then
       mkdir -m 0750 -p ${storePath}
       git clone --depth=1 git@github.com:zacharyarnaise/pass.git ${storePath}
