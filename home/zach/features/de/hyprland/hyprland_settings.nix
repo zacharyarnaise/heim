@@ -134,7 +134,7 @@ in {
       repeat_delay = 400;
 
       accel_profile = "flat";
-      sensitivity = 0;
+      sensitivity = 0.1;
       follow_mouse = 1;
       mouse_refocus = true;
 
