@@ -20,14 +20,8 @@ in {
     '';
   };
 
-  home.activation.gopassStore = ''
+  home.activation.gopassBrowser = ''
     export PATH="${config.home.path}/bin:$PATH"
-
-    if [ ! -d ${storePath} ] ; then
-      mkdir -m 0700 -p ${storePath}
-      git clone --depth=1 git@github.com:zacharyarnaise/pass.git ${storePath}
-    fi
-
     echo "Y" | gopass-jsonapi configure --browser firefox --global=false --path=${config.home.homeDirectory}/.config/gopass
   '';
 }
