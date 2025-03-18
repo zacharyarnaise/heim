@@ -21,7 +21,7 @@ in {
   };
 
   home.activation.gopassStore = ''
-    #!/usr/bin/env bash
+    export PATH="${config.home.path}/.nix-profile/bin:$PATH"
 
     if [ ! -d ${storePath} ] ; then
       mkdir -m 0750 -p ${storePath}
