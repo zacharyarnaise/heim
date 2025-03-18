@@ -24,7 +24,7 @@ in {
     export PATH="${config.home.path}/.nix-profile/bin:$PATH"
 
     if [ ! -d ${storePath} ] ; then
-      mkdir -m 0750 -p ${storePath}
+      mkdir -m 0700 -p ${storePath}
       git clone --depth=1 git@github.com:zacharyarnaise/pass.git ${storePath}
     fi
 
