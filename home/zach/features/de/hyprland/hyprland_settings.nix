@@ -72,12 +72,12 @@ in {
       blur = {
         enabled = true;
         popups = true;
-        size = 4;
-        passes = 2;
-        contrast = 1.0;
+        size = 10;
+        passes = 3;
+        contrast = 0.9;
         brightness = 0.9;
         vibrancy = 0.2;
-        vibrancy_darkness = 0.5;
+        vibrancy_darkness = 0.1;
       };
 
       shadow = {
