@@ -38,6 +38,7 @@
         "extensions.ignoreRecommendations" = true;
         "git.confirmSync" = false;
         "window.titleBarStyle" = "native";
+        "workbench.iconTheme" = "vscode-icons";
         "workbench.startupEditor" = "none";
 
         "nix.enableLanguageServer" = true;
