@@ -61,6 +61,11 @@ in {
       };
       Install.Also = optionals cfg.socket.enable ["yubikey-touch-detector.socket"];
       Install.WantedBy = ["default.target"];
+      environment = {
+         YUBIKEY_TOUCH_DETECTOR_VERBOSE="true";
+         YUBIKEY_TOUCH_DETECTOR_LIBNOTIFY="true";
+         YUBIKEY_TOUCH_DETECTOR_STDOUT="true";
+     };
     };
   };
 }
