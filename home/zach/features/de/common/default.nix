@@ -3,6 +3,7 @@
     ./clipse.nix
     ./gtk.nix
     ./mako.nix
+    ./pass.nix
     ./qt.nix
     ./stylix.nix
     ./wayland.nix

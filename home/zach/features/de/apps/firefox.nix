@@ -29,6 +29,7 @@ in {
           (firefox-addons)
           french-dictionary
           ublock-origin
+          gopass-bridge
           ;
       };
       search = {
@@ -183,7 +184,7 @@ in {
 
         # Security / Privacy
         "accessibility.force_disabled" = 1;
-        "browser.contentblocking.category" = "strict";
+        "browser.contentblocking.category" = "standard";
         "browser.discovery.enabled" = false;
         "browser.helperApps.deleteTempFileOnExit" = true;
         "browser.pagethumbnails.capturing_disabled" = true;
@@ -217,6 +218,7 @@ in {
         "security.ssl.treat_unsafe_negotiation_as_broken" = true;
         "security.tls.version.enable-deprecated" = false;
         "security.xfocsp.errorReporting.enabled" = false;
+        "services.sync.declinedEngines" = "creditcards,prefs,passwords,addons";
         "signon.management.page.breach-alerts.enabled" = false;
         "signon.rememberSignons" = false;
 
@@ -250,13 +252,13 @@ in {
         "ui.systemUsesDarkTheme" = 1;
         "browser.uiCustomization.state" = builtins.toJSON {
           currentVersion = 21;
-          newElementCount = 3;
+          newElementCount = 6;
           dirtyAreaCache = ["nav-bar" "PersonalToolbar" "unified-extensions-area" "toolbar-menubar" "TabsToolbar" "vertical-tabs" "widget-overflow-fixed-list"];
-          seen = ["save-to-pocket-button" "developer-button" "ublock0_raymondhill_net-browser-action" "_testpilot-containers-browser-action"];
+          seen = ["save-to-pocket-button" "developer-button" "ublock0_raymondhill_net-browser-action" "_testpilot-containers-browser-action" "tab-session-manager_sienori-browser-action" "_eec37db0-22ad-4bf1-9068-5ae08df8c7e9_-browser-action"];
           placements = {
             widget-overflow-fixed-list = [];
-            unified-extensions-area = [];
-            nav-bar = ["back-button" "forward-button" "stop-reload-button" "urlbar-container" "downloads-button" "unified-extensions-button" "ublock0_raymondhill_net-browser-action"];
+            unified-extensions-area = ["_testpilot-containers-browser-action" "tab-session-manager_sienori-browser-action"];
+            nav-bar = ["back-button" "forward-button" "stop-reload-button" "urlbar-container" "downloads-button" "unified-extensions-button" "_eec37db0-22ad-4bf1-9068-5ae08df8c7e9_-browser-action" "ublock0_raymondhill_net-browser-action"];
             toolbar-menubar = ["menubar-items"];
             TabsToolbar = ["tabbrowser-tabs" "new-tab-button" "alltabs-button"];
             vertical-tabs = [];

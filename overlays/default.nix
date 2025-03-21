@@ -16,6 +16,9 @@ in {
 
   # Modifications to existing packages
   modifications = _final: prev: {
+    gopass =
+      prev.gopass.override {xclip = null;};
+
     # FIXME: hardcoded path :(
     sbctl =
       prev.sbctl.override {databasePath = "/persist/etc/secureboot";};
