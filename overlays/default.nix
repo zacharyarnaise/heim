@@ -17,7 +17,7 @@ in {
   # Modifications to existing packages
   modifications = _final: prev: {
     gopass =
-      prev.gopass.override {xclip = null; passAlias = true;};
+      prev.gopass.override {xclip = null;};
 
     # FIXME: hardcoded path :(
     sbctl =
