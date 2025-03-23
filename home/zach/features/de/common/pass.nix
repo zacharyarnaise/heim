@@ -5,23 +5,25 @@
 }: let
   storePath = "/persist${config.home.homeDirectory}/.local/share/gopass/stores/root";
 in {
-  home.packages = builtins.attrValues {
-    inherit
-      (pkgs)
-      gopass
-      gopass-jsonapi
-      ;
-  };
+  home = {
+    packages = builtins.attrValues {
+      inherit
+        (pkgs)
+        gopass
+        gopass-jsonapi
+        ;
+    };
 
-  home.file = {
-    ".config/gopass/config".text = ''
-      [mounts]
-          path = ${storePath}
+    file = {
+      ".config/gopass/config".text = ''
+        [mounts]
+            path = ${storePath}
+      '';
+    };
+
+    activation.gopassBrowser = ''
+      export PATH="${config.home.path}/bin:$PATH"
+      echo "Y" | gopass-jsonapi configure --browser firefox --global=false --path=${config.home.homeDirectory}/.config/gopass
     '';
   };
-
-  home.activation.gopassBrowser = ''
-    export PATH="${config.home.path}/bin:$PATH"
-    echo "Y" | gopass-jsonapi configure --browser firefox --global=false --path=${config.home.homeDirectory}/.config/gopass
-  '';
 }
