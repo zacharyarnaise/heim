@@ -18,10 +18,6 @@ in {
     enable = true;
     package = pkgs.firefox-bin;
 
-    policies = {
-      NoDefaultBookmarks = true;
-    };
-
     profiles.default = {
       id = 0;
       extensions.packages = builtins.attrValues {
@@ -34,17 +30,17 @@ in {
       };
       search = {
         force = true;
-        default = "DuckDuckGo";
+        default = "ddg";
         order = [
-          "DuckDuckGo"
-          "Google"
-          "Wikipedia (en)"
+          "ddg"
+          "google"
+          "wikipedia"
           "NixOS packages"
           "NixOS options"
           "Home-Manager options"
           "cheat.sh"
           "Grep.app"
-          "Reddit"
+          "reddit"
         ];
 
         engines = {
@@ -70,28 +66,28 @@ in {
           };
           "Grep.app" = {
             urls = [{template = "https://grep.app/search?q={searchTerms}";}];
-            iconUpdateURL = "https://grep.app/static/images/icon-32x32.ae2f571e.png";
+            icon = "https://grep.app/static/images/icon-32x32.ae2f571e.png";
             updateInterval = 7 * (24 * 60 * 60 * 1000);
             definedAliases = ["@gr"];
           };
           "Reddit" = {
             urls = [{template = "https://old.reddit.com/search?q={searchTerms}";}];
-            iconUpdateURL = "https://www.redditstatic.com/shreddit/assets/favicon/128x128.png";
+            icon = "https://www.redditstatic.com/shreddit/assets/favicon/128x128.png";
             updateInterval = 7 * (24 * 60 * 60 * 1000);
             definedAliases = ["@rd"];
           };
           "cheat.sh" = {
             urls = [{template = "https://cheat.sh/{searchTerms}";}];
-            iconUpdateURL = "https://cheat.sh/favicon.ico";
+            icon = "https://cheat.sh/favicon.ico";
             updateInterval = 7 * (24 * 60 * 60 * 1000);
             definedAliases = ["@chs"];
           };
 
-          "Amazon.com".metaData.hidden = true;
-          "Bing".metaData.hidden = true;
-          "eBay".metaData.hidden = true;
-          "Google".metaData.alias = "@g";
-          "Wikipedia (en)".metaData.alias = "@w";
+          "amazondotcom-us".metaData.hidden = true;
+          "bing".metaData.hidden = true;
+          "ebay".metaData.hidden = true;
+          "google".metaData.alias = "@g";
+          "wikipedia".metaData.alias = "@w";
         };
       };
       settings = {
