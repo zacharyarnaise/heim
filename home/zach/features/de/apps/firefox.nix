@@ -70,7 +70,7 @@ in {
             updateInterval = 7 * (24 * 60 * 60 * 1000);
             definedAliases = ["@gr"];
           };
-          "Reddit" = {
+          "reddit" = {
             urls = [{template = "https://old.reddit.com/search?q={searchTerms}";}];
             icon = "https://www.redditstatic.com/shreddit/assets/favicon/128x128.png";
             updateInterval = 7 * (24 * 60 * 60 * 1000);
