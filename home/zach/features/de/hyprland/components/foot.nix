@@ -12,7 +12,6 @@
         beam-thickness = 1;
         blink = "yes";
       };
-      url.protocols = "http,https";
       mouse.alternate-scroll-mode = "yes";
     };
   };
