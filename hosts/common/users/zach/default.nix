@@ -38,7 +38,7 @@ in {
   };
 
   environment.persistence."/persist".users.zach = {
-    directories = [
+    directories = lib.mkIf (config.hostSpec.kind != "headless") [
       {
         directory = ".config/sops";
         mode = "0700";
