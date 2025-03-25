@@ -7,7 +7,7 @@
 
   disko.devices = {
     disk = {
-      system = {
+      main = {
         type = "disk";
         device = "/dev/nvme0n1";
         content = {
@@ -28,12 +28,12 @@
               size = "100%";
               content = {
                 type = "btrfs";
-                extraArgs = ["-f"];
+                extraArgs = ["-f" "-Lmain-${config.hostSpec.name}"];
                 postCreateHook = ''
                   mkdir /tmp -p
                   MNTPOINT=$(mktemp -d)
 
-                  mount -t btrfs -o subvol=/ ${config.disko.devices.disk.system.content.partitions.main.device} "$MNTPOINT"
+                  mount -t btrfs -o subvol=/ ${config.disko.devices.disk.main.content.partitions.main.device} "$MNTPOINT"
                   trap 'umount "$MNTPOINT"; rm -rf "$MNTPOINT"' EXIT
 
                   btrfs subvolume snapshot -r "$MNTPOINT/@root" "$MNTPOINT/@root-blank"

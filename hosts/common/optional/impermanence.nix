@@ -4,12 +4,13 @@
   config,
   ...
 }: let
+  diskLabel = "${config.hostSpec.name}-main";
   rollbackScript = ''
     mkdir /tmp -p
     MNTPOINT=$(mktemp -d)
 
     echo "Mounting volumes"
-    mount -t btrfs -o subvol=/ /dev/mapper/crypted "$MNTPOINT"
+    mount -t btrfs -o subvol=/ /dev/disk/by-label/${diskLabel} "$MNTPOINT"
     trap 'umount "$MNTPOINT"; rm -rf "$MNTPOINT"' EXIT
 
     echo "Deleting @root subvolumes"
@@ -63,14 +64,9 @@ in {
         serviceConfig.Type = "oneshot";
         script = rollbackScript;
         wantedBy = ["initrd.target"];
-        after = ["systemd-cryptsetup@crypted.service"];
+        after = ["systemd-cryptsetup@${diskLabel}.service"];
         before = ["sysroot.mount"];
       };
     };
   };
-
-  # see https://github.com/nix-community/impermanence/issues/229
-  # 13/01/2025: commented out because it seems to be fixed
-  # boot.initrd.systemd.suppressedUnits = ["systemd-machine-id-commit.service"];
-  # systemd.suppressedSystemUnits = ["systemd-machine-id-commit.service"];
 }
