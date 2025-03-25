@@ -20,13 +20,6 @@ This repository holds configuration files for my personal systems that runs on N
 ```
 
 ## Instructions
-### Add a new host
-1. Generate a new SSH keypair and get a corresponding AGE public key
-    ```sh
-    ssh-keygen -C user@hostname -t ed25519 -f hostname_host_ed25519
-    echo -e "# hostname\n$(ssh-to-age -i hostname_host_ed25519 -private-key)" >>  ~/.config/sops/age/keys.txt
-    ```
-
 ### Fresh Install
 1. Get the latest NixOS minimal ISO from [here](https://nixos.org/download.html#nixos-iso)
 2. Follow [these instructions](https://nixos.org/manual/nixos/stable/index.html#sec-booting-from-usb) to create a bootable USB drive
