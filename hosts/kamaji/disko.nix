@@ -28,7 +28,7 @@
               size = "100%";
               content = {
                 type = "btrfs";
-                extraArgs = ["-f" "-Lmain-${config.hostSpec.name}"];
+                extraArgs = ["-f" "-L${config.hostSpec.name}-main"];
                 postCreateHook = ''
                   mkdir /tmp -p
                   MNTPOINT=$(mktemp -d)

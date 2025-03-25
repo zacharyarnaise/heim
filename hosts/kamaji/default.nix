@@ -1,4 +1,4 @@
-{
+{lib, ...}: {
   imports = [
     ./hardware.nix
 
@@ -9,6 +9,6 @@
     ../common/optional/usbguard.nix
   ];
 
-  networking.hostId = "5d84e14a"; # for ZFS
+  networking.hostId = lib.mkForce "5d84e14a"; # for ZFS
   system.stateVersion = "24.11";
 }
