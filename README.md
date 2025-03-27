@@ -36,7 +36,7 @@ This repository holds configuration files for my personal systems that runs on N
     ```
 3. Install with [`nixos-anywhere`](https://github.com/nix-community/nixos-anywhere):
     ```
-    nix run github:nix-community/nixos-anywhere#nixos-anywhere --extra-files "$temp" -- --flake /home/mydir/heim#hostname --target-host root@foobar
+    nix run github:nix-community/nixos-anywhere#nixos-anywhere -- --extra-files "$temp" --flake /home/mydir/heim#hostname --target-host root@foobar
     ```
 
 ## References / Useful resources
