@@ -56,7 +56,9 @@ in {
   # systemd service in initrd to rollback root subvolume
   boot.initrd = {
     supportedFilesystems = ["btrfs"];
-    systemd = {
+    systemd = let
+      diskLabelEscaped = builtins.replaceStrings ["-"] ["\\x2d"] diskLabel;
+    in {
       enable = true;
       services.rollback-root = {
         description = "Rollback BTRFS root subvolume to a pristine state";
@@ -64,10 +66,10 @@ in {
         serviceConfig.Type = "oneshot";
         script = rollbackScript;
         wantedBy = ["initrd.target"];
-        requires = ["dev-disk-by\\x2dlabel-${diskLabel}.device"];
+        requires = ["dev-disk-by\\x2dlabel-${diskLabelEscaped}.device"];
         before = ["sysroot.mount"];
         after = [
-          "dev-disk-by\\x2dlabel-${diskLabel}.device"
+          "dev-disk-by\\x2dlabel-${diskLabelEscaped}.device"
           "systemd-cryptsetup@${diskLabel}.service"
         ];
       };
