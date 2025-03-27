@@ -39,6 +39,12 @@ This repository holds configuration files for my personal systems that runs on N
     nix run github:nix-community/nixos-anywhere#nixos-anywhere -- --extra-files "$temp" --flake /home/mydir/heim#hostname --target-host root@foobar
     ```
 
+> [!IMPORTANT]  
+> There's an issue where `nixos-anywhere` doesn't export the ZFS pool after installation.
+> See https://github.com/nix-community/nixos-anywhere/issues/156
+>
+> A workaround is to add `--no-reboot` to the install command and manually export the pool before rebooting.
+
 ## References / Useful resources
 - Resources from the official Nix website:
   - [Learn Nix](https://nixos.org/learn.html)
