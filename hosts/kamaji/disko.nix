@@ -103,7 +103,10 @@
           storage = {
             type = "zfs_fs";
             mountpoint = "/storage";
-            options.mountpoint = "/storage";
+            options = {
+              mountpoint = "/storage";
+              recordsize = "1M";
+            };
           };
         };
       };
