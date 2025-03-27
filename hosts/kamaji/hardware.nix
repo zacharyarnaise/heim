@@ -10,12 +10,18 @@
     ./disko.nix
   ];
 
-  boot.initrd.availableKernelModules = [
-    "xhci_pci"
-    "ahci"
-    "nvme"
-    "sd_mod"
-  ];
+  boot = {
+    initrd.availableKernelModules = [
+      "xhci_pci"
+      "ahci"
+      "nvme"
+      "sd_mod"
+    ];
+    blacklistedKernelModules = [
+      "cec"
+      "i8042"
+    ];
+  };
 
   nix.settings.max-jobs = 8;
   swapDevices = lib.mkForce [];
