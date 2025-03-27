@@ -64,8 +64,12 @@ in {
         serviceConfig.Type = "oneshot";
         script = rollbackScript;
         wantedBy = ["initrd.target"];
-        after = ["systemd-cryptsetup@${diskLabel}.service"];
+        requires = ["dev-disk-by\\x2dlabel-${diskLabel}.device"];
         before = ["sysroot.mount"];
+        after = [
+          "dev-disk-by\\x2dlabel-${diskLabel}.device"
+          "systemd-cryptsetup@${diskLabel}.service"
+        ];
       };
     };
   };

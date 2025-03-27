@@ -6,6 +6,6 @@
     implicitPolicyTarget = "block";
     insertedDevicePolicy = "apply-policy";
     presentControllerPolicy = "keep";
-    presentDevicePolicy = "apply-policy";
+    presentDevicePolicy = "keep";
   };
 }
