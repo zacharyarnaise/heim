@@ -65,7 +65,7 @@
               };
             };
           };
-        };zfs_mount_at() failed: mountpoint or dataset is busy
+        };
       };
       store1 = {
         type = "disk";
