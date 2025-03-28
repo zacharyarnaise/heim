@@ -4,12 +4,13 @@
   config,
   ...
 }: let
+  diskLabel = "${config.hostSpec.name}-main";
   rollbackScript = ''
     mkdir /tmp -p
     MNTPOINT=$(mktemp -d)
 
     echo "Mounting volumes"
-    mount -t btrfs -o subvol=/ /dev/mapper/crypted "$MNTPOINT"
+    mount -t btrfs -o subvol=/ /dev/disk/by-label/${diskLabel} "$MNTPOINT"
     trap 'umount "$MNTPOINT"; rm -rf "$MNTPOINT"' EXIT
 
     echo "Deleting @root subvolumes"
@@ -55,7 +56,9 @@ in {
   # systemd service in initrd to rollback root subvolume
   boot.initrd = {
     supportedFilesystems = ["btrfs"];
-    systemd = {
+    systemd = let
+      diskLabelEscaped = builtins.replaceStrings ["-"] ["\\x2d"] diskLabel;
+    in {
       enable = true;
       services.rollback-root = {
         description = "Rollback BTRFS root subvolume to a pristine state";
@@ -63,14 +66,13 @@ in {
         serviceConfig.Type = "oneshot";
         script = rollbackScript;
         wantedBy = ["initrd.target"];
-        after = ["systemd-cryptsetup@crypted.service"];
+        requires = ["dev-disk-by\\x2dlabel-${diskLabelEscaped}.device"];
         before = ["sysroot.mount"];
+        after = [
+          "dev-disk-by\\x2dlabel-${diskLabelEscaped}.device"
+          "systemd-cryptsetup@${diskLabel}.service"
+        ];
       };
     };
   };
-
-  # see https://github.com/nix-community/impermanence/issues/229
-  # 13/01/2025: commented out because it seems to be fixed
-  # boot.initrd.systemd.suppressedUnits = ["systemd-machine-id-commit.service"];
-  # systemd.suppressedSystemUnits = ["systemd-machine-id-commit.service"];
 }

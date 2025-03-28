@@ -19,32 +19,29 @@ This repository holds configuration files for my personal systems that runs on N
 └── modules # NixOS modules
 ```
 
-## Instructions
-### Add a new host
-1. Generate a new SSH keypair and get a corresponding AGE public key
+## Bootstrapping a new host
+### On the target host
+1. Follow [these instructions](https://nixos.org/manual/nixos/stable/index.html#sec-booting-from-usb) to boot NixOS minimal installer
+2. Set a password for `root` to allow SSH access
+### On an existing NixOS system
+1. Declare the new host in this repository
+2. Generate an SSH key pair that will be used as the host key, use it to encrypt the host's secrets.<br>
+   The key will be copied and must be in a structure and permissioned as it should be on the target:
     ```sh
-    ssh-keygen -C user@hostname -t ed25519 -f hostname_host_ed25519
-    echo -e "# hostname\n$(ssh-to-age -i hostname_host_ed25519 -private-key)" >>  ~/.config/sops/age/keys.txt
+    temp=$(mktemp -d) # Don't forget to clean it up afterwards
+    install -d -m755 "$temp/persist/etc/ssh"
+    ssh-keygen -t ed25519 -N "" -C "<hostname>" -f "$temp/persist/etc/ssh/ssh_host_ed25519_key"
+    ```
+3. Install with [`nixos-anywhere`](https://github.com/nix-community/nixos-anywhere):
+    ```
+    nix run github:nix-community/nixos-anywhere#nixos-anywhere -- --extra-files "$temp" --flake /home/mydir/heim#hostname --target-host root@foobar
     ```
 
-### Fresh Install
-1. Get the latest NixOS minimal ISO from [here](https://nixos.org/download.html#nixos-iso)
-2. Follow [these instructions](https://nixos.org/manual/nixos/stable/index.html#sec-booting-from-usb) to create a bootable USB drive
-3. Boot the installer, [set the keyboard layout and connect to the internet](https://nixos.org/manual/nixos/stable/#sec-installation-manual)
-4. Do the installation:
-    - If the hosts uses [`disko`](https://github.com/nix-community/disko):
-        ```sh
-        nix --experimental-features "nix-command flakes" run github:nix-community/disko#disko-install -- -f github:zacharyarnaise/heim#hostname --write-efi-boot-entries --disk main /dev/<my-disk>
-        ```
-    - Otherwise, [partition and mount the disk manually](https://nixos.org/manual/nixos/stable/#sec-installation-manual-partitioning) and run the following command:
-        ```sh
-        nixos-install --flake github:zacharyarnaise/heim#hostname
-        ```
-    - When partitioning manually and using impermanence, make sure to create a BTRFS snapshot of the root subvolume:
-        ```sh
-        mount -t btrfs -o subvol=/ /dev/mapper/crypted /mnt
-        btrfs subvolume snapshot -r "/mnt/root" "/mnt/root-blank"
-        ```
+> [!IMPORTANT]  
+> There's an issue where `nixos-anywhere` doesn't export the ZFS pool after installation.
+> See https://github.com/nix-community/nixos-anywhere/issues/156
+>
+> A workaround is to add `--no-reboot` to the install command and manually export the pool before rebooting.
 
 ## References / Useful resources
 - Resources from the official Nix website:

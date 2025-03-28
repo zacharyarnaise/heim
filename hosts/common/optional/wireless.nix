@@ -50,7 +50,4 @@ in {
       dhcpV6Config.RouteMetric = 1024;
     };
   };
-
-  # FIXME: for some reason, this breaks wireless networking when enabled
-  security.lockKernelModules = lib.mkForce false;
 }

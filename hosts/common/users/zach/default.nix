@@ -22,23 +22,22 @@ in {
     group = "zach";
     extraGroups =
       [
-        "audio"
-        "video"
         "wheel"
       ]
       ++ ifTheyExist [
+        "audio"
+        "video"
         "network"
-        "vboxsf"
       ];
 
     password = lib.mkForce null;
     hashedPasswordFile = secrets."passwords/zach".path;
     openssh.authorizedKeys.keys =
-      lib.splitString "\n" (builtins.readFile "${secretsDir}/users/zach/id_ed25519.pub");
+      lib.splitString "\n" (builtins.readFile "${secretsDir}/users/zach/id_zach_sk.pub");
   };
 
   environment.persistence."/persist".users.zach = {
-    directories = [
+    directories = lib.mkIf (config.hostSpec.kind != "headless") [
       {
         directory = ".config/sops";
         mode = "0700";
