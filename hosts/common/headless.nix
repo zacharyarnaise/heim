@@ -3,7 +3,6 @@
     ./global
 
     ./optional/impermanence.nix
-    # ./optional/secureboot.nix
   ];
 
   nix = {
