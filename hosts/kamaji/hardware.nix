@@ -19,6 +19,7 @@
     ];
     blacklistedKernelModules = [
       "cec"
+      "drm_display_helper"
       "i8042"
     ];
   };
