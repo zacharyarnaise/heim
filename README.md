@@ -21,10 +21,8 @@ This repository holds configuration files for my personal systems that runs on N
 
 ## Bootstrapping a new host
 ### On the target host
-1. Get the latest NixOS minimal ISO from [here](https://nixos.org/download.html#nixos-iso)
-2. Follow [these instructions](https://nixos.org/manual/nixos/stable/index.html#sec-booting-from-usb) to create a bootable USB drive
-3. Boot the installer, [set the keyboard layout and connect to the internet](https://nixos.org/manual/nixos/stable/#sec-installation-manual)
-4. Set root password to allow SSH access
+1. Follow [these instructions](https://nixos.org/manual/nixos/stable/index.html#sec-booting-from-usb) to boot NixOS minimal installer
+2. Set a password for `root` to allow SSH access
 ### On an existing NixOS system
 1. Declare the new host in this repository
 2. Generate an SSH key pair that will be used as the host key, use it to encrypt the host's secrets.<br>
