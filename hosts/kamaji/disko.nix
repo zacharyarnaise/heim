@@ -65,7 +65,7 @@
               };
             };
           };
-        };
+        };zfs_mount_at() failed: mountpoint or dataset is busy
       };
       store1 = {
         type = "disk";
@@ -102,7 +102,6 @@
         datasets = {
           storage = {
             type = "zfs_fs";
-            mountpoint = "/storage";
             options = {
               mountpoint = "/storage";
               recordsize = "1M";
