@@ -18,7 +18,7 @@ in {
       description = "Whether the host is used for work";
     };
     keyboard = mkOption {
-      type = types.submodule {
+      type = types.nullOr types.submodule {
         options = {
           model = mkOption {
             type = types.str;
