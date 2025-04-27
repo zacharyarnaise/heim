@@ -126,9 +126,9 @@ in {
     };
 
     input = {
-      kb_model = config.hostSpec.keyboard.model;
-      kb_layout = config.hostSpec.keyboard.layout;
-      kb_variant = config.hostSpec.keyboard.variant;
+      kb_model = config.hostSpec.kbdModel;
+      kb_layout = config.hostSpec.kbdLayout;
+      kb_variant = config.hostSpec.kbdVariant;
       numlock_by_default = true;
       repeat_rate = 30;
       repeat_delay = 400;

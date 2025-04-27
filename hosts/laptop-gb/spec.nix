@@ -4,10 +4,8 @@
     kind = "laptop";
     isWork = true;
 
-    keyboard = {
-      model = "pc105";
-      layout = "fr";
-      variant = "oss";
-    };
+    kbdModel = "pc105";
+    kbdLayout = "fr";
+    kbdVariant = "oss";
   };
 }

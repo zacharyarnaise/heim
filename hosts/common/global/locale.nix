@@ -3,7 +3,7 @@
   lib,
   ...
 }: {
-  console.keyMap = config.hostSpec.keyboard.layout;
+  console.keyMap = config.hostSpec.kbdLayout;
   time.timeZone = "Europe/Paris";
 
   i18n = {
