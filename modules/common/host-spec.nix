@@ -17,6 +17,29 @@ in {
       default = false;
       description = "Whether the host is used for work";
     };
+    keyboard = mkOption {
+      type = types.submodule {
+        options = {
+          model = mkOption {
+            type = types.str;
+            default = "pc105";
+            description = "The keyboard model";
+          };
+          layout = mkOption {
+            type = types.str;
+            default = "us";
+            description = "The keyboard layout";
+          };
+          variant = mkOption {
+            type = types.str;
+            default = "";
+            description = "The keyboard variant";
+          };
+        };
+      };
+      default = false;
+      description = "The keyboard configuration";
+    };
 
     # Data options that don't dictate configuration settings
     work = mkOption {

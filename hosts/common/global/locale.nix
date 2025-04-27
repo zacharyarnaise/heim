@@ -1,5 +1,9 @@
-{lib, ...}: {
-  console.keyMap = "fr";
+{
+  config,
+  lib,
+  ...
+}: {
+  console.keyMap = config.hostSpec.keyboard.layout;
   time.timeZone = "Europe/Paris";
 
   i18n = {

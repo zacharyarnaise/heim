@@ -126,9 +126,9 @@ in {
     };
 
     input = {
-      kb_model = "pc105";
-      kb_layout = "fr";
-      kb_variant = "oss";
+      kb_model = config.hostSpec.keyboard.model;
+      kb_layout = config.hostSpec.keyboard.layout;
+      kb_variant = config.hostSpec.keyboard.variant;
       numlock_by_default = true;
       repeat_rate = 30;
       repeat_delay = 400;
