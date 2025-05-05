@@ -179,6 +179,7 @@ in {
         "toolkit.telemetry.coverage.opt-out" = true;
 
         # Security / Privacy
+        "accessibility.typeaheadfind.flashBar" = 0;
         "accessibility.force_disabled" = 1;
         "browser.contentblocking.category" = "standard";
         "browser.discovery.enabled" = false;
@@ -207,6 +208,7 @@ in {
         "permissions.default.xr" = 2;
         "privacy.donottrackheader.enabled" = true;
         "privacy.donottrackheader.value" = 1;
+        "privacy.exposeContentTitleInWindow.pbm" = false;
         "privacy.purge_trackers.enabled" = true;
         "security.cert_pinning.enforcement_level" = 2;
         "security.ssl.require_safe_negotiation" = true;
