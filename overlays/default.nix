@@ -25,9 +25,6 @@ in {
     sbctl =
       prev.sbctl.override {databasePath = "/persist/etc/secureboot";};
 
-    sudo =
-      prev.sudo.override {withInsults = true;};
-
     yubikey-agent = prev.yubikey-agent.overrideAttrs (oldAttrs: {
       patches =
         (oldAttrs.patches or [])
