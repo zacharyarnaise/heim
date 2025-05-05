@@ -7,7 +7,6 @@
     ./optional/hyprland.nix
     ./optional/xdg-portal.nix
     ./optional/pipewire.nix
-    ./optional/impermanence.nix
     ./optional/yubikey.nix
     ./optional/secureboot.nix
   ];
