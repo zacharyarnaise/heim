@@ -10,6 +10,7 @@
 
       ./boot.nix
       ./hardening.nix
+      ./impermanence.nix
       ./locale.nix
       ./networking.nix
       ./nix.nix

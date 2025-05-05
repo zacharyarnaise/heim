@@ -1,8 +1,6 @@
 {lib, ...}: {
   imports = [
     ./global
-
-    ./optional/impermanence.nix
   ];
 
   nix = {
