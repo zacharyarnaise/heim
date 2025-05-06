@@ -19,7 +19,10 @@ Here you'll find [NixOS](https://nixos.org/) & [home-manager](https://github.com
 ├─ .github/workflows/ # CI/CD for linting, flake checking and updates
 ├─ home/              # Home-manager configurations
 ├─ hosts/             # NixOS and system-wide configurations
-│  ├─ common/    # Shared configurations
+│  ├─ common/ # Shared configurations
+│    ├─ global/   # Config shared by all hosts
+│    ├─ optional/ # Optional configurations
+│    ├─ users/    # Host-level user declaration
 │  ├─ calcifer/  # Desktop  - 14700KF, 32GB RAM, RTX4080S
 │  ├─ howl/      # Headless - RPi5, 4GB RAM
 │  ├─ kamaji/    # Headless - Ryzen 5 5600X, 16GB RAM, 4TB SSD x2
@@ -27,6 +30,9 @@ Here you'll find [NixOS](https://nixos.org/) & [home-manager](https://github.com
 │  ├─ noface/    # Headless - QEMU guest used for debugging/testing
 ├─ lib/               # Nix utilities/helpers
 ├─ modules/           # Reusable, abstract pieces of config for home-manager, NixOS or both.
+│  ├─ common/
+│  ├─ home-manager/
+│  ├─ nixos/
 ├─ overlays/          # Overrides/patches for some packages
 ├─ pkgs/              # Custom packages
 └─ flake.nix          # Entrypoint for hosts and home-manager configs. Also exposes a devshell for manual bootstrapping tasks (nix-shell).
