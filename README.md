@@ -7,7 +7,7 @@ Here you'll find [NixOS](https://nixos.org/) & [home-manager](https://github.com
 ### Notable features:
 - Declarative disk partitioning ([disko](https://github.com/nix-community/disko))
 - Full disk encryption
-- Ephemeral root in ramfs
+- Impermanence, ephemeral root in ramfs
 - Secure Boot ([lanzaboote](https://github.com/nix-community/lanzaboote))
 - Secrets provisioning using a separate private repo ([sops-nix](https://github.com/Mic92/sops-nix))
 - Remote unattended bootstrapping via SSH ([nixos-anywhere](https://github.com/nix-community/nixos-anywhere))
