@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   programs.zsh = {
     enable = true;
 
@@ -46,21 +50,24 @@
       }
     ];
 
-    initExtraFirst = ''
-      if [[ -r "''$HOME/.cache/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
-        source "''$HOME/.cache/p10k-instant-prompt-''${(%):-%n}.zsh"
-      fi
-    '';
+    initContent = lib.mkMerge [
+      (lib.mkBefore ''
+        if [[ -r "''$HOME/.cache/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
+          source "''$HOME/.cache/p10k-instant-prompt-''${(%):-%n}.zsh"
+        fi
+      '')
 
-    initExtraBeforeCompInit = ''
-      export ZSH_COMPDUMP=$HOME/.cache/oh-my-zsh/compdump-$ZSH_VERSION
-    '';
+      (lib.mkOrder 550 ''
+        export ZSH_COMPDUMP=$HOME/.cache/oh-my-zsh/compdump-$ZSH_VERSION
+      '')
 
-    initExtra = ''
-      setopt hist_reduce_blanks
-      setopt auto_list
-      setopt NO_HIST_SAVE_BY_COPY
-    '';
+      # Place where other setopts are declared in home-manager
+      (lib.mkOrder 900 ''
+        setopt hist_reduce_blanks
+        setopt auto_list
+        setopt NO_HIST_SAVE_BY_COPY
+      '')
+    ];
   };
 
   programs.zsh.oh-my-zsh = {
