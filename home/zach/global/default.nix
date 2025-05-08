@@ -30,7 +30,7 @@
     homeDirectory = "/home/zach";
     sessionPath = ["$HOME/.local/bin"];
     sessionVariables = {
-      FLAKE = "$HOME/Code/Nix/heim";
+      NH_FLAKE = "$HOME/Code/Nix/heim";
     };
 
     persistence."/persist/home/zach" = {
