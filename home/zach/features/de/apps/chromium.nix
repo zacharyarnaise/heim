@@ -11,7 +11,6 @@
       "--ignore-gpu-blocklist"
       "--enable-zero-copy"
       "--enable-gpu-rasterization"
-      "--enable-oop-rasterization"
 
       "--disk-cache=$XDG_RUNTIME_DIR/chromium-cache" # cache in tmpfs
 
@@ -19,7 +18,6 @@
       "--disable-speech-api"
       "--disable-speech-synthesis-api"
       "--disable-sync"
-      "--disable-wake-on-wifi"
       "--incognito"
       "--no-crash-upload"
       "--no-first-run"
