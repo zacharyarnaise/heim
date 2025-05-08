@@ -1,8 +1,29 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: let
+  chromiumPkg = pkgs.ungoogled-chromium;
+
+  createExtensionFor = browserVersion: {
+    id,
+    sha256,
+    version,
+  }: {
+    inherit id;
+    crxPath = builtins.fetchurl {
+      url = "https://clients2.google.com/service/update2/crx?response=redirect&acceptformat=crx2,crx3&prodversion=136&x=id%3Dcjpalhdlnbpafiamejdnhcphjbkeiagm%26installsource%3Dondemand%26uc";
+      name = "${id}.crx";
+      inherit sha256;
+    };
+    inherit version;
+  };
+  createExtension = createExtensionFor (lib.versions.major chromiumPkg.version);
+in {
   programs.chromium = {
     enable = true;
 
-    package = pkgs.ungoogled-chromium;
+    package = chromiumPkg;
 
     commandLineArgs = [
       "--ozone-platform=wayland"
@@ -18,6 +39,7 @@
       "--disable-speech-api"
       "--disable-speech-synthesis-api"
       "--disable-sync"
+      "--force-dark-mode"
       "--incognito"
       "--no-crash-upload"
       "--no-first-run"
@@ -45,12 +67,23 @@
       "--no-default-browser-check"
       "--no-pings"
 
-      "--enable-features=ClearDataOnExit,DisableQRGenerator"
+      "--enable-features=ClearDataOnExit,DisableQRGenerator,WebUIDarkMode"
     ];
 
     extensions = [
-      {id = "cjpalhdlnbpafiamejdnhcphjbkeiagm";} # uBlock Origin
-      {id = "kkbncfpddhdmkfmalecgnphegacgejoa";} # Datadog test recorder
+      # uBlock Origin
+      (createExtension {
+        id = "cjpalhdlnbpafiamejdnhcphjbkeiagm";
+        sha256 = "sha256:1lnk0k8zy0w33cxpv93q1am0d7ds2na64zshvbwdnbjq8x4sw5p6";
+        version = "1.63.2";
+      })
+
+      # Datadog test recorder
+      (createExtension {
+        id = "kkbncfpddhdmkfmalecgnphegacgejoa";
+        sha256 = "sha256:0c1l8iii894ihig0a4hyn1b4pfpiaakrbjxl2sl2y3h6v5iz2ify";
+        version = "3.8.2";
+      })
     ];
   };
 }
