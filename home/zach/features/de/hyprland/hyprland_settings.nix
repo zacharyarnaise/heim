@@ -41,7 +41,7 @@ in {
       "noanim, overview"
       "noanim, selection"
     ];
-    windowrulev2 = [
+    windowrule = [
       "float, class:(clipse)"
       "animation slide, class:(clipse)"
       "noborder, class:(clipse)"
