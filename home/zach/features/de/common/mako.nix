@@ -12,16 +12,16 @@ in {
 
     actions = true;
     icons = true;
-    maxIconSize = 48;
-    iconPath = "${iconThemePath}:${iconHomePath}:${iconSystemPath}";
+    max-icon-size = 48;
+    icon-path = "${iconThemePath}:${iconHomePath}:${iconSystemPath}";
     format = "<b>%s</b>\\n%b";
-    defaultTimeout = 4000;
-    maxVisible = 5;
+    default-timeout = 4000;
+    max-visible = 5;
     layer = "overlay";
     anchor = "top-center";
-    groupBy = "summary";
-    borderRadius = 8;
-    borderSize = 0;
+    group-by = "summary";
+    border-radius = 8;
+    border-size = 0;
     height = 140;
     width = 400;
     margin = "5,0";
