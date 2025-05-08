@@ -10,21 +10,23 @@ in {
   services.mako = {
     enable = true;
 
-    actions = true;
-    icons = true;
-    max-icon-size = 48;
-    icon-path = "${iconThemePath}:${iconHomePath}:${iconSystemPath}";
-    format = "<b>%s</b>\\n%b";
-    default-timeout = 4000;
-    max-visible = 5;
-    layer = "overlay";
-    anchor = "top-center";
-    group-by = "summary";
-    border-radius = 8;
-    border-size = 0;
-    height = 140;
-    width = 400;
-    margin = "5,0";
-    padding = "12,20";
+    settings = {
+      actions = true;
+      icons = true;
+      max-icon-size = 48;
+      icon-path = "${iconThemePath}:${iconHomePath}:${iconSystemPath}";
+      format = "<b>%s</b>\\n%b";
+      default-timeout = 4000;
+      max-visible = 5;
+      layer = "overlay";
+      anchor = "top-center";
+      group-by = "summary";
+      border-radius = 8;
+      border-size = 0;
+      height = 140;
+      width = 400;
+      margin = "5,0";
+      padding = "12,20";
+    };
   };
 }
