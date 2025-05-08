@@ -37,6 +37,8 @@ in {
         prompt = "false";
         difftastic.cmd = ''difft "$LOCAL" "$REMOTE"'';
       };
+
+      format.signOff = "false";
     };
     signing.signByDefault = true;
 
