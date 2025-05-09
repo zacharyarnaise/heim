@@ -51,6 +51,4 @@
       # See securetty(5) and login(1).
     '';
   };
-
-  boot.kernelParams = ["debugfs=off"];
 }
