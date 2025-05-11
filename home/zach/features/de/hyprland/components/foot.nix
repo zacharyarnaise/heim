@@ -6,12 +6,17 @@
     settings = {
       main = {
         shell = "${pkgs.zsh}/bin/zsh";
+        selection-target = "clipboard";
       };
       cursor = {
         style = "block";
-        beam-thickness = 1;
         blink = "yes";
       };
+      scrollback = {
+        lines = 5000;
+        indicator-format = "line";
+      };
+      bell.visual = "yes";
       mouse.alternate-scroll-mode = "yes";
     };
   };
