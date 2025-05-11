@@ -81,10 +81,12 @@
             run = "ouch";
           })
           ["zip" "gzip" "x-tar" "x-compressed-tar" "x-tar+gzip" "x-bzip2" "x-7z-compressed" "x-rar" "x-xz" "xz"]
-          ++ {
-            name = "*.md";
-            run = "glow";
-          };
+          ++ [
+            {
+              name = "*.md";
+              run = "glow";
+            }
+          ];
       };
     };
   };
