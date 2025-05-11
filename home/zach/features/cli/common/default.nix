@@ -1,5 +1,7 @@
 {pkgs, ...}: {
   imports = [
+    ./yazi
+
     ./atuin.nix
     ./bat.nix
     ./direnv.nix
@@ -8,7 +10,6 @@
     ./git.nix
     ./ssh.nix
     ./tmux.nix
-    ./yazi.nix
     ./zoxide.nix
   ];
 
@@ -19,12 +20,10 @@
       fd
       file
       ncdu
+      ouch
       jq
       sysz
       wget
-      p7zip
-      unzip
-      zip
       ;
   };
 
