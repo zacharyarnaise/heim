@@ -6,4 +6,6 @@
       name = lib.mkDefault "gtk3";
     };
   };
+
+  stylix.targets.qt.enable = true;
 }
