@@ -7,8 +7,8 @@
     ./fzf.nix
     ./git.nix
     ./ssh.nix
-    ./superfile.nix
     ./tmux.nix
+    ./yazi.nix
     ./zoxide.nix
   ];
 
