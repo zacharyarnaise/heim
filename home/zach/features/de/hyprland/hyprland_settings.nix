@@ -4,12 +4,10 @@
   ...
 }: let
   hyprctl = "${config.wayland.windowManager.hyprland.finalPackage}/bin/hyprctl";
-  hyprlock = "${config.programs.hyprlock.package}/bin/hyprlock";
 in {
   wayland.windowManager.hyprland.settings = {
     exec-once = [
       "uwsm finalize"
-      "${hyprlock}"
       "${hyprctl} setcursor ${config.stylix.cursor.name} ${toString config.stylix.cursor.size}"
     ];
 
