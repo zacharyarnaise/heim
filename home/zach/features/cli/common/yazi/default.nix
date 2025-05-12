@@ -19,6 +19,7 @@
     keymap = import ./keymap.nix;
 
     plugins = {
+      "folder-rules" = ./plugins/folder-rules.yazi;
       inherit
         (pkgs.yaziPlugins)
         chmod
@@ -42,7 +43,7 @@
         sort_sensitive = true;
         sort_reverse = false;
         sort_dir_first = true;
-        linemode = "custom_mtime";
+        linemode = "mtime_custom";
         show_hidden = true;
         show_symlink = true;
       };

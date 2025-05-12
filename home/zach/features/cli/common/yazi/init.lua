@@ -89,13 +89,17 @@ function Linemode:mtime_custom()
     local mtime = (self._file.cha.mtime or 0) // 1
     if mtime > 0 then
         if os.date("%Y", mtime) == os.date("%Y") then
-            mtime = os.date("%d/%b %H:%M", mtime)
+            mtime = os.date("%d/%m %H:%M", mtime)
         else
-            mtime = os.date("%d/%b/%Y", mtime)
+            mtime = os.date("%d/%m/%Y", mtime)
         end
     end
 
     local size = self._file:size()
-    size = size and ya.readable_size(size):gsub(" ", "") or "-"
-    return ui.Line(string.format(" %s %s ", size, mtime))
+    if size then
+      size = ya.readable_size(size):gsub(" ", "")
+      return ui.Line(string.format(" %s %s ", size, mtime))
+    else
+      return ui.Line(string.format(" %s ", mtime))
+    end
 end
