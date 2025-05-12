@@ -3,6 +3,7 @@
     ./global
 
     ./optional/dconf.nix
+    ./optional/docker.nix
     ./optional/greetd.nix
     ./optional/hyprland.nix
     ./optional/xdg-portal.nix

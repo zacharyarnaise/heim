@@ -28,6 +28,7 @@ in {
         "audio"
         "video"
         "network"
+        "docker"
       ];
 
     password = lib.mkForce null;
