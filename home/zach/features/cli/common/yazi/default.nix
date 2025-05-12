@@ -37,7 +37,7 @@
 
     settings = {
       manager = {
-        ratio = [1 4 3];
+        ratio = [1 3 4];
         sort_by = "natural";
         sort_sensitive = true;
         sort_reverse = false;

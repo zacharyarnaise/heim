@@ -84,3 +84,18 @@ require("yatline"):setup({
         }
     }
 })
+
+function Linemode:mtime_custom()
+    local mtime = (self._file.cha.mtime or 0) // 1
+    if mtime > 0 then
+        if os.date("%Y", mtime) == os.date("%Y") then
+            mtime = os.date("%d/%b %H:%M", mtime)
+        else
+            mtime = os.date("%d/%b/%Y", mtime)
+        end
+    end
+
+    local size = self._file:size()
+    size = size and ya.readable_size(size):gsub(" ", "") or "-"
+    return ui.Line(string.format(" %s %s ", size, mtime))
+end
