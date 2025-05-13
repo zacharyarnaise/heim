@@ -3,7 +3,18 @@
   lib,
   config,
   ...
-}: {
+}: let
+  mkReposSet = repos: lib.mapAttrsToList (rname: rurl: {
+    name = rname;
+    url = rurl;
+  }) repos;
+  helmRepos = {
+    "stable" = "https://charts.helm.sh/stable";
+    "bitnami" = "https://charts.bitnami.com/bitnami";
+    "ingress-nginx" = "https://kubernetes.github.io/ingress-nginx";
+    "redpanda" = "https://charts.redpanda.com";
+  };
+in {
   programs.k9s = {
     enable = true;
 
@@ -31,6 +42,7 @@
       kubernetes-helm
       kubecolor
       kubectx
+      k3d
       ;
   };
 
@@ -38,5 +50,9 @@
     k = "kubecolor";
     kcx = "kubectx";
     kns = "kubens";
+  };
+
+  xdg.configFile."helm/repositories.yaml".text = lib.generators.toYAML {} {
+    repositories = (mkReposSet helmRepos);
   };
 }

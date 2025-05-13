@@ -3,7 +3,7 @@
     ./git.nix
     ./golang.nix
     ./gpg.nix
-    ./k9s.nix
+    ./k8s.nix
     ./ssh.nix
     ./vscode.nix
   ];
@@ -12,7 +12,6 @@
     inherit
       (pkgs)
       ansible
-      k3d
       tilt
       ;
   };
