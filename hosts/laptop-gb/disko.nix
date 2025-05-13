@@ -52,6 +52,10 @@
                     mountpoint = "/var/log";
                     mountOptions = ["compress=lzo" "noatime" "lazytime"];
                   };
+                  "@docker" = {
+                    mountpoint = "/var/lib/docker";
+                    mountOptions = ["compress=lzo" "noatime" "lazytime"];
+                  };
                 };
               };
             };
