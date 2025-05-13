@@ -29,6 +29,7 @@ in {
         logoless = true;
         crumbsless = true;
         defaultsToFullScreen = true;
+        splashless = true;
       };
       logger = {
         buffer = 5000;
