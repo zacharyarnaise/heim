@@ -1,7 +1,6 @@
 {
   inputs,
   config,
-  lib,
   ...
 }: let
   sopsSecrets = config.sops.secrets;
