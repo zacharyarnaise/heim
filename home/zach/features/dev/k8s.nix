@@ -4,10 +4,12 @@
   config,
   ...
 }: let
-  mkReposSet = repos: lib.mapAttrsToList (rname: rurl: {
-    name = rname;
-    url = rurl;
-  }) repos;
+  mkReposSet = repos:
+    lib.mapAttrsToList (rname: rurl: {
+      name = rname;
+      url = rurl;
+    })
+    repos;
   helmRepos = {
     "stable" = "https://charts.helm.sh/stable";
     "bitnami" = "https://charts.bitnami.com/bitnami";
