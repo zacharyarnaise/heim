@@ -5,6 +5,7 @@
     ./gpg.nix
     ./k8s.nix
     ./ssh.nix
+    ./tilt.nix
     ./vscode.nix
   ];
 
@@ -12,7 +13,6 @@
     inherit
       (pkgs)
       ansible
-      tilt
       ;
   };
 }
