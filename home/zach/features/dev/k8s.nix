@@ -53,6 +53,6 @@ in {
   };
 
   xdg.configFile."helm/repositories.yaml".text = lib.generators.toYAML {} {
-    repositories = (mkReposSet helmRepos);
+    repositories = mkReposSet helmRepos;
   };
 }
