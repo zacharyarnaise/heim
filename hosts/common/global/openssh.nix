@@ -17,6 +17,7 @@
       PermitRootLogin = "no";
       StrictModes = true;
       X11Forwarding = false;
+      UseDns = false;
 
       Ciphers = [
         "chacha20-poly1305@openssh.com"
