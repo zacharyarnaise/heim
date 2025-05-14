@@ -31,6 +31,10 @@
     stub-ld.enable = false;
   };
 
+  systemd.sleep.extraConfig = ''
+    AllowHibernation=no
+  '';
+
   programs.nh = {
     enable = true;
   };
