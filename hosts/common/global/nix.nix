@@ -5,14 +5,19 @@
 
     gc = {
       automatic = true;
-      dates = "weekly";
+      dates = ["Sat *-*-* 00:00:00"];
       options = "--delete-older-than 10d";
+      persistent = true;
+    };
+    optimise = {
+      automatic = true;
+      dates = ["Sat *-*-* 00:00:00"];
       persistent = true;
     };
 
     settings = {
       accept-flake-config = true;
-      auto-optimise-store = true;
+      auto-optimise-store = false;
       allow-import-from-derivation = lib.mkDefault true;
       allowed-users = lib.mkDefault [""]; # Trusted users are always allowed to connect
       trusted-users = lib.mkForce ["@wheel"];
