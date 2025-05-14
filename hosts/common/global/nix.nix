@@ -5,7 +5,7 @@
 
     gc = {
       automatic = true;
-      dates = ["Sat *-*-* 00:00:00"];
+      dates = "Sat *-*-* 00:00:00";
       options = "--delete-older-than 10d";
       persistent = true;
     };
