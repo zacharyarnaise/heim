@@ -30,6 +30,11 @@
         "interface-name:veth*"
       ];
     };
+
+    firewall = {
+      enable = true;
+      logRefusedConnections = false;
+    };
   };
 
   services.resolved = {
