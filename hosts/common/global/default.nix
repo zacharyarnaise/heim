@@ -20,12 +20,15 @@
       ./userborn.nix
     ];
 
-  environment.systemPackages = builtins.attrValues {
-    inherit
-      (pkgs)
-      coreutils
-      pciutils
-      ;
+  environment = {
+    systemPackages = builtins.attrValues {
+      inherit
+        (pkgs)
+        coreutils
+        pciutils
+        ;
+    };
+    stub-ld.enable = false;
   };
 
   programs.nh = {
