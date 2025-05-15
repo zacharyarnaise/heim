@@ -9,6 +9,7 @@
     ignores = [
       ".direnv"
       ".env"
+      ".envrc"
     ];
 
     extraConfig = {
