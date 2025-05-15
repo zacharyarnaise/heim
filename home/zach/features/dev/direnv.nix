@@ -12,11 +12,9 @@ in {
 
     config = {
       global.strict_env = true;
-      whitelist.prefix =
-        []
-        ++ lib.mkIf config.hostSpec.isWork [
-          "${config.home.homeDirectory}/Code/Work/"
-        ];
+      whitelist.prefix = lib.mkIf config.hostSpec.isWork [
+        "${config.home.homeDirectory}/Code/Work/"
+      ];
     };
   };
 
