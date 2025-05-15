@@ -2,6 +2,7 @@
   config,
   inputs,
   pkgs,
+  lib,
   ...
 }: let
   inherit (inputs) secrets;
@@ -42,7 +43,7 @@ in {
     };
     signing.signByDefault = true;
 
-    includes = [
+    includes = lib.mkIf config.hostSpec.isWork [
       {
         condition = "gitdir:${config.home.homeDirectory}/Code/Work/**";
         contents = secrets.work.git;
