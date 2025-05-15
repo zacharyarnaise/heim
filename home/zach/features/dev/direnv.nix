@@ -11,11 +11,15 @@ in {
     enableZshIntegration = config.programs.zsh.enable;
 
     config = {
-      global.strict_env = true;
+      global = {
+        disable_stdin = true;
+        strict_env = true;
+      };
       whitelist.prefix = lib.mkIf config.hostSpec.isWork [
         "/persist${config.home.homeDirectory}/Code/Work/"
       ];
     };
+    silent = true;
   };
 
   home.file = lib.mkIf config.hostSpec.isWork {
