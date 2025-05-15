@@ -1,5 +1,7 @@
 {pkgs, ...}: {
   imports = [
+    ./nixvim
+
     ./direnv.nix
     ./git.nix
     ./golang.nix
