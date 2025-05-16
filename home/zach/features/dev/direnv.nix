@@ -23,7 +23,7 @@ in {
   };
 
   home.file = lib.mkIf config.hostSpec.isWork {
-    "/persist/${config.home.homeDirectory}/Code/Work/${secrets.work.env.path}".text =
+    "Code/Work/${secrets.work.env.path}".text =
       secrets.work.env.text;
   };
 }
