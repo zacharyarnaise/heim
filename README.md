@@ -28,6 +28,7 @@ Here you'll find [NixOS](https://nixos.org/) & [home-manager](https://github.com
 │  ├─ kamaji/    # Headless - Ryzen 5 5600X, 16GB RAM, 4TB SSD x2
 │  ├─ laptop-gb/ # Laptop   - ThinkPad - to be deleted no longer in use
 │  ├─ noface/    # Headless - QEMU guest used for debugging/testing
+│  ├─ ponyo/     # Laptop   - ThinkPad T14
 ├─ lib/               # Nix utilities/helpers
 ├─ modules/           # Reusable, abstract pieces of config for home-manager, NixOS or both.
 │  ├─ common/
