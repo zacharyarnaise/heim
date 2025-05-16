@@ -9,6 +9,7 @@
     ./optional/xdg-portal.nix
     ./optional/pipewire.nix
     ./optional/yubikey.nix
+    ./optional/secureboot.nix
   ];
 
   nix = {
