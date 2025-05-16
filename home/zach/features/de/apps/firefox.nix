@@ -8,9 +8,9 @@
   firefox-ui-fix = pkgs.fetchFromGitHub {
     owner = "black7375";
     repo = "Firefox-UI-Fix";
-    rev = "v8.7.0";
+    rev = "v8.7.1";
     fetchSubmodules = false;
-    sha256 = "sha256-NBPSKIxTNSuJahySyLqD45R/UmeyvkJBKehUIE/dI0I=";
+    sha256 = "sha256-2/hTy4QED2qLaMEz2gYS9IQqFf4AZACorh/8Wb2NZwA=";
   };
 in {
   stylix.targets.firefox.profileNames = ["default"];
@@ -26,6 +26,7 @@ in {
           french-dictionary
           ublock-origin
           gopass-bridge
+          multi-account-containers
           ;
       };
       search = {
@@ -66,7 +67,7 @@ in {
           };
           "Grep.app" = {
             urls = [{template = "https://grep.app/search?q={searchTerms}";}];
-            icon = "https://grep.app/static/images/icon-32x32.ae2f571e.png";
+            icon = "https://grep.app/static/icon.png";
             updateInterval = 7 * (24 * 60 * 60 * 1000);
             definedAliases = ["@gr"];
           };
