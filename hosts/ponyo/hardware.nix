@@ -17,6 +17,7 @@
       "sd_mod"
     ];
     kernelModules = ["kvm-amd"];
+    kernel.sysctl."vm.dirty_writeback_centisecs" = "3000";
   };
 
   programs.light.enable = true;
