@@ -4,7 +4,6 @@
     plymouth.enable = false;
 
     initrd = {
-      systemd.strip = true;
       compressor = pkgs: "${pkgs.lz4.out}/bin/lz4";
       compressorArgs = ["-l" "-10" "--favor-decSpeed"];
     };
