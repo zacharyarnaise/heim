@@ -13,7 +13,6 @@
     ];
     files = [
       "/etc/machine-id"
-      "/var/lib/logrotate.status"
     ];
   };
 
