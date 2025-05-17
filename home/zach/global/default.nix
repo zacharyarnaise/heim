@@ -37,7 +37,6 @@
       allowOther = false;
       defaultDirectoryMethod = "symlink";
       directories = [
-        ".local/share/nix" # trusted settings and repl history
         "Code"
         "Documents"
         "Downloads"
