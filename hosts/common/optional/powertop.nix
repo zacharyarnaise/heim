@@ -4,9 +4,9 @@
   ...
 }: {
   environment.persistence."/persist" = {
-    files = [
-      "/var/cache/powertop/saved_parameters.powertop"
-      "/var/cache/powertop/saved_results.powertop"
+    hideMounts = true;
+    directories = [
+      "/var/cache/powertop"
     ];
   };
 
