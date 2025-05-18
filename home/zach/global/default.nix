@@ -9,7 +9,8 @@
     ++ [
       inputs.impermanence.homeManagerModules.impermanence
 
-      ./secrets.nix
+      # Unused for now
+      #./secrets.nix
 
       ../features/cli/common
       ../features/cli/zsh
