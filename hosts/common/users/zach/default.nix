@@ -47,6 +47,10 @@ in {
         directory = ".kube";
         mode = "0700";
       }
+      {
+        directory = ".mozilla/firefox/default";
+        mode = "0750";
+      }
     ];
   };
 

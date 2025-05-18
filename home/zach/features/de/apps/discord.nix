@@ -9,9 +9,7 @@
   stylix.targets.vesktop.enable = true;
 
   home.persistence = {
-    "/persist/${config.home.homeDirectory}" = {
-      allowOther = false;
-      defaultDirectoryMethod = "symlink";
+    "/persist${config.home.homeDirectory}" = {
       directories = [
         ".config/Vencord/settings"
         ".config/vesktop/sessionData"

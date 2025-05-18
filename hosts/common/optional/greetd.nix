@@ -29,7 +29,6 @@
   };
 
   environment.persistence."/persist" = {
-    hideMounts = true;
     directories = [
       {
         directory = "/var/cache/tuigreet";

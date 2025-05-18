@@ -1,7 +1,6 @@
 {
   pkgs,
   inputs,
-  config,
   ...
 }: let
   firefox-addons = inputs.firefox-addons.packages.${pkgs.system};
@@ -284,16 +283,5 @@ in {
     "text/xml" = ["firefox.desktop"];
     "x-scheme-handler/http" = ["firefox.desktop"];
     "x-scheme-handler/https" = ["firefox.desktop"];
-  };
-
-  # Until I find a cleaner way to manage my bookmarks and stuff
-  home.persistence."/persist/${config.home.homeDirectory}" = {
-    allowOther = false;
-    directories = [
-      {
-        directory = ".mozilla/firefox";
-        method = "symlink";
-      }
-    ];
   };
 }
