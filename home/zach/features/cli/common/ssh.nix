@@ -10,11 +10,14 @@
     ]
     (n: "/persist${config.home.homeDirectory}/.ssh/${n}");
 in {
-  home.persistence = {
-    "/persist${config.home.homeDirectory}" = {
-      allowOther = false;
-      directories = [".ssh/known_hosts.d"];
-    };
+  home.persistence."/persist/${config.home.homeDirectory}" = {
+    allowOther = false;
+    directories = [
+      {
+        directory = ".ssh/known_hosts.d";
+        method = "symlink";
+      }
+    ];
   };
 
   programs.ssh = {
