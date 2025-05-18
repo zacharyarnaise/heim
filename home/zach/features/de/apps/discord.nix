@@ -1,6 +1,7 @@
 {
   pkgs,
   config,
+  lib,
   ...
 }: {
   home.packages = [pkgs.vesktop];
@@ -10,21 +11,23 @@
   home.persistence = {
     "/persist/${config.home.homeDirectory}" = {
       allowOther = false;
+      defaultDirectoryMethod = "symlink";
       directories = [
         ".config/Vencord/settings"
         ".config/vesktop/sessionData"
         ".config/vesktop/settings"
       ];
     };
-    "/persist/${config.home.homeDirectory}/.config/vesktop" = {
-      allowOther = false;
-      files = ["settings.json"];
-    };
   };
 
-  xdg.configFile."vesktop/state.json".text = ''
-    {
-      "firstLaunch": false
-    }
-  '';
+  xdg.configFile = {
+    "vesktop/settings.json".text = lib.generators.toJSON {} {
+      aRPC = false;
+      discordBranch = "stable";
+      minimizeToTray = true;
+    };
+    "vesktop/state.json".text = lib.generators.toJSON {} {
+      firstLaunch = false;
+    };
+  };
 }
