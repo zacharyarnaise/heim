@@ -21,7 +21,7 @@
 
   wayland.windowManager.hyprland.settings.device = [
     {
-      name = "synq8020:00-06cb:ce5c-touchpad";
+      name = "syna8020:00-06cb:ce5c-touchpad";
       accel_profile = "adaptive";
       sensitivity = 0.4;
     }
