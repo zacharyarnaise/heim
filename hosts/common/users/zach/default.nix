@@ -38,6 +38,7 @@ in {
   };
 
   environment.persistence."/persist".users.zach = {
+    hideMounts = true;
     directories = lib.mkIf (config.hostSpec.kind != "headless") [
       {
         directory = ".config/sops";
