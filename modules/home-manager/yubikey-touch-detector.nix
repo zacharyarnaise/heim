@@ -54,6 +54,10 @@ in {
         Requires = optionals cfg.socket.enable ["yubikey-touch-detector.socket"];
       };
       Service = {
+        # GPG detection is hacky and works by watching shadowed PK files.
+        # Hence the need to set permissions on the directory.
+        ExecStartPre = "chmod 0750 ${config.home.homeDirectory}/.gnupg/private-keys-v1.d";
+        ExecStopPost = "chmod 0700 ${config.home.homeDirectory}/.gnupg/private-keys-v1.d";
         ExecStart = "${cfg.package}/bin/yubikey-touch-detector ${concatStringsSep " " cfg.extraArgs}";
         Environment = ["PATH=${lib.makeBinPath [pkgs.gnupg]}"];
         Restart = "on-failure";
