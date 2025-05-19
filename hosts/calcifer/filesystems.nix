@@ -1,7 +1,7 @@
 {
   boot.initrd = {
     luks.devices.crypted = {
-      device = "/dev/nvme0n1p2";
+      device = "/dev/nvme0n1p5";
       allowDiscards = true;
       bypassWorkqueues = true;
     };
@@ -9,7 +9,7 @@
 
   fileSystems = {
     "/boot" = {
-      device = "/dev/disk/by-partlabel/disk-main-ESP";
+      device = "/dev/disk/by-partlabel/nixESP";
       fsType = "vfat";
       options = ["defaults" "noexec" "umask=0077"];
     };
