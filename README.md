@@ -58,22 +58,21 @@ Here you'll find [NixOS](https://nixos.org/) & [home-manager](https://github.com
     ```
 
 > [!IMPORTANT]  
-> I ran into an issue where `nixos-anywhere` doesn't export the ZFS pool after installation.
-> See https://github.com/nix-community/nixos-anywhere/issues/156
+> If you use ZFS, `nixos-anywhere` has [an issue](https://github.com/nix-community/nixos-anywhere/issues/156) where it won't export the pool before rebooting.
 >
-> A workaround is to add `--no-reboot` to the install command and manually export the pool before rebooting.
+> Possible workarounds:
+> - append `--no-reboot` to the install command and manually export the pool before rebooting.
+> - use the same `networking.hostId` as the NixOS installer and nixos-anywhere as demonstrated [here](https://github.com/nix-community/srvos/blob/755578b01c9fb1cc0a798c0d4d54a283077b315d/nixos/common/zfs.nix#L8).
 
-## References / Useful resources
-- Resources from the official Nix website:
-  - [Learn Nix](https://nixos.org/learn.html)
-  - [Nix ecosystem documentation](https://nix.dev/)
-  - [NixOS reference manual](https://nixos.org/manual/nixos/unstable/)
-  - [Nix Pills](https://nixos.org/guides/nix-pills/) a series of blog posts that provide an introduction to Nix
-
+## References & Useful resources
+Resources that helped me find light down this rabbit hole:
+- [Nix Pills](https://nixos.org/guides/nix-pills/)
+- [Unmoved Centre blog posts](https://unmovedcentre.com/tags/nixos/)
 - [NixOS & Flakes book](https://nixos-and-flakes.thiscute.world/)
-- [How to learn Nix](https://ianthehenry.com/posts/how-to-learn-nix/) another series of blog posts, quite dense but nonetheless useful
-- [Flakes introduction](https://www.tweag.io/blog/2020-05-25-flakes/) blog posts about Nix Flakes
-- [Awesome Nix](https://github.com/nix-community/awesome-nix) a curated list of Nix resources
+- [How to learn Nix](https://ianthehenry.com/posts/how-to-learn-nix/)
+- [Flakes introduction](https://www.tweag.io/blog/2020-05-25-flakes/)
+
+Other people's configurations that inspired me:
 - [Misterio77 Nix Starter Config](https://github.com/Misterio77/nix-starter-configs)
 - [hlissner's dotfiles](https://github.com/hlissner/dotfiles)
 - [EmergentMind nix-config](https://github.com/EmergentMind/nix-config)
