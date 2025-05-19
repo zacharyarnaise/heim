@@ -39,6 +39,10 @@
         type = types.nullOr types.str;
         default = null;
       };
+      extraArgs = mkOption {
+        type = types.nullOr types.str;
+        default = null;
+      };
     };
   };
 in {

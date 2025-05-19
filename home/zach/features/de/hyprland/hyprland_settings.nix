@@ -197,7 +197,8 @@ in {
       ++ (map (
           m: "${m.name},${
             if m.enabled
-            then "${toString m.width}x${toString m.height}@${toString m.refreshRate},${m.position},1"
+            then "${toString m.width}x${toString m.height}@${toString m.refreshRate},${m.position},1" +
+              (if m.extraArgs != null then ",${m.extraArgs}" else "")
             else "disable"
           }"
         )
