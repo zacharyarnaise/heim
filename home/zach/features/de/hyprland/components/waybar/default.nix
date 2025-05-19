@@ -26,6 +26,7 @@ in {
         mode = "dock";
         exclusive = true;
         passthrough = false;
+        output = ["${config.primaryMonitor.name}"];
 
         modules-left = [
           "custom/nix"
