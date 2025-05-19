@@ -9,7 +9,7 @@
 
   fileSystems = {
     "/boot" = {
-      device = "/dev/disk/by-partlabel/nixESP";
+      device = "/dev/disk/by-label/nixESP";
       fsType = "vfat";
       options = ["defaults" "noexec" "umask=0077"];
     };
