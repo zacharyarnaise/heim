@@ -31,6 +31,7 @@ in {
       "animation slide, notifications"
 
       "animation slide, rofi"
+      "order 10, rofi" # pinentry uses rofi and needs to be on top
 
       "animation fade, waybar"
       "ignorezero, waybar"
