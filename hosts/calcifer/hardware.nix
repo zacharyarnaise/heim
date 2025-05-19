@@ -5,7 +5,7 @@
 }: {
   imports = [
     inputs.nixos-hardware.nixosModules.common-cpu-intel-cpu-only
-    inputs.nixos-hardware.nixosModules.common-gpu-amd
+    inputs.nixos-hardware.nixosModules.common-gpu-nvidia-sync
     inputs.nixos-hardware.nixosModules.common-pc-ssd
 
     ./filesystems.nix
@@ -23,11 +23,8 @@
     kernelModules = ["kvm-intel"];
   };
 
-  nix.settings.max-jobs = 20;
-
+  nix.settings.max-jobs = 28;
   hardware.cpu.intel.updateMicrocode = true;
-
   swapDevices = lib.mkForce [];
-
   powerManagement.cpuFreqGovernor = lib.mkDefault "schedutil";
 }
