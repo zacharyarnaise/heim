@@ -22,6 +22,13 @@
 
   programs.light.enable = true;
 
+  # Wireless is unstable, disabling power-saving stuff might help...
+  networking.networkmanager.wifi.powersave = false;
+  boot.extraModprobeConfig = ''
+    options rtw89_core disable_ps_mode=y
+    options rtw89_pci disable_clkreq=y disable_aspm_l1=y disable_aspm_l1ss=y
+  '';
+
   nix.settings.max-jobs = 12;
   hardware.cpu.amd.updateMicrocode = true;
   swapDevices = lib.mkForce [];
