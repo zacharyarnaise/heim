@@ -7,6 +7,7 @@
     ./golang.nix
     ./gpg.nix
     ./k8s.nix
+    ./nix.nix
     ./ssh.nix
     ./tilt.nix
     ./vscode.nix
