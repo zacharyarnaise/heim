@@ -16,7 +16,7 @@ in {
       max-icon-size = 48;
       icon-path = "${iconThemePath}:${iconHomePath}:${iconSystemPath}";
       format = "<b>%s</b>\\n%b";
-      default-timeout = 4000;
+      default-timeout = 8000;
       max-visible = 5;
       layer = "overlay";
       anchor = "top-center";
