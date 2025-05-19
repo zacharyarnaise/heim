@@ -554,11 +554,11 @@
         "systems": "systems_2"
       },
       "locked": {
-        "lastModified": 1747607161,
-        "narHash": "sha256-73mz+f6XlVsRxLbjQeCrgW7mZnUihoPoHDa+GIg2j/o=",
+        "lastModified": 1747610601,
+        "narHash": "sha256-vfK+K+bQZF5fHdsyjDECx6t5yv6Gg51B6i4AVvneAxU=",
         "owner": "nix-community",
         "repo": "nixvim",
-        "rev": "563fdaeef95599e584fcff2e8f8d6f72011ffb99",
+        "rev": "f4a7447d27d3c43c59555c053c203f1abb45e899",
         "type": "github"
       },
       "original": {
@@ -682,10 +682,10 @@
     },
     "secrets": {
       "locked": {
-        "lastModified": 1747608485,
-        "narHash": "sha256-WW/kyhv9hjSI5R7CziMCP5MECvOKtv3l8eVPIFb3O0k=",
+        "lastModified": 1747674116,
+        "narHash": "sha256-PaCRDssI5ICQWzb5sG2d4Myfio62Ybd6rxLx0p6nTME=",
         "ref": "main",
-        "rev": "73b0ef8ad22798013171d52b726a037fdef53d88",
+        "rev": "affd51613811403b49afc2fa6bcc7c8b107a20b0",
         "shallow": true,
         "type": "git",
         "url": "git+ssh://git@github.com/zacharyarnaise/heim-secrets.git"
@@ -739,11 +739,11 @@
         "tinted-zed": "tinted-zed"
       },
       "locked": {
-        "lastModified": 1747605783,
-        "narHash": "sha256-4t7Kmy+CTemV9QMgLXrTkz+33y31Z1V2Cl/mrbyf6Mc=",
+        "lastModified": 1747673601,
+        "narHash": "sha256-jVs4byXRcqLpOTsr1MC5XwVyPhasswY2uc+Jkf5Fgmo=",
         "owner": "danth",
         "repo": "stylix",
-        "rev": "c8f09c164b6490613ccee5a083f22095385bef5c",
+        "rev": "2e58606c9c14d943783b5c0a8097f6f9712db3ee",
         "type": "github"
       },
       "original": {
@@ -817,17 +817,16 @@
     "tinted-kitty": {
       "flake": false,
       "locked": {
-        "lastModified": 1716423189,
-        "narHash": "sha256-2xF3sH7UIwegn+2gKzMpFi3pk5DlIlM18+vj17Uf82U=",
+        "lastModified": 1735730497,
+        "narHash": "sha256-4KtB+FiUzIeK/4aHCKce3V9HwRvYaxX+F1edUrfgzb8=",
         "owner": "tinted-theming",
         "repo": "tinted-kitty",
-        "rev": "eb39e141db14baef052893285df9f266df041ff8",
+        "rev": "de6f888497f2c6b2279361bfc790f164bfd0f3fa",
         "type": "github"
       },
       "original": {
         "owner": "tinted-theming",
         "repo": "tinted-kitty",
-        "rev": "eb39e141db14baef052893285df9f266df041ff8",
         "type": "github"
       }
     },
