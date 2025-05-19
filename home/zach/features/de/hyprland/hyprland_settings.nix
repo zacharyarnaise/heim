@@ -17,7 +17,7 @@ in {
       gaps_in = 10;
       gaps_out = 15;
       resize_on_border = true;
-      extend_border_grab_area = 5;
+      extend_border_grab_area = 20;
     };
 
     dwindle = {
@@ -31,7 +31,7 @@ in {
       "animation slide, notifications"
 
       "animation slide, rofi"
-      "order 10, rofi" # pinentry uses rofi and needs to be on top
+      "order -10, rofi" # pinentry uses rofi and needs to be on top
 
       "animation fade, waybar"
       "ignorezero, waybar"
