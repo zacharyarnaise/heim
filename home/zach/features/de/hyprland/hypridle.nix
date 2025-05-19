@@ -17,9 +17,10 @@ in {
 
     settings = {
       general = {
-        lock_cmd = "${hyprlock} --immediate";
+        lock_cmd = "${hyprlock} --immediate --no-fade-in";
         before_sleep_cmd = "${loginctl} lock-session";
         after_sleep_cmd = "${hyprctl} dispatch dpms on";
+        inhibit_sleep = 3; # Wait until session gets locked before going to sleep
       };
 
       listener = [

@@ -6,7 +6,7 @@
       general = {
         ignore_empty_input = true;
         hide_cursor = true;
-        grace = 3;
+        grace = 0;
       };
 
       background = {
