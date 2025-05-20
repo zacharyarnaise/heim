@@ -7,6 +7,7 @@
       main = {
         shell = "${pkgs.zsh}/bin/zsh";
         selection-target = "clipboard";
+        term = "xterm-256color";
       };
       cursor = {
         style = "block";
