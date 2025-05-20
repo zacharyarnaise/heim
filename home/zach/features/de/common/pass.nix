@@ -22,9 +22,16 @@ in {
       '';
     };
 
-    activation.gopassBrowser = lib.hm.dag.entryAfter ["writeBoundary"] ''
-      export PATH="${config.home.path}/bin:$PATH"
-      echo "Y" | gopass-jsonapi configure --browser firefox --global=false --path=${config.home.homeDirectory}/.config/gopass
-    '';
+    activation = let
+      cmd = ''echo "Y" | ${pkgs.gopass-jsonapi}/bin/gopass-jsonapi configure --browser firefox --global=false --path=${config.home.homeDirectory}/.config/gopass --print=false'';
+    in {
+      gopassBrowser = lib.hm.dag.entryAfter ["writeBoundary"] ''
+        if [ -d "${storePath}/.git" ]; then
+          run --quiet ${cmd}
+        else
+          warnEcho "Skipping, password store not initialized."
+        fi
+      '';
+    };
   };
 }
