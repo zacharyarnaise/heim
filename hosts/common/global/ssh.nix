@@ -1,9 +1,24 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  inputs,
+  outputs,
+  ...
+}: let
+  inherit (inputs) secrets;
+  secretsDir = builtins.toString inputs.secrets;
+  hosts = lib.attrNames outputs.nixosConfigurations;
+in {
   programs.ssh = {
     startAgent = true;
     enableAskPassword = false;
     askPassword = "";
 
+    knownHosts = lib.genAttrs hosts (hostname: {
+      extraHostNames = ["${secrets.hosts.${hostname}.inet}"];
+      publicKey =
+        builtins.readFile "${secretsDir}/hosts/${hostname}/ssh_host_ed25519_key.pub";
+    });
     knownHostsFiles = [
       (pkgs.writeText "known_hosts_github" ''
         github.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl
