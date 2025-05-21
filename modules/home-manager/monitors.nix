@@ -31,6 +31,10 @@
         type = types.str;
         default = "auto";
       };
+      scale = mkOption {
+        type = types.str;
+        default = "auto";
+      };
       enabled = mkOption {
         type = types.bool;
         default = true;
