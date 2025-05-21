@@ -40,6 +40,8 @@
         "window.titleBarStyle" = "native";
         "workbench.iconTheme" = "vscode-icons";
         "workbench.startupEditor" = "none";
+        "vsicons.dontShowNewVersionMessage" = true;
+        "security.workspace.trust.enabled" = false;
 
         "nix.enableLanguageServer" = true;
         "nix.formatterPath" = "alejandra";
