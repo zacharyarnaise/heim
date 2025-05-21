@@ -1,8 +1,4 @@
-{
-  config,
-  lib,
-  ...
-}: let
+{config, ...}: let
   hyprctl = "${config.wayland.windowManager.hyprland.finalPackage}/bin/hyprctl";
 in {
   wayland.windowManager.hyprland.settings = {
@@ -208,10 +204,6 @@ in {
           }"
         )
         config.monitors);
-
-    workspace = map (m: "name:${m.workspace},monitor:${m.name}") (
-      lib.filter (m: m.enabled && m.workspace != null) config.monitors
-    );
 
     ecosystem = {
       no_update_news = true;

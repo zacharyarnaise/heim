@@ -30,6 +30,7 @@
       position = mkOption {
         type = types.str;
         default = "auto";
+        example = "1920x0";
       };
       scale = mkOption {
         type = types.str;
@@ -39,9 +40,10 @@
         type = types.bool;
         default = true;
       };
-      workspace = mkOption {
-        type = types.nullOr types.str;
-        default = null;
+      workspaces = mkOption {
+        type = types.listOf types.str;
+        default = [];
+        example = ["1" "2" "3"];
       };
       extraArgs = mkOption {
         type = types.nullOr types.str;
