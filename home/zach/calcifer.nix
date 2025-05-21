@@ -24,7 +24,7 @@
       height = 2160;
       workspace = "1";
       primary = false;
-      position = "2160x-1024";
+      position = "2160x-685";
       extraArgs = "transform,1";
     }
   ];
