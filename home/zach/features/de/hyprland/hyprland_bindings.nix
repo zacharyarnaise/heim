@@ -17,18 +17,32 @@
   modCtrl = "SUPER_CONTROL";
   modShift = "SUPER_SHIFT";
 
-  workspaces = {
-    "1" = "ampersand";
-    "2" = "eacute";
-    "3" = "quotedbl";
-    "4" = "apostrophe";
-    "5" = "parenleft";
-    "6" = "minus";
-    "7" = "egrave";
-    "8" = "underscore";
-    "9" = "ccedilla";
-    "10" = "agrave";
-  };
+  workspaces =
+    if config.hostSpec.kbdLayout == "fr"
+    then {
+      "1" = "ampersand";
+      "2" = "eacute";
+      "3" = "quotedbl";
+      "4" = "apostrophe";
+      "5" = "parenleft";
+      "6" = "minus";
+      "7" = "egrave";
+      "8" = "underscore";
+      "9" = "ccedilla";
+      "10" = "agrave";
+    }
+    else {
+      "1" = "1";
+      "2" = "2";
+      "3" = "3";
+      "4" = "4";
+      "5" = "5";
+      "6" = "6";
+      "7" = "7";
+      "8" = "8";
+      "9" = "9";
+      "10" = "0";
+    };
 in {
   wayland.windowManager.hyprland.settings = {
     binds = {
