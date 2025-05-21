@@ -24,8 +24,9 @@
     kernelModules = ["kvm-intel"];
   };
 
+  time.hardwareClockInLocalTime = true; # Fix clock drift on dual boot
   nix.settings.max-jobs = 28;
   hardware.cpu.intel.updateMicrocode = true;
   swapDevices = lib.mkForce [];
-  powerManagement.cpuFreqGovernor = lib.mkDefault "schedutil";
+  powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
 }
