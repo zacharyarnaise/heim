@@ -109,7 +109,10 @@ in {
           on-scroll-up = "${hyprctl} dispatch workspace e+1";
           on-scroll-down = "${hyprctl} dispatch workspace e-1";
           show-special = false;
-          persistent-workspaces."*" = 7;
+          persistent-workspaces = builtins.zipAttrsWith (n: v: {
+            name = v.name;
+          }) config.monitors;
+
           sort-by = "number";
           format = "{icon}";
           format-icons = {

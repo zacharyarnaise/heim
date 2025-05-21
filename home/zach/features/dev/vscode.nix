@@ -44,7 +44,9 @@
         "security.workspace.trust.enabled" = false;
 
         "nix.enableLanguageServer" = true;
-        "nix.formatterPath" = "alejandra";
+        "nix.serverSettings" = {
+          "nil.formatting.command" = ["alejandra"];
+        };
 
         "go.formatTool" = "goimports";
 
