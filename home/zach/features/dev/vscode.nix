@@ -29,7 +29,7 @@
         };
         "editor.formatOnPaste" = true;
         "editor.formatOnSave" = true;
-        "editor.formatOnSaveMode" = "modificationsIfAvailable";
+        "editor.formatOnSaveMode" = "file";
         "notebook.formatOnSave.enabled" = true;
         "files.autoSave" = "afterDelay";
         "files.insertFinalNewline" = true;
@@ -45,7 +45,11 @@
 
         "nix.enableLanguageServer" = true;
         "nix.serverSettings" = {
-          "nil.formatting.command" = ["alejandra"];
+          "nil" = {
+            "formatting" = {
+              "command" = ["alejandra"];
+            };
+          };
         };
 
         "go.formatTool" = "goimports";
