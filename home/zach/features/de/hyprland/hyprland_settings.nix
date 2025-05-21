@@ -1,8 +1,4 @@
-{
-  config,
-  lib,
-  ...
-}: let
+{config, ...}: let
   hyprctl = "${config.wayland.windowManager.hyprland.finalPackage}/bin/hyprctl";
 in {
   wayland.windowManager.hyprland.settings = {
