@@ -198,7 +198,7 @@ in {
           m: "${m.name},${
             if m.enabled
             then
-              "${toString m.width}x${toString m.height}@${toString m.refreshRate},${m.position},1"
+              "${toString m.width}x${toString m.height}@${toString m.refreshRate},${m.position},${m.scale}"
               + (
                 if m.extraArgs != null
                 then ",${m.extraArgs}"
