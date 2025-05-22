@@ -8,7 +8,7 @@
     ./optional/hyprland.nix
     ./optional/pipewire.nix
     ./optional/yubikey.nix
-    #./optional/secureboot.nix
+    ./optional/secureboot.nix
   ];
 
   nix = {
