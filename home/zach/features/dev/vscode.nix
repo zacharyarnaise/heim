@@ -53,6 +53,8 @@
         };
 
         "go.formatTool" = "goimports";
+        "go.diagnostic.vulncheck" = "Imports";
+        "go.showWelcome" = false;
 
         "python.analysis.indexing" = true;
         "python.analysis.autoImportCompletions" = true;
