@@ -1,4 +1,8 @@
-{config, ...}: let
+{
+  config,
+  lib,
+  ...
+}: let
   hyprctl = "${config.wayland.windowManager.hyprland.finalPackage}/bin/hyprctl";
 in {
   wayland.windowManager.hyprland.settings = {
@@ -204,6 +208,21 @@ in {
           }"
         )
         config.monitors);
+
+    # Bind workspaces to their respective monitors. Also, the first declared
+    # workspace on each monitor is set as default + persistent.
+    workspace = builtins.concatLists (map (m:
+      lib.lists.imap0 (
+        i: workspace:
+          "name:${workspace},monitor:${m.name}"
+          + (
+            if i == 0
+            then ",default:true,persistent:true"
+            else ""
+          )
+      )
+      m.workspaces)
+    config.monitors);
 
     ecosystem = {
       no_update_news = true;

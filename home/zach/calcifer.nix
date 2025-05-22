@@ -15,14 +15,14 @@
       width = 3840;
       height = 2160;
       refreshRate = 144;
-      workspaces = ["1" "2" "3" "4" "5" "6"];
+      workspaces = ["1" "2" "3" "4" "5" "6" "7"];
       primary = true;
     }
     {
       name = "DP-2";
       width = 3840;
       height = 2160;
-      workspaces = ["7" "8" "9"];
+      workspaces = ["8" "9" "10"];
       primary = false;
       position = "2160x-685";
       extraArgs = "transform,1";
