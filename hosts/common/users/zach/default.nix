@@ -37,6 +37,7 @@ in {
       lib.splitString "\n" (builtins.readFile "${secretsDir}/users/zach/id_zach_sk.pub");
   };
 
+  # TODO: Most of these shouldn't be included unconditionally
   environment.persistence."/persist".users.zach = {
     directories = lib.mkIf (config.hostSpec.kind != "headless") [
       {
@@ -54,6 +55,10 @@ in {
       {
         directory = ".mozilla/firefox/default";
         mode = "0750";
+      }
+      {
+        directory = ".local/state/wireplumber";
+        mode = "0700";
       }
     ];
   };
