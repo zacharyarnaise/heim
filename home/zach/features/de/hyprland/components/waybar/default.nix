@@ -67,7 +67,7 @@ in {
         };
         memory = {
           interval = 10;
-          format = "{used:4.1f}G<small> </small>{icon}";
+          format = "{used:3.1f}G<small> </small>{icon}";
           format-icons = [""];
         };
         cpu = {
@@ -75,9 +75,9 @@ in {
           format = "{usage:3}%<small> </small>{icon}";
           format-icons = [""];
         };
-        temperature = {
+        temperature = lib.mkIf (config.hostSpec.cpuThermalZone != null) {
           interval = 10;
-          hwmon-path = "/sys/class/hwmon/hwmon5/temp1_input";
+          thermal-zone = config.hostSpec.cpuThermalZone;
           format = "{temperatureC:2}°C<small> </small>{icon}";
           format-icons = ["󰏈"];
         };
@@ -159,7 +159,6 @@ in {
           format-wifi = "<small>{essid}</small> 󰖩";
           format-disconnected = "";
           tooltip-format = ''
-            {ifname}
             {ipaddr}/{cidr}
             tx: {bandwidthUpOctets}
             rx: {bandwidthDownOctets}'';
