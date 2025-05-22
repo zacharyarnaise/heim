@@ -19,8 +19,10 @@
   home.packages = builtins.attrValues {
     inherit
       (pkgs)
+      goimports
       gopls
       gotools
+      staticcheck
       ;
   };
 }
