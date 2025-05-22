@@ -7,5 +7,7 @@
     kbdModel = "pc105";
     kbdLayout = "us";
     kbdVariant = "intl";
+
+    cpuThermalZone = 1;
   };
 }

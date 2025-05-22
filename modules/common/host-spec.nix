@@ -35,6 +35,12 @@ in {
       default = "";
     };
 
+    cpuThermalZone = mkOption {
+      type = types.nullOr types.int;
+      description = "Thermal zone to use for CPU temp monitoring";
+      default = null;
+    };
+
     # Data options that don't dictate configuration settings
     work = mkOption {
       type = types.attrsOf types.anything;
