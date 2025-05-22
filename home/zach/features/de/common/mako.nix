@@ -27,6 +27,7 @@ in {
       width = 400;
       margin = "5,0";
       padding = "12,20";
+      output = config.primaryMonitor.name;
     };
   };
 }
