@@ -21,7 +21,7 @@
       (pkgs)
       gopls
       gotools
-      staticcheck
+      go-tools
       ;
   };
 }
