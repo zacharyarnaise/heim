@@ -5,6 +5,7 @@
     ./features/de/common
     ./features/de/hyprland
     ./features/de/apps
+    ./features/de/services/wluma.nix
 
     ./features/dev
   ];

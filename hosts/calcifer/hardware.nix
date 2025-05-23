@@ -1,6 +1,8 @@
 {
   inputs,
+  config,
   lib,
+  pkgs,
   ...
 }: {
   imports = [
@@ -13,6 +15,7 @@
   ];
 
   boot = {
+    extraModulePackages = [config.boot.kernelPackages.ddcci-driver];
     initrd.availableKernelModules = [
       "xhci_pci"
       "ahci"
@@ -21,8 +24,14 @@
       "usb_storage"
       "sd_mod"
     ];
-    kernelModules = ["kvm-intel"];
+    kernelModules = [
+      "kvm-intel"
+      "ddcci"
+      "ddcci-backlight"
+      "i2c-dev"
+    ];
   };
+  services.udev.packages = [pkgs.ddcutil];
 
   time.hardwareClockInLocalTime = true; # Fix clock drift on dual boot
   nix.settings.max-jobs = 28;
