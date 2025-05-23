@@ -26,7 +26,7 @@
   systemd.user.startServices = "sd-switch";
 
   home = {
-    stateVersion = "24.11";
+    stateVersion = "25.05";
     username = "zach";
     homeDirectory = "/home/zach";
     sessionPath = ["$HOME/.local/bin"];
