@@ -40,7 +40,8 @@
 
         "editor.bracketPairColorization.enabled" = true;
         "editor.bracketPairColorization.independentColorPoolPerBracketType" = true;
-        "editor.cursorStyle" = "block";
+        "editor.cursorBlinking" = "blink";
+        "editor.cursorStyle" = "block-outline";
         "editor.codeActionsOnSave"."source.fixAll" = "always";
         "editor.formatOnPaste" = true;
         "editor.formatOnSave" = true;

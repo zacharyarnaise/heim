@@ -9,7 +9,7 @@ window#waybar, #window {
 }
 
 .modules-left, .modules-center, .modules-right {
-  background: alpha(@base00, 0.4);
+  background: alpha(@base00, 0.5);
   border: 0.1em solid alpha(@base0D, 0.3);
   border-radius: 0.8em;
   padding: unset;

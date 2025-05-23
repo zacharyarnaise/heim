@@ -48,7 +48,7 @@ in {
       "move 35% 57, class:(clipse)"
       "pin, class:(clipse)"
 
-      "opacity 1.0 override 0.9 override, class:^(firefox)$"
+      "opacity 1.0 override 0.95 override, class:^(firefox)$"
 
       # make pop-up file dialogs floating, centred, and pinned
       "float, title:(Open|Progress|Save File)"
@@ -65,7 +65,7 @@ in {
       dim_inactive = true;
       dim_strength = 0.25;
       active_opacity = config.stylix.opacity.applications;
-      inactive_opacity = config.stylix.opacity.applications * 0.75;
+      inactive_opacity = config.stylix.opacity.applications * 0.8;
       fullscreen_opacity = 1.0;
 
       blur = {
@@ -73,9 +73,9 @@ in {
         popups = true;
         size = 5;
         passes = 2;
-        contrast = 0.9;
+        contrast = 0.75;
         brightness = 0.9;
-        vibrancy = 0.4;
+        vibrancy = 0.3;
         vibrancy_darkness = 0.2;
       };
 
