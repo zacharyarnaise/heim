@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   stylix.targets.vscode.profileNames = ["default"];
 
   programs.vscode = {
@@ -32,6 +36,7 @@
         "update.showReleaseNotes" = false;
         "window.dialogStyle" = "native";
         "window.titleBarStyle" = "native";
+        "window.restoreWindows" = "none";
 
         "files.autoSave" = "afterDelay";
         "files.autoSaveDelay" = 5000;
@@ -41,7 +46,7 @@
         "editor.bracketPairColorization.enabled" = true;
         "editor.bracketPairColorization.independentColorPoolPerBracketType" = true;
         "editor.cursorBlinking" = "blink";
-        "editor.cursorStyle" = "block-outline";
+        "editor.cursorStyle" = "line-thin";
         "editor.codeActionsOnSave"."source.fixAll" = "always";
         "editor.formatOnPaste" = true;
         "editor.formatOnSave" = true;
@@ -75,7 +80,7 @@
           "delve" = "${pkgs.delve}/bin/dlv";
           "gofumpt" = "${pkgs.gofumpt}/bin/gofumpt";
           "goimports" = "${pkgs.gotools}/bin/goimports";
-          "golangci-lint" = "${pkgs.golangci-lint}/bin/golangci-lint";
+          "golangci-lint-v2" = "${pkgs.golangci-lint}/bin/golangci-lint";
           "gomodifytags" = "${pkgs.gomodifytags}/bin/gomodifytags";
           "gopls" = "${pkgs.gopls}/bin/gopls";
           "staticcheck" = "${pkgs.go-tools}/bin/staticcheck";
@@ -86,6 +91,12 @@
         "go.lintTool" = "golangci-lint-v2";
         "go.showWelcome" = false;
         "go.survey.prompt" = false;
+        "go.toolsEnvVars" = {
+          "GOBIN" = "${config.home.homeDirectory}/${config.programs.go.goBin}";
+          "GOPATH" = "${config.home.homeDirectory}/${config.programs.go.goPath}";
+          "GOPRIVATE" = config.programs.go.goPrivate;
+          "GOTELEMETRY" = config.programs.go.telemetry.mode;
+        };
         "go.toolsManagement.checkForUpdates" = "off";
         "go.useLanguageServer" = true;
         "gopls" = {

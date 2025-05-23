@@ -8,8 +8,9 @@
     enable = true;
     package = pkgs.go_1_24;
 
-    goPath = "go";
+    telemetry.mode = "off";
     goBin = "go/bin";
+    goPath = "go";
     goPrivate =
       if config.hostSpec.isWork
       then inputs.secrets.work.goPrivate
