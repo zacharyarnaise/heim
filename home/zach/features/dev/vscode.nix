@@ -23,38 +23,78 @@
         vsext.vscode-icons-team.vscode-icons
       ];
       userSettings = {
-        "editor.codeActionsOnSave" = {
-          "source.organizeImports" = "explicit";
-          "source.sortImports" = "explicit";
-        };
+        "extensions.autoUpdate" = false;
+        "extensions.ignoreRecommendations" = true;
+        "security.workspace.trust.enabled" = false;
+        "telemetry.telemetryLevel" = "off";
+        "telemetry.feedback.enabled" = false;
+        "vsicons.dontShowNewVersionMessage" = true;
+        "update.showReleaseNotes" = false;
+        "window.dialogStyle" = "native";
+        "window.titleBarStyle" = "native";
+
+        "files.autoSave" = "afterDelay";
+        "files.autoSaveDelay" = 5000;
+        "files.insertFinalNewline" = true;
+        "files.trimTrailingWhitespace" = true;
+
+        "editor.bracketPairColorization.enabled" = true;
+        "editor.bracketPairColorization.independentColorPoolPerBracketType" = true;
+        "editor.cursorStyle" = "block";
+        "editor.codeActionsOnSave"."source.fixAll" = "always";
         "editor.formatOnPaste" = true;
         "editor.formatOnSave" = true;
         "editor.formatOnSaveMode" = "file";
-        "notebook.formatOnSave.enabled" = true;
-        "files.autoSave" = "afterDelay";
-        "files.insertFinalNewline" = true;
-        "editor.renderWhitespace" = "all";
+        "editor.guides.bracketPairs" = "active";
+        "editor.guides.bracketPairsHorizontal" = "active";
+        "editor.guides.indentation" = true;
+        "editor.inlayHints.enabled" = "on";
+        "editor.inlayHints.padding" = true;
+        "editor.inlineSuggest.enabled" = true;
+        "editor.lineNumbers" = "on";
+        "editor.linkedEditing" = true;
+        "editor.minimap.enabled" = false;
+        "editor.renderWhitespace" = "boundary";
         "editor.rulers" = [80];
-        "extensions.ignoreRecommendations" = true;
-        "git.confirmSync" = false;
-        "window.titleBarStyle" = "native";
-        "workbench.iconTheme" = "vscode-icons";
-        "workbench.startupEditor" = "none";
-        "vsicons.dontShowNewVersionMessage" = true;
-        "security.workspace.trust.enabled" = false;
+        "editor.semanticHighlighting.enabled" = true;
+        "editor.snippetSuggestions" = "top";
+        "editor.stickyScroll.enabled" = true;
+        "editor.trimAutoWhitespace" = true;
+        "editor.wordWrap" = "on";
+        "editor.wrappingIndent" = "indent";
 
-        "nix.enableLanguageServer" = true;
-        "nix.serverSettings" = {
-          "nil" = {
-            "formatting" = {
-              "command" = ["alejandra"];
-            };
-          };
+        "workbench.activityBar.location" = "top";
+        "workbench.editor.empty.hint" = "hidden";
+        "workbench.iconTheme" = "vscode-icons";
+        "workbench.sideBar.location" = "right";
+        "workbench.startupEditor" = "none";
+        "workbench.tree.indent" = 16;
+
+        "go.alternateTools" = {
+          "delve" = "${pkgs.delve}/bin/dlv";
+          "gofumpt" = "${pkgs.gofumpt}/bin/gofumpt";
+          "goimports" = "${pkgs.gotools}/bin/goimports";
+          "golangci-lint" = "${pkgs.golangci-lint}/bin/golangci-lint";
+          "gomodifytags" = "${pkgs.gomodifytags}/bin/gomodifytags";
+          "gopls" = "${pkgs.gopls}/bin/gopls";
+          "staticcheck" = "${pkgs.go-tools}/bin/staticcheck";
+        };
+        "go.diagnostic.vulncheck" = "Imports";
+        "go.inlayHints.constantValues" = true;
+        "go.inlayHints.parameterNames" = true;
+        "go.lintTool" = "golangci-lint-v2";
+        "go.showWelcome" = false;
+        "go.survey.prompt" = false;
+        "go.toolsManagement.checkForUpdates" = "off";
+        "go.useLanguageServer" = true;
+        "gopls" = {
+          "formatting.gofumpt" = true;
+          "ui.semanticTokens" = true;
         };
 
-        "go.formatTool" = "goimports";
-        "go.diagnostic.vulncheck" = "Imports";
-        "go.showWelcome" = false;
+        "nix.enableLanguageServer" = true;
+        "nix.serverPath" = "${pkgs.nil}/bin/nil";
+        "nix.serverSettings"."nil"."formatting"."command" = ["${pkgs.alejandra}/bin/alejandra"];
 
         "python.analysis.indexing" = true;
         "python.analysis.autoImportCompletions" = true;

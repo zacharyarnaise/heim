@@ -8,8 +8,8 @@
     enable = true;
     package = pkgs.go_1_24;
 
-    goPath = ".go";
-    goBin = ".go/bin";
+    goPath = "go";
+    goBin = "go/bin";
     goPrivate =
       if config.hostSpec.isWork
       then inputs.secrets.work.goPrivate
@@ -19,6 +19,10 @@
   home.packages = builtins.attrValues {
     inherit
       (pkgs)
+      delve
+      gofumpt
+      golangci-lint
+      gomodifytags
       gopls
       gotools
       go-tools
