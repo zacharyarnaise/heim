@@ -217,7 +217,7 @@ in {
           "name:${workspace},monitor:${m.name}"
           + (
             if i == 0
-            then ",default:true,persistent:true"
+            then ",default:true"
             else ""
           )
       )
