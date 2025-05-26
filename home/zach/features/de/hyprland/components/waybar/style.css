@@ -9,7 +9,7 @@ window#waybar, #window {
 }
 
 .modules-left, .modules-center, .modules-right {
-  background: alpha(@base00, 0.5);
+  background: alpha(@base00, 0.6);
   border: 0.1em solid alpha(@base0D, 0.3);
   border-radius: 0.8em;
   padding: unset;
@@ -74,18 +74,18 @@ menuitem {
 }
 #idle_inhibitor {
   font-size: 1.2em;
-  color: shade(@base0B, 0.8);
+  color: shade(@base0B, 1.1);
   padding-right: 0.8em;
   transition: color 0.5s;
 }
 #idle_inhibitor.activated {
-  color: shade(@base0B, 1.1);
+  color: shade(@base0B, 0.9);
 }
 #network {
-  color: shade(@base0E, 1.1);
+  color: @base0E;
 }
 #pulseaudio, #wireplumber {
-  color: @base0F;
+  color: @base0A;
   padding-right: 0.15em;
 }
 #clock {

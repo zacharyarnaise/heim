@@ -55,9 +55,9 @@
     };
     opacity = {
       applications = 0.9;
-      desktop = 0.5;
+      desktop = 0.6;
       popups = 0.75;
-      terminal = 0.6;
+      terminal = 0.75;
     };
   };
 }
