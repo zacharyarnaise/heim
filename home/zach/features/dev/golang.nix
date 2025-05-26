@@ -21,7 +21,6 @@
     inherit
       (pkgs)
       delve
-      gofumpt
       golangci-lint
       gomodifytags
       gopls

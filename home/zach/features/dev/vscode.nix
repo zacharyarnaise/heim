@@ -101,10 +101,7 @@
         "go.toolsManagement.autoUpdate" = false;
         "go.toolsManagement.checkForUpdates" = "off";
         "go.useLanguageServer" = true;
-        "gopls" = {
-          "formatting.gofumpt" = true;
-          "ui.semanticTokens" = true;
-        };
+        "gopls"."ui.semanticTokens" = true;
 
         "nix.enableLanguageServer" = true;
         "nix.serverPath" = "${pkgs.nil}/bin/nil";
