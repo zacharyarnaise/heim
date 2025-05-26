@@ -1,7 +1,8 @@
-{pkgs, ...}: {
+{
   imports = [
     ./nixvim
 
+    ./ansible.nix
     ./direnv.nix
     ./git.nix
     ./golang.nix
@@ -12,11 +13,4 @@
     ./tilt.nix
     ./vscode.nix
   ];
-
-  home.packages = builtins.attrValues {
-    inherit
-      (pkgs)
-      ansible
-      ;
-  };
 }

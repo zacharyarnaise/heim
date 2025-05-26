@@ -24,6 +24,9 @@
         vsext.ms-python.vscode-pylance
         vsext.ms-python.isort
 
+        vsext.redhat.ansible
+        vsext.redhat.vscode-yaml
+
         vsext.github.copilot
         vsext.teabyii.ayu
         vsext.vscode-icons-team.vscode-icons
@@ -32,11 +35,15 @@
         "extensions.autoUpdate" = false;
         "extensions.ignoreRecommendations" = true;
         "security.workspace.trust.enabled" = false;
+        "redhat.telemetry.enabled" = false;
         "telemetry.telemetryLevel" = "off";
         "telemetry.feedback.enabled" = false;
         "vsicons.dontShowNewVersionMessage" = true;
         "update.showReleaseNotes" = false;
+        "window.customTitleBarVisibility" = "never";
         "window.dialogStyle" = "native";
+        "window.menuBarVisibility" = "toggle";
+        "window.openFoldersInNewWindow" = "on";
         "window.titleBarStyle" = "native";
         "window.restoreWindows" = "none";
 
@@ -63,22 +70,47 @@
         "editor.lineNumbers" = "on";
         "editor.linkedEditing" = true;
         "editor.minimap.enabled" = false;
+        "editor.mouseWheelZoom" = true;
+        "editor.overviewRulerBorder" = false;
         "editor.renderWhitespace" = "boundary";
         "editor.rulers" = [80];
         "editor.semanticHighlighting.enabled" = true;
         "editor.snippetSuggestions" = "top";
         "editor.stickyScroll.enabled" = true;
+        "editor.suggest.preview" = true;
+        "editor.suggest.shareSuggestSelections" = true;
+        "editor.suggestSelection" = "recentlyUsedByPrefix";
         "editor.trimAutoWhitespace" = true;
         "editor.wordWrap" = "on";
         "editor.wrappingIndent" = "indent";
 
+        "explorer.confirmDelete" = false;
+
+        "search.actionsPosition" = "left";
+        "search.collapseResults" = "alwaysCollapse";
+        "search.defaultViewMode" = "tree";
+        "search.smartCase" = true;
+
         "workbench.activityBar.location" = "top";
         "workbench.colorTheme" = lib.mkForce "Ayu Dark Bordered";
         "workbench.editor.empty.hint" = "hidden";
+        "workbench.editor.enablePreview" = false;
+        "workbench.editor.highlightModifiedTabs" = true;
+        "workbench.editor.tabActionCloseVisibility" = false;
         "workbench.iconTheme" = "vscode-icons";
         "workbench.sideBar.location" = "right";
         "workbench.startupEditor" = "none";
-        "workbench.tree.indent" = 8;
+        "workbench.tree.indent" = 12;
+
+        "github.copilot.enable" = {
+          "*" = true;
+          "markdown" = true;
+          "plaintext" = false;
+          "scminput" = false;
+        };
+
+        "ansible.ansible.path" = "${pkgs.ansible}/bin/ansible";
+        "ansible.ansibleLint.path" = "${pkgs.ansible-lint}/bin/ansible-lint";
 
         "go.alternateTools" = {
           "delve" = "${pkgs.delve}/bin/dlv";
@@ -111,8 +143,17 @@
         "nix.serverPath" = "${pkgs.nil}/bin/nil";
         "nix.serverSettings"."nil"."formatting"."command" = ["${pkgs.alejandra}/bin/alejandra"];
 
-        "python.analysis.indexing" = true;
         "python.analysis.autoImportCompletions" = true;
+        "python.analysis.cacheLSPData" = true;
+        "python.analysis.displayEnglishDiagnostics" = true;
+        "python.analysis.enablePytestSupport" = false;
+        "python.analysis.indexing" = true;
+        "python.analysis.inlayHints.functionReturnTypes" = true;
+        "python.analysis.inlayHints.variableTypes" = true;
+        "python.analysis.languageServerMode" = "full";
+        "python.analysis.typeCheckingMode" = "basic";
+        "python.languageServer" = "Pylance";
+        "python.showStartPage" = false;
       };
     };
   };
