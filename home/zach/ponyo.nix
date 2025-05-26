@@ -15,7 +15,7 @@
       width = 1920;
       height = 1200;
       scale = "1.0";
-      workspaces = ["1" "2" "3" "4" "5" "6"];
+      workspaces = ["1" "2" "3" "4" "5" "6" "7"];
       primary = true;
     }
   ];
