@@ -48,7 +48,7 @@ in {
       "move 35% 57, class:(clipse)"
       "pin, class:(clipse)"
 
-      "opacity 1.0 override 0.95 override, class:^(firefox)$"
+      "opacity 1.0 override 0.95 override, class:^(chromium-browser|firefox)$"
 
       # make pop-up file dialogs floating, centred, and pinned
       "float, title:(Open|Progress|Save File)"
