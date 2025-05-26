@@ -1,6 +1,7 @@
 {
   pkgs,
   config,
+  lib,
   ...
 }: {
   stylix.targets.vscode.profileNames = ["default"];
@@ -24,6 +25,7 @@
         vsext.ms-python.isort
 
         vsext.github.copilot
+        vsext.teabyii.ayu
         vsext.vscode-icons-team.vscode-icons
       ];
       userSettings = {
@@ -48,6 +50,7 @@
         "editor.cursorBlinking" = "blink";
         "editor.cursorStyle" = "line-thin";
         "editor.codeActionsOnSave"."source.fixAll" = "always";
+        "editor.fontLigatures" = true;
         "editor.formatOnPaste" = true;
         "editor.formatOnSave" = true;
         "editor.formatOnSaveMode" = "file";
@@ -70,11 +73,12 @@
         "editor.wrappingIndent" = "indent";
 
         "workbench.activityBar.location" = "top";
+        "workbench.colorTheme" = lib.mkForce "Ayu Dark Bordered";
         "workbench.editor.empty.hint" = "hidden";
         "workbench.iconTheme" = "vscode-icons";
         "workbench.sideBar.location" = "right";
         "workbench.startupEditor" = "none";
-        "workbench.tree.indent" = 16;
+        "workbench.tree.indent" = 8;
 
         "go.alternateTools" = {
           "delve" = "${pkgs.delve}/bin/dlv";
