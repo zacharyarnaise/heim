@@ -91,12 +91,14 @@
         "go.lintTool" = "golangci-lint-v2";
         "go.showWelcome" = false;
         "go.survey.prompt" = false;
+        "go.terminal.activateEnvironment" = false;
         "go.toolsEnvVars" = {
           "GOBIN" = "${config.home.homeDirectory}/${config.programs.go.goBin}";
           "GOPATH" = "${config.home.homeDirectory}/${config.programs.go.goPath}";
           "GOPRIVATE" = config.programs.go.goPrivate;
           "GOTELEMETRY" = config.programs.go.telemetry.mode;
         };
+        "go.toolsManagement.autoUpdate" = false;
         "go.toolsManagement.checkForUpdates" = "off";
         "go.useLanguageServer" = true;
         "gopls" = {
