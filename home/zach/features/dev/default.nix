@@ -9,6 +9,7 @@
     ./gpg.nix
     ./k8s.nix
     ./nix.nix
+    ./python.nix
     ./ssh.nix
     ./tilt.nix
     ./vscode.nix

@@ -111,6 +111,7 @@
 
         "ansible.ansible.path" = "${pkgs.ansible}/bin/ansible";
         "ansible.ansibleLint.path" = "${pkgs.ansible-lint}/bin/ansible-lint";
+        "ansible.python.interpreterPath" = "${pkgs.python312}/bin/python3";
 
         "go.alternateTools" = {
           "delve" = "${pkgs.delve}/bin/dlv";
