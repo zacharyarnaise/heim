@@ -86,7 +86,7 @@
 
         "explorer.confirmDelete" = false;
 
-        "search.actionsPosition" = "left";
+        "search.actionsPosition" = "auto";
         "search.collapseResults" = "alwaysCollapse";
         "search.defaultViewMode" = "tree";
         "search.smartCase" = true;
@@ -110,7 +110,7 @@
         };
 
         "ansible.ansible.path" = "${pkgs.ansible}/bin/ansible";
-        "ansible.ansibleLint.path" = "${pkgs.ansible-lint}/bin/ansible-lint";
+        "ansible.validation.lint.path" = "${pkgs.ansible-lint}/bin/ansible-lint";
         "ansible.python.interpreterPath" = "${pkgs.python312}/bin/python3";
 
         "go.alternateTools" = {
