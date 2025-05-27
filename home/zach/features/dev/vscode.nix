@@ -81,7 +81,7 @@
         "editor.suggest.shareSuggestSelections" = true;
         "editor.suggestSelection" = "recentlyUsedByPrefix";
         "editor.trimAutoWhitespace" = true;
-        "editor.wordWrap" = "on";
+        "editor.wordWrap" = "off";
         "editor.wrappingIndent" = "indent";
 
         "explorer.confirmDelete" = false;
