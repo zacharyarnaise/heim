@@ -6,7 +6,7 @@
     settings = {
       main = {
         shell = "${pkgs.zsh}/bin/zsh";
-        selection-target = "clipboard";
+        selection-target = "both";
         term = "xterm-256color";
       };
       cursor = {
@@ -16,6 +16,11 @@
       scrollback = {
         lines = 5000;
         indicator-format = "line";
+      };
+      key-bindings = {
+        scrollback-up-page = "Control+u";
+        scrollback-down-page = "Control+d";
+        pipe-command-output = "[wl-copy -n] Control+Shift+g";
       };
       bell.visual = "yes";
       mouse.alternate-scroll-mode = "yes";

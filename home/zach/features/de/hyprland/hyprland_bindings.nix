@@ -97,6 +97,11 @@ in {
         # Screenshot
         ",      Print, Takes a screenshot of a region, exec, ${grimblast} --notify --freeze copy area"
         "SHIFT, Print, Takes a screenshot of the currently active output, exec, ${grimblast} --notify --freeze copy output"
+
+        # Media
+        ", XF86AudioMute, Toggle output mute, exec, ${wpctl} set-mute @DEFAULT_AUDIO_SINK@ toggle"
+        ", XF86AudioMicMute, Toggle input mute, exec, ${wpctl} set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+        ", code:248, Toggle input mute, exec, ${wpctl} set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
       ]
       ++ (lib.mapAttrsToList (n: key: "${mod}, ${key}, Switch to workspace ${n}, workspace, name:${n}") workspaces)
       ++ (lib.mapAttrsToList (n: key: "${modShift}, ${key}, Moves active window to workspace ${n}, movetoworkspacesilent, name:${n}") workspaces);
@@ -106,8 +111,6 @@ in {
       ", XF86MonBrightnessDown, Decrease brightness, exec, light -U 5"
       ", XF86AudioRaiseVolume, Increase volume, exec, ${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 5%+"
       ", XF86AudioLowerVolume, Decrease volume, exec, ${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 5%-"
-      ", XF86AudioMute, Toggle output mute, exec, ${wpctl} set-mute @DEFAULT_AUDIO_SINK@ toggle"
-      ", XF86AudioMicMute, Toggle input mute, exec, ${wpctl} set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
     ];
   };
 }
