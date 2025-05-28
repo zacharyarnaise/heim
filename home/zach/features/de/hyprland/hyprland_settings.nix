@@ -34,6 +34,7 @@ in {
       "order -10, rofi" # pinentry uses rofi and needs to be on top
 
       "animation fade, waybar"
+      "blur, waybar"
       "ignorezero, waybar"
 
       "noanim, hyprpaper"
@@ -167,47 +168,21 @@ in {
       new_window_takes_over_fullscreen = 2;
     };
 
-    monitor = let
-      waybarSpace = let
-        inherit (config.wayland.windowManager.hyprland.settings.general) gaps_in gaps_out;
-        inherit (config.programs.waybar.settings.mainBar) position height width;
-        gap = gaps_out - gaps_in;
-      in {
-        top =
-          if (position == "top")
-          then height
-          else 0;
-        bottom =
-          if (position == "bottom")
-          then height
-          else 0;
-        left =
-          if (position == "left")
-          then width + gap
-          else 0;
-        right =
-          if (position == "right")
-          then width + gap
-          else 0;
-      };
-    in
-      [
-        ",addreserved,${toString waybarSpace.top},${toString waybarSpace.bottom},${toString waybarSpace.left},${toString waybarSpace.right}"
-      ]
-      ++ (map (
-          m: "${m.name},${
-            if m.enabled
-            then
-              "${toString m.width}x${toString m.height}@${toString m.refreshRate},${m.position},${m.scale}"
-              + (
-                if m.extraArgs != null
-                then ",${m.extraArgs}"
-                else ""
-              )
-            else "disable"
-          }"
-        )
-        config.monitors);
+    monitor =
+      map (
+        m: "${m.name},${
+          if m.enabled
+          then
+            "${toString m.width}x${toString m.height}@${toString m.refreshRate},${m.position},${m.scale}"
+            + (
+              if m.extraArgs != null
+              then ",${m.extraArgs}"
+              else ""
+            )
+          else "disable"
+        }"
+      )
+      config.monitors;
 
     # Bind workspaces to their respective monitors. Also, the first declared
     # workspace on each monitor is set as default + persistent.

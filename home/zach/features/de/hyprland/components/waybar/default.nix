@@ -21,8 +21,7 @@ in {
         name = "main-bar";
         layer = "top";
         position = "top";
-        height = 35;
-        margin = "8 10 0 10";
+        margin = "4 3 0";
         mode = "dock";
         exclusive = true;
         passthrough = false;
@@ -128,8 +127,8 @@ in {
 
         # ------------------------------- Right -------------------------------
         tray = {
-          icon-size = 16;
-          spacing = 4;
+          icon-size = 18;
+          spacing = 5;
         };
         bluetooth = {
           interval = 10;
