@@ -21,7 +21,7 @@ in {
         name = "main-bar";
         layer = "top";
         position = "top";
-        margin = "4 3 0";
+        margin = "0 6 0";
         mode = "dock";
         exclusive = true;
         passthrough = false;
