@@ -20,6 +20,12 @@ in {
       extend_border_grab_area = 20;
     };
 
+    xwayland = {
+      enabled = true;
+      use_nearest_neighbor = true;
+      force_zero_scaling = true;
+    };
+
     dwindle = {
       pseudotile = true;
       preserve_split = true;

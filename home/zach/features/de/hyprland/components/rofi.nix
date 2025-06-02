@@ -9,7 +9,7 @@
     package = pkgs.rofi-wayland-unwrapped;
 
     font = lib.mkForce "${config.stylix.fonts.sansSerif.name} ${toString config.stylix.fonts.sizes.popups}";
-    terminal = "${pkgs.foot}/bin/footclient";
+    terminal = "${config.programs.wezterm.package}/bin/wezterm";
     extraConfig = {
       modi = "drun,run,ssh";
       display-drun = "󱓞";

@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }: {
   programs.fuzzel = {
@@ -12,7 +11,7 @@
         font = lib.mkForce "${config.stylix.fonts.monospace.name}:size=${toString config.stylix.fonts.sizes.popups}";
         fields = "filename,name,generic,exec";
         filter-desktop = true;
-        terminal = "${pkgs.foot}/bin/footclient";
+        terminal = "${config.programs.wezterm.package}/bin/wezterm";
         launch-prefix = "uwsm-app -- ";
         anchor = "top";
         y-margin = 20;

@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   programs.foot = {
     enable = true;
-    server.enable = true;
+    server.enable = false;
 
     settings = {
       main = {
@@ -25,15 +25,6 @@
       };
       bell.visual = "yes";
       mouse.alternate-scroll-mode = "yes";
-    };
-  };
-
-  xdg.mimeApps = {
-    associations.added = {
-      "x-scheme-handler/terminal" = "foot.desktop";
-    };
-    defaultApplications = {
-      "x-scheme-handler/terminal" = "foot.desktop";
     };
   };
 }
