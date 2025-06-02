@@ -33,6 +33,7 @@ in {
           "memory"
           "temperature"
           "battery"
+          "mpris"
         ];
         modules-center = [
           "hyprland/workspaces"
@@ -100,6 +101,21 @@ in {
           format-charging = "{capacity:2}%<small> </small>{icon}󱐋";
           format-plugged = "{capacity:3}%<small> </small>󰚥";
           onclick = "";
+        };
+        mpris = {
+          player = "playerctld";
+          ignored-players = ["firefox"];
+          interval = 2;
+          format = "{status_icon} {dynamic}";
+          status-icons = {
+            playing = "";
+            paused = "󰏥";
+            stopped = "";
+          };
+          dynamic-separator = " — ";
+          dynamic-order = ["title" "artist"];
+          ellipsis = "…";
+          title-len = 30;
         };
 
         # ------------------------------- Center -------------------------------

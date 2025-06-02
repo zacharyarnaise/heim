@@ -21,9 +21,12 @@ in {
       passAlias = true;
     };
 
-    # FIXME: hardcoded path :(
     sbctl =
       prev.sbctl.override {databasePath = "/persist/etc/secureboot";};
+
+    waybar = addPatches prev.waybar [
+      ./waybar_mpris_title_clean.diff
+    ];
 
     yubikey-agent = prev.yubikey-agent.overrideAttrs (oldAttrs: {
       patches =

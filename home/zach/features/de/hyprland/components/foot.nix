@@ -20,7 +20,8 @@
       key-bindings = {
         scrollback-up-page = "Control+u";
         scrollback-down-page = "Control+d";
-        pipe-command-output = "[wl-copy -n] Control+Shift+g";
+        pipe-command-output = "[wl-copy -n -p] Control+h";
+        pipe-visible = "[wl-copy -n -p] Control+k";
       };
       bell.visual = "yes";
       mouse.alternate-scroll-mode = "yes";
