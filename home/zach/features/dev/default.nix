@@ -1,4 +1,4 @@
-{
+{pkgs, ...}: {
   imports = [
     ./nixvim
 
@@ -14,4 +14,11 @@
     ./tilt.nix
     ./vscode.nix
   ];
+
+  home.packages = builtins.attrValues {
+    inherit
+      (pkgs)
+      postgresql_17
+      ;
+  };
 }
