@@ -7,6 +7,7 @@
     ./eza.nix
     ./fzf.nix
     ./git.nix
+    ./pay-respects.nix
     ./ssh.nix
     ./tmux.nix
     ./zoxide.nix
@@ -27,5 +28,4 @@
   };
 
   programs.btop.enable = true;
-  programs.thefuck.enable = true;
 }
