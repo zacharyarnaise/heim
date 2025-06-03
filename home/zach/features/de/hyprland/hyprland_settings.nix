@@ -9,6 +9,7 @@ in {
     exec-once = [
       "uwsm finalize"
       "${hyprctl} setcursor ${config.stylix.cursor.name} ${toString config.stylix.cursor.size}"
+      "${hyprctl} dispatch workspace 1" # Focus the first workspace on startup
     ];
 
     general = {
@@ -52,8 +53,9 @@ in {
       "animation slide, class:(clipse)"
       "noborder, class:(clipse)"
       "size 600 400, class:(clipse)"
-      "move 35% 57, class:(clipse)"
+      "move 38% 45, class:(clipse)"
       "pin, class:(clipse)"
+      "stayfocused, class:(clipse)"
 
       "opacity 1.0 override 0.95 override, class:^(chromium-browser|firefox)$"
 
@@ -84,6 +86,7 @@ in {
         brightness = 0.9;
         vibrancy = 0.3;
         vibrancy_darkness = 0.2;
+        xray = true;
       };
 
       shadow = {
