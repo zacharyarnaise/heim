@@ -465,6 +465,26 @@
         "type": "github"
       }
     },
+    "nix-index-database": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1748751003,
+        "narHash": "sha256-i4GZdKAK97S0ZMU3w4fqgEJr0cVywzqjugt2qZPrScs=",
+        "owner": "nix-community",
+        "repo": "nix-index-database",
+        "rev": "2860bee699248d828c2ed9097a1cd82c2f991b43",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "nix-index-database",
+        "type": "github"
+      }
+    },
     "nixos-hardware": {
       "locked": {
         "lastModified": 1748634340,
@@ -524,22 +544,6 @@
       "original": {
         "owner": "nixos",
         "ref": "nixos-25.05",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_2": {
-      "locked": {
-        "lastModified": 1748460289,
-        "narHash": "sha256-7doLyJBzCllvqX4gszYtmZUToxKvMUrg45EUWaUYmBg=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "96ec055edbe5ee227f28cdbc3f1ddf1df5965102",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -650,6 +654,7 @@
         "home-manager": "home-manager",
         "impermanence": "impermanence",
         "lanzaboote": "lanzaboote",
+        "nix-index-database": "nix-index-database",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
         "nixpkgs-stable": "nixpkgs-stable_2",
@@ -682,10 +687,10 @@
     },
     "secrets": {
       "locked": {
-        "lastModified": 1748350723,
-        "narHash": "sha256-0B/fFG9B2mGCnxoFgkUA+OvaFB+jpct247+6Q0mPxMw=",
+        "lastModified": 1748967288,
+        "narHash": "sha256-bTnQopkrxM2ZNAvM3aY4vscEheBJVXnWWiEdeWsFXmk=",
         "ref": "main",
-        "rev": "5a127877479c907d2b8fff9cefb4b75b701a6f5f",
+        "rev": "bc0781f4f4dff6184da03b08da1a00d49ee6ded9",
         "shallow": true,
         "type": "git",
         "url": "git+ssh://git@github.com/zacharyarnaise/heim-secrets.git"
@@ -729,7 +734,9 @@
         "git-hooks": "git-hooks",
         "gnome-shell": "gnome-shell",
         "home-manager": "home-manager_2",
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
         "nur": "nur",
         "systems": "systems_3",
         "tinted-foot": "tinted-foot",

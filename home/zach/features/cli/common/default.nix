@@ -7,6 +7,7 @@
     ./eza.nix
     ./fzf.nix
     ./git.nix
+    ./nix-index.nix
     ./pay-respects.nix
     ./ssh.nix
     ./tmux.nix
