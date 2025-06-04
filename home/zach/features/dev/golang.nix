@@ -26,6 +26,7 @@
       gopls
       gotools
       go-tools
+      yaegi
       ;
   };
 }
