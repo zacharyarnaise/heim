@@ -77,9 +77,9 @@ in {
       rounding = 8;
       rounding_power = 4.0;
       dim_inactive = true;
-      dim_strength = 0.25;
+      dim_strength = 0.2;
       active_opacity = config.stylix.opacity.applications;
-      inactive_opacity = config.stylix.opacity.applications * 0.8;
+      inactive_opacity = 0.75;
       fullscreen_opacity = 1.0;
 
       blur = {
