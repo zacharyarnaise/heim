@@ -57,6 +57,11 @@ in {
       "pin, class:(clipse)"
       "stayfocused, class:(clipse)"
 
+      "float, class:(io.github.Qalculate.qalculate-qt)"
+      "size 640 500, class:(io.github.Qalculate.qalculate-qt)"
+      "pin, class:(io.github.Qalculate.qalculate-qt)"
+      "opacity 1.0 override, class:(io.github.Qalculate.qalculate-qt)"
+
       "opacity 1.0 override 0.95 override, class:^(chromium-browser|firefox)$"
 
       # make pop-up file dialogs floating, centred, and pinned

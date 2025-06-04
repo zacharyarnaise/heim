@@ -10,6 +10,7 @@
   foot = "${pkgs.foot}/bin/foot";
   wezterm = "${config.programs.wezterm.package}/bin/wezterm";
   clipse = "${config.services.clipse.package}/bin/clipse";
+  qalculate = "${pkgs.qalculate-qt}/bin/qalculate-qt";
   grimblast = "${pkgs.grimblast}/bin/grimblast";
   wpctl = "${pkgs.wireplumber}/bin/wpctl";
 
@@ -93,6 +94,7 @@ in {
         "${mod},     Space, Opens rofi drun mode, exec, pkill rofi || ${rofi} -show drun"
         "${modCtrl}, Space, Opens rofi ssh mod, exec, pkill rofi || ${rofi} -show ssh -no-show-icons"
         "${modCtrl}, V, Open clipse, exec, pkill clipse || ${foot} -a clipse ${clipse}"
+        "${modCtrl}, K, Open qalculate, exec, pkill qalculate || ${qalculate}"
         "${mod},     Return, Opens terminal, exec, uwsm-app -- ${wezterm}"
 
         # Screenshot
