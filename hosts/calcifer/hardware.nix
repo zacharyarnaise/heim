@@ -26,6 +26,7 @@
     ];
     kernelModules = [
       "kvm-intel"
+      "nct6683"
       "ddcci"
       "ddcci-backlight"
       "i2c-dev"

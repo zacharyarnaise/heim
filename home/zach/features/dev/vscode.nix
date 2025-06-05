@@ -20,9 +20,9 @@
 
         vsext.golang.go
 
+        vsext.charliermarsh.ruff
         vsext.ms-python.python
         vsext.ms-python.vscode-pylance
-        vsext.ms-python.isort
 
         vsext.redhat.ansible
         vsext.redhat.vscode-yaml
@@ -43,7 +43,7 @@
         "window.customTitleBarVisibility" = "never";
         "window.dialogStyle" = "native";
         "window.menuBarVisibility" = "toggle";
-        "window.openFoldersInNewWindow" = "on";
+        "window.openFoldersInNewWindow" = "off";
         "window.titleBarStyle" = "native";
         "window.restoreWindows" = "none";
 
@@ -58,7 +58,7 @@
         "editor.cursorStyle" = "line-thin";
         "editor.codeActionsOnSave"."source.fixAll" = "always";
         "editor.fontLigatures" = true;
-        "editor.formatOnPaste" = true;
+        "editor.formatOnPaste" = false;
         "editor.formatOnSave" = true;
         "editor.formatOnSaveMode" = "file";
         "editor.guides.bracketPairs" = "active";
@@ -87,7 +87,7 @@
         "explorer.confirmDelete" = false;
 
         "search.actionsPosition" = "auto";
-        "search.collapseResults" = "alwaysCollapse";
+        "search.collapseResults" = "auto";
         "search.defaultViewMode" = "tree";
         "search.smartCase" = true;
 
@@ -144,6 +144,11 @@
         "nix.serverPath" = "${pkgs.nil}/bin/nil";
         "nix.serverSettings"."nil"."formatting"."command" = ["${pkgs.alejandra}/bin/alejandra"];
 
+        "[python]" = {
+          "editor.codeActionsOnSave"."source.organizeImports.ruff" = "explicit";
+          "editor.defaultFormatter" = "charliermarsh.ruff";
+          "editor.formatOnSaveMode" = "modifications";
+        };
         "python.analysis.autoImportCompletions" = true;
         "python.analysis.cacheLSPData" = true;
         "python.analysis.displayEnglishDiagnostics" = true;
@@ -154,7 +159,6 @@
         "python.analysis.languageServerMode" = "full";
         "python.analysis.typeCheckingMode" = "basic";
         "python.languageServer" = "Pylance";
-        "python.showStartPage" = false;
       };
     };
   };
