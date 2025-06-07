@@ -6,7 +6,7 @@
     gc = {
       automatic = true;
       dates = "Sat *-*-* 00:00:00";
-      options = "--delete-older-than 10d";
+      options = "--delete-older-than 7d";
       persistent = true;
     };
     optimise = {
