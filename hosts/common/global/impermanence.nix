@@ -10,7 +10,7 @@
     hideMounts = true;
     directories = [
       "/var/lib/nixos"
-      "/var/lib/systemd/timesync"
+      "/var/lib/systemd/timers"
     ];
     files = [
       "/etc/machine-id"

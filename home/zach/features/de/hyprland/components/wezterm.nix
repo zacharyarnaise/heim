@@ -1,12 +1,19 @@
-{config, ...}: {
+{
+  config,
+  lib,
+  ...
+}: {
   programs.wezterm = {
     enable = true;
     enableZshIntegration = config.programs.zsh.enable;
 
-    extraConfig = ''
-      return {
+    extraConfig = let
+      scalingWorkaround = lib.optionalString (config.hostSpec.name == "calcifer") ''
         font_size = 18.0,
-
+        enable_wayland = false,
+      '';
+    in ''
+      return {
         animation_fps = 60,
         audible_bell = "Disabled",
         automatically_reload_config = true,
@@ -16,7 +23,6 @@
         cursor_blink_ease_out = "Linear",
         cursor_blink_rate = 500,
         enable_scroll_bar = false,
-        enable_wayland = false,
         freetype_load_target = "Normal",
         front_end = "WebGpu",
         hide_mouse_cursor_when_typing = true,
@@ -33,13 +39,14 @@
           target = "CursorColor",
         },
         webgpu_power_preference = "HighPerformance",
-        window_decorations = "RESIZE",
+        window_decorations = "NONE",
         window_padding = {
           left = "1cell",
           right = 0,
           top = "0.25cell",
           bottom = 0,
         },
+        ${scalingWorkaround}
       }
     '';
   };
