@@ -83,7 +83,10 @@
     mkNixos = hostname: system: {
       name = hostname;
       value = lib.nixosSystem {
-        specialArgs = {inherit lib inputs outputs;};
+        specialArgs = {
+          inherit lib inputs outputs;
+          heimRev = self.shortRev or self.dirtyShortRev;
+        };
         modules = [
           nixpkgs.nixosModules.readOnlyPkgs
           {nixpkgs.pkgs = pkgsFor.${system};}
