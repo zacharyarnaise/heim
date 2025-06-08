@@ -8,7 +8,7 @@
     enableZshIntegration = config.programs.zsh.enable;
 
     extraConfig = let
-      scalingWorkaround = lib.optionalString (config.hostSpec.name == "calcifer") ''
+      scalingWorkaround = lib.optionalString (config.primaryMonitor.scale != "1.0") ''
         font_size = 18.0,
         enable_wayland = false,
       '';
