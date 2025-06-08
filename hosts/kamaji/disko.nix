@@ -29,21 +29,8 @@
               content = {
                 type = "btrfs";
                 extraArgs = ["-f" "-L${config.hostSpec.name}-main"];
-                postCreateHook = ''
-                  mkdir /tmp -p
-                  MNTPOINT=$(mktemp -d)
-
-                  mount -t btrfs -o subvol=/ ${config.disko.devices.disk.main.content.partitions.main.device} "$MNTPOINT"
-                  trap 'umount "$MNTPOINT"; rm -rf "$MNTPOINT"' EXIT
-
-                  btrfs subvolume snapshot -r "$MNTPOINT/@root" "$MNTPOINT/@root-blank"
-                '';
 
                 subvolumes = {
-                  "@root" = {
-                    mountpoint = "/";
-                    mountOptions = ["compress=lzo" "noatime"];
-                  };
                   "@persist" = {
                     mountpoint = "/persist";
                     mountOptions = ["compress=lzo" "noatime"];
@@ -108,6 +95,11 @@
         };
       };
     };
+  };
+
+  nodev."/" = {
+    fsType = "tmpfs";
+    mountOptions = ["defaults" "noatime" "mode=755" "size=2G"];
   };
 
   fileSystems = {
