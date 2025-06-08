@@ -4,6 +4,7 @@
 
     ./atuin.nix
     ./bat.nix
+    ./btop.nix
     ./eza.nix
     ./fzf.nix
     ./git.nix
@@ -27,6 +28,4 @@
       wget
       ;
   };
-
-  programs.btop.enable = true;
 }
