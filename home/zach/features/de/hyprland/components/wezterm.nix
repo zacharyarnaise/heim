@@ -8,13 +8,17 @@
     enableZshIntegration = config.programs.zsh.enable;
 
     extraConfig = let
+      animationFps =
+        if config.hostSpec.hasDiscreteGPU
+        then 60
+        else 1;
       scalingWorkaround = lib.optionalString (config.primaryMonitor.scale != "1.0") ''
         font_size = 18.0,
         enable_wayland = false,
       '';
     in ''
       return {
-        animation_fps = 60,
+        animation_fps = ${toString animationFps},
         audible_bell = "Disabled",
         automatically_reload_config = true,
         check_for_updates = false,
