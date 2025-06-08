@@ -26,7 +26,6 @@ Here you'll find [NixOS](https://nixos.org/) & [home-manager](https://github.com
 │  ├─ calcifer/  # Desktop  - 14700KF, 32GB RAM, RTX4080S
 │  ├─ howl/      # Headless - RPi5, 4GB RAM
 │  ├─ kamaji/    # Headless - Ryzen 5 5600X, 16GB RAM, 4TB SSD x2
-│  ├─ laptop-gb/ # Laptop   - ThinkPad - to be deleted no longer in use
 │  ├─ noface/    # Headless - QEMU guest used for debugging/testing
 │  ├─ ponyo/     # Laptop   - ThinkPad T14
 ├─ lib/               # Nix utilities/helpers
@@ -57,7 +56,7 @@ Here you'll find [NixOS](https://nixos.org/) & [home-manager](https://github.com
     nix run github:nix-community/nixos-anywhere#nixos-anywhere -- --extra-files "$temp" --flake /home/mydir/heim#hostname --target-host root@<hostname>
     ```
 
-> [!IMPORTANT]  
+> [!IMPORTANT]
 > If you use ZFS, `nixos-anywhere` has [an issue](https://github.com/nix-community/nixos-anywhere/issues/156) where it won't export the pool before rebooting.
 >
 > Possible workarounds:

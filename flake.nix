@@ -119,7 +119,6 @@
       (mkNixos "calcifer" "x86_64-linux")
       #(mkNixos "howl" "x86_64-linux")
       (mkNixos "kamaji" "x86_64-linux")
-      (mkNixos "laptop-gb" "x86_64-linux")
       (mkNixos "noface" "x86_64-linux")
       (mkNixos "ponyo" "x86_64-linux")
     ];
@@ -129,7 +128,6 @@
       (mkHome "zach" "calcifer" "x86_64-linux")
       #(mkHome "zach" "howl" "x86_64-linux")
       (mkHome "zach" "kamaji" "x86_64-linux")
-      (mkHome "zach" "laptop-gb" "x86_64-linux")
       (mkHome "zach" "noface" "x86_64-linux")
       (mkHome "zach" "ponyo" "x86_64-linux")
     ];
