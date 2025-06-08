@@ -3,6 +3,7 @@
   lib,
   inputs,
   outputs,
+  config,
   ...
 }: let
   inherit (inputs) secrets;
@@ -10,7 +11,7 @@
   hosts = lib.attrNames outputs.nixosConfigurations;
 in {
   programs.ssh = {
-    startAgent = true;
+    startAgent = config.hostSpec.kind != "headless";
     enableAskPassword = false;
     askPassword = "";
 

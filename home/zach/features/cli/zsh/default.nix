@@ -28,10 +28,6 @@
       ns = "nix-shell";
     };
 
-    dirHashes = {
-      heim = "$HOME/Code/Nix/heim";
-    };
-
     plugins = [
       {
         name = "zsh-powerlevel10k-config";

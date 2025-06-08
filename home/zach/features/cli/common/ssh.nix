@@ -30,10 +30,7 @@ in {
         user = "git";
         forwardAgent = isHeadless;
         identitiesOnly = !isHeadless;
-        identityFile =
-          if isHeadless
-          then []
-          else identityFiles;
+        identityFile = lib.optionals (!isHeadless) identityFiles;
       };
     };
   };

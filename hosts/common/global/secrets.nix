@@ -1,7 +1,6 @@
 {
   inputs,
   config,
-  pkgs,
   lib,
   ...
 }: let
@@ -10,15 +9,6 @@
   normalUsers = lib.filterAttrs (_: v: v.isNormalUser) config.users.users;
 in {
   imports = [inputs.sops-nix.nixosModules.sops];
-
-  environment.systemPackages = builtins.attrValues {
-    inherit
-      (pkgs)
-      age
-      ssh-to-age
-      sops
-      ;
-  };
 
   sops = {
     defaultSopsFile = "${secretsDir}/hosts/${hostName}/secrets.yaml";

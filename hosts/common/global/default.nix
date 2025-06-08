@@ -35,10 +35,6 @@
     AllowHibernation=no
   '';
 
-  programs.nh = {
-    enable = true;
-  };
-
   hardware.enableAllFirmware = true;
   users.mutableUsers = false;
 

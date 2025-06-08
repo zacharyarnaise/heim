@@ -19,6 +19,7 @@
     inherit
       (pkgs)
       postgresql_17
+      sops
       ;
   };
 }

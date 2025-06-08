@@ -30,14 +30,11 @@
     username = "zach";
     homeDirectory = "/home/zach";
     sessionPath = ["$HOME/.local/bin"];
-    sessionVariables = {
-      NH_FLAKE = "$HOME/Code/Nix/heim";
-    };
 
     persistence."/persist/home/zach" = {
       allowOther = false;
       defaultDirectoryMethod = "symlink";
-      directories = [
+      directories = lib.optionals (hostSpec.kind != "headless") [
         "Code"
         "Documents"
         "Downloads"
