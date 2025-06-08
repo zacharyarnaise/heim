@@ -3,7 +3,7 @@
   inherit (lib) mkOption types;
 in {
   options.hostSpec = {
-    # Configurable options
+    # General options
     name = mkOption {
       type = types.str;
       description = "The name of the host";
@@ -35,10 +35,16 @@ in {
       default = "";
     };
 
+    # Hardware related options
     cpuThermalZone = mkOption {
       type = types.nullOr types.int;
       description = "Thermal zone to use for CPU temp monitoring";
       default = null;
+    };
+    hasDiscreteGPU = mkOption {
+      type = types.bool;
+      default = false;
+      description = "Whether the host has a discrete GPU";
     };
 
     # Data options that don't dictate configuration settings

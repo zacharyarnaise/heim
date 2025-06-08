@@ -9,5 +9,6 @@
     kbdVariant = "intl";
 
     cpuThermalZone = 1;
+    hasDiscreteGPU = true;
   };
 }
