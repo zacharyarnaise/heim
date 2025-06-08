@@ -141,6 +141,10 @@
         "gopls"."ui.semanticTokens" = true;
 
         "nix.enableLanguageServer" = true;
+        "nix.hiddenLanguageServerErrors" = [
+          "textDocument/documentSymbol"
+          "textDocument/formatting"
+        ];
         "nix.serverPath" = "${pkgs.nil}/bin/nil";
         "nix.serverSettings"."nil"."formatting"."command" = ["${pkgs.alejandra}/bin/alejandra"];
 
