@@ -1,6 +1,7 @@
 {
   inputs,
   lib,
+  pkgs,
   ...
 }: {
   imports = [
@@ -22,6 +23,11 @@
       "drm_display_helper"
       "i8042"
     ];
+  };
+
+  hardware.graphics = {
+    extraPackages = [pkgs.vpl-gpu-rt];
+    extraPackages32 = [pkgs.pkgsi686Linux.vpl-gpu-rt];
   };
 
   nix.settings.max-jobs = 8;
