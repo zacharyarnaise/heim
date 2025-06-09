@@ -1,5 +1,10 @@
-{lib, ...}: {
+{
+  lib,
+  pkgs,
+  ...
+}: {
   boot = {
+    kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_latest;
     kernelParams = ["hibernate=no"];
     plymouth.enable = false;
 
