@@ -26,6 +26,7 @@
   };
 
   hardware.graphics = {
+    enable = true;
     extraPackages = [pkgs.vpl-gpu-rt];
     extraPackages32 = [pkgs.pkgsi686Linux.vpl-gpu-rt];
   };
