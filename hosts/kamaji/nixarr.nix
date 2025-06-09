@@ -11,6 +11,9 @@
     sonarr.enable = true;
     radarr.enable = true;
     prowlarr.enable = true;
-    jellyseerr.enable = true;
+    jellyseerr = {
+      enable = true;
+      port = 9096;
+    };
   };
 }
