@@ -14,6 +14,7 @@
 
     inputs.nixarr.nixosModules.default
     ./nixarr.nix
+    ./samba.nix
   ];
 
   boot = {

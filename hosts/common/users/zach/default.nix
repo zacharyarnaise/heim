@@ -29,6 +29,7 @@ in {
         "video"
         "network"
         "docker"
+        "media"
       ];
 
     password = lib.mkForce null;
