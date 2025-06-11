@@ -22,7 +22,7 @@ in {
     };
 
     xwayland = {
-      enabled = true;
+      enabled = false;
       use_nearest_neighbor = true;
       force_zero_scaling = true;
     };

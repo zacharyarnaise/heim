@@ -28,6 +28,10 @@ in {
       ./waybar_mpris_title_clean.diff
     ];
 
+    wezterm = addPatches prev.wezterm [
+      ./wezterm-frac_scaling_fix.diff
+    ];
+
     yubikey-agent = prev.yubikey-agent.overrideAttrs (oldAttrs: {
       patches =
         (oldAttrs.patches or [])

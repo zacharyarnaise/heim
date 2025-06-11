@@ -12,10 +12,6 @@
         if config.hostSpec.hasDiscreteGPU
         then 60
         else 1;
-      scalingWorkaround = lib.optionalString (config.primaryMonitor.scale != "1.0") ''
-        font_size = 18.0,
-        enable_wayland = false,
-      '';
     in ''
       return {
         animation_fps = ${toString animationFps},
@@ -26,6 +22,7 @@
         cursor_blink_ease_in = "Constant",
         cursor_blink_ease_out = "Linear",
         cursor_blink_rate = 500,
+        enable_wayland = true,
         enable_scroll_bar = false,
         freetype_load_target = "Normal",
         front_end = "WebGpu",
@@ -50,7 +47,6 @@
           top = "0.25cell",
           bottom = 0,
         },
-        ${scalingWorkaround}
       }
     '';
   };
