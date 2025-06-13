@@ -1,7 +1,7 @@
 {
   boot.initrd = {
     luks.devices.crypted = {
-      device = "/dev/nvme0n1p5";
+      device = "/dev/disk/by-partuuid/902e0f0f-1cc8-4f5a-ba81-2414b46c9fc5";
       allowDiscards = true;
       bypassWorkqueues = true;
     };
