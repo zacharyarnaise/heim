@@ -27,6 +27,13 @@ in {
     openFirewall = true;
     port = 5000;
     configText = ''
+      method.redirect=load.throw,load.normal
+      method.redirect=load.start_throw,load.start
+      method.insert=d.down.sequential,value|const,0
+      method.insert=d.down.sequential.set,value|const,0
+
+      method.insert = in_category, simple|private, "equal={d.custom1=,argument.0=}"
+      method.set_key = event.download.inserted_new, default_label, "branch=in_category=,d.custom1.set=manual"
       method.insert = d.data_path, simple, "if=(d.is_multi_file), (cat, (d.directory), /), (cat, (d.directory), /, (d.name))"
       method.insert = d.finished_path, simple, "cat=${downloadDir}/,$d.custom1="
       method.insert = d.move_to_finished, simple, "d.directory.set=$argument.1=; execute=mkdir,-p,$argument.1=; execute=mv,-u,$argument.0=,$argument.1=; d.save_full_session="
@@ -65,7 +72,7 @@ in {
     enable = true;
     openFirewall = true;
     host = "0.0.0.0";
-    extraArgs = ["--auth none --rtsocket=${config.services.rtorrent.rpcSocket}"];
+    extraArgs = ["--noauth --rtsocket=${config.services.rtorrent.rpcSocket}"];
   };
   systemd.services.flood = {
     after = ["rtorrent.service"];
