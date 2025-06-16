@@ -2,13 +2,15 @@
   lib,
   config,
   ...
-}: {
+}: let
+  downloadDir = "/storage/media/torrents";
+in {
   systemd.tmpfiles.rules = [
-    "d /storage/media/torrents 0775 root media - -"
-    "d /storage/media/torrents/.incomplete 0775 rtorrent rtorrent - -"
-    "d /storage/media/torrents/manual 0775 rtorrent rtorrent - -"
-    "d /storage/media/torrents/radarr 0775 rtorrent rtorrent - -"
-    "d /storage/media/torrents/sonarr 0775 rtorrent rtorrent - -"
+    "d ${downloadDir} 0775 root media - -"
+    "d ${downloadDir}/.incomplete 0775 rtorrent rtorrent - -"
+    "d ${downloadDir}/manual 0775 rtorrent rtorrent - -"
+    "d ${downloadDir}/radarr 0775 rtorrent rtorrent - -"
+    "d ${downloadDir}/sonarr 0775 rtorrent rtorrent - -"
   ];
 
   users.users.rtorrent = {
@@ -20,14 +22,16 @@
     enable = true;
 
     dataDir = "/persist/rtorrent";
-    downloadDir = "/storage/media/torrents/.incomplete";
+    downloadDir = "${downloadDir}/.incomplete";
     group = "rtorrent";
     user = "rtorrent";
     openFirewall = true;
     port = 5000;
     configText = ''
-      method.insert = d.get_finished_dir,simple,"cat=/storage/media/torrents/,$d.get_custom1="
-      method.set_key = event.download.finished,move_complete,"d.set_directory=$d.get_finished_dir=;execute=mv,-u,$d.get_base_path=,$d.get_finished_dir="
+      method.insert = d.data_path, simple, "if=(d.is_multi_file), (cat, (d.directory), /), (cat, (d.directory), /, (d.name))"
+      method.insert = d.finished_path, simple, "cat=${downloadDir}/,$d.custom1="
+      method.insert = d.move_to_finished, simple, "d.directory.set=$argument.1=; execute=mkdir,-p,$argument.1=; execute=mv,-u,$argument.0=,$argument.1=; d.save_full_session="
+      method.set_key = event.download.finished, move_finished, "d.move_to_finished=$d.data_path=,$d.finished_path="
     '';
   };
   systemd.services.rtorrent.serviceConfig = {
