@@ -6,7 +6,7 @@
     stateDir = "/persist/nixarr";
 
     jellyfin.enable = true;
-    transmission.enable = true;
+    transmission.enable = false;
     bazarr.enable = true;
     sonarr.enable = true;
     radarr.enable = true;

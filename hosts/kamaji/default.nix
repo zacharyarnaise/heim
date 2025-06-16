@@ -12,6 +12,8 @@
     ../common/optional/boot-quiet.nix
     ../common/optional/usbguard.nix
 
+    ./arr
+
     inputs.nixarr.nixosModules.default
     ./nixarr.nix
     ./samba.nix
