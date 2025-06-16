@@ -6,7 +6,7 @@
   downloadDir = "/storage/media/torrents";
 in {
   systemd.tmpfiles.rules = [
-    "d ${downloadDir} 0755 rtorrent rtorrent - -"
+    "d ${downloadDir} 0755 root root - -"
     "d ${downloadDir}/.incomplete 0755 rtorrent rtorrent - -"
     "d ${downloadDir}/manual 0755 rtorrent rtorrent - -"
     "d ${downloadDir}/radarr 0755 rtorrent rtorrent - -"
@@ -64,8 +64,8 @@ in {
   services.flood = {
     enable = true;
     openFirewall = true;
-    host = "::";
-    extraArgs = ["--rtsocket=${config.services.rtorrent.rpcSocket}"];
+    host = "0.0.0.0";
+    extraArgs = ["--auth none --rtsocket=${config.services.rtorrent.rpcSocket}"];
   };
   systemd.services.flood = {
     after = ["rtorrent.service"];
