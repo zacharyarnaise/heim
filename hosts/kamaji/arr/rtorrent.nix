@@ -6,7 +6,7 @@
   downloadDir = "/storage/media/torrents";
 in {
   systemd.tmpfiles.rules = [
-    "d ${downloadDir} 0755 root root - -"
+    "d ${downloadDir} 0775 root root - -"
     "d ${downloadDir}/.incomplete 0755 rtorrent rtorrent - -"
     "d ${downloadDir}/manual 0755 rtorrent rtorrent - -"
     "d ${downloadDir}/radarr 0755 rtorrent rtorrent - -"
