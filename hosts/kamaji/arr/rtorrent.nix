@@ -41,7 +41,7 @@ in {
 
       network.receive_buffer.size.set = 4M
       network.send_buffer.size.set = 16M
-      pieces.memory.max.set = 4GB
+      pieces.memory.max.set = 4G
       pieces.preload.type.set = 1
       system.file.allocate.set = 1
       system.files.advise_random.set = true
