@@ -15,6 +15,7 @@
     "bitnami" = "https://charts.bitnami.com/bitnami";
     "ingress-nginx" = "https://kubernetes.github.io/ingress-nginx";
     "redpanda" = "https://charts.redpanda.com";
+    "sentry" = "https://sentry-kubernetes.github.io/charts";
   };
 in {
   programs.k9s = {
