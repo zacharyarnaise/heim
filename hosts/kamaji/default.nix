@@ -1,8 +1,4 @@
-{
-  lib,
-  inputs,
-  ...
-}: {
+{lib, ...}: {
   imports = [
     ./hardware.nix
 
@@ -12,8 +8,7 @@
     ../common/optional/boot-quiet.nix
     ../common/optional/usbguard.nix
 
-    inputs.nixarr.nixosModules.default
-    ./nixarr.nix
+    ./arr
     ./samba.nix
   ];
 
