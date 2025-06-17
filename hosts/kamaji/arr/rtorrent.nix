@@ -41,7 +41,7 @@ in {
 
       network.receive_buffer.size.set = 4M
       network.send_buffer.size.set = 16M
-      pieces.memory.max.set = 4G
+      pieces.memory.max.set = 4GB
       pieces.preload.type.set = 1
       system.file.allocate.set = 1
       system.files.advise_random.set = true
@@ -51,15 +51,18 @@ in {
       schedule2 = session_save, 900, 14400, ((session.save))
       system.umask.set = 0022
 
-      throttle.max_downloads.global.set = 500
-      throttle.max_uploads.global.set = 1000
+      throttle.global_down.max_rate.set = 0
+      throttle.global_up.max_rate.set = 0
+      throttle.max_downloads.global.set = 300
+      throttle.max_uploads.global.set = 500
       throttle.max_downloads.set = 100
       throttle.max_uploads.set = 50
-      throttle.min_peers.normal.set = 80
+      throttle.min_peers.normal.set = 100
       throttle.max_peers.normal.set = 200
-      throttle.min_peers.seed.set = -1
-      throttle.max_peers.seed.set = -1
+      throttle.min_peers.seed.set = 1
+      throttle.max_peers.seed.set = 100
       trackers.numwant.set = 100
+      trackers.use_udp.set = yes
     '';
   };
   systemd.services.rtorrent.serviceConfig = {
