@@ -1,9 +1,11 @@
 {
   lib,
   config,
+  inputs,
   ...
 }: let
   downloadDir = "/storage/media/torrents";
+  secrets = inputs.secrets;
 in {
   systemd.tmpfiles.rules = [
     "d ${downloadDir} 0775 root root - -"
@@ -25,7 +27,6 @@ in {
     group = "rtorrent";
     user = "rtorrent";
     openFirewall = true;
-    port = 5000;
     configText = ''
       method.redirect=load.throw,load.normal
       method.redirect=load.start_throw,load.start
@@ -39,6 +40,8 @@ in {
       method.insert = d.move_to_finished, simple, "d.directory.set=$argument.1=; execute=mkdir,-p,$argument.1=; execute=mv,-u,$argument.0=,$argument.1=; d.save_full_session="
       method.set_key = event.download.finished, move_finished, "d.move_to_finished=$d.data_path=,$d.finished_path="
 
+      network.port_range.set = ${secrets.hosts.kamaji.rtorrentPortRange};
+      network.port_random.set = yes
       network.receive_buffer.size.set = 4M
       network.send_buffer.size.set = 16M
       pieces.memory.max.set = 4G
