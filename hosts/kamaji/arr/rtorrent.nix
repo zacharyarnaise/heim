@@ -5,16 +5,8 @@
   ...
 }: let
   downloadDir = "/storage/media/torrents";
-  secrets = inputs.secrets;
+  inherit (inputs) secrets;
 in {
-  systemd.tmpfiles.rules = [
-    "d ${downloadDir} 0775 root root - -"
-    "d ${downloadDir}/.incomplete 0755 rtorrent rtorrent - -"
-    "d ${downloadDir}/manual 0755 rtorrent rtorrent - -"
-    "d ${downloadDir}/radarr 0755 rtorrent rtorrent - -"
-    "d ${downloadDir}/sonarr 0755 rtorrent rtorrent - -"
-  ];
-
   users.users.rtorrent = {
     shell = lib.mkForce "/run/current-system/sw/bin/nologin";
   };
@@ -68,11 +60,6 @@ in {
       trackers.use_udp.set = yes
     '';
   };
-  systemd.services.rtorrent.serviceConfig = {
-    # Always prioritize all other services wrt. IO
-    IOSchedulingPriority = 7;
-    LimitNOFILE = 4096;
-  };
 
   services.flood = {
     enable = true;
@@ -80,12 +67,28 @@ in {
     host = "0.0.0.0";
     extraArgs = ["--noauth --rtsocket=${config.services.rtorrent.rpcSocket}"];
   };
-  systemd.services.flood = {
-    after = ["rtorrent.service"];
-    wants = ["rtorrent.service"];
-    serviceConfig = {
-      User = "rtorrent";
-      Group = "rtorrent";
+
+  systemd = {
+    tmpfiles.rules = [
+      "d ${downloadDir} 0775 root root - -"
+      "d ${downloadDir}/.incomplete 0755 rtorrent rtorrent - -"
+      "d ${downloadDir}/manual 0755 rtorrent rtorrent - -"
+      "d ${downloadDir}/radarr 0755 rtorrent rtorrent - -"
+      "d ${downloadDir}/sonarr 0755 rtorrent rtorrent - -"
+    ];
+
+    services.rtorrent.serviceConfig = {
+      # Always prioritize all other services wrt. IO
+      IOSchedulingPriority = 7;
+      LimitNOFILE = 4096;
+    };
+    services.flood = {
+      after = ["rtorrent.service"];
+      wants = ["rtorrent.service"];
+      serviceConfig = {
+        User = "rtorrent";
+        Group = "rtorrent";
+      };
     };
   };
 }
