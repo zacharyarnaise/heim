@@ -206,7 +206,7 @@ in {
     workspace = builtins.concatLists (map (m:
       lib.lists.imap0 (
         i: workspace:
-          "name:${workspace},monitor:${m.name}"
+          "${workspace},monitor:${m.name}"
           + (
             if i == 0
             then ",default:true"

@@ -106,8 +106,8 @@ in {
         ", XF86AudioMicMute, Toggle input mute, exec, ${wpctl} set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
         ", code:248, Toggle input mute, exec, ${wpctl} set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
       ]
-      ++ (lib.mapAttrsToList (n: key: "${mod}, ${key}, Switch to workspace ${n}, workspace, name:${n}") workspaces)
-      ++ (lib.mapAttrsToList (n: key: "${modShift}, ${key}, Moves active window to workspace ${n}, movetoworkspacesilent, name:${n}") workspaces);
+      ++ (lib.mapAttrsToList (n: key: "${mod}, ${key}, Switch to workspace ${n}, workspace, ${n}") workspaces)
+      ++ (lib.mapAttrsToList (n: key: "${modShift}, ${key}, Moves active window to workspace ${n}, movetoworkspacesilent, ${n}") workspaces);
 
     binddle = [
       ", XF86MonBrightnessUp,   Increase brightness, exec, light -A 5"
