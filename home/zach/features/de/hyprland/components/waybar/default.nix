@@ -7,10 +7,13 @@
   hyprctl = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl";
   loginctl = "${pkgs.systemd}/bin/loginctl";
   systemctl = "${pkgs.systemd}/bin/systemctl";
-  pavu = "${pkgs.pavucontrol}/bin/pavucontrol";
+  pwvu = "${pkgs.pwvucontrol}/bin/pwvucontrol";
   wpctl = "${pkgs.wireplumber}/bin/wpctl";
 in {
   stylix.targets.waybar.addCss = false;
+
+  fonts.fontconfig.enable = true;
+  home.packages = [pkgs.nerd-fonts.inconsolata];
 
   programs.waybar = {
     enable = true;
@@ -67,19 +70,19 @@ in {
         };
         memory = {
           interval = 10;
-          format = "{used:3.1f}G<small> </small>{icon}";
-          format-icons = [""];
+          format = "{icon}<small> </small>{used:3.1f}G";
+          format-icons = ["󰍛"];
         };
         cpu = {
           interval = 10;
-          format = "{usage:3}%<small> </small>{icon}";
-          format-icons = [""];
+          format = "{icon}{usage:3}%";
+          format-icons = ["󰊚"];
         };
         temperature = lib.mkIf (config.hostSpec.cpuThermalZone != null) {
           interval = 10;
           thermal-zone = config.hostSpec.cpuThermalZone;
-          format = "{temperatureC:2}°C<small> </small>{icon}";
-          format-icons = ["󰏈"];
+          format = "{icon}<small> </small>{temperatureC:2}°C";
+          format-icons = [""];
         };
         battery = {
           full-at = 97;
@@ -97,20 +100,20 @@ in {
             "󰂂"
             "󰁹"
           ];
-          format = "{capacity:3}%<small> </small>{icon}";
-          format-charging = "{capacity:2}%<small> </small>{icon}󱐋";
-          format-plugged = "{capacity:3}%<small> </small>󰚥";
+          format = "{icon}<small> </small>{capacity:3}%";
+          format-charging = "{icon}󱐋<small> </small>{capacity:2}%";
+          format-plugged = "󰚥<small> </small>{capacity:3}%";
           onclick = "";
         };
         mpris = {
           player = "playerctld";
           ignored-players = ["firefox"];
           interval = 2;
-          format = "{status_icon} {dynamic}";
+          format = "{status_icon}<small> </small>{dynamic}";
           status-icons = {
-            playing = "";
-            paused = "󰏥";
-            stopped = "";
+            playing = "󰐊";
+            paused = "󰏤";
+            stopped = "󰓛";
           };
           dynamic-separator = " — ";
           dynamic-order = ["title" "artist"];
@@ -134,7 +137,7 @@ in {
           sort-by = "number";
           format = "{icon}";
           format-icons = {
-            empty = "";
+            empty = "󰄯";
             default = "󰊠";
             active = "󰮯";
             urgent = "";
@@ -150,7 +153,7 @@ in {
           interval = 10;
           on-click = "overskride";
           on-click-right = "rfkill toggle bluetooth";
-          format = "";
+          format = "󰂯";
           format-connected = "󰂱";
           format-disabled = "󰂲";
           format-off = "󰂲";
@@ -170,35 +173,31 @@ in {
         network = {
           on-click-right = "rfkill toggle wlan";
           interval = 5;
-          format-ethernet = "<small>{ifname}</small> 󰈁";
-          format-wifi = "<small>{essid}</small> 󰖩";
-          format-disconnected = "";
+          format-ethernet = "󰈁<small> </small><small>{ifname}</small>";
+          format-wifi = "󰖩<small> </small><small>{essid}</small>";
+          format-disconnected = "󱘖";
           tooltip-format = ''
             {ipaddr}/{cidr}
             tx: {bandwidthUpOctets}
             rx: {bandwidthDownOctets}'';
         };
-        wireplumber = {
+        "wireplumber#sink" = {
           on-click = "${wpctl} set-mute @DEFAULT_AUDIO_SINK@ toggle";
-          on-right-click = "${pavu} -t 3";
-          format = "{volume}% {icon}";
-          format-muted = "{volume}% 󰝟";
-          format-bluetooth = "{volume}% {icon}󰂰";
+          on-right-click = "${pwvu}";
+          format = "{icon}<small> </small>{volume}%";
+          format-muted = "󰖁<small> </small>{volume}%";
+          format-bluetooth = "{icon}󰂯<small> </small>{volume}%";
           format-icons = {
-            default = ["" ""];
+            default = ["󰕿" "󰖀" "󰕾"];
             headphone = "󰋋";
           };
         };
-        "pulseaudio#source" = {
+        "wireplumber#source" = {
+          node-type = "Audio/Source";
           on-click = "${wpctl} set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
-          on-right-click = "${pavu} -t 4";
-          format = "{format_source}";
-          format-source = "{volume}% 󰍬";
-          format-source-muted = "{volume}% 󰍭";
-          format-icons = {
-            default = ["" ""];
-            headphone = "󰋋";
-          };
+          on-right-click = "${pwvu}";
+          format = "󰍬<small> </small>{volume}%";
+          format-muted = "󰍭<small> </small>{volume}%";
         };
         "group/applets" = {
           orientation = "inherit";
@@ -206,8 +205,8 @@ in {
             "bluetooth"
             "idle_inhibitor"
             "network"
-            "wireplumber"
-            "pulseaudio#source"
+            "wireplumber#sink"
+            "wireplumber#source"
           ];
         };
         clock = {

@@ -1,6 +1,7 @@
 * {
-  font-family: "Mononoki Nerd Font";
-  font-weight: 600;
+  font-family: "Inconsolata Nerd Font";
+  font-weight: bold;
+  font-size: 100%;
   margin: unset;
   padding: unset;
 }
@@ -16,7 +17,6 @@ window#waybar, #window {
 .modules-left {
   border-radius: 1em 0.6em 0.6em 1em;
   box-shadow: 0.4em 0 0.4em -0.5em alpha(black, 0.35);
-  padding-right: 0.7em;
 }
 .modules-center {
   border-radius: 0.6em;
@@ -29,9 +29,9 @@ window#waybar, #window {
   padding-left: 0.7em;
 }
 
-.modules-left > :not(:first-child) .module {
-  font-size: 1em;
-  padding-right: 1.2em;
+.modules-left .module {
+  padding-left: 0.5em;
+  padding-right: 0.5em;
 }
 #custom-nix {
   color: @base07;
@@ -75,13 +75,12 @@ menuitem {
 #workspaces button.active label {
   color: yellow;
   font-size: 1.2em;
-  font-weight: 700;
 }
 #workspaces button:not(.active):not(.empty) label {
-  font-size: 1.1em;
+  font-size: 1.05em;
 }
 #workspaces button.empty:not(.active) label {
-  font-size: 0.8em;
+  font-size: 0.75em;
 }
 #workspaces button:hover {
   background: alpha(white, 0.1);
@@ -92,11 +91,11 @@ menuitem {
   padding-right: 0.5em;
 }
 #bluetooth {
-  font-size: 1.2em;
   color: @base0D;
+  font-size: 1.1em;
 }
 #idle_inhibitor {
-  font-size: 1.2em;
+  font-size: 1.1em;
   color: shade(@base0B, 1.1);
   padding-right: 0.8em;
   transition: color 0.5s;
@@ -107,9 +106,9 @@ menuitem {
 #network {
   color: @base0E;
 }
-#pulseaudio, #wireplumber {
+#wireplumber {
   color: @base0A;
-  padding-right: 0.15em;
+  padding-right: 0.5em;
 }
 #clock {
   color: shade(@base09, 1.3);

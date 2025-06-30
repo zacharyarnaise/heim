@@ -16,7 +16,7 @@
     inherit
       (pkgs)
       overskride
-      pavucontrol
+      pwvucontrol
       qalculate-qt
       ;
   };
