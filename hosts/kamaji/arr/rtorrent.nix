@@ -33,7 +33,7 @@ in {
       method.set_key = event.download.finished, move_finished, "d.move_to_finished=$d.data_path=,$d.finished_path="
 
       network.port_range.set = ${secrets.hosts.kamaji.rtorrentPortRange}
-      network.port_random.set = no
+      network.port_random.set = yes
       network.receive_buffer.size.set = 4M
       network.send_buffer.size.set = 16M
       pieces.memory.max.set = 4G
