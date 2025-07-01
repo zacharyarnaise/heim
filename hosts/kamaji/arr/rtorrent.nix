@@ -67,6 +67,12 @@ in {
     host = "0.0.0.0";
     extraArgs = ["--noauth --rtsocket=${config.services.rtorrent.rpcSocket}"];
   };
+  environment.persistence."/persist" = {
+    hideMounts = true;
+    directories = [
+      "/var/lib/private/flood"
+    ];
+  };
 
   systemd = {
     tmpfiles.rules = [
