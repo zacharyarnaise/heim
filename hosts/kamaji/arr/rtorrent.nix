@@ -16,18 +16,8 @@ in {
     from = lib.toInt (lib.head ports);
     to = lib.toInt (lib.last ports);
   in {
-    allowedTCPPortRanges = [
-      {
-        from = from;
-        to = to;
-      }
-    ];
-    allowedUDPPortRanges = [
-      {
-        from = from;
-        to = to;
-      }
-    ];
+    allowedTCPPortRanges = [{inherit from to;}];
+    allowedUDPPortRanges = [{inherit from to;}];
   };
 
   services.rtorrent = {
