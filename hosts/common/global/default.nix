@@ -59,4 +59,5 @@
   };
 
   services.irqbalance.enable = true;
+  systemd.services.irqbalance.serviceConfig.ProtectKernelTunables = "no";
 }
