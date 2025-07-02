@@ -59,10 +59,4 @@
   };
 
   services.irqbalance.enable = true;
-
-  # Use nixos-rebuild-ng (Python re-impl) instead of nixos-rebuild
-  system.switch = {
-    enable = false;
-    enableNg = true;
-  };
 }
