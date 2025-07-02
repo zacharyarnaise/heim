@@ -7,6 +7,7 @@
     autoPrune.dates = "monthly";
     logDriver = "local";
     extraOptions = lib.concatStringsSep " " [
+      "--iptables=False"
       "--log-level=warn"
       "--log-opt max-size=10m"
       "--log-opt max-file=1"

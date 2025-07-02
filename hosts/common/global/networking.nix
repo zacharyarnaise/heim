@@ -13,6 +13,10 @@
     useDHCP = false;
     useNetworkd = true;
     usePredictableInterfaceNames = true;
+    nftables = {
+      enable = true;
+      checkRuleset = true;
+    };
 
     nameservers = [
       "9.9.9.11#dns11.quad9.net"
