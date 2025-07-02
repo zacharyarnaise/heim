@@ -20,4 +20,6 @@
 
   # Use dbus-broker, high performance implementation (already the default in Arch)
   services.dbus.implementation = "broker";
+
+  services.irqbalance.enable = true;
 }
