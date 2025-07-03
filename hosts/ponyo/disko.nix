@@ -52,8 +52,12 @@
                     mountpoint = "/var/log";
                     mountOptions = ["compress=lzo" "noatime" "lazytime"];
                   };
-                  "@docker" = {
-                    mountpoint = "/var/lib/docker";
+                  "@containers" = {
+                    mountpoint = "/var/lib/containers";
+                    mountOptions = ["compress=lzo" "noatime" "lazytime"];
+                  };
+                  "@containers-rootless" = {
+                    mountpoint = "/persist/containers-rootless";
                     mountOptions = ["compress=lzo" "noatime" "lazytime"];
                   };
                 };

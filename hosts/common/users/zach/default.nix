@@ -20,6 +20,7 @@ in {
     isNormalUser = true;
     shell = pkgs.zsh;
     group = "zach";
+    uid = 1000;
     extraGroups =
       [
         "wheel"
@@ -29,6 +30,7 @@ in {
         "video"
         "network"
         "docker"
+        "podman"
         "media"
       ];
 

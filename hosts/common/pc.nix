@@ -3,10 +3,10 @@
     ./global
 
     ./optional/dconf.nix
-    ./optional/docker.nix
     ./optional/greetd.nix
     ./optional/hyprland.nix
     ./optional/pipewire.nix
+    ./optional/podman.nix
     ./optional/yubikey.nix
     ./optional/secureboot.nix
   ];

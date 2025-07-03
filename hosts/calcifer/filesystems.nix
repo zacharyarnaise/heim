@@ -40,10 +40,15 @@
       neededForBoot = true;
     };
 
-    "/var/lib/docker" = {
+    "/var/lib/containers" = {
       device = "/dev/mapper/crypted";
       fsType = "btrfs";
-      options = ["subvol=@docker" "compress=lzo" "noatime" "lazytime"];
+      options = ["subvol=@containers" "compress=lzo" "noatime" "lazytime"];
+    };
+    "/persist/containers-rootless" = {
+      device = "/dev/mapper/crypted";
+      fsType = "btrfs";
+      options = ["subvol=@containers-rootless" "compress=lzo" "noatime" "lazytime"];
     };
   };
 }
