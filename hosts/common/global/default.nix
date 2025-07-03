@@ -31,10 +31,6 @@
     stub-ld.enable = false;
   };
 
-  systemd.sleep.extraConfig = ''
-    AllowHibernation=no
-  '';
-
   hardware.enableAllFirmware = true;
   users.mutableUsers = false;
 
@@ -43,6 +39,7 @@
   documentation.info.enable = false;
   services.speechd.enable = false;
 
+  services.irqbalance.enable = true;
   systemd = {
     services.journalctl-vacuum = {
       description = "Vacuum journalctl logs";
@@ -56,8 +53,7 @@
       partOf = ["journalctl-vacuum.service"];
       timerConfig.OnCalendar = "weekly";
     };
-  };
 
-  services.irqbalance.enable = true;
-  systemd.services.irqbalance.serviceConfig.ProtectKernelTunables = "no";
+    services.irqbalance.serviceConfig.ProtectKernelTunables = "no";
+  };
 }
