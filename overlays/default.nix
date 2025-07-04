@@ -31,6 +31,11 @@ in {
 
     waybar = addPatches prev.waybar [
       ./waybar_mpris_title_clean.diff
+      ./waybar_wireplumber_notfound.diff
+      (prev.fetchpatch {
+        url = "https://github.com/Alexays/Waybar/pull/4234.patch";
+        hash = "sha256-RRGy/aeFX95fW0pT6mXhww2RdEtoOnaT3+dc7iB3bAY=";
+      })
     ];
 
     wezterm = addPatches prev.wezterm [

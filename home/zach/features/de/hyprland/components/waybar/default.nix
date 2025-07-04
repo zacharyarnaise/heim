@@ -182,20 +182,21 @@ in {
             rx: {bandwidthDownOctets}'';
         };
         "wireplumber#sink" = {
+          node-type = "Audio/Sink";
           on-click = "${wpctl} set-mute @DEFAULT_AUDIO_SINK@ toggle";
-          on-right-click = "${pwvu}";
+          on-click-right = "${pwvu}";
+          scroll-step = 5.0;
           format = "{icon}<small> </small>{volume}%";
-          format-muted = "󰖁<small> </small>{volume}%";
-          format-bluetooth = "{icon}󰂯<small> </small>{volume}%";
+          format-muted = "󰝟<small> </small>{volume}%";
           format-icons = {
             default = ["󰕿" "󰖀" "󰕾"];
-            headphone = "󰋋";
           };
         };
         "wireplumber#source" = {
           node-type = "Audio/Source";
           on-click = "${wpctl} set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
-          on-right-click = "${pwvu}";
+          on-click-right = "${pwvu}";
+          scroll-step = 5.0;
           format = "󰍬<small> </small>{volume}%";
           format-muted = "󰍭<small> </small>{volume}%";
         };
