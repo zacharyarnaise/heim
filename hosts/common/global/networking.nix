@@ -1,8 +1,4 @@
-{
-  config,
-  lib,
-  ...
-}: {
+{config, ...}: {
   boot.kernel.sysctl = {
     # Avoid disconnects on long-running connections (e.g. some ssh sessions)
     "net.ipv4.tcp_keepalive_time" = 120;
@@ -24,16 +20,6 @@
       "2620:fe::11#dns11.quad9.net"
       "2620:fe::fe:11#dns11.quad9.net"
     ];
-
-    networkmanager = {
-      enable = true;
-      plugins = lib.mkForce [];
-      dns = "systemd-resolved";
-      unmanaged = [
-        "interface-name:docker*"
-        "interface-name:veth*"
-      ];
-    };
 
     firewall = {
       enable = true;
@@ -58,18 +44,12 @@
     '';
   };
 
-  systemd = {
-    services.NetworkManager-wait-online.enable = false;
-    network = {
-      wait-online.enable = false;
-      networks = {
-        "20-wired" = {
-          matchConfig.Name = "en* | eth*";
-          networkConfig.DHCP = "yes";
-          # Prefer wired connections
-          dhcpV4Config.RouteMetric = 2048;
-          dhcpV6Config.RouteMetric = 2048;
-        };
+  systemd.network = {
+    wait-online.enable = false;
+    networks = {
+      "20-wired" = {
+        matchConfig.Name = "en* | eth*";
+        networkConfig.DHCP = "yes";
       };
     };
   };
