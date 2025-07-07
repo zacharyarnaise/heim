@@ -12,6 +12,7 @@ in {
       registries.insecure = ["localhost"];
       storage.settings = {
         storage = {
+          driver = "btrfs";
           graphroot = "/var/lib/containers/storage";
           runroot = "/run/containers/storage";
           rootless_storage_path = "${rootlessPath}/$USER";
