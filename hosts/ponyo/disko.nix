@@ -53,7 +53,7 @@
                     mountOptions = ["compress=lzo" "noatime" "lazytime"];
                   };
                   "@containers" = {
-                    mountpoint = "/var/lib/containers";
+                    mountpoint = "/persist/containers";
                     mountOptions = ["compress=lzo" "noatime" "lazytime"];
                   };
                   "@containers-rootless" = {

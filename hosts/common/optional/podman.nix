@@ -13,10 +13,9 @@ in {
       storage.settings = {
         storage = {
           driver = "btrfs";
-          graphroot = "/var/lib/containers/storage";
+          graphroot = "/persist/containers/storage";
           runroot = "/run/containers/storage";
           rootless_storage_path = "${rootlessPath}/$USER";
-          options.overlay.mountopt = "nodev,metacopy=on";
         };
       };
       containersConf.settings = {

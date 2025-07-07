@@ -40,7 +40,7 @@
       neededForBoot = true;
     };
 
-    "/var/lib/containers" = {
+    "/persist/containers" = {
       device = "/dev/mapper/crypted";
       fsType = "btrfs";
       options = ["subvol=@containers" "compress=lzo" "noatime" "lazytime"];
