@@ -5,7 +5,7 @@
   ...
 }: let
   hostname = config.hostSpec.name;
-  inet = inputs.secrets.hosts.${hostname}.inet;
+  inherit (inputs.secrets.hosts.${hostname}) inet;
 in {
   imports = [inputs.k0s-nix.nixosModules.default];
 
