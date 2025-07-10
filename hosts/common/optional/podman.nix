@@ -38,7 +38,7 @@ in {
 
       autoPrune = {
         enable = true;
-        dates = "monthly";
+        dates = "weekly";
         flags = ["--all"];
       };
 

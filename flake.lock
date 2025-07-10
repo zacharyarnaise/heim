@@ -355,6 +355,27 @@
         "type": "github"
       }
     },
+    "k0s-nix": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1752138025,
+        "narHash": "sha256-gCHnqlqWoe4YjkwhaNvfAPPr+SYqQoK2/VWZFCp52Ek=",
+        "owner": "zacharyarnaise",
+        "repo": "k0s-nix",
+        "rev": "726fef1ce79c3c7176e64a3f187d1d35e0da30c6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "zacharyarnaise",
+        "ref": "feat-controller_disable_components",
+        "repo": "k0s-nix",
+        "type": "github"
+      }
+    },
     "lanzaboote": {
       "inputs": {
         "crane": "crane",
@@ -591,6 +612,7 @@
         "firefox-addons": "firefox-addons",
         "home-manager": "home-manager",
         "impermanence": "impermanence",
+        "k0s-nix": "k0s-nix",
         "lanzaboote": "lanzaboote",
         "nix-index-database": "nix-index-database",
         "nixarr": "nixarr",
