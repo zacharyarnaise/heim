@@ -23,8 +23,8 @@ Here you'll find [NixOS](https://nixos.org/) & [home-manager](https://github.com
 │    ├─ global/   # Config shared by all hosts
 │    ├─ optional/ # Optional configurations
 │    ├─ users/    # Host-level user declaration
-│  ├─ calcifer/  # Desktop  - 14700KF, 32GB RAM, RTX4080S
-│  ├─ howl/      # Headless - RPi5, 4GB RAM
+│  ├─ calcifer/  # Desktop  - 14700KF, 48GB RAM, RTX4080S
+│  ├─ jiji/      # Headless - Cloud server
 │  ├─ kamaji/    # Headless - Ryzen 5 5600X, 16GB RAM, 4TB SSD x2
 │  ├─ noface/    # Headless - QEMU guest used for debugging/testing
 │  ├─ ponyo/     # Laptop   - ThinkPad T14

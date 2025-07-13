@@ -77,7 +77,6 @@
 
     supportedSystems = [
       "x86_64-linux"
-      #"aarch64-linux"
     ];
     pkgsFor = lib.genAttrs supportedSystems (
       system:
@@ -126,7 +125,7 @@
     # -- NixOS configurations --------------------------------------------------
     nixosConfigurations = lib.listToAttrs [
       (mkNixos "calcifer" "x86_64-linux")
-      #(mkNixos "howl" "x86_64-linux")
+      (mkNixos "jiji" "x86_64-linux")
       (mkNixos "kamaji" "x86_64-linux")
       (mkNixos "noface" "x86_64-linux")
       (mkNixos "ponyo" "x86_64-linux")
@@ -135,7 +134,7 @@
     # -- home-manager configurations -------------------------------------------
     homeConfigurations = lib.listToAttrs [
       (mkHome "zach" "calcifer" "x86_64-linux")
-      #(mkHome "zach" "howl" "x86_64-linux")
+      (mkHome "zach" "jiji" "x86_64-linux")
       (mkHome "zach" "kamaji" "x86_64-linux")
       (mkHome "zach" "noface" "x86_64-linux")
       (mkHome "zach" "ponyo" "x86_64-linux")
