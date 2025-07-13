@@ -2,6 +2,7 @@
   imports = [
     ./global
 
+    ./optional/boot-quiet.nix
     ./optional/dconf.nix
     ./optional/greetd.nix
     ./optional/hyprland.nix

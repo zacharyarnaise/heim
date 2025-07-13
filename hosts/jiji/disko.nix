@@ -9,6 +9,11 @@
       content = {
         type = "gpt";
         partitions = {
+          boot = {
+            type = "EF02";
+            size = "1M";
+            priority = 1;
+          };
           ESP = {
             type = "EF00";
             size = "512M";
@@ -45,7 +50,7 @@
                 };
                 "@swap" = {
                   mountpoint = "/.swapvol";
-                  swap.swapfile.size = "4G";
+                  swap.swapfile.size = "8G";
                 };
               };
             };

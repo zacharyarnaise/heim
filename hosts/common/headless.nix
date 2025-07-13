@@ -1,8 +1,6 @@
 {lib, ...}: {
   imports = [
     ./global
-
-    ./optional/boot-quiet.nix
   ];
 
   nix = {

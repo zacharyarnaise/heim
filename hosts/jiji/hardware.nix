@@ -12,6 +12,11 @@
       "sd_mod"
       "sr_mod"
     ];
+
+    loader = {
+      systemd-boot.enable = lib.mkForce false;
+      grub.enable = true;
+    };
   };
 
   nix.settings.max-jobs = 2;
