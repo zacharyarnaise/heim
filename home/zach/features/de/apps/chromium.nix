@@ -74,8 +74,8 @@ in {
       # uBlock Origin
       (createExtension {
         id = "cjpalhdlnbpafiamejdnhcphjbkeiagm";
-        sha256 = "sha256:0pdh1v0vx1d5vnl1zh7nbk6j1fh4k4hhwp1ljs203icn306lahsn";
-        version = "1.64.0";
+        sha256 = "sha256:168vr0p31sp5ffsqnrnarw6ab1m95yil4hph0xs6gjbfky7wygki";
+        version = "1.65.0";
       })
 
       # Datadog test recorder
