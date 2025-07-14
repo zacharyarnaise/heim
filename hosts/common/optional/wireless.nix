@@ -29,8 +29,11 @@ in {
           wf-1 = let
             secretConfig = flakeSecrets.wireless.wf1;
           in {
-            connection.id = "wf1";
-            connection.type = "wifi";
+            connection = {
+              id = "wf1";
+              type = "wifi";
+              interface-name = config.hostSpec.wlanInterface;
+            };
             wifi.mode = "infrastructure";
             wifi.ssid = "$WF1_SSID";
             ipv4 = {
