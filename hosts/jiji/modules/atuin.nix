@@ -1,0 +1,5 @@
+{
+  services.atuin = {
+    enable = true;
+  };
+}
