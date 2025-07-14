@@ -9,5 +9,6 @@
     kbdVariant = "oss";
 
     cpuThermalZone = 0;
+    wlanInterface = "wlan0";
   };
 }

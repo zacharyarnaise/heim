@@ -51,15 +51,23 @@ in {
     wireless.iwd.settings = {
       General = {
         ManagementFrameProtection = 2;
-        RoamThreshold = "-75";
+        RoamThreshold = "-70";
         RoamThreshold5G = "-80";
-        RequiredFamilyForOnline = "ipv4";
       };
     };
   };
 
   systemd = {
-    services.NetworkManager-wait-online.enable = false;
+    services = {
+      NetworkManager-wait-online.enable = false;
+      # Fix race condition where iwd starts before the network interface is available
+      iwd = let
+        subsystemDevice = "sys-subsystem-net-devices-${config.hostSpec.wlanInterface}.device";
+      in {
+        after = [subsystemDevice];
+        wants = [subsystemDevice];
+      };
+    };
     network.networks = {
       "25-wireless" = {
         matchConfig.Name = "wl*";
