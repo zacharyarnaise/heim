@@ -517,11 +517,11 @@
         "systems": "systems_2"
       },
       "locked": {
-        "lastModified": 1752447041,
-        "narHash": "sha256-n5DPC4+lI9/gM0cdogohOUjiz50jhZ5l+Xg5Ucrj76w=",
+        "lastModified": 1752496197,
+        "narHash": "sha256-yADANK6gJL+BJrL0f450RGCZlUixCuYSoEqdjmBE5nY=",
         "owner": "nix-community",
         "repo": "nixvim",
-        "rev": "eeec7f7c31f84b33d3c52365b073e06c21104521",
+        "rev": "03fa28a65f23210934cb3a3c0454eb8870af748b",
         "type": "github"
       },
       "original": {
@@ -647,10 +647,10 @@
     },
     "secrets": {
       "locked": {
-        "lastModified": 1752446534,
-        "narHash": "sha256-ML1bQ8oY5xOo8ElyM/K9bBf7XRiFycnH5IaGz2HxKWQ=",
+        "lastModified": 1752505044,
+        "narHash": "sha256-Pk55IM1sh82Efnh6vW+UujSIM8yI4grBIIGTn5ndb4Q=",
         "ref": "main",
-        "rev": "cf214edea6fc7489b4ba3808b32d7f6bfe9e452c",
+        "rev": "6f5fd4f7232e0f20f15103b1363767ceb08c97c6",
         "shallow": true,
         "type": "git",
         "url": "git+ssh://git@github.com/zacharyarnaise/heim-secrets.git"
