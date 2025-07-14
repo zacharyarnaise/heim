@@ -7,8 +7,9 @@
 
     ../common/optional/usbguard.nix
 
-    ./arr
-    ./samba.nix
+    ./modules/nixarr.nix
+    ./modules/rtorrent.nix
+    ./modules/samba.nix
   ];
 
   boot = {
