@@ -53,6 +53,7 @@ in {
         ManagementFrameProtection = 2;
         RoamThreshold = "-75";
         RoamThreshold5G = "-80";
+        RequiredFamilyForOnline = "ipv4";
       };
     };
   };
