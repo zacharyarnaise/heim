@@ -65,6 +65,7 @@ in {
         networkConfig = {
           DHCP = "yes";
           IgnoreCarrierLoss = "10s";
+          IPv6PrivacyExtensions = true;
         };
       };
     };

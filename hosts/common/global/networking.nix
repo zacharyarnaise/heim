@@ -49,7 +49,10 @@
     networks = {
       "20-wired" = {
         matchConfig.Name = "en* | eth*";
-        networkConfig.DHCP = "yes";
+        networkConfig = {
+          DHCP = "yes";
+          IPv6PrivacyExtensions = true;
+        };
       };
     };
   };
