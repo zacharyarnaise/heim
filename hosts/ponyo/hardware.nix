@@ -1,8 +1,4 @@
-{
-  inputs,
-  lib,
-  ...
-}: {
+{inputs, ...}: {
   imports = [
     inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t14-amd-gen5
 
@@ -24,6 +20,5 @@
 
   nix.settings.max-jobs = 12;
   hardware.cpu.amd.updateMicrocode = true;
-  swapDevices = lib.mkForce [];
   powerManagement.cpuFreqGovernor = "ondemand";
 }

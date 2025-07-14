@@ -64,6 +64,14 @@
               };
             };
           };
+
+          swap = {
+            size = "4G";
+            content = {
+              type = "swap";
+              randomEncryption = true;
+            };
+          };
         };
       };
     };
