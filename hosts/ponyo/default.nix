@@ -1,6 +1,7 @@
 {
   imports = [
     ./hardware.nix
+    ./wireguard.nix
 
     ../common/pc.nix
     ../common/users/zach

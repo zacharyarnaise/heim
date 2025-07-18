@@ -5,6 +5,8 @@
     ../common/headless.nix
     ../common/users/zach
 
+    ./modules/bridge-net.nix
+    ./modules/wireguard.nix
     ./modules/postgresql.nix
     ./modules/atuin.nix
   ];
