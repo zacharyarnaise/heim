@@ -18,6 +18,7 @@
   home.packages = builtins.attrValues {
     inherit
       (pkgs)
+      dive
       postgresql_17
       sops
       ;
