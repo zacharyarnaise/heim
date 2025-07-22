@@ -9,6 +9,7 @@
     ./modules/wireguard.nix
     ./modules/postgresql.nix
     ./modules/atuin.nix
+    ./modules/navidrome.nix
   ];
 
   system.stateVersion = "25.05";

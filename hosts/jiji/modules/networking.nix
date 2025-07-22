@@ -13,6 +13,10 @@
           Address = "10.0.1.1/32";
           Scope = "host";
         }
+        {
+          Address = "10.0.1.2/32";
+          Scope = "host";
+        }
       ];
     };
   };
