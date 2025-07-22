@@ -30,12 +30,12 @@ in {
   sops.secrets = {
     "storagebox/credentials" = {};
   };
-  fileSystems."/storage/sb01" = {
-    device = flakeSecrets.storagebox.share;
-    fsType = "cifs";
-    options = [
+  fileSystems = let
+    mountOptions = [
       "credentials=${secrets."storagebox/credentials".path}"
       "cache=loose"
+      "iocharset=utf8"
+      "vers=3.0"
 
       "x-systemd.automount"
       "noauto"
@@ -43,6 +43,14 @@ in {
       "x-systemd.device-timeout=5s"
       "x-systemd.mount-timeout=5s"
     ];
+  in {
+    "/storage/sb01/music" = {
+      device = flakeSecrets.storagebox.share + "/music";
+      fsType = "cifs";
+      options =
+        mountOptions
+        ++ ["uid=navidrome" "gid=navidrome"];
+    };
   };
 
   nix.settings.max-jobs = 2;
