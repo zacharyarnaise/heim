@@ -25,7 +25,7 @@ in {
       enable = true;
       interfaces.wg0 = {
         type = "wireguard";
-        ips = ["10.100.0.1/24"];
+        ips = ["10.0.0.1/24"];
         listenPort = flakeSecrets.wg.port;
         mtu = 1420;
         privateKeyFile = sopsSecrets."wg/pk".path;

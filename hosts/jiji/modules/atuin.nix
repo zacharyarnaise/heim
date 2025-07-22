@@ -1,7 +1,7 @@
 {
   services.atuin = {
     enable = true;
-    host = "0.0.0.0";
+    host = "10.0.1.1";
     openFirewall = true;
   };
 }
