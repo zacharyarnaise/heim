@@ -1,9 +1,12 @@
 {
+  config,
   inputs,
   lib,
-  pkgs,
   ...
-}: {
+}: let
+  flakeSecrets = inputs.secrets.hosts."kamaji";
+  inherit (config.sops) secrets;
+in {
   imports = [
     inputs.nixos-hardware.nixosModules.common-cpu-intel
     inputs.nixos-hardware.nixosModules.common-gpu-intel
@@ -22,6 +25,24 @@
   };
 
   hardware.graphics.enable = true;
+
+  sops.secrets = {
+    "storagebox/credentials" = {};
+  };
+  fileSystems."/storage/media/torrents/lidarr" = {
+    device = flakeSecrets.storagebox.share;
+    fsType = "cifs";
+    options = [
+      "credentials=${secrets."storagebox/credentials".path}"
+      "cache=loose"
+
+      "x-systemd.automount"
+      "noauto"
+      "x-systemd.idle-timeout=1min"
+      "x-systemd.device-timeout=5s"
+      "x-systemd.mount-timeout=5s"
+    ];
+  };
 
   nix.settings.max-jobs = 8;
   swapDevices = lib.mkForce [];

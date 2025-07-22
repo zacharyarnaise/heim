@@ -22,6 +22,7 @@
     bazarr.enable = true;
     sonarr.enable = true;
     radarr.enable = true;
+    lidarr.enable = true;
     prowlarr.enable = true;
     jellyseerr.enable = true;
   };
