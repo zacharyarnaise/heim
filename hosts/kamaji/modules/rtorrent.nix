@@ -2,6 +2,7 @@
   lib,
   config,
   inputs,
+  pkgs,
   ...
 }: let
   downloadDir = "/storage/media/torrents";
@@ -72,6 +73,7 @@ in {
 
   services.flood = {
     enable = true;
+    package = pkgs.stable.flood;
     openFirewall = true;
     host = "0.0.0.0";
     extraArgs = ["--noauth --rtsocket=${config.services.rtorrent.rpcSocket}"];
