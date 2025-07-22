@@ -35,12 +35,17 @@ in {
     options = [
       "credentials=${secrets."storagebox/credentials".path}"
       "cache=loose"
+      "iocharset=utf8"
+      "vers=3.0"
 
       "x-systemd.automount"
       "noauto"
       "x-systemd.idle-timeout=1min"
       "x-systemd.device-timeout=5s"
       "x-systemd.mount-timeout=5s"
+
+      "uid=rtorrent"
+      "gid=rtorrent"
     ];
   };
 
