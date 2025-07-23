@@ -20,6 +20,7 @@
         singleton = "Non-Album/$artist/$title";
         comp = "Compilations/$album%aunique{}/$track $title";
       };
+      import.copy = false;
     };
   };
 }
