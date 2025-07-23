@@ -49,7 +49,7 @@ in {
       fsType = "cifs";
       options =
         mountOptions
-        ++ ["uid=navidrome" "gid=users" "dir_mode=0775" "file_mode=0664"];
+        ++ ["uid=navidrome" "gid=media" "dir_mode=0775" "file_mode=0664"];
     };
   };
 
