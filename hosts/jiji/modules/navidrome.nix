@@ -29,6 +29,7 @@ in {
       "LastFM.ApiKey" = secrets."navidrome/lastfm/apikey".path;
       "LastFM.Secret" = secrets."navidrome/lastfm/secret".path;
       PasswordEncryptionKey = secrets."navidrome/passkey".path;
+      "Scanner.WatcherWait" = "1m";
       SessionTimeout = "72h";
       UIWelcomeMessage = "( ͡° ͜ʖ ͡°)";
     };
