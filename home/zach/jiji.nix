@@ -16,11 +16,14 @@
         "thumbnails"
       ];
       paths = {
-        default = "$albumartist/$album%aunique{}/$track $title";
-        singleton = "Non-Album/$artist/$title";
-        comp = "Compilations/$album%aunique{}/$track $title";
+        default = "library/$albumartist/$album%aunique{}/$track $title";
+        singleton = "library/Non-Album/$artist/$title";
+        comp = "library/Compilations/$album%aunique{}/$track $title";
       };
-      import.copy = false;
+      import = {
+        copy = false;
+        move = true;
+      };
     };
   };
 }
