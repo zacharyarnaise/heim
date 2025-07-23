@@ -24,6 +24,10 @@
         copy = false;
         move = true;
       };
+      fetchart = {
+        sources = "coverart albumart itunes amazon filesystem";
+        minwidth = 500;
+      };
     };
   };
 }
