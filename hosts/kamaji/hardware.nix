@@ -29,7 +29,7 @@ in {
   sops.secrets = {
     "storagebox/credentials" = {};
   };
-  fileSystems."/storage/media/torrents/lidarr" = {
+  fileSystems."/storage/media/library/music" = {
     device = flakeSecrets.storagebox.share;
     fsType = "cifs";
     options = [
@@ -44,8 +44,7 @@ in {
       "x-systemd.device-timeout=5s"
       "x-systemd.mount-timeout=5s"
 
-      "uid=rtorrent"
-      "gid=rtorrent"
+      "uid=lidarr"
     ];
   };
 
