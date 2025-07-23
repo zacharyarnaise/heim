@@ -27,10 +27,6 @@ in {
       force_zero_scaling = true;
     };
 
-    render = {
-      new_render_scheduling = true;
-    };
-
     dwindle = {
       pseudotile = true;
       preserve_split = true;
