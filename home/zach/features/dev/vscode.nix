@@ -65,6 +65,7 @@
         "editor.guides.bracketPairsHorizontal" = "active";
         "editor.guides.indentation" = true;
         "editor.inlayHints.enabled" = "on";
+        "editor.inlayHints.fontSize" = 12;
         "editor.inlayHints.padding" = true;
         "editor.inlineSuggest.enabled" = true;
         "editor.lineNumbers" = "on";
@@ -124,7 +125,7 @@
         };
         "go.diagnostic.vulncheck" = "Imports";
         "go.inlayHints.constantValues" = true;
-        "go.inlayHints.parameterNames" = true;
+        "go.inlayHints.rangeVariableTypes" = true;
         "go.lintTool" = "golangci-lint-v2";
         "go.showWelcome" = false;
         "go.survey.prompt" = false;
@@ -158,6 +159,7 @@
         "python.analysis.displayEnglishDiagnostics" = true;
         "python.analysis.enablePytestSupport" = false;
         "python.analysis.indexing" = true;
+        "python.analysis.inlayHints.callArgumentNames" = "partial";
         "python.analysis.inlayHints.functionReturnTypes" = true;
         "python.analysis.inlayHints.variableTypes" = true;
         "python.analysis.languageServerMode" = "full";
