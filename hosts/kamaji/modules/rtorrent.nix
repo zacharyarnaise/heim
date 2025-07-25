@@ -92,6 +92,7 @@ in {
       "d ${downloadDir}/manual 0755 rtorrent rtorrent - -"
       "d ${downloadDir}/radarr 0755 rtorrent rtorrent - -"
       "d ${downloadDir}/sonarr 0755 rtorrent rtorrent - -"
+      "d ${downloadDir}/lidarr 0755 lidarr lidarr - -"
     ];
 
     services.rtorrent.serviceConfig = {
