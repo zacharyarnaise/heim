@@ -14,7 +14,7 @@ in {
     settings = {
       Address = "10.0.1.2";
       Port = 4533;
-      MusicFolder = "/storage/sb01/music/library";
+      MusicFolder = "/storage/sb01/music";
       DataFolder = "/storage/data01/navidrome/data";
       LogLevel = "info";
       EnableInsightsCollector = false;
