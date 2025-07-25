@@ -8,11 +8,9 @@
 
     settings = {
       library = "/storage/data01/beets/library.db";
-      directory = "/storage/sb01/music/library";
+      directory = "/storage/sb01/music";
       plugins = builtins.concatStringsSep " " [
-        "edit"
         "fetchart"
-        "inline"
         "thumbnails"
       ];
       paths = {
@@ -22,11 +20,12 @@
       };
       import = {
         copy = false;
-        move = true;
+        move = false;
+        write = false;
       };
       fetchart = {
         sources = "coverart albumart itunes amazon filesystem";
-        minwidth = 500;
+        minwidth = 1200;
       };
     };
   };
