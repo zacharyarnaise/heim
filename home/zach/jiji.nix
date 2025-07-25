@@ -21,7 +21,7 @@
       import = {
         copy = false;
         move = false;
-        write = false;
+        write = true;
       };
       fetchart = {
         sources = "coverart albumart itunes amazon filesystem";
