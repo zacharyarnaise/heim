@@ -17,6 +17,10 @@
       ];
     };
   };
+  systemd.user.tmpfiles.rules = [
+    "d /home/persist/zach/.config/vesktop/sessionData 0750 zach - -"
+    "d /home/persist/zach/.config/vesktop/settings 0750 zach - -"
+  ];
 
   xdg.configFile = {
     "vesktop/settings.json".text = lib.generators.toJSON {} {

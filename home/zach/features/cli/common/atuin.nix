@@ -34,4 +34,10 @@
       logLevel = "warn";
     };
   };
+  home.persistence."/persist${config.home.homeDirectory}" = {
+    files = [
+      ".local/share/host_id"
+      ".local/share/key"
+    ];
+  };
 }

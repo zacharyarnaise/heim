@@ -15,6 +15,9 @@ in {
       ".ssh/known_hosts.d"
     ];
   };
+  systemd.user.tmpfiles.rules = [
+    "d /home/persist/zach/.ssh/known_hosts.d 0750 zach - -"
+  ];
 
   programs.ssh = {
     enable = true;
