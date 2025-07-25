@@ -36,8 +36,8 @@
   };
   home.persistence."/persist${config.home.homeDirectory}" = {
     files = [
-      ".local/share/atuinhost_id"
-      ".local/share/atuin/imkey"
+      ".local/share/atuin/host_id"
+      ".local/share/atuin/key"
     ];
   };
 }
