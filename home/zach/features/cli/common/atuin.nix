@@ -38,6 +38,7 @@
     files = [
       ".local/share/atuin/host_id"
       ".local/share/atuin/key"
+      ".local/share/atuin/last_sync_time"
     ];
   };
 }
