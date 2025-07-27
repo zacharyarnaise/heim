@@ -65,7 +65,7 @@ in {
       "opacity 1.0 override, initialTitle:(Discord Popout)"
       "workspace 7, initialTitle:(Discord Popout)"
 
-      "opacity 1.0 override 0.95 override, class:^(chromium-browser|firefox)$"
+      "opacity 1.0 override 0.95 override, class:^(chromium-browser|firefox|feishin)$"
 
       # make pop-up file dialogs floating, centred, and pinned
       "float, title:(Open|Progress|Save File)"

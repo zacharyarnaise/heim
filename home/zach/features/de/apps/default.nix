@@ -3,6 +3,6 @@
     ./chromium.nix
     ./firefox.nix
     ./discord.nix
-    ./tidal.nix
+    ./feishin.nix
   ];
 }
