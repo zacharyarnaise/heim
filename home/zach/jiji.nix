@@ -24,8 +24,14 @@
         write = true;
       };
       fetchart = {
-        sources = "coverart albumart itunes amazon filesystem";
+        cautious = true;
+        sources = "coverart itunes amazon albumart filesystem";
         minwidth = 1200;
+        maxwidth = 1800;
+        enforce_ratio = true;
+        quality = 80;
+        max_filesize = 1048576;
+        cover_format = "JPEG";
       };
     };
   };
