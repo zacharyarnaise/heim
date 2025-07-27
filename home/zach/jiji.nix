@@ -12,6 +12,7 @@
       plugins = builtins.concatStringsSep " " [
         "fetchart"
         "thumbnails"
+        "edit"
       ];
       paths = {
         default = "$albumartist/$album%aunique{}/$track $title";
