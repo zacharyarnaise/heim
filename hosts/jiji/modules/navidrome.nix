@@ -24,6 +24,7 @@ in {
       CoverJpegQuality = 80;
       DefaultUIVolume = 50;
       EnableFavourites = false;
+      EnableMediaFileCoverArt = false;
       EnableStarRating = false;
       "LastFM.Enabled" = true;
       "LastFM.ApiKey" = secrets."navidrome/lastfm/apikey".path;
