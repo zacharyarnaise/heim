@@ -33,6 +33,12 @@
         max_filesize = 1048576;
         cover_format = "JPEG";
       };
+      match = {
+        preferred = {
+          media = ["CD" "Digital Media|File"];
+          original_year = true;
+        };
+      };
     };
   };
 }
