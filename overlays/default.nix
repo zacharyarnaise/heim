@@ -30,7 +30,6 @@ in {
       prev.sbctl.override {databasePath = "/persist/etc/secureboot";};
 
     waybar = addPatches prev.waybar [
-      ./waybar_mpris_title_clean.diff
       ./waybar_wireplumber_notfound.diff
     ];
 
