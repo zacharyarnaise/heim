@@ -14,7 +14,7 @@ in {
 
     general = {
       layout = "dwindle";
-      border_size = 1;
+      border_size = 2;
       gaps_in = 10;
       gaps_out = 15;
       resize_on_border = true;
@@ -80,9 +80,9 @@ in {
       rounding = 8;
       rounding_power = 4.0;
       dim_inactive = true;
-      dim_strength = 0.2;
+      dim_strength = 0.1;
       active_opacity = config.stylix.opacity.applications;
-      inactive_opacity = 0.75;
+      inactive_opacity = config.stylix.opacity.applications;
       fullscreen_opacity = 1.0;
 
       blur = {
@@ -131,7 +131,7 @@ in {
         "fadeOut,       1, 2, easeInQuad"
         "fadeSwitch,    1, 1, easeInOutQuad"
         "fadeShadow,    1, 3, easeInOutQuad"
-        "fadeDim,       1, 4, easeInOutQuad"
+        "fadeDim,       1, 2, easeInOutQuad"
         "fadeLayersIn,  1, 3, easeOutBack"
         "fadeLayersOut, 1, 3, easeInBack"
 
