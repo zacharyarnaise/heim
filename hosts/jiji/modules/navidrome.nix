@@ -1,18 +1,28 @@
 {config, ...}: let
   inherit (config.sops) secrets;
 in {
-  sops.secrets = {
-    "navidrome/passkey" = {};
-    "navidrome/lastfm/apikey" = {};
-    "navidrome/lastfm/secret" = {};
-  };
+  sops.secrets = let
+    names = [
+      "navidrome/passkey"
+      "navidrome/lastfm/apikey"
+      "navidrome/lastfm/secret"
+    ];
+  in
+    builtins.listToAttrs (map (name: {
+        inherit name;
+        value = {
+          group = "navidrome";
+          owner = "navidrome";
+        };
+      })
+      names);
 
   services.navidrome = {
     enable = true;
     openFirewall = true;
 
     settings = {
-      Address = "10.0.1.2";
+      Address = "0.0.0.0";
       Port = 4533;
       MusicFolder = "/storage/sb01/music";
       DataFolder = "/storage/data01/navidrome/data";
