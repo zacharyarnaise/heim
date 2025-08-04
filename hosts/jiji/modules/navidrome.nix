@@ -22,7 +22,7 @@ in {
     openFirewall = true;
 
     settings = {
-      Address = "0.0.0.0";
+      Address = "10.0.1.2";
       Port = 4533;
       MusicFolder = "/storage/sb01/music";
       DataFolder = "/storage/data01/navidrome/data";
