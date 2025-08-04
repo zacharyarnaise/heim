@@ -33,9 +33,9 @@ in {
       CovertArtPriority = "*.jpg, *.JPG, *.jpeg, *.JPEG, *.png, *.PNG, embedded";
       CoverJpegQuality = 80;
       DefaultUIVolume = 50;
-      EnableFavourites = false;
+      EnableFavourites = true;
       EnableMediaFileCoverArt = false;
-      EnableStarRating = false;
+      EnableStarRating = true;
       "LastFM.Enabled" = true;
       "LastFM.ApiKey" = secrets."navidrome/lastfm/apikey".path;
       "LastFM.Secret" = secrets."navidrome/lastfm/secret".path;
