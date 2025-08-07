@@ -19,6 +19,7 @@
     inherit
       (pkgs)
       dive
+      openssl
       postgresql_17
       sops
       ;
