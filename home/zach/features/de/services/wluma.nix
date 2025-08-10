@@ -7,7 +7,7 @@
   };
 
   services.wluma = {
-    enable = true;
+    enable = false;
     settings = {
       als.none = {};
       output.ddcutil = [
