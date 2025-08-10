@@ -2,7 +2,6 @@
   inputs,
   config,
   lib,
-  pkgs,
   ...
 }: {
   imports = [
@@ -28,11 +27,13 @@
       "kvm-intel"
       "nct6683"
       "ddcci"
-      "ddcci-backlight"
-      "i2c-dev"
     ];
   };
-  services.udev.packages = [pkgs.ddcutil];
+  services.udev.extraRules = ''
+    ACTION=="add", SUBSYSTEM=="drm", ENV{DEVTYPE}=="drm_connector", ENV{DRM_CONNECTOR_FOR}="$name"
+    ACTION=="add", SUBSYSTEM=="i2c", IMPORT{parent}="DRM_CONNECTOR_FOR"
+    ACTION=="add", SUBSYSTEM=="i2c", ENV{DRM_CONNECTOR_FOR}=="?*", ATTR{new_device}="ddcci 0x37"
+  '';
 
   nix.settings.max-jobs = 28;
   hardware.cpu.intel.updateMicrocode = true;
