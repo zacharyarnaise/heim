@@ -34,7 +34,6 @@
   };
   services.udev.packages = [pkgs.ddcutil];
 
-  time.hardwareClockInLocalTime = true; # Fix clock drift on dual boot
   nix.settings.max-jobs = 28;
   hardware.cpu.intel.updateMicrocode = true;
   swapDevices = lib.mkForce [];
