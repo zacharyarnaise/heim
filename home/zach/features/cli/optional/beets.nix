@@ -20,6 +20,7 @@
       plugins = builtins.concatStringsSep " " [
         "edit"
         "replaygain"
+        "scrub"
       ];
       paths = {
         default = "$albumartist/$album%aunique{}/$track $title";
