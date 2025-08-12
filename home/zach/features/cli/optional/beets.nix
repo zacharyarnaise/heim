@@ -1,4 +1,15 @@
-{config, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
+  home.packages = builtins.attrValues {
+    inherit
+      (pkgs)
+      ffmpeg-headless
+      ;
+  };
+
   programs.beets = {
     enable = true;
 
@@ -7,8 +18,8 @@
       directory = "/storage/sb01/music";
       original_date = true;
       plugins = builtins.concatStringsSep " " [
-        "thumbnails"
         "edit"
+        "replaygain"
       ];
       paths = {
         default = "$albumartist/$album%aunique{}/$track $title";
@@ -25,6 +36,10 @@
           media = ["CD" "Digital Media|File"];
           original_year = true;
         };
+      };
+      replaygain = {
+        backend = "ffmpeg";
+        overwrite = true;
       };
     };
   };
