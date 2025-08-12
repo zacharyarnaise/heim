@@ -9,7 +9,7 @@
     settings = {
       default_session = {
         command = ''
-          ${pkgs.greetd.tuigreet}/bin/tuigreet \
+          ${pkgs.tuigreet}/bin/tuigreet \
           --greeting 'wake up...' \
           --time --time-format '%-d %B %H:%M:%S' \
           --remember --remember-session \
