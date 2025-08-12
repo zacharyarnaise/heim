@@ -7,9 +7,9 @@
   firefox-ui-fix = pkgs.fetchFromGitHub {
     owner = "black7375";
     repo = "Firefox-UI-Fix";
-    rev = "v8.7.2";
+    rev = "v8.7.3";
     fetchSubmodules = false;
-    sha256 = "sha256-t0mEpG2f43wdssmq7CXjQj01IzRYS2dy5N2US0gKTVA=";
+    sha256 = "sha256-2AIUzfWp7RhhW5Ku1qYTxr0y+1qpfCIHPVv3wdI2VyU=";
   };
 in {
   stylix.targets.firefox.profileNames = ["default"];
