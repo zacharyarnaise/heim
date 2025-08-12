@@ -19,6 +19,9 @@ in {
       ".config/gopass/config".text = ''
         [mounts]
             path = ${storePath}
+        [generate]
+            length = 48
+            symbols = true
       '';
     };
 
