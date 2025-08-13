@@ -1,6 +1,7 @@
 {lib, ...}: {
   imports = [
     ./hardware.nix
+    ./wireguard.nix
 
     ../common/headless.nix
     ../common/users/zach
