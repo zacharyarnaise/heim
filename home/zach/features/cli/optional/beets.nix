@@ -21,6 +21,8 @@
         "edit"
         "replaygain"
         "scrub"
+        "lastgenre"
+        "lyrics"
       ];
       paths = {
         default = "$albumartist/$album%aunique{}/$track $title";
