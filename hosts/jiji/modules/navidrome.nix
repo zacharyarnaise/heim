@@ -3,9 +3,7 @@
 in {
   sops.secrets = let
     names = [
-      "navidrome/passkey"
-      "navidrome/lastfm/apikey"
-      "navidrome/lastfm/secret"
+      "navidrome"
     ];
   in
     builtins.listToAttrs (map (name: {
@@ -21,6 +19,7 @@ in {
     enable = true;
     openFirewall = true;
 
+    environmentFile = secrets.navidrome.path;
     settings = {
       Address = "10.0.1.2";
       Port = 4533;
@@ -37,9 +36,6 @@ in {
       EnableMediaFileCoverArt = false;
       EnableStarRating = true;
       "LastFM.Enabled" = true;
-      "LastFM.ApiKey" = secrets."navidrome/lastfm/apikey".path;
-      "LastFM.Secret" = secrets."navidrome/lastfm/secret".path;
-      PasswordEncryptionKey = secrets."navidrome/passkey".path;
       "Scanner.WatcherWait" = "1m";
       SessionTimeout = "72h";
       UIWelcomeMessage = "( ͡° ͜ʖ ͡°)";
