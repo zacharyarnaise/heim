@@ -1,7 +1,6 @@
 {lib, ...}: {
   imports = [
     ./hardware.nix
-    ./wireguard.nix
 
     ../common/headless.nix
     ../common/users/zach
@@ -9,7 +8,6 @@
     ../common/optional/usbguard.nix
 
     ./modules/nixarr.nix
-    ./modules/rtorrent.nix
     ./modules/samba.nix
   ];
 
