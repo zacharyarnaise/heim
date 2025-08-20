@@ -23,6 +23,7 @@
         vsext.charliermarsh.ruff
         vsext.ms-python.python
         vsext.ms-python.vscode-pylance
+        vsext.ms-kubernetes-tools.vscode-kubernetes-tools
 
         vsext.redhat.ansible
         vsext.redhat.vscode-yaml
