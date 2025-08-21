@@ -9,10 +9,6 @@
 
   users.groups.media = {};
 
-  systemd.tmpfiles.rules = [
-    "d /storage/media 0770 root media - -"
-  ];
-
   sops.secrets = {
     "wg" = {};
   };
@@ -39,6 +35,12 @@
       openFirewall = false;
       vpn.enable = true;
       flood.enable = true;
+    };
+  };
+
+  systemd.services.jellyseerr = {
+    environment = {
+      LOG_LEVEL = "info";
     };
   };
 }
