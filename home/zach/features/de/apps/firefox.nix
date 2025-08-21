@@ -157,6 +157,7 @@ in {
         "devtools.popups.debug" = true;
         "devtools.toolbox.selectedTool" = "netmonitor";
         "devtools.theme" = "dark";
+        "devtools.netmonitor.requestfilter" = "-method:OPTIONS";
 
         # DNS-over-HTTPS
         "network.trr.mode" = 3;
