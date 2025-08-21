@@ -25,7 +25,7 @@ in {
       Port = 4533;
       MusicFolder = "/storage/sb01/music";
       DataFolder = "/storage/data01/navidrome/data";
-      LogLevel = "info";
+      LogLevel = "warn";
       EnableInsightsCollector = false;
 
       AutoImportPlaylists = false;
