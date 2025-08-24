@@ -51,7 +51,6 @@ in {
       export-options = "export-minimal";
       throw-keyids = true;
       armor = true;
-      no-symkey-cache = true;
       require-secmem = true;
 
       personal-cipher-preferences = "AES256";
