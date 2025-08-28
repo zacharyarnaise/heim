@@ -16,6 +16,7 @@
     "ingress-nginx" = "https://kubernetes.github.io/ingress-nginx";
     "redpanda" = "https://charts.redpanda.com";
     "sentry" = "https://sentry-kubernetes.github.io/charts";
+    "jetstack" = "https://charts.jetstack.io";
   };
 in {
   programs.k9s = {
