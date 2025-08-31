@@ -37,6 +37,7 @@ in {
       EnableStarRating = true;
       "LastFM.Enabled" = true;
       "Scanner.WatcherWait" = "1m";
+      "ListenBrainz.Enabled" = true;
       SessionTimeout = "72h";
       UIWelcomeMessage = "( ͡° ͜ʖ ͡°)";
     };
