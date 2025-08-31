@@ -81,8 +81,8 @@ in {
       # Datadog test recorder
       (createExtension {
         id = "kkbncfpddhdmkfmalecgnphegacgejoa";
-        sha256 = "sha256:0z6p70c7f2sgcsica6jam8cziryy6dva86kn7mfhs8y86yf9h40z";
-        version = "3.9.2";
+        sha256 = "sha256:18lgsynip1bzxv6mmxw3w3q00ivr3pkmc4qjzl00hj0yj97pkcxn";
+        version = "3.9.5";
       })
     ];
   };
