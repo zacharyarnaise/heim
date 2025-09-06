@@ -10,7 +10,7 @@
   users.groups.media = {};
 
   sops.secrets = {
-    "wg" = {};
+    "wg0" = {};
   };
   nixarr = {
     enable = true;
@@ -20,7 +20,7 @@
 
     vpn = {
       enable = true;
-      wgConf = config.sops.secrets."wg".path;
+      wgConf = config.sops.secrets."wg0".path;
     };
 
     jellyfin.enable = true;

@@ -7,6 +7,8 @@
 
     ../common/optional/usbguard.nix
 
+    ./modules/networking.nix
+    ./modules/wireguard.nix
     ./modules/nixarr.nix
     ./modules/samba.nix
   ];
