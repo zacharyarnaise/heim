@@ -17,6 +17,7 @@
     "redpanda" = "https://charts.redpanda.com";
     "sentry" = "https://sentry-kubernetes.github.io/charts";
     "jetstack" = "https://charts.jetstack.io";
+    "datadog" = "https://helm.datadoghq.com";
   };
 in {
   programs.k9s = {
