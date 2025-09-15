@@ -6,7 +6,9 @@
 }: {
   programs.rofi = {
     enable = true;
-    package = pkgs.rofi-wayland-unwrapped;
+    package = pkgs.rofi-unwrapped.override {
+      x11Support = false;
+    };
 
     font = lib.mkForce "${config.stylix.fonts.sansSerif.name} ${toString config.stylix.fonts.sizes.popups}";
     terminal = "${config.programs.wezterm.package}/bin/wezterm";
