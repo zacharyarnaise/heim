@@ -9,12 +9,14 @@
     package = pkgs.go_1_25;
 
     telemetry.mode = "off";
-    goBin = "go/bin";
-    goPath = "go";
-    goPrivate =
-      if config.hostSpec.isWork
-      then inputs.secrets.work.goPrivate
-      else {};
+    env = {
+      GOBIN = "go/bin";
+      GOPATH = "go";
+      GOPRIVATE =
+        if config.hostSpec.isWork
+        then inputs.secrets.work.goPrivate
+        else {};
+    };
   };
 
   home.packages = builtins.attrValues {
