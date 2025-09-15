@@ -134,7 +134,7 @@
         "go.toolsEnvVars" = {
           "GOBIN" = "${config.home.homeDirectory}/${config.programs.go.goBin}";
           "GOPATH" = "${config.home.homeDirectory}/${config.programs.go.goPath}";
-          "GOPRIVATE" = config.programs.go.goPrivate;
+          "GOPRIVATE" = config.programs.go.env.GOPRIVATE;
           "GOTELEMETRY" = config.programs.go.telemetry.mode;
         };
         "go.toolsManagement.autoUpdate" = false;
