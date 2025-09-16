@@ -1,12 +1,9 @@
-{
-  config,
-  lib,
-  ...
-}: {
+{config, ...}: {
   programs.wezterm = {
     enable = true;
     enableZshIntegration = config.programs.zsh.enable;
 
+    # For DPI: https://github.com/wezterm/wezterm/issues/7156
     extraConfig = let
       animationFps =
         if config.hostSpec.hasDiscreteGPU
@@ -22,6 +19,7 @@
         cursor_blink_ease_in = "Constant",
         cursor_blink_ease_out = "Linear",
         cursor_blink_rate = 500,
+        dpi = 384,
         enable_wayland = true,
         enable_scroll_bar = false,
         freetype_load_target = "Normal",

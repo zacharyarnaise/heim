@@ -56,6 +56,9 @@ in {
       "move 38% 45, class:(clipse)"
       "pin, class:(clipse)"
       "stayfocused, class:(clipse)"
+      "noscreenshare, class:(clipse)"
+
+      "nomaxsize, class:(org.wezfurlong.wezterm)"
 
       "float, class:(io.github.Qalculate.qalculate-qt)"
       "size 640 500, class:(io.github.Qalculate.qalculate-qt)"
@@ -133,6 +136,8 @@ in {
         "fadeDim,       1, 2, easeInOutQuad"
         "fadeLayersIn,  1, 3, easeOutBack"
         "fadeLayersOut, 1, 3, easeInBack"
+        "fadePopups,    0"
+        "fadeDpms,      1, 50, easeOutQuad"
 
         "border, 1, 5, easeOutQuad"
 
