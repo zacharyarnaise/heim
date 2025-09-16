@@ -108,7 +108,6 @@ in {
 
     animations = {
       enabled = true;
-      first_launch_animation = false;
 
       bezier = [
         "easeInQuad,  0.11, 0,   0.5,   0.6"
@@ -160,11 +159,6 @@ in {
         disable_while_typing = true;
         middle_button_emulation = true;
       };
-    };
-
-    gestures = {
-      workspace_swipe = true;
-      workspace_swipe_forever = true;
     };
 
     cursor = {
