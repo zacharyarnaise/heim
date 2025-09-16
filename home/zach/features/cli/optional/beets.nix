@@ -23,6 +23,7 @@
         "scrub"
         "lastgenre"
         "lyrics"
+        "autobpm"
       ];
       paths = {
         default = "$albumartist/$album%aunique{}/$track $title";
