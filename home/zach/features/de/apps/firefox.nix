@@ -66,7 +66,7 @@ in {
           };
           "Grep.app" = {
             urls = [{template = "https://grep.app/search?q={searchTerms}";}];
-            icon = "https://grep.app/static/icon.png";
+            icon = "https://grep.app/icon.png";
             updateInterval = 7 * (24 * 60 * 60 * 1000);
             definedAliases = ["@gr"];
           };
@@ -78,9 +78,20 @@ in {
           };
           "cheat.sh" = {
             urls = [{template = "https://cheat.sh/{searchTerms}";}];
-            icon = "https://cheat.sh/favicon.ico";
-            updateInterval = 7 * (24 * 60 * 60 * 1000);
             definedAliases = ["@chs"];
+          };
+
+          "Sourcegraph Nix" = {
+            urls = [{template = "https://sourcegraph.com/search?q=context:global+file:.nix%24+{searchTerms}&patternType=literal";}];
+            icon = "https://sourcegraph.com/favicon.ico";
+            updateInterval = 7 * (24 * 60 * 60 * 1000);
+            definedAliases = ["@snx"];
+          };
+          "Sourcegraph Go" = {
+            urls = [{template = "https://sourcegraph.com/search?q=context:global+file:.go%24+{searchTerms}&patternType=literal";}];
+            icon = "https://sourcegraph.com/favicon.ico";
+            updateInterval = 7 * (24 * 60 * 60 * 1000);
+            definedAliases = ["@sgo"];
           };
 
           "amazondotcom-us".metaData.hidden = true;
@@ -167,17 +178,21 @@ in {
         "app.normandy.enabled" = false;
         "app.normandy.first_run" = false;
         "app.shield.optoutstudies.enabled" = false;
+        "breakpad.reportURL" = "";
         "browser.tabs.crashReporting.sendReport" = false;
         "browser.crashReports.unsubmittedCheck.enabled" = false;
         "browser.crashReports.unsubmittedCheck.autoSubmit2" = false;
         "browser.safebrowsing.enabled" = false;
+        "browser.send_pings" = false;
         "datareporting.healthreport.uploadEnabled" = false;
         "datareporting.policy.dataSubmissionEnabled" = false;
-        "toolkit.coverage.enabled" = false;
         "toolkit.coverage.opt-out" = true;
+        "toolkit.telemetry.unified" = false;
         "toolkit.telemetry.enabled" = false;
         "toolkit.telemetry.archive.enabled" = false;
         "toolkit.telemetry.coverage.opt-out" = true;
+        "captivedetect.canonicalURL" = "";
+        "network.captive-portal-service.enabled" = false;
 
         # Security / Privacy
         "accessibility.typeaheadfind.flashBar" = 0;
@@ -191,7 +206,6 @@ in {
         "browser.privatebrowsing.preserveClipboard" = false;
         "browser.search.suggest.enabled" = false;
         "browser.search.update" = false;
-        "browser.send_pings" = false;
         "browser.topsites.component.enabled" = false;
         "browser.topsites.contile.enabled" = false;
         "browser.translations.enabled" = false;
