@@ -38,11 +38,12 @@ in {
       "iocharset=utf8"
       "vers=3.0"
 
+      "_netdev"
       "x-systemd.automount"
       "noauto"
-      "x-systemd.idle-timeout=1min"
-      "x-systemd.device-timeout=5s"
-      "x-systemd.mount-timeout=5s"
+      "x-systemd.idle-timeout=2min"
+      "x-systemd.device-timeout=10s"
+      "x-systemd.mount-timeout=10s"
 
       "uid=lidarr"
       "gid=media"
