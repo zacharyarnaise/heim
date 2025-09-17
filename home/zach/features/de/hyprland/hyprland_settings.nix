@@ -137,7 +137,7 @@ in {
         "fadeLayersIn,  1, 3, easeOutBack"
         "fadeLayersOut, 1, 3, easeInBack"
         "fadePopups,    0"
-        "fadeDpms,      1, 50, easeOutQuad"
+        "fadeDpms,      1, 20, easeInOutQuad"
 
         "border, 1, 5, easeOutQuad"
 
