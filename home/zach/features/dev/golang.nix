@@ -1,6 +1,7 @@
 {
   pkgs,
   config,
+  lib,
   inputs,
   ...
 }: {
@@ -10,12 +11,11 @@
 
     telemetry.mode = "off";
     env = {
-      GOBIN = "go/bin";
-      GOPATH = "go";
+      GOPATH = [
+        "${config.home.homeDirectory}/go"
+      ];
       GOPRIVATE =
-        if config.hostSpec.isWork
-        then inputs.secrets.work.goPrivate
-        else {};
+        lib.optionals (config.hostSpec.isWork) inputs.secrets.work.goPrivate;
     };
   };
 
