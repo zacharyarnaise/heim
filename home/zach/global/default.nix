@@ -1,12 +1,10 @@
 {
   inputs,
   lib,
+  config,
   hostSpec,
   ...
-}: let
-  homePath = "/home/zach";
-  homeDirectories = ["Code" "Documents" "Downloads" "Pictures" "Videos"];
-in {
+}: {
   imports =
     (map lib.custom.relativeToRoot ["modules/home-manager" "modules/common"])
     ++ [
@@ -31,17 +29,17 @@ in {
   home = {
     stateVersion = "25.05";
     username = "zach";
-    homeDirectory = homePath;
+    homeDirectory = "/home/${config.home.username}";
     sessionPath = ["$HOME/.local/bin"];
 
-    persistence."/persist${homePath}" = {
-      allowOther = false;
-      defaultDirectoryMethod = "symlink";
-      directories = lib.optionals (hostSpec.kind != "headless") homeDirectories;
+    persistence."/persist" = {
+      directories = lib.optionals (hostSpec.kind != "headless") [
+        "Code"
+        "Documents"
+        "Downloads"
+        "Pictures"
+        "Videos"
+      ];
     };
   };
-  systemd.user.tmpfiles.rules = lib.mkIf (hostSpec.kind != "headless") (
-    lib.lists.forEach homeDirectories
-    (dir: "d /persist${homePath}/${dir} 0750 zach zach - -")
-  );
 }

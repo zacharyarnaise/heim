@@ -34,7 +34,7 @@
       logLevel = "warn";
     };
   };
-  home.persistence."/persist${config.home.homeDirectory}" = {
+  home.persistence."/persist" = {
     files = [
       ".local/share/atuin/host_id"
       ".local/share/atuin/key"

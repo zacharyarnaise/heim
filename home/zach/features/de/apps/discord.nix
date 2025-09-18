@@ -1,6 +1,5 @@
 {
   pkgs,
-  config,
   lib,
   ...
 }: {
@@ -9,7 +8,7 @@
   stylix.targets.vesktop.enable = true;
 
   home.persistence = {
-    "/persist${config.home.homeDirectory}" = {
+    "/persist" = {
       directories = [
         ".config/Vencord/settings"
         ".config/vesktop/sessionData"
@@ -17,10 +16,6 @@
       ];
     };
   };
-  systemd.user.tmpfiles.rules = [
-    "d /persist/home/zach/.config/vesktop/sessionData 0750 zach - -"
-    "d /persist/home/zach/.config/vesktop/settings 0750 zach - -"
-  ];
 
   xdg.configFile = {
     "vesktop/settings.json".text = lib.generators.toJSON {} {

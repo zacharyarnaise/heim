@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   home.packages = builtins.attrValues {
     inherit
       (pkgs)
@@ -48,7 +44,7 @@
     };
   };
 
-  home.persistence."/persist${config.home.homeDirectory}" = {
+  home.persistence."/persist" = {
     files = [
       ".config/beets/state.pickle"
     ];

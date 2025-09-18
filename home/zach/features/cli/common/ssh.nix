@@ -10,14 +10,11 @@
     ]
     (n: "/persist${config.home.homeDirectory}/.ssh/${n}");
 in {
-  home.persistence."/persist${config.home.homeDirectory}" = {
+  home.persistence."/persist" = {
     directories = [
       ".ssh/known_hosts.d"
     ];
   };
-  systemd.user.tmpfiles.rules = [
-    "d /persist/home/zach/.ssh/known_hosts.d 0750 zach - -"
-  ];
 
   programs.ssh = {
     enable = true;
