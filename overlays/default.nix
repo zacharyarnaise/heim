@@ -37,15 +37,6 @@ in {
       ./wezterm-frac_scaling_fix.diff
     ];
 
-    yubikey-agent = prev.yubikey-agent.overrideAttrs (oldAttrs: {
-      patches =
-        (oldAttrs.patches or [])
-        ++ [
-          ./yubikey-agent_deps_update.diff
-          ./yubikey-agent_ed25519.diff
-        ];
-      vendorHash = "sha256-lTBDgmG4vGiu0fW8/hdUOBsNiVQcC6nh+10MReFqA7M=";
-    });
     yubikey-touch-detector = addPatches prev.yubikey-touch-detector [
       ./yubikey-touch-detector_notify.diff
     ];
