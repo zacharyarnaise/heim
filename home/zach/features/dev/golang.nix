@@ -15,7 +15,7 @@
         "${config.home.homeDirectory}/go"
       ];
       GOPRIVATE =
-        lib.optionals (config.hostSpec.isWork) inputs.secrets.work.goPrivate;
+        lib.optionals config.hostSpec.isWork inputs.secrets.work.goPrivate;
     };
   };
 
