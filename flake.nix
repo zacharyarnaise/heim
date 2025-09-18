@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs-systemd2579.url = "github:nixos/nixpkgs/5e556339838e4221816d734d30c9459e764684c7";
 
     # Inputs used by all configurations
     nixos-hardware.url = "github:nixos/nixos-hardware";
@@ -98,6 +99,7 @@
         modules = [
           nixpkgs.nixosModules.readOnlyPkgs
           {nixpkgs.pkgs = pkgsFor.${system};}
+          {systemd.package = inputs.nixpkgs-systemd2579.legacyPackages."${system}".systemd;}
 
           ./hosts/${hostname}/spec.nix
           ./hosts/${hostname}

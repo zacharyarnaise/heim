@@ -299,11 +299,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1758184248,
-        "narHash": "sha256-TOazVsj8D1LTGQ6q8xdtfoPs9Z+PiqUS952WvZPssR0=",
+        "lastModified": 1758207369,
+        "narHash": "sha256-BG7GlXo5moXtrFSCqnkIb1Q00szOZXTj5Dx7NmWgves=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "bf7056c6a2d893d80db18d06d7e730d6515aaae8",
+        "rev": "b5698ed57db7ee7da5e93df2e6bbada91c88f3ce",
         "type": "github"
       },
       "original": {
@@ -507,6 +507,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-systemd2579": {
+      "locked": {
+        "lastModified": 1757787576,
+        "narHash": "sha256-u8DiziF7F4o1UwTxaLJuV4Vb8Lk2KLhQHgrRN9dImIA=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "5e556339838e4221816d734d30c9459e764684c7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "5e556339838e4221816d734d30c9459e764684c7",
+        "type": "github"
+      }
+    },
     "nixvim": {
       "inputs": {
         "flake-parts": "flake-parts_2",
@@ -618,6 +634,7 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
         "nixpkgs-stable": "nixpkgs-stable_2",
+        "nixpkgs-systemd2579": "nixpkgs-systemd2579",
         "nixvim": "nixvim",
         "secrets": "secrets",
         "sops-nix": "sops-nix",
