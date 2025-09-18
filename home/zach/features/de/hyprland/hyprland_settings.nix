@@ -166,6 +166,12 @@ in {
       };
     };
 
+    gesture = [
+      "3, horizontal, workspace"
+      "4, left, dispatcher, movewindow, mon:-1"
+      "4, right, dispatcher, movewindow, mon:+1"
+    ];
+
     cursor = {
       enable_hyprcursor = true;
       inactive_timeout = 5.0;
