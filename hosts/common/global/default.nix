@@ -21,13 +21,13 @@
     ];
 
   environment = {
-    systemPackages = builtins.attrValues {
-      inherit
-        (pkgs)
-        coreutils
-        pciutils
-        ;
-    };
+    systemPackages = [
+      (lib.hiPrio pkgs.uutils-coreutils-noprefix)
+      (lib.hiPrio pkgs.uutils-diffutils)
+      (lib.hiPrio pkgs.uutils-findutils)
+
+      pkgs.pciutils
+    ];
     stub-ld.enable = false;
   };
 
