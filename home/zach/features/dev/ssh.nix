@@ -27,14 +27,16 @@
     then secrets.work.ssh.matchBlocks
     else {};
 in {
-  programs.ssh = {
-    addKeysToAgent = "yes";
-    controlMaster = "auto";
-    controlPath = "~/.ssh/sockets/control-%r@%h:%p";
-    controlPersist = "15m";
-
-    matchBlocks = hostsConfig // privateConfig;
-  };
+  programs.ssh.matchBlocks =
+    {
+      "*" = {
+        addKeysToAgent = "yes";
+        controlMaster = "auto";
+        controlPath = "~/.ssh/sockets/control-%r@%h:%p";
+        controlPersist = "15m";
+      };
+    }
+    // hostsConfig // privateConfig;
 
   home.file = {
     ".ssh/sockets/.keep".text = "";

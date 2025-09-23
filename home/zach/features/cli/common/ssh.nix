@@ -18,13 +18,20 @@ in {
 
   programs.ssh = {
     enable = true;
-
-    hashKnownHosts = true;
-    userKnownHostsFile = "${config.home.homeDirectory}/.ssh/known_hosts.d/hosts";
-    serverAliveCountMax = 3;
-    serverAliveInterval = 5;
+    enableDefaultConfig = false; # Disable it, will be deprecated in the future
 
     matchBlocks = {
+      "*" = {
+        addKeysToAgent = lib.mkDefault "no";
+        compression = false;
+        controlMaster = lib.mkDefault "no";
+        controlPersist = lib.mkDefault "no";
+        hashKnownHosts = true;
+        userKnownHostsFile = "${config.home.homeDirectory}/.ssh/known_hosts.d/hosts";
+        serverAliveCountMax = 3;
+        serverAliveInterval = 5;
+      };
+
       "github.com" = {
         host = "github.com";
         user = "git";
