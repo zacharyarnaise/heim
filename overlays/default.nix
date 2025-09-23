@@ -26,13 +26,16 @@ in {
       k3sVersion = "1.33.4-k3s1";
     };
 
-    lidarr = prev.lidarr.overrideAttrs (_: {
-      version = "2.14.2.4785";
-      src = prev.fetchurl {
-        url = "https://github.com/Lidarr/Lidarr/releases/download/v2.14.2.4785/Lidarr.develop.2.14.2.4785.linux-core-x64.tar.gz";
-        hash = "sha256-4l96x/zYeF+b6riYt6TzO0y7pOjTMxj3qxFVmnzwmk0=";
-      };
-    });
+    lidarr = let
+      version = "2.14.3.4791";
+    in
+      prev.lidarr.overrideAttrs (_: {
+        inherit version;
+        src = prev.fetchurl {
+          url = "https://github.com/Lidarr/Lidarr/releases/download/v${version}/Lidarr.develop.${version}.linux-core-x64.tar.gz";
+          hash = "sha256-A7khU6ayTyX7JkeOHsojEmtfqIfWn+c+UxTagyS3J1A=";
+        };
+      });
 
     sbctl =
       prev.sbctl.override {databasePath = "/persist/etc/secureboot";};
