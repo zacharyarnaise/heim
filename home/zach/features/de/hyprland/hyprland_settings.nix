@@ -15,10 +15,10 @@ in {
     general = {
       layout = "dwindle";
       border_size = 2;
-      gaps_in = 10;
-      gaps_out = 15;
+      gaps_in = 5;
+      gaps_out = 10;
       resize_on_border = true;
-      extend_border_grab_area = 20;
+      extend_border_grab_area = 10;
     };
 
     xwayland = {
@@ -79,33 +79,36 @@ in {
       "pin, class:(xdg-desktop-portal-gtk)"
     ];
 
-    decoration = {
-      rounding = 8;
+    decoration = let
+      baseOpacity = config.stylix.opacity.applications;
+    in {
+      rounding = 10;
       rounding_power = 4.0;
       dim_inactive = true;
-      dim_strength = 0.1;
-      active_opacity = config.stylix.opacity.applications;
-      inactive_opacity = config.stylix.opacity.applications;
+      dim_strength = 0.15;
+      active_opacity = baseOpacity;
+      inactive_opacity = baseOpacity * 0.95;
       fullscreen_opacity = 1.0;
 
       blur = {
         enabled = true;
-        popups = true;
+        popups = false;
         size = 5;
         passes = 2;
-        contrast = 0.75;
-        brightness = 0.9;
-        vibrancy = 0.3;
-        vibrancy_darkness = 0.2;
+        noise = 0.05;
+        contrast = 1.1;
+        brightness = 0.8;
+        vibrancy = 0.2;
+        vibrancy_darkness = 0.1;
         xray = true;
       };
 
       shadow = {
-        enabled = true;
-        range = 16;
-        render_power = 4;
+        enabled = false;
+        range = 4;
+        render_power = 1;
         offset = "0 0";
-        scale = 0.98;
+        scale = 1.0;
       };
     };
 
@@ -133,7 +136,8 @@ in {
         "fadeOut,       1, 2, easeInQuad"
         "fadeSwitch,    1, 1, easeInOutQuad"
         "fadeShadow,    1, 3, easeInOutQuad"
-        "fadeDim,       1, 2, easeInOutQuad"
+        "fadeDim,       1, 3, easeInOutQuad"
+        "fadeSwitch,    1, 2, easeInOutQuad"
         "fadeLayersIn,  1, 3, easeOutBack"
         "fadeLayersOut, 1, 3, easeInBack"
         "fadePopups,    0"
@@ -151,12 +155,13 @@ in {
       kb_layout = config.hostSpec.kbdLayout;
       kb_variant = config.hostSpec.kbdVariant;
       numlock_by_default = true;
-      repeat_rate = 30;
+      repeat_rate = 50;
       repeat_delay = 400;
 
       accel_profile = "flat";
       sensitivity = 0.1;
       follow_mouse = 1;
+      follow_mouse_threshold = 200.0;
       mouse_refocus = true;
 
       scroll_method = "2fg";
@@ -183,7 +188,7 @@ in {
       disable_splash_rendering = true;
       force_default_wallpaper = 0;
       vfr = true;
-      vrr = 1;
+      vrr = 3;
       mouse_move_enables_dpms = true;
       key_press_enables_dpms = true;
       disable_autoreload = true;
