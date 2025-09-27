@@ -3,10 +3,10 @@ name: Lint
 on:
   pull_request:
     branches: [main]
-    paths: ['**.nix']
+    paths: ["**.nix"]
   push:
     branches: [main]
-    paths: ['**.nix']
+    paths: ["**.nix"]
 
 jobs:
   lint:
@@ -14,21 +14,22 @@ jobs:
     runs-on: ubuntu-latest
 
     permissions:
-      contents: write
+      contents: read
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8
         with:
+          persist-credentials: false
           ref: ${{ github.event.pull_request.head.ref }}
 
       - name: Install Nix
-        uses: nixbuild/nix-quick-install-action@v30
+        uses: nixbuild/nix-quick-install-action@2c9db80fb984ceb1bcaa77cdda3fdf8cfba92035
         with:
           nix_on_tmpfs: true
 
       - name: Cache Nix store paths
-        uses: nix-community/cache-nix-action@v6
+        uses: nix-community/cache-nix-action@135667ec418502fa5a3598af6fb9eb733888ce6a
         with:
           primary-key: nix-${{ runner.os }}-${{ hashFiles('**/*.nix', '**/flake.lock') }}
           restore-prefixes-first-match: nix-${{ runner.os }}-
@@ -38,7 +39,7 @@ jobs:
           purge-created: 0
           purge-primary-key: never
 
-      - uses: webfactory/ssh-agent@v0.9.0
+      - uses: webfactory/ssh-agent@a6f90b1f127823b31d4d4a8d96047790581349bd
         with:
           ssh-private-key: ${{ secrets.PK }}
 
@@ -49,10 +50,4 @@ jobs:
         run: nix run nixpkgs#statix -- check .
 
       - name: Run Alejandra
-        run: nix run nixpkgs#alejandra -- .
-
-      - name: Commit changes
-        if: github.event_name == 'push'
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: Auto format Nix files
+        run: nix run nixpkgs#alejandra --check -- .
