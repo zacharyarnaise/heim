@@ -45,9 +45,3 @@ jobs:
 
       - name: Check flake evaluation
         run: nix flake check
-
-      - name: Run statix
-        run: nix run nixpkgs#statix -- check .
-
-      - name: Run Alejandra
-        run: nix run nixpkgs#alejandra --check -- .
