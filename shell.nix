@@ -6,6 +6,7 @@ pkgs.mkShell {
       (pkgs)
       nix
       home-manager
+      nh
       deadnix
       statix
       git
