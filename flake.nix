@@ -32,6 +32,10 @@
       ref = "main";
       shallow = true;
     };
+    pre-commit-hooks = {
+      url = "github:cachix/git-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.2";
@@ -147,8 +151,12 @@
     ];
 
     # -- dev shell -------------------------------------------------------------
+    checks = forEachSystem (pkgs: import ./checks.nix {inherit inputs pkgs;});
     devShells = forEachSystem (pkgs: {
-      default = import ./shell.nix {inherit pkgs;};
+      default = import ./shell.nix {
+        inherit pkgs;
+        checks = self.checks.${pkgs.system};
+      };
     });
   };
 }

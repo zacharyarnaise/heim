@@ -18,7 +18,7 @@
           "${config.home.homeDirectory}/Code/Nix/"
           "/persist${config.home.homeDirectory}/Code/Nix/"
         ]
-        ++ lib.optionals (config.hostSpec.isWork) [
+        ++ lib.optionals config.hostSpec.isWork [
           "${config.home.homeDirectory}/Code/Work/"
           "/persist${config.home.homeDirectory}/Code/Work/"
         ];
