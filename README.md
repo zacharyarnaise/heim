@@ -1,10 +1,11 @@
 # ~/heim
 [![Built with Nix](https://img.shields.io/badge/Built%20with%20Nix%20and%20%E2%9D%A4%EF%B8%8F-5277C3?logo=nixos&logoColor=FFFFFF)](https://builtwithnix.org/)
-[![Lint & flake check](https://github.com/zacharyarnaise/heim/actions/workflows/lint.yml/badge.svg)](https://github.com/zacharyarnaise/heim/actions/workflows/lint.yml)
+[![Lint & flake check](https://github.com/zacharyarnaise/heim/actions/workflows/lint.yaml/badge.svg)](https://github.com/zacharyarnaise/heim/actions/workflows/lint.yaml)
 
 Here you'll find [NixOS](https://nixos.org/) & [home-manager](https://github.com/nix-community/home-manager) configurations for my systems, declared as a single Nix flake.
 
 ### Notable features:
+- Automated linting and flake checking via CI & [pre-commit hooks](https://github.com/cachix/git-hooks.nix)
 - Declarative disk partitioning ([disko](https://github.com/nix-community/disko))
 - Full disk encryption
 - Impermanence, ephemeral root in ramfs
