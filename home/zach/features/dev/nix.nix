@@ -5,7 +5,6 @@
       alejandra
       nil
       nix-tree
-      statix
       ;
   };
 
