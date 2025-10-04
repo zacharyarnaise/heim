@@ -107,6 +107,8 @@
         modules = [
           nixpkgs.nixosModules.readOnlyPkgs
           {nixpkgs.pkgs = pkgsFor.${system};}
+          # TODO: remove when systemd 257.9+ hits nixos-unstable
+          # See: https://github.com/NixOS/nixpkgs/issues/440073
           {systemd.package = inputs.nixpkgs-systemd2579.legacyPackages."${system}".systemd;}
 
           ./hosts/${hostname}/spec.nix
