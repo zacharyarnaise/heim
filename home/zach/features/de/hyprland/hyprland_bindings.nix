@@ -7,8 +7,7 @@
   hyprctl = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl";
   loginctl = "${pkgs.systemd}/bin/loginctl";
   rofi = "${config.programs.rofi.package}/bin/rofi";
-  foot = "${pkgs.foot}/bin/foot";
-  wezterm = "${config.programs.wezterm.package}/bin/wezterm";
+  foot = "${pkgs.foot}/bin/footclient";
   clipse = "${config.services.clipse.package}/bin/clipse";
   qalculate = "${pkgs.qalculate-qt}/bin/qalculate-qt";
   grimblast = "${pkgs.grimblast}/bin/grimblast";
@@ -95,7 +94,7 @@ in {
         "${modCtrl}, Space, Opens rofi ssh mod, exec, pkill rofi || ${rofi} -show ssh -no-show-icons"
         "${modCtrl}, V, Open clipse, exec, pkill clipse || ${foot} -a clipse ${clipse}"
         "${modCtrl}, K, Open qalculate, exec, pkill qalculate || ${qalculate}"
-        "${mod},     Return, Opens terminal, exec, uwsm-app -- ${wezterm}"
+        "${mod},     Return, Opens terminal, exec, uwsm-app -- ${foot}"
 
         # Screenshot
         ",      Print, Takes a screenshot of a region, exec, ${grimblast} --notify --freeze copy area"

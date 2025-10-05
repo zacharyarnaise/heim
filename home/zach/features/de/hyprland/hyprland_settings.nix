@@ -58,8 +58,6 @@ in {
       "stayfocused, class:(clipse)"
       "noscreenshare, class:(clipse)"
 
-      "nomaxsize, class:(org.wezfurlong.wezterm)"
-
       "float, class:(io.github.Qalculate.qalculate-qt)"
       "size 640 500, class:(io.github.Qalculate.qalculate-qt)"
       "pin, class:(io.github.Qalculate.qalculate-qt)"

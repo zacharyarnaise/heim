@@ -11,7 +11,7 @@
     };
 
     font = lib.mkForce "${config.stylix.fonts.sansSerif.name} ${toString config.stylix.fonts.sizes.popups}";
-    terminal = "${config.programs.wezterm.package}/bin/wezterm";
+    terminal = "${pkgs.foot}/bin/footclient";
     extraConfig = {
       modi = "drun,run,ssh";
       display-drun = "󱓞";

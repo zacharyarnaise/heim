@@ -11,6 +11,5 @@
     ./components/foot.nix
     ./components/rofi.nix
     ./components/waybar
-    ./components/wezterm.nix
   ];
 }
