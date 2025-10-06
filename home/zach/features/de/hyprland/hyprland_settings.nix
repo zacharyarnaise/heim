@@ -114,37 +114,38 @@ in {
       enabled = true;
 
       bezier = [
-        "easeInQuad,  0.11, 0,   0.5,   0.6"
-        "easeInBack,  0.36, 0,   0.65, -0.6"
-
-        "easeOutQuad, 0.5,  1,   0.89,  1"
-        "easeOutBack, 0.4,  1.5, 0.65,  1"
-
         "easeInOutQuad, 0.45, 0, 0.55, 1"
+        "easeOutBack, 0.4, 1.5, 0.65, 1"
+        "easeOutExpo, 0.16, 1, 0.3, 1"
+        "easeOutQuad, 0.5, 1, 0.89, 1"
       ];
       animation = [
-        "windowsIn,   1, 3, easeOutBack, popin 20%"
-        "windowsOut,  1, 3, easeInBack,  popin 60%"
-        "windowsMove, 1, 4, easeOutBack, slide 50%"
+        "windowsIn,   1, 3, easeOutExpo, popin 20%"
+        "windowsOut,  1, 3, easeOutExpo, popin"
+        "windowsMove, 1, 2, easeInOutQuad"
 
-        "layersIn,  1, 2, easeOutBack, fade"
-        "layersOut, 1, 3, easeInBack,  fade"
+        "layersIn,  1, 3, easeOutQuad, popin"
+        "layersOut, 1, 3, easeOutExpo, fade"
 
-        "fadeIn,        1, 2, easeOutQuad"
-        "fadeOut,       1, 2, easeInQuad"
-        "fadeSwitch,    1, 1, easeInOutQuad"
-        "fadeShadow,    1, 3, easeInOutQuad"
-        "fadeDim,       1, 3, easeInOutQuad"
-        "fadeSwitch,    1, 2, easeInOutQuad"
-        "fadeLayersIn,  1, 3, easeOutBack"
-        "fadeLayersOut, 1, 3, easeInBack"
+        "fadeIn,        1, 3, easeOutExpo"
+        "fadeOut,       1, 3, easeOutExpo"
+        "fadeSwitch,    1, 3, easeOutExpo"
+        "fadeShadow,    1, 3, easeOutExpo"
+        "fadeDim,       1, 4, easeOutExpo"
+        "fadeSwitch,    1, 3, easeOutExpo"
+        "fadeLayersIn,  1, 4, easeOutExpo"
+        "fadeLayersOut, 1, 4, easeOutExpo"
         "fadePopups,    0"
-        "fadeDpms,      1, 20, easeInOutQuad"
+        "fadeDpms,      1, 10, easeOutQuad"
 
-        "border, 1, 5, easeOutQuad"
+        "border,      1, 5, easeOutQuad"
+        "borderangle, 1, 10, easeOutExpo, once"
 
         "workspaces,       1, 3, easeOutBack, slidefade 10%"
         "specialWorkspace, 1, 3, easeOutBack, slidefadevert 10%"
+
+        "zoomFactor,   1, 3, easeOutExpo"
+        "monitorAdded, 0"
       ];
     };
 
