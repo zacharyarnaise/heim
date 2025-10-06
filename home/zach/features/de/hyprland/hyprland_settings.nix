@@ -120,21 +120,21 @@ in {
         "easeOutQuad, 0.5, 1, 0.89, 1"
       ];
       animation = [
-        "windowsIn,   1, 3, easeOutExpo, popin 20%"
-        "windowsOut,  1, 3, easeOutExpo, popin"
+        "windowsIn,   1, 4, easeOutExpo, popin 20%"
+        "windowsOut,  1, 4, easeOutExpo, popin"
         "windowsMove, 1, 2, easeInOutQuad"
 
-        "layersIn,  1, 3, easeOutQuad, popin"
+        "layersIn,  1, 1, easeOutQuad, popin"
         "layersOut, 1, 3, easeOutExpo, fade"
 
-        "fadeIn,        1, 3, easeOutExpo"
+        "fadeIn,        1, 5, easeOutExpo"
         "fadeOut,       1, 3, easeOutExpo"
         "fadeSwitch,    1, 3, easeOutExpo"
-        "fadeShadow,    1, 3, easeOutExpo"
+        "fadeShadow,    1, 4, easeOutExpo"
         "fadeDim,       1, 4, easeOutExpo"
         "fadeSwitch,    1, 3, easeOutExpo"
-        "fadeLayersIn,  1, 4, easeOutExpo"
-        "fadeLayersOut, 1, 4, easeOutExpo"
+        "fadeLayersIn,  1, 3, easeOutExpo"
+        "fadeLayersOut, 1, 3, easeOutExpo"
         "fadePopups,    0"
         "fadeDpms,      1, 10, easeOutQuad"
 
