@@ -12,6 +12,7 @@
       global = {
         disable_stdin = true;
         strict_env = true;
+        warn_timeout = 0;
       };
       whitelist.prefix =
         [
