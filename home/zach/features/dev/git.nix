@@ -13,10 +13,12 @@ in {
     difftastic = {
       enable = true;
       enableAsDifftool = true;
-      background = "dark";
-      color = "always";
-      display = "side-by-side";
-      context = 5;
+      options = {
+        background = "dark";
+        color = "always";
+        display = "side-by-side";
+        context = 5;
+      };
     };
 
     extraConfig.format.signOff = "false";
