@@ -37,6 +37,20 @@ in {
         };
       });
 
+    # Until https://github.com/NixOS/nixpkgs/pull/448674 is merged
+    hyprutils = let
+      version = "0.10.0";
+    in
+      prev.hyprutils.overrideAttrs (_: {
+        inherit version;
+        src = prev.fetchFromGitHub {
+          owner = "hyprwm";
+          repo = "hyprutils";
+          tag = "v${version}";
+          hash = "sha256-r1ed7AR2ZEb2U8gy321/Xcp1ho2tzn+gG1te/Wxsj1A=";
+        };
+      });
+
     sbctl =
       prev.sbctl.override {databasePath = "/persist/etc/secureboot";};
 
