@@ -49,6 +49,8 @@ in {
       "noanim, selection"
     ];
     windowrule = [
+      "nodim, fullscreen:1"
+
       "float, class:(clipse)"
       "animation slide, class:(clipse)"
       "noborder, class:(clipse)"
