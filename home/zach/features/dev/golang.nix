@@ -11,9 +11,8 @@
 
     telemetry.mode = "off";
     env = {
-      GOPATH = [
-        "${config.home.homeDirectory}/go"
-      ];
+      GOPATH = "${config.home.homeDirectory}/.go";
+      GOBIN = "${config.home.homeDirectory}/.go/bin";
       GOPRIVATE =
         lib.optionals config.hostSpec.isWork inputs.secrets.work.goPrivate;
     };
