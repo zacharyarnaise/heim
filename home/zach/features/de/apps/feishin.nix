@@ -1,7 +1,17 @@
 {pkgs, ...}: {
-  home.packages = [pkgs.feishin];
+  home.packages = [
+    (pkgs.symlinkJoin
+      {
+        name = "feishin";
+        paths = [pkgs.feishin];
+        buildInputs = [pkgs.makeWrapper];
+        postBuild = ''
+          wrapProgram $out/bin/feishin \
+            --prefix PATH : ${pkgs.mpv-unwrapped}/bin
+        '';
+      })
+  ];
 
-  programs.mpv.enable = true; # I use it as the audio backend
   services.playerctld.enable = true;
 
   home.persistence = {
