@@ -34,6 +34,7 @@
 
     persistence."/persist" = {
       directories = lib.optionals (hostSpec.kind != "headless") [
+        ".local/share/keyrings"
         "Code"
         "Documents"
         "Downloads"
