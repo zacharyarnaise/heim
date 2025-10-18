@@ -6,6 +6,7 @@
     ./optional/dconf.nix
     ./optional/greetd.nix
     ./optional/hyprland.nix
+    ./optional/keyring.nix
     ./optional/pipewire.nix
     ./optional/podman.nix
     ./optional/yubikey.nix
