@@ -26,6 +26,9 @@
       "nct6683"
       "i2c-dev"
     ];
+    kernelParams = [
+      "i8042.nopnp=1"
+    ];
   };
 
   services.pipewire = {
