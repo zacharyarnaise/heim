@@ -12,7 +12,7 @@
       ".envrc"
     ];
 
-    extraConfig = {
+    settings = {
       log.date = "iso";
       url = {
         "ssh://git@github.com".insteadOf = "https://github.com";

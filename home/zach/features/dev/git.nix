@@ -6,22 +6,24 @@
 }: let
   inherit (inputs) secrets;
 in {
-  programs.git = {
-    userName = "Zachary Arnaise";
-    userEmail = "121795280+zacharyarnaise@users.noreply.github.com";
-
-    difftastic = {
-      enable = true;
-      enableAsDifftool = true;
-      options = {
-        background = "dark";
-        color = "always";
-        display = "side-by-side";
-        context = 5;
-      };
+  programs.difftastic = {
+    enable = true;
+    git.enable = true;
+    git.diffToolMode = true;
+    options = {
+      background = "dark";
+      color = "always";
+      display = "side-by-side";
+      context = 5;
     };
+  };
 
-    extraConfig.format.signOff = "false";
+  programs.git = {
+    settings = {
+      format.signOff = "false";
+      user.email = "121795280+zacharyarnaise@users.noreply.github.com";
+      user.name = "Zachary Arnaise";
+    };
     signing.signByDefault = true;
 
     includes = lib.mkIf config.hostSpec.isWork [
