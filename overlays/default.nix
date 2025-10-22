@@ -26,31 +26,6 @@ in {
       k3sVersion = "1.33.4-k3s1";
     };
 
-    lidarr = let
-      version = "2.14.3.4791";
-    in
-      prev.lidarr.overrideAttrs (_: {
-        inherit version;
-        src = prev.fetchurl {
-          url = "https://github.com/Lidarr/Lidarr/releases/download/v${version}/Lidarr.develop.${version}.linux-core-x64.tar.gz";
-          hash = "sha256-A7khU6ayTyX7JkeOHsojEmtfqIfWn+c+UxTagyS3J1A=";
-        };
-      });
-
-    # Until https://github.com/NixOS/nixpkgs/pull/448674 is merged
-    hyprutils = let
-      version = "0.10.0";
-    in
-      prev.hyprutils.overrideAttrs (_: {
-        inherit version;
-        src = prev.fetchFromGitHub {
-          owner = "hyprwm";
-          repo = "hyprutils";
-          tag = "v${version}";
-          hash = "sha256-r1ed7AR2ZEb2U8gy321/Xcp1ho2tzn+gG1te/Wxsj1A=";
-        };
-      });
-
     sbctl =
       prev.sbctl.override {databasePath = "/persist/etc/secureboot";};
 
