@@ -11,7 +11,7 @@
       style = "numbers,changes,header";
     };
     extraPackages = builtins.attrValues {
-      inherit (pkgs.bat-extras) batdiff batman batgrep;
+      inherit (pkgs.stable.bat-extras) batdiff batman batgrep;
     };
   };
 
