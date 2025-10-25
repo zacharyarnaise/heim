@@ -8,7 +8,6 @@
 
   programs.beets = {
     enable = true;
-    package = pkgs.stable.beets;
 
     settings = {
       library = "/storage/data01/beets/library.db";
@@ -34,9 +33,15 @@
       };
       match = {
         preferred = {
-          media = ["CD" "Digital Media|File"];
+          media = ["Digital Media|File" "CD"];
           original_year = true;
         };
+      };
+      lyrics = {
+        auto = true;
+        force = true;
+        sources = ["lrclib" "tekstowo"];
+        synced = true;
       };
       replaygain = {
         backend = "ffmpeg";
