@@ -8,6 +8,15 @@
 
   programs.beets = {
     enable = true;
+    package = pkgs.stable.beets.override {
+      extraPatches = [
+        # Don't send user-agent bc some lyrics providers block it
+        (pkgs.fetchpatch {
+          url = "https://github.com/beetbox/beets/commit/095c69a853f6de70f131a1bfc62256e3d2c5cebe.patch";
+          hash = "sha256-CsJwQiXiRk3f5NFMuodpsb+lD3u3pbOzEejip5X28Po=";
+        })
+      ];
+    };
 
     settings = {
       library = "/storage/data01/beets/library.db";
