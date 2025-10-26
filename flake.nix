@@ -104,7 +104,8 @@
           heimRev = self.shortRev or self.dirtyShortRev;
         };
         modules = [
-          nixpkgs.nixosModules.readOnlyPkgs
+          # Broken by https://github.com/NixOS/nixpkgs/pull/454237
+          #nixpkgs.nixosModules.readOnlyPkgs
           {nixpkgs.pkgs = pkgsFor.${system};}
 
           ./hosts/${hostname}/spec.nix
