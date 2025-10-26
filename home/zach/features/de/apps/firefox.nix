@@ -26,6 +26,7 @@ in {
           ublock-origin
           gopass-bridge
           multi-account-containers
+          refined-github
           ;
       };
       search = {
