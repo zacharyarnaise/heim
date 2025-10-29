@@ -64,6 +64,10 @@
       url = "github:zacharyarnaise/k0s-nix/feat-controller_disable_components";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-vscode-extensions = {
+      url = "github:nix-community/nix-vscode-extensions";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     nixarr = {
       url = "github:rasmus-kirk/nixarr";
@@ -91,7 +95,9 @@
         import nixpkgs {
           inherit system;
           config.allowUnfree = true;
-          overlays = builtins.attrValues (import ./overlays {inherit inputs;});
+          overlays =
+            builtins.attrValues (import ./overlays {inherit inputs;})
+            ++ [inputs.nix-vscode-extensions.overlays.default];
         }
     );
     forEachSystem = f: lib.genAttrs supportedSystems (sys: f pkgsFor.${sys});

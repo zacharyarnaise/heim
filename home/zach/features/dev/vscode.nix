@@ -18,6 +18,7 @@
       enableUpdateCheck = false;
       extensions = let
         vsext = pkgs.vscode-extensions;
+        marketplace = pkgs.vscode-marketplace;
       in [
         vsext.jnoortheen.nix-ide
 
@@ -34,6 +35,8 @@
         vsext.github.copilot
         vsext.teabyii.ayu
         vsext.vscode-icons-team.vscode-icons
+
+        marketplace.lextudio.restructuredtext
       ];
       userSettings = {
         "extensions.autoUpdate" = false;
@@ -115,8 +118,9 @@
         };
 
         "ansible.ansible.path" = "${pkgs.ansible}/bin/ansible";
+        "ansible.lightspeed.enabled" = false;
         "ansible.validation.lint.path" = "${pkgs.ansible-lint}/bin/ansible-lint";
-        "ansible.python.interpreterPath" = "${pkgs.python312}/bin/python3";
+        "ansible.python.interpreterPath" = "${pkgs.python313}/bin/python3";
 
         "go.alternateTools" = {
           "delve" = "${pkgs.delve}/bin/dlv";
