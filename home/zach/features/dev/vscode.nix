@@ -39,6 +39,7 @@
         marketplace.lextudio.restructuredtext
         marketplace.trond-snekvik.simple-rst
         marketplace.swyddfa.esbonio
+        marketplace.chrisjsewell.myst-tml-syntax
       ];
       userSettings = {
         "extensions.autoUpdate" = false;
