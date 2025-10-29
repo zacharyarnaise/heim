@@ -20,7 +20,7 @@ in {
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false; # Disable it, will be deprecated in the future
-    package = pkgs.stable.openssh;
+    package = pkgs.openssh_hpn;
 
     matchBlocks = {
       "*" = {
