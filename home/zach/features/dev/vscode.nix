@@ -37,6 +37,8 @@
         vsext.vscode-icons-team.vscode-icons
 
         marketplace.lextudio.restructuredtext
+        marketplace.trond-snekvik.simple-rst
+        marketplace.swyddfa.esbonio
       ];
       userSettings = {
         "extensions.autoUpdate" = false;
