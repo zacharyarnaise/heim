@@ -3,7 +3,7 @@
   inputs,
   ...
 }: let
-  firefox-addons = inputs.firefox-addons.packages.${pkgs.system};
+  firefox-addons = inputs.firefox-addons.packages.${pkgs.stdenv.system};
   firefox-ui-fix = pkgs.fetchFromGitHub {
     owner = "black7375";
     repo = "Firefox-UI-Fix";

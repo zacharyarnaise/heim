@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: {
-  pre-commit-check = inputs.pre-commit-hooks.lib.${pkgs.system}.run {
+  pre-commit-check = inputs.pre-commit-hooks.lib.${pkgs.stdenv.system}.run {
     default_stages = ["pre-commit"];
     src = ./.;
     hooks = {

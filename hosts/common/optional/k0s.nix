@@ -11,7 +11,7 @@ in {
 
   services.k0s = {
     enable = true;
-    package = inputs.k0s-nix.packages."${pkgs.system}".k0s_1_33;
+    package = inputs.k0s-nix.packages."${pkgs.stdenv.system}".k0s_1_33;
 
     role = "single";
     dataDir = "/persist/k0s";

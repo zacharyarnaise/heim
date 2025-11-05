@@ -165,7 +165,7 @@
     devShells = forEachSystem (pkgs: {
       default = import ./shell.nix {
         inherit pkgs;
-        checks = self.checks.${pkgs.system};
+        checks = self.checks.${pkgs.stdenv.system};
       };
     });
   };
