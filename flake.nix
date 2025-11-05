@@ -36,14 +36,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    rust-overlay = {
-      url = "github:oxalica/rust-overlay/37f8f092415b444c3bed6eda6bcbee51cee22e5d";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     lanzaboote = {
-      url = "github:nix-community/lanzaboote/v0.4.2";
+      url = "github:nix-community/lanzaboote/v0.4.3";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.rust-overlay.follows = "rust-overlay";
+      inputs.pre-commit-hooks-nix.follows = "pre-commit-hooks";
     };
 
     nixvim = {
