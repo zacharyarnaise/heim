@@ -2,6 +2,7 @@
   config,
   inputs,
   lib,
+  pkgs,
   ...
 }: let
   flakeSecrets = inputs.secrets.hosts."kamaji";
@@ -22,6 +23,7 @@ in {
       "nvme"
       "sd_mod"
     ];
+    kernelPackages = lib.mkForce pkgs.linuxKernel.packages.linux_xanmod;
   };
 
   hardware.graphics.enable = true;
@@ -39,15 +41,14 @@ in {
       "vers=3.0"
 
       "_netdev"
-      "x-systemd.automount"
-      "noauto"
-      "x-systemd.idle-timeout=2min"
-      "x-systemd.mount-timeout=10s"
+      "auto"
 
       "uid=lidarr"
       "gid=media"
     ];
   };
+  # Needed for CIFS mount
+  systemd.network.wait-online.enable = true;
 
   nix.settings.max-jobs = 8;
   swapDevices = lib.mkForce [];
