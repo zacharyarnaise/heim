@@ -75,13 +75,13 @@
     zpool = {
       zstorage = {
         type = "zpool";
+        mountpoint = "/zstorage";
         options.ashift = "12";
         rootFsOptions = {
           atime = "off";
           compression = "lz4";
           "com.sun:auto-snapshot" = "false";
           dnodesize = "auto";
-          mountpoint = "none";
           acltype = "posixacl";
           xattr = "sa";
         };
@@ -89,8 +89,10 @@
         datasets = {
           storage = {
             type = "zfs_fs";
-            mountpoint = "/storage";
-            options.recordsize = "1M";
+            options = {
+              mountpoint = "/storage";
+              recordsize = "1M";
+            };
           };
         };
       };
