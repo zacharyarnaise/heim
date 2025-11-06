@@ -21,6 +21,7 @@
       dive
       openssl
       postgresql_17
+      redpanda-client
       sops
       ;
   };
