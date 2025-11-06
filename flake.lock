@@ -111,11 +111,11 @@
       },
       "locked": {
         "dir": "pkgs/firefox-addons",
-        "lastModified": 1762315418,
-        "narHash": "sha256-mLJeHkYvojbq/1vot6IXq85l0sN9KlAPbRzYo4Mnc4g=",
+        "lastModified": 1762401807,
+        "narHash": "sha256-Xe98njKWh3Uev/1E2IbrKbV9gFXMtCXD7gVkg/AAjgo=",
         "owner": "rycee",
         "repo": "nur-expressions",
-        "rev": "ccdfe1d5d7da86941ac363b5bf2b5bc88b15def2",
+        "rev": "34bcbbf442960b5a5f77414d691ef1cd4cbf8d8d",
         "type": "gitlab"
       },
       "original": {
@@ -456,11 +456,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1762307826,
-        "narHash": "sha256-LSUjMqInm+QvLhDA+ls266OlKPdGA+OVuD9z0XnSj+k=",
+        "lastModified": 1762394210,
+        "narHash": "sha256-6WdUH74KlneHu5Pq6l3DbEBHgyrLify3YTCdT5JqEpg=",
         "owner": "nix-community",
         "repo": "nix-vscode-extensions",
-        "rev": "996a2aa1e31ed5aeaa3f4a6f201f2bc385f19041",
+        "rev": "20329b2085ba393e910e521afffe72ae8bbe0b65",
         "type": "github"
       },
       "original": {
@@ -493,11 +493,11 @@
     },
     "nixos-hardware": {
       "locked": {
-        "lastModified": 1762336257,
-        "narHash": "sha256-2u5rstcMTqpAr4UF+exs5WGOT62VJRb4yauR6JJHJXs=",
+        "lastModified": 1762371679,
+        "narHash": "sha256-VjZLHnj9tqFRigpD6SJtTKmQsys77jCX5YcnmMnUqH8=",
         "owner": "nixos",
         "repo": "nixos-hardware",
-        "rev": "d48e8f0e1691e0200a675c13df7c85e275090a15",
+        "rev": "e4c6ee69e710805a15a3da905214a25618271609",
         "type": "github"
       },
       "original": {
@@ -548,11 +548,11 @@
         "systems": "systems_2"
       },
       "locked": {
-        "lastModified": 1762293638,
-        "narHash": "sha256-svsYLbxNq8EZoVtNF97wCAElZ2py5Q1p7viG6lTUixA=",
+        "lastModified": 1762415351,
+        "narHash": "sha256-Uvpzi75PDuVpLqecUMVdjCxUgZoTEAMM/zJLhyzSa9Y=",
         "owner": "nix-community",
         "repo": "nixvim",
-        "rev": "aa3a1dfb028cd09b8061862f9dd8d859467fc7ed",
+        "rev": "deb32aecac40d21706f41004b52e0310943ec5c8",
         "type": "github"
       },
       "original": {
@@ -675,10 +675,10 @@
     },
     "secrets": {
       "locked": {
-        "lastModified": 1757612948,
-        "narHash": "sha256-LTUb3kLzLUtOriKyyCQnyBqqcUAv1dDCF3YyE5qM3OM=",
+        "lastModified": 1762421377,
+        "narHash": "sha256-wQYoexFHAIdtYuI3xRDG1WHQlV2kcQr/Emka3RXwNj0=",
         "ref": "main",
-        "rev": "d51c1f00b18797c99199c19d133d4944afac1d40",
+        "rev": "20244f24d96dfdefda3bf054d6eaedde453f9166",
         "shallow": true,
         "type": "git",
         "url": "git+ssh://git@github.com/zacharyarnaise/heim-secrets.git"
