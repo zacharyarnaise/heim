@@ -2,7 +2,6 @@
   config,
   inputs,
   lib,
-  pkgs,
   ...
 }: let
   flakeSecrets = inputs.secrets.hosts."kamaji";
@@ -16,15 +15,12 @@ in {
     ./disko.nix
   ];
 
-  boot = {
-    initrd.availableKernelModules = [
-      "xhci_pci"
-      "ahci"
-      "nvme"
-      "sd_mod"
-    ];
-    kernelPackages = lib.mkForce pkgs.linuxKernel.packages.linux_xanmod;
-  };
+  boot.initrd.availableKernelModules = [
+    "xhci_pci"
+    "ahci"
+    "nvme"
+    "sd_mod"
+  ];
 
   hardware.graphics.enable = true;
 

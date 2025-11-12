@@ -4,7 +4,7 @@
   ...
 }: {
   boot = {
-    kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_latest;
+    kernelPackages = pkgs.linuxKernel.packages.linux_xanmod;
     kernelParams = ["hibernate=no"];
     plymouth.enable = false;
 
