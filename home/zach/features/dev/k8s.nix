@@ -18,6 +18,7 @@
     "sentry" = "https://sentry-kubernetes.github.io/charts";
     "jetstack" = "https://charts.jetstack.io";
     "datadog" = "https://helm.datadoghq.com";
+    "traefik" = "https://traefik.github.io/charts";
   };
 in {
   programs.k9s = {
