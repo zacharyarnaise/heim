@@ -47,6 +47,28 @@ in {
             };
             inherit (secretConfig) wifi-security;
           };
+          wf-2 = let
+            secretConfig = flakeSecrets.wireless.wf2;
+          in {
+            connection = {
+              id = "wf2";
+              type = "wifi";
+              interface-name = config.hostSpec.wlanInterface;
+            };
+            wifi.mode = "infrastructure";
+            wifi.ssid = "$WF2_SSID";
+            ipv4 = {
+              ignore-auto-dns = true;
+              may-fail = false;
+              method = "auto";
+            };
+            ipv6 = {
+              ignore-auto-dns = true;
+              method = "auto";
+              never-default = true;
+            };
+            inherit (secretConfig) wifi-security;
+          };
         };
       };
     };
