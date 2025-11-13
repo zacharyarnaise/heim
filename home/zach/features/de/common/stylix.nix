@@ -11,7 +11,7 @@
 
     base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
     polarity = "dark";
-    image = ../../../wallpapers/eWwM29wfU.jpg;
+    image = ../../../wallpapers/24.png;
     cursor = {
       package = pkgs.catppuccin-cursors.mochaDark;
       name = "catppuccin-mocha-dark-cursors";
