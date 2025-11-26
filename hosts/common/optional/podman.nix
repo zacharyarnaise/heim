@@ -3,7 +3,7 @@
   lib,
   ...
 }: let
-  rootlessPath = "/persist/containers-rootless";
+  rootlessPath = "/tmp/containers-rootless";
   normalUsers = lib.filterAttrs (_: v: v.isNormalUser) config.users.users;
 in {
   virtualisation = {
@@ -16,6 +16,7 @@ in {
           graphroot = "/persist/containers/storage";
           runroot = "/run/containers/storage";
           rootless_storage_path = "${rootlessPath}/$USER";
+          transient_store = true;
         };
       };
       containersConf.settings = {
@@ -27,6 +28,7 @@ in {
           compose_warning_logs = false;
           events_logger = "none";
           healthcheck_events = false;
+          image_volume_mode = "tmpfs";
           runtime = "crun";
         };
       };
@@ -45,9 +47,7 @@ in {
       dockerCompat = true;
       dockerSocket.enable = true;
 
-      defaultNetwork.settings = {
-        dns_enabled = true;
-      };
+      defaultNetwork.settings.dns_enabled = true;
     };
   };
 
