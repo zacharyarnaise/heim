@@ -3,7 +3,7 @@
   lib,
   ...
 }: let
-  rootlessPath = "/tmp/containers-rootless";
+  rootlessPath = "/persist/containers-rootless";
   normalUsers = lib.filterAttrs (_: v: v.isNormalUser) config.users.users;
 in {
   virtualisation = {
@@ -12,7 +12,7 @@ in {
       registries.insecure = ["localhost"];
       storage.settings = {
         storage = {
-          driver = "btrfs";
+          driver = "overlay";
           graphroot = "/persist/containers/storage";
           runroot = "/run/containers/storage";
           rootless_storage_path = "${rootlessPath}/$USER";
