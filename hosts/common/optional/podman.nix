@@ -16,7 +16,6 @@ in {
           graphroot = "/persist/containers/storage";
           runroot = "/run/containers/storage";
           rootless_storage_path = "${rootlessPath}/$USER";
-          transient_store = true;
         };
       };
       containersConf.settings = {
