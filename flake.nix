@@ -124,18 +124,6 @@
         ];
       };
     };
-
-    mkHome = username: hostname: system: {
-      name = "${username}@${hostname}";
-      value = lib.homeManagerConfiguration {
-        extraSpecialArgs = {
-          inherit lib inputs outputs;
-          inherit (import ./hosts/${hostname}/spec.nix) hostSpec;
-        };
-        pkgs = pkgsFor.${system};
-        modules = [./home/${username}/${hostname}.nix];
-      };
-    };
   in {
     # Custom packages to be shared or upstreamed
     packages = forEachSystem (pkgs: import ./pkgs {inherit pkgs;});
@@ -149,15 +137,6 @@
       (mkNixos "kamaji" "x86_64-linux")
       (mkNixos "noface" "x86_64-linux")
       (mkNixos "ponyo" "x86_64-linux")
-    ];
-
-    # -- home-manager configurations -------------------------------------------
-    homeConfigurations = lib.listToAttrs [
-      (mkHome "zach" "calcifer" "x86_64-linux")
-      (mkHome "zach" "jiji" "x86_64-linux")
-      (mkHome "zach" "kamaji" "x86_64-linux")
-      (mkHome "zach" "noface" "x86_64-linux")
-      (mkHome "zach" "ponyo" "x86_64-linux")
     ];
 
     # -- dev shell -------------------------------------------------------------
