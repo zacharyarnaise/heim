@@ -9,6 +9,7 @@
     ./gpg.nix
     ./k8s.nix
     ./nix.nix
+    ./podman.nix
     ./python.nix
     ./ssh.nix
     ./tilt.nix
@@ -18,7 +19,6 @@
   home.packages = builtins.attrValues {
     inherit
       (pkgs)
-      dive
       openssl
       postgresql_17
       redpanda-client

@@ -7,8 +7,24 @@
   normalUsers = lib.filterAttrs (_: v: v.isNormalUser) config.users.users;
 in {
   virtualisation = {
-    containers = {
+    containers.enable = true;
+    oci-containers.backend = "podman";
+    podman = {
       enable = true;
+      extraRuntimes = lib.mkForce [];
+
+      autoPrune = {
+        enable = true;
+        dates = "weekly";
+        flags = ["--all" "--build" "--volumes"];
+      };
+
+      dockerCompat = true;
+      dockerSocket.enable = true;
+      defaultNetwork.settings.dns_enabled = true;
+    };
+
+    containers = {
       registries.insecure = ["localhost"];
       storage.settings = {
         storage = {
@@ -31,22 +47,6 @@ in {
           runtime = "crun";
         };
       };
-    };
-
-    oci-containers.backend = "podman";
-    podman = {
-      enable = true;
-
-      autoPrune = {
-        enable = true;
-        dates = "weekly";
-        flags = ["--all"];
-      };
-
-      dockerCompat = true;
-      dockerSocket.enable = true;
-
-      defaultNetwork.settings.dns_enabled = true;
     };
   };
 
