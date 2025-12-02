@@ -28,7 +28,10 @@
           "/run/current-system/sw/bin"
         ]
       }";
-      ExecStart = "${podmanBin} image prune -a -f --build-cache --external --filter label=dev.tilt.gc=true --filter until=1h";
+      ExecStart = [
+        "${podmanBin} image prune -a -f --build-cache --external --filter label=dev.tilt.gc=true --filter until=1h"
+        "${podmanBin} image prune -a -f --build-cache --external --filter dangling=true"
+      ];
       Type = "oneshot";
     };
   };
