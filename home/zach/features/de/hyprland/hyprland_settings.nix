@@ -17,8 +17,7 @@ in {
       border_size = 2;
       gaps_in = 5;
       gaps_out = 10;
-      resize_on_border = true;
-      extend_border_grab_area = 10;
+      resize_on_border = false;
     };
 
     xwayland = {
