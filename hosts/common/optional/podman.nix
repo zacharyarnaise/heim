@@ -25,7 +25,6 @@ in {
     };
 
     containers = {
-      registries.insecure = ["localhost"];
       storage.settings = {
         storage = {
           driver = "overlay";
