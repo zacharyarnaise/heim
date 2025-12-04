@@ -317,11 +317,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1764788330,
-        "narHash": "sha256-hE/gXK+Z0j654T0tsW+KcndRqsgZXe8HyWchjBJgQpw=",
+        "lastModified": 1764839789,
+        "narHash": "sha256-QCgaXEj8036JlfyVM2e5fgKIxoF7IgGRcAi8LkehKvo=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "fca4cba863e76c26cfe48e5903c2ff4bac2b2d5d",
+        "rev": "d441981b200305ebb8e2e2921395f51d207fded6",
         "type": "github"
       },
       "original": {
@@ -677,10 +677,10 @@
     },
     "secrets": {
       "locked": {
-        "lastModified": 1763023061,
-        "narHash": "sha256-zfNW+nurZvQMoxHWuANvfPZr4Oxwzkj10xORmhgyNnI=",
+        "lastModified": 1764863418,
+        "narHash": "sha256-Gf4BEXyMOiFeuL5ZNEozzplbPZgTVr+2XVnxnJgd0zs=",
         "ref": "main",
-        "rev": "9cd2d17ac0c5cbe1bef8305086aa0d6136e900b1",
+        "rev": "ad3e62f0c57ac839eb6a3026f51b2d520a37dfb4",
         "shallow": true,
         "type": "git",
         "url": "git+ssh://git@github.com/zacharyarnaise/heim-secrets.git"
@@ -733,11 +733,11 @@
         "tinted-zed": "tinted-zed"
       },
       "locked": {
-        "lastModified": 1764798099,
-        "narHash": "sha256-IIwR5ZWo7tjxjRpkz0tViF9KFbQ1YXs9Wkan46WQbfk=",
+        "lastModified": 1764860352,
+        "narHash": "sha256-bWrh2T6EPiiZC7jY0jK5cWRwkG0hltnPT1etfHIHiXM=",
         "owner": "danth",
         "repo": "stylix",
-        "rev": "4b9e0e7ba3cccb86fe2bf0f4a2dd18256bef1cc6",
+        "rev": "61a01b75f0a7e58dac486ddf022c628a71528399",
         "type": "github"
       },
       "original": {
