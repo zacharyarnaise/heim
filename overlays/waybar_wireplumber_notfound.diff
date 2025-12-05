@@ -1,13 +1,12 @@
 diff --git a/src/modules/wireplumber.cpp b/src/modules/wireplumber.cpp
-index 106ca403..7f331c58 100644
+index a43ad29b..b30961cb 100644
 --- a/src/modules/wireplumber.cpp
 +++ b/src/modules/wireplumber.cpp
-@@ -74,7 +74,7 @@ void waybar::modules::Wireplumber::updateNodeName(waybar::modules::Wireplumber*
-   if (proxy == nullptr) {
-     auto err = fmt::format("Object '{}' not found\n", id);
-     spdlog::error("[{}]: {}", self->name_, err);
--    throw std::runtime_error(err);
-+    return;
-   }
+@@ -200,6 +200,7 @@ void waybar::modules::Wireplumber::onMixerChanged(waybar::modules::Wireplumber*
+           return;
+         }
+       }
++      return;
+     }
 
-   g_autoptr(WpProperties) properties =
+     spdlog::warn("[{}]: (onMixerChanged: {}) - Object with id {} not found", self->name_,
