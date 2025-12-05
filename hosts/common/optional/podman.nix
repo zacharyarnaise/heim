@@ -49,6 +49,10 @@ in {
           log_size_max = 104857600; # 100 MiB
         };
         engine = {
+          compression_format = "zstd:chunked";
+          compression_level = 2;
+          image_default_format = "oci";
+
           compose_warning_logs = false;
           events_logger = "none";
           healthcheck_events = false;
