@@ -31,6 +31,16 @@ in {
           graphroot = "/persist/containers/storage";
           runroot = "/run/containers/storage";
           rootless_storage_path = "${rootlessPath}/$USER";
+          options = {
+            pull_options = {
+              enable_partial_images = "true";
+              use_hard_links = "false";
+            };
+            overlay = {
+              force_mask = "0000";
+              mountopt = builtins.concatStringsSep "," ["nodev" "metacopy=on"];
+            };
+          };
         };
       };
       containersConf.settings = {
