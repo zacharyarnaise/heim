@@ -13,9 +13,9 @@
     enableEmergencyMode = false;
     services = {
       "serial-getty@ttyS0".enable = lib.mkDefault false;
-      "serial-getty@hvc0".enable = false;
-      "getty@tty1".enable = false;
-      "autovt@".enable = false;
+      "serial-getty@hvc0".enable = lib.mkDefault false;
+      "getty@tty1".enable = lib.mkDefault false;
+      "autovt@".enable = lib.mkDefault false;
     };
   };
 }

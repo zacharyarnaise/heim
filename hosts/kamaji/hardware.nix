@@ -44,7 +44,11 @@ in {
     ];
   };
   # Needed for CIFS mount
-  systemd.network.wait-online.enable = true;
+  systemd.network.wait-online = {
+    enable = true;
+    ignoredInterfaces = ["dummy0" "eno1"];
+    timeout = 30;
+  };
 
   nix.settings.max-jobs = 8;
   swapDevices = lib.mkForce [];

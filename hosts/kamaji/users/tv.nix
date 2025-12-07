@@ -35,15 +35,25 @@ in {
     ];
   };
 
+  systemd.user.targets.moonlight-gamescope-session = {
+    description = "Moonlight session";
+    bindsTo = ["graphical-session.target"];
+    wants = ["graphical-session-pre.target"];
+    after = ["graphical-session-pre.target"];
+  };
+
   environment.systemPackages = [pkgs.moonlight-qt];
   programs.gamescope.enable = true;
   services.greetd = {
     enable = true;
-    settings = {
-      initial_session = {
+    settings = let
+      session = {
         command = "${lib.getExe moonlight-gamescope}";
         user = "tv";
       };
+    in {
+      default_session = session;
+      initial_session = session;
     };
   };
 }
