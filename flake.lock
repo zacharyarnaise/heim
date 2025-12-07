@@ -480,11 +480,11 @@
     },
     "nixpkgs-stable": {
       "locked": {
-        "lastModified": 1764831616,
-        "narHash": "sha256-OtzF5wBvO0jgW1WW1rQU9cMGx7zuvkF7CAVJ1ypzkxA=",
+        "lastModified": 1764983851,
+        "narHash": "sha256-y7RPKl/jJ/KAP/VKLMghMgXTlvNIJMHKskl8/Uuar7o=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "c97c47f2bac4fa59e2cbdeba289686ae615f8ed4",
+        "rev": "d9bc5c7dceb30d8d6fafa10aeb6aa8a48c218454",
         "type": "github"
       },
       "original": {
@@ -503,11 +503,11 @@
         "systems": "systems"
       },
       "locked": {
-        "lastModified": 1765043977,
-        "narHash": "sha256-Gcdn1s/ynXRFNqInTcYltAi1gqgmTKw8Hw6OSfFNWMY=",
+        "lastModified": 1765115924,
+        "narHash": "sha256-taZc/QD5DeZkXsyl+AJiS2Q5Z8EXJPzZz98uWfdXvvs=",
         "owner": "nix-community",
         "repo": "nixvim",
-        "rev": "b65233d5f9736cf8d8fe9d4652e1faf610b574bc",
+        "rev": "cd0443e166c1cd35283e9be0ce3fc2966456bc5a",
         "type": "github"
       },
       "original": {
@@ -607,10 +607,10 @@
     },
     "secrets": {
       "locked": {
-        "lastModified": 1764863418,
-        "narHash": "sha256-Gf4BEXyMOiFeuL5ZNEozzplbPZgTVr+2XVnxnJgd0zs=",
+        "lastModified": 1765128410,
+        "narHash": "sha256-APmh/h0dAfwuHRokymsGs6KD5gkKhKpLnBe8G0kbcDU=",
         "ref": "main",
-        "rev": "ad3e62f0c57ac839eb6a3026f51b2d520a37dfb4",
+        "rev": "b985b7ae35c5b0ca4fbf2445a6139493a04b7dca",
         "shallow": true,
         "type": "git",
         "url": "git+ssh://git@github.com/zacharyarnaise/heim-secrets.git"

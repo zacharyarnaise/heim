@@ -4,13 +4,14 @@
 
     ../common/headless.nix
     ../common/users/zach
-
-    ../common/optional/usbguard.nix
+    ../common/optional/pipewire.nix
 
     ./modules/networking.nix
     ./modules/wireguard.nix
     ./modules/nixarr.nix
     ./modules/samba.nix
+
+    ./users/tv.nix
   ];
 
   boot = {
