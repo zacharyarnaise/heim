@@ -4,6 +4,7 @@
 
     ./optional/boot-quiet.nix
     ./optional/dconf.nix
+    ./optional/display-manager.nix
     ./optional/greetd.nix
     ./optional/hyprland.nix
     ./optional/keyring.nix

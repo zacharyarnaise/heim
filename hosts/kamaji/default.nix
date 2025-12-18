@@ -4,6 +4,8 @@
 
     ../common/headless.nix
     ../common/users/zach
+    ../common/optional/display-manager.nix
+    ../common/optional/regreet.nix
     ../common/optional/pipewire.nix
 
     ./modules/networking.nix
