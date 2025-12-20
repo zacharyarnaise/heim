@@ -16,6 +16,7 @@ in {
 
   services.podman.package = podmanPkg;
   xdg.configFile."containers/registries.conf".source = toml.generate "registries.conf" {
+    unqualified-search-registries = ["docker.io"];
     registry = [
       {
         location = "docker.io";
