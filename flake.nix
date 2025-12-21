@@ -2,7 +2,7 @@
   description = "My NixOS configurations";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:zacharyarnaise/nixpkgs/test-ly_autologin";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
 
     # Inputs used by all configurations
