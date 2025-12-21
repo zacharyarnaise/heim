@@ -12,7 +12,7 @@
     ${pkgs.pulseaudio}/bin/pactl set-sink-port alsa_output.pci-0000_00_1f.3.hdmi-surround hdmi-output-0
     ${pkgs.pulseaudio}/bin/pactl set-default-sink alsa_output.pci-0000_00_1f.3.hdmi-surround
     ${pkgs.pulseaudio}/bin/pactl set-sink-volume alsa_output.pci-0000_00_1f.3.hdmi-surround 100%
-    gamescope --hdr-enabled --adaptive-sync -- moonlight &>/dev/null
+    gamescope --hdr-enabled --adaptive-sync -r 144 -- moonlight &>/dev/null
     systemctl --user stop moonlight-gamescope-session.target
   '';
   moonlight-gamescope-session =
