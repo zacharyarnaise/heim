@@ -1,6 +1,7 @@
 {
   pkgs,
   config,
+  lib,
   ...
 }: {
   programs.foot = {
@@ -38,9 +39,9 @@
   };
   systemd.user.services.foot = {
     Unit = {
-      PartOf = [config.wayland.systemd.target];
-      After = [config.wayland.systemd.target];
+      PartOf = lib.mkForce [config.wayland.systemd.target];
+      After = lib.mkForce [config.wayland.systemd.target];
     };
-    Install.WantedBy = [config.wayland.systemd.target];
+    Install.WantedBy = lib.mkForce [config.wayland.systemd.target];
   };
 }
