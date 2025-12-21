@@ -1,6 +1,6 @@
 {
   imports = [
+    ./hm-display-sessions.nix
     ./version.nix
-    ./wayland-sessions.nix
   ];
 }

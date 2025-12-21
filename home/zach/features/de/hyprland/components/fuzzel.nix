@@ -13,7 +13,7 @@
         fields = "filename,name,generic,exec";
         filter-desktop = true;
         terminal = "${pkgs.foot}/bin/footclient";
-        launch-prefix = "uwsm-app -- ";
+        launch-prefix = "";
         anchor = "top";
         y-margin = 20;
         width = 50;

@@ -18,7 +18,7 @@
       display-run = "󰌧";
       display-ssh = "󰢹";
 
-      run-command = "uwsm-app -- {cmd}";
+      run-command = "{cmd}";
       show-icons = true;
       window-format = "{w}{t}";
       drun-display-format = "{name}";

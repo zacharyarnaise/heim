@@ -34,8 +34,16 @@ in {
       k3sVersion = "1.33.6-k3s1";
     };
 
-    sbctl =
-      prev.sbctl.override {databasePath = "/persist/etc/secureboot";};
+    # ly should read from /etc/login.defs but it doesn't seems to be working
+    ly = prev.ly.overrideAttrs (oldAttrs: {
+      zigBuildFlags =
+        (oldAttrs.zigBuildFlags or [])
+        ++ ["-Dfallback_uid_max=29999"];
+    });
+
+    sbctl = prev.sbctl.override {
+      databasePath = "/persist/etc/secureboot";
+    };
 
     waybar = addPatches prev.waybar [
       ./waybar_wireplumber_notfound.diff

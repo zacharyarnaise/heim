@@ -7,7 +7,6 @@
 in {
   wayland.windowManager.hyprland.settings = {
     exec-once = [
-      "uwsm finalize"
       "${hyprctl} setcursor ${config.stylix.cursor.name} ${toString config.stylix.cursor.size}"
       "${hyprctl} dispatch workspace 1" # Focus the first workspace on startup
     ];

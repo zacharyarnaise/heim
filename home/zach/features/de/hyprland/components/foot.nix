@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   programs.foot = {
     enable = true;
     server.enable = true;
@@ -31,5 +35,12 @@
       mouse.alternate-scroll-mode = "yes";
       url.osc8-underline = "always";
     };
+  };
+  systemd.user.services.foot = {
+    Unit = {
+      PartOf = [config.wayland.systemd.target];
+      After = [config.wayland.systemd.target];
+    };
+    Install.WantedBy = [config.wayland.systemd.target];
   };
 }
