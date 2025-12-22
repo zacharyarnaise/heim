@@ -23,21 +23,25 @@ in {
     settings = {
       Address = "10.0.1.2";
       Port = 4533;
-      MusicFolder = "/storage/sb01/music";
       DataFolder = "/storage/data01/navidrome/data";
-      LogLevel = "warn";
+      MusicFolder = "/storage/sb01/music";
       EnableInsightsCollector = false;
+      LogLevel = "warn";
 
       AutoImportPlaylists = false;
-      CovertArtPriority = "*.jpg, *.JPG, *.jpeg, *.JPEG, *.png, *.PNG, embedded";
+      CovertArtPriority = "*.jpg, *.JPG, *.jpeg, *.JPEG";
       CoverJpegQuality = 80;
       DefaultUIVolume = 50;
       EnableFavourites = true;
       EnableMediaFileCoverArt = false;
       EnableStarRating = true;
+      ImageCacheSize = "500MB";
       "LastFM.Enabled" = true;
-      "Scanner.WatcherWait" = "1m";
       "ListenBrainz.Enabled" = true;
+      LyricsPriority = "embedded";
+      "Scanner.Enabled" = true;
+      "Scanner.ScanOnStartup" = false;
+      "Scanner.WatcherWait" = "1m";
       SessionTimeout = "72h";
       UIWelcomeMessage = "( ͡° ͜ʖ ͡°)";
     };
