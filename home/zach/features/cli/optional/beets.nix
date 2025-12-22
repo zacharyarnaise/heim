@@ -38,6 +38,9 @@
           original_year = true;
         };
       };
+      musicbrainz = {
+        search_limit = 10;
+      };
       lyrics = {
         auto = true;
         force = true;
