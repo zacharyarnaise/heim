@@ -5,7 +5,7 @@
 }: {
   services.postgresql = {
     enable = true;
-    package = pkgs.postgresql_17;
+    package = pkgs.postgresql_18;
 
     dataDir = "/storage/data01/postgresql/${config.services.postgresql.package.psqlSchema}";
     settings = {
