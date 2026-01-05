@@ -194,7 +194,7 @@ in {
       mouse_move_enables_dpms = true;
       key_press_enables_dpms = true;
       disable_autoreload = true;
-      new_window_takes_over_fullscreen = 2;
+      on_focus_under_fullscreen = 2;
     };
 
     monitor =
