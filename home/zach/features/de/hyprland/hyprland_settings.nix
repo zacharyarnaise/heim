@@ -33,48 +33,51 @@ in {
     };
 
     layerrule = [
-      "animation slide, notifications"
+      "match:namespace hyprpaper, no_anim true"
+      "match:namespace hyprpicker, no_anim true"
+      "match:namespace overview, no_anim true"
+      "match:namespace selection, no_anim true"
 
-      "animation slide, rofi"
-      "order -10, rofi" # pinentry uses rofi and needs to be on top
+      "match:namespace notifications, animation slide"
 
-      "animation fade, waybar"
-      "blur, waybar"
-      "ignorezero, waybar"
+      "match:namespace rofi, animation slide"
+      "match:namespace rofi, order -10" # pinentry uses rofi and needs to be on top
 
-      "noanim, hyprpaper"
-      "noanim, overview"
-      "noanim, selection"
+      "match:namespace waybar, animation fade"
+      "match:namespace waybar, blur true"
+      "match:namespace waybar, ignore_alpha 0"
     ];
     windowrule = [
-      "nodim, fullscreen:1"
+      "match:fullscreen 1, no_dim true"
 
-      "float, class:(clipse)"
-      "animation slide, class:(clipse)"
-      "noborder, class:(clipse)"
-      "size 600 400, class:(clipse)"
-      "move 38% 45, class:(clipse)"
-      "pin, class:(clipse)"
-      "stayfocused, class:(clipse)"
-      "noscreenshare, class:(clipse)"
+      "match:class clipse, animation slide"
+      "match:class clipse, border_size 0"
+      "match:class clipse, float true"
+      "match:class clipse, pin true"
+      "match:class clipse, size 600 400"
+      "match:class clipse, move 38% 45"
+      "match:class clipse, no_screen_share true"
+      "match:class clipse, stay_focused true"
 
-      "float, class:(io.github.Qalculate.qalculate-qt)"
-      "size 640 500, class:(io.github.Qalculate.qalculate-qt)"
-      "pin, class:(io.github.Qalculate.qalculate-qt)"
-      "opacity 1.0 override, class:(io.github.Qalculate.qalculate-qt)"
+      "match:class .*qalculate-qt$, float true"
+      "match:class .*qalculate-qt$, pin true"
+      "match:class .*qalculate-qt$, size 640 500"
+      "match:class .*qalculate-qt$, opacity 1.0"
 
-      "opacity 1.0 override, initialTitle:(Discord Popout)"
-      "workspace 7, initialTitle:(Discord Popout)"
+      "match:class io.github.Qalculate.qalculate-qt, size 640 500"
+      "match:class io.github.Qalculate.qalculate-qt, opacity 1.0"
 
-      "opacity 1.0 override 0.95 override, class:^(chromium-browser|firefox|feishin)$"
+      "match:initial_title Discord Popout, opacity 1.0 override"
+      "match:initial_title Discord Popout, workspace 7"
 
-      # make pop-up file dialogs floating, centred, and pinned
-      "float, title:(Open|Progress|Save File)"
-      "center, title:(Open|Progress|Save File)"
-      "pin, title:(Open|Progress|Save File)"
-      "float, class:(xdg-desktop-portal-gtk)"
-      "center, class:(xdg-desktop-portal-gtk)"
-      "pin, class:(xdg-desktop-portal-gtk)"
+      "match:class ^(chromium-browser|firefox|feishin)$, opacity 1.0 override 0.95 override"
+
+      "match:class xdg-desktop-portal-gtk, float true"
+      "match:class xdg-desktop-portal-gtk, pin true"
+      "match:class xdg-desktop-portal-gtk, center true"
+      "match:title (Open|Progress|Save File), float true"
+      "match:title (Open|Progress|Save File), pin true"
+      "match:title (Open|Progress|Save File), center true"
     ];
 
     decoration = let
