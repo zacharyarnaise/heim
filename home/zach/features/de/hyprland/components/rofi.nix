@@ -23,6 +23,11 @@
       window-format = "{w}{t}";
       drun-display-format = "{name}";
       hover-select = true;
+      # Hackish way to close rofi when clicking outside of it
+      # https://github.com/davatorium/rofi/issues/2158#issuecomment-3556224456
+      me-select-entry = "";
+      me-accept-entry = "!MousePrimary";
+      kb-cancel = "MousePrimary,Escape,Control+g,Control+bracketleft";
     };
 
     theme = let
