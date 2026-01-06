@@ -29,6 +29,10 @@ in {
       passAlias = true;
     };
 
+    feishin = prev.feishin.override {
+      mpv = prev.mpv-unwrapped;
+    };
+
     # See: https://github.com/k3d-io/k3d/issues/1560
     k3d = prev.k3d.override {
       k3sVersion = "1.33.6-k3s1";

@@ -1,16 +1,5 @@
 {pkgs, ...}: {
-  home.packages = [
-    (pkgs.symlinkJoin
-      {
-        name = "feishin";
-        paths = [pkgs.feishin];
-        buildInputs = [pkgs.makeWrapper];
-        postBuild = ''
-          wrapProgram $out/bin/feishin \
-            --prefix PATH : ${pkgs.mpv-unwrapped}/bin
-        '';
-      })
-  ];
+  home.packages = [pkgs.feishin];
 
   services.playerctld.enable = true;
 
