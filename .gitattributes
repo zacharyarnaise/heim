@@ -1,3 +1,6 @@
 [attr]generated linguist-generated=true diff=generated
 
 home/zach/features/cli/zsh/files/p10k.zsh generated
+flake.lock generated
+
+*.sixel binary
