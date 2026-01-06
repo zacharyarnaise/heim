@@ -95,12 +95,7 @@
       system:
         import nixpkgs {
           inherit system;
-          config = {
-            allowUnfree = true;
-            permittedInsecurePackages = [
-              "electron-36.9.5" # Feishin
-            ];
-          };
+          config.allowUnfree = true;
           overlays =
             builtins.attrValues (import ./overlays {inherit inputs;})
             ++ [inputs.nix-vscode-extensions.overlays.default];
