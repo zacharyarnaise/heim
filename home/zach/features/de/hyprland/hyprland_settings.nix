@@ -32,21 +32,34 @@ in {
       split_width_multiplier = 1.5;
     };
 
-    layerrule = [
-      "match:namespace hyprpaper, no_anim true"
-      "match:namespace hyprpicker, no_anim true"
-      "match:namespace overview, no_anim true"
-      "match:namespace selection, no_anim true"
+    layerrule = let
+      mkDecorationRules = ns: ignoreAlpha:
+        "match:namespace ${ns}, "
+        + lib.concatStringsSep ", " [
+          "blur true"
+          "ignore_alpha ${toString ignoreAlpha}"
+          "xray true"
+        ];
+    in
+      [
+        "match:namespace hyprpaper, no_anim true"
+        "match:namespace hyprpicker, no_anim true"
+        "match:namespace overview, no_anim true"
+        "match:namespace selection, no_anim true"
 
-      "match:namespace notifications, animation slide"
+        "match:namespace notifications, animation slide"
+        "match:namespace notifications, order 10"
 
-      "match:namespace rofi, animation slide"
-      "match:namespace rofi, order -10" # pinentry uses rofi and needs to be on top
+        "match:namespace rofi, animation slide"
+        "match:namespace rofi, order 0"
 
-      "match:namespace waybar, animation fade"
-      "match:namespace waybar, blur true"
-      "match:namespace waybar, ignore_alpha 0"
-    ];
+        "match:namespace waybar, animation fade"
+      ]
+      ++ [
+        (mkDecorationRules "notifications" 0.5)
+        (mkDecorationRules "rofi" 0.5)
+        (mkDecorationRules "waybar" 0.25)
+      ];
     windowrule = [
       "match:fullscreen 1, no_dim true"
 
@@ -55,7 +68,7 @@ in {
       "match:class clipse, float true"
       "match:class clipse, pin true"
       "match:class clipse, size 600 400"
-      "match:class clipse, move 38% 45"
+      "match:class clipse, move (monitor_w-window_w)*0.5 45"
       "match:class clipse, no_screen_share true"
       "match:class clipse, stay_focused true"
 
