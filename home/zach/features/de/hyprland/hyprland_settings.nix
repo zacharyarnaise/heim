@@ -38,7 +38,6 @@ in {
         + lib.concatStringsSep ", " [
           "blur true"
           "ignore_alpha ${toString ignoreAlpha}"
-          "xray true"
         ];
     in
       [
