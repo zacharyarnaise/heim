@@ -32,7 +32,7 @@ Here you'll find my [NixOS](https://nixos.org/) & [home-manager](https://github.
 
 <img width="1920" height="1080" alt="Screenshot showing fastfetch opened" src="https://github.com/user-attachments/assets/608721a4-2417-4f87-8f9c-d3e6414bcc34" />
 <div align="center"><table><tr>
-<td><img width="1920" height="1080" alt="Screenshot showing various terminals opened" src="https://github.com/user-attachments/assets/278393fe-d503-4562-9094-978d14fae680" /></td>
+<td><img width="1920" height="1080" alt="Screenshot showing various terminals opened" src="https://github.com/user-attachments/assets/dcb48e67-9306-423f-b198-000278677628" /></td>
 <td><img width="1920" height="1080" alt="Screenshot showing desktop applications and rofi launcher opened" src="https://github.com/user-attachments/assets/52e4cbb4-e80b-4b06-b886-863164f18a26" /></td>
 </tr></table></div>
 
