@@ -2,33 +2,52 @@
 [![Built with Nix](https://img.shields.io/badge/Built%20with%20Nix%20and%20%E2%9D%A4%EF%B8%8F-5277C3?logo=nixos&logoColor=FFFFFF)](https://builtwithnix.org/)
 [![Lint & flake check](https://github.com/zacharyarnaise/heim/actions/workflows/lint.yaml/badge.svg)](https://github.com/zacharyarnaise/heim/actions/workflows/lint.yaml)
 
-Here you'll find [NixOS](https://nixos.org/) & [home-manager](https://github.com/nix-community/home-manager) configurations for my systems, declared as a single Nix flake.
+Here you'll find my [NixOS](https://nixos.org/) & [home-manager](https://github.com/nix-community/home-manager) configurations for my systems, declared as a single Nix flake.
 
 ### Notable features:
-- Automated linting and flake checking via CI & [pre-commit hooks](https://github.com/cachix/git-hooks.nix)
+- Automated update of lockfile and linting via CI & [pre-commit hooks](https://github.com/cachix/git-hooks.nix)
 - Declarative disk partitioning ([disko](https://github.com/nix-community/disko))
 - Full disk encryption
-- Impermanence, ephemeral root in ramfs
+- [Impermanence](https://github.com/nix-community/impermanence), ephemeral root in ramfs
 - Secure Boot ([lanzaboote](https://github.com/nix-community/lanzaboote))
 - Secrets provisioning using a separate private repo ([sops-nix](https://github.com/Mic92/sops-nix))
 - Remote unattended bootstrapping via SSH ([nixos-anywhere](https://github.com/nix-community/nixos-anywhere))
 - Carefuly crafted Wayland DE ([Hyprland](https://hyprland.org/))
+  - <details>
+    <summary>Components used</summary>
+
+    - Bar: [Waybar](https://github.com/Alexays/Waybar)
+    - Display manager: [ly](https://codeberg.org/fairyglade/ly)
+    - File manager (TUI): [yazi](https://github.com/sxyazi/yazi)
+    - Launcher: [rofi](https://github.com/davatorium/rofi)
+    - Notification daemon: [mako](https://github.com/emersion/mako)
+    - Terminal: [foot](https://codeberg.org/dnkl/foot)    
+    - Theming: [stylix](https://github.com/nix-community/stylix)
+
+    </details>
+
+<img width="1920" height="1080" alt="Screenshot showing fastfetch opened" src="https://github.com/user-attachments/assets/608721a4-2417-4f87-8f9c-d3e6414bcc34" />
+<div align="center"><table><tr>
+<td><img width="1920" height="1080" alt="Screenshot showing various terminals opened" src="https://github.com/user-attachments/assets/278393fe-d503-4562-9094-978d14fae680" /></td>
+<td><img width="1920" height="1080" alt="Screenshot showing desktop applications and rofi launcher opened" src="https://github.com/user-attachments/assets/52e4cbb4-e80b-4b06-b886-863164f18a26" /></td>
+</tr></table></div>
+
 
 ## Structure
 ```sh
 .
 ├─ .github/workflows/ # CI/CD for linting, flake checking and updates
 ├─ home/              # Home-manager configurations
-├─ hosts/             # NixOS and system-wide configurations
+├─ hosts/             # NixOS configurations
 │  ├─ common/ # Shared configurations
 │    ├─ global/   # Config shared by all hosts
 │    ├─ optional/ # Optional configurations
 │    ├─ users/    # Host-level user declaration
-│  ├─ calcifer/  # Desktop  - 14700KF, 48GB RAM, RTX4080S
-│  ├─ jiji/      # Headless - Cloud server
-│  ├─ kamaji/    # Headless - Ryzen 5 5600X, 16GB RAM, 4TB SSD x2
+│  ├─ calcifer/  # Desktop
+│  ├─ jiji/      # Headless - Serves Atuin and Navidrome
+│  ├─ kamaji/    # Headless - Serves Jellyin/*arr stack + Moonlight client for streaming
 │  ├─ noface/    # Headless - QEMU guest used for debugging/testing
-│  ├─ ponyo/     # Laptop   - ThinkPad T14
+│  ├─ ponyo/     # Laptop
 ├─ lib/               # Nix utilities/helpers
 ├─ modules/           # Reusable, abstract pieces of config for home-manager, NixOS or both.
 │  ├─ common/
@@ -36,7 +55,9 @@ Here you'll find [NixOS](https://nixos.org/) & [home-manager](https://github.com
 │  ├─ nixos/
 ├─ overlays/          # Overrides/patches for some packages
 ├─ pkgs/              # Custom packages
-└─ flake.nix          # Entrypoint for hosts and home-manager configs. Also exposes a devshell for manual bootstrapping tasks (nix-shell).
+├─ checks.nix         # pre-commit-check config
+├─ flake.nix          # Entrypoint for hosts and home-manager configs
+└─ shell.nix          # devshell for manual bootstrapping tasks (nix-shell)
 ```
 
 ## Bootstrapping a new host
