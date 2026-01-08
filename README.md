@@ -25,7 +25,7 @@ Here you'll find my [NixOS](https://nixos.org/) & [home-manager](https://github.
     - File manager (TUI): [yazi](https://github.com/sxyazi/yazi)
     - Launcher: [rofi](https://github.com/davatorium/rofi)
     - Notification daemon: [mako](https://github.com/emersion/mako)
-    - Terminal: [foot](https://codeberg.org/dnkl/foot)    
+    - Terminal: [foot](https://codeberg.org/dnkl/foot)
     - Theming: [stylix](https://github.com/nix-community/stylix)
 
     </details>
