@@ -9,7 +9,7 @@
     enable = true;
     overlays.enable = false;
 
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+    base16Scheme = "${pkgs.base24-schemes}/share/themes/catppuccin-mocha.yaml";
     polarity = "dark";
     image = ../../../wallpapers/11.jpg;
     cursor = {
