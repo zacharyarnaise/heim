@@ -3,7 +3,7 @@
     ./abbreviations.nix
     ./colors.nix
     ./functions.nix
-    ./tide.nix
+    ./starship.nix
   ];
 
   home.shell.enableFishIntegration = true;
