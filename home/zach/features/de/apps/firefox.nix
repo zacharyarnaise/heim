@@ -154,6 +154,7 @@ in {
 
         # Homepage
         "browser.startup.blankWindow" = true;
+        "browser.startup.homepage" = "about:home";
         "browser.startup.page" = 0;
         "startup.homepage_welcome_url" = "";
         "browser.aboutwelcome.enabled" = false;
@@ -210,6 +211,10 @@ in {
         "browser.topsites.component.enabled" = false;
         "browser.topsites.contile.enabled" = false;
         "browser.translations.enabled" = false;
+        "dom.battery.enabled" = false;
+        "dom.event.clipboardevents.enabled" = false;
+        "dom.event.contextmenu.enabled" = false;
+        "dom.gamepad.enabled" = false;
         "dom.security.https_only_mode" = true;
         "extensions.getAddons.showPane" = false;
         "extensions.htmlaboutaddons.recommendations.enabled" = false;
@@ -265,14 +270,14 @@ in {
         "ui.prefersReducedMotion" = 1;
         "ui.systemUsesDarkTheme" = 1;
         "browser.uiCustomization.state" = builtins.toJSON {
-          currentVersion = 21;
+          currentVersion = 23;
           newElementCount = 6;
           dirtyAreaCache = ["nav-bar" "PersonalToolbar" "unified-extensions-area" "toolbar-menubar" "TabsToolbar" "vertical-tabs" "widget-overflow-fixed-list"];
           seen = ["save-to-pocket-button" "developer-button" "ublock0_raymondhill_net-browser-action" "_testpilot-containers-browser-action" "tab-session-manager_sienori-browser-action" "_eec37db0-22ad-4bf1-9068-5ae08df8c7e9_-browser-action"];
           placements = {
             widget-overflow-fixed-list = [];
             unified-extensions-area = ["_testpilot-containers-browser-action" "tab-session-manager_sienori-browser-action"];
-            nav-bar = ["back-button" "forward-button" "stop-reload-button" "urlbar-container" "downloads-button" "unified-extensions-button" "_eec37db0-22ad-4bf1-9068-5ae08df8c7e9_-browser-action" "ublock0_raymondhill_net-browser-action"];
+            nav-bar = ["back-button" "forward-button" "stop-reload-button" "urlbar-container" "downloads-button" "unified-extensions-button" "_eec37db0-22ad-4bf1-9068-5ae08df8c7e9_-browser-action" "ublock0_raymondhill_net-browser-action" "vertical-spacer"];
             toolbar-menubar = ["menubar-items"];
             TabsToolbar = ["tabbrowser-tabs" "new-tab-button" "alltabs-button"];
             vertical-tabs = [];
