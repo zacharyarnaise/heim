@@ -1,9 +1,9 @@
 {config, ...}: let
   iconThemeName =
     if (config.stylix.polarity == "dark")
-    then config.stylix.iconTheme.dark
-    else config.stylix.iconTheme.light;
-  iconThemePath = "${config.stylix.iconTheme.package}/share/icons/${iconThemeName}";
+    then config.stylix.icons.dark
+    else config.stylix.icons.light;
+  iconThemePath = "${config.stylix.icons.package}/share/icons/${iconThemeName}";
   iconHomePath = "${config.home.homeDirectory}/.nix-profile/share/icons/hicolor";
   iconSystemPath = "/run/current-system/sw/share/icons/hicolor";
 in {
