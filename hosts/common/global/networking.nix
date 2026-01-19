@@ -33,19 +33,19 @@
 
   services.resolved = {
     enable = true;
-    dnsovertls = "true";
-    dnssec = "true";
-    fallbackDns = [
-      "127.0.0.1"
-      "::1"
-    ];
-    llmnr = "false";
-    extraConfig = ''
-      MulticastDNS=no
-      Cache=yes
-      ReadEtcHosts=yes
-      ResolveUnicastSingleLabel=no
-    '';
+    settings.Resolve = {
+      Cache = true;
+      DNSOverTLS = true;
+      DNSSEC = true;
+      FallbackDNS = [
+        "127.0.0.1"
+        "::1"
+      ];
+      LLMNR = false;
+      MulticastDNS = false;
+      ReadEtcHosts = true;
+      ResolveUnicastSingleLabel = false;
+    };
   };
 
   systemd.network = {
