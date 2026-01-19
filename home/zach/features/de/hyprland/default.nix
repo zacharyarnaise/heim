@@ -8,6 +8,7 @@
     ./hyprlock.nix
     ./hyprpaper.nix
 
+    ./components/ashell.nix
     ./components/foot.nix
     ./components/rofi.nix
     ./components/waybar
