@@ -52,9 +52,11 @@ in {
         "match:namespace rofi, animation slide"
         "match:namespace rofi, order 0"
 
+        "match:namespace ashell-main-layer, animation fade"
         "match:namespace waybar, animation fade"
       ]
       ++ [
+        (mkDecorationRules "ashell-main-layer" 0.25)
         (mkDecorationRules "notifications" 0.5)
         (mkDecorationRules "rofi" 0.5)
         (mkDecorationRules "waybar" 0.25)
