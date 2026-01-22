@@ -33,7 +33,7 @@ in {
       mpv = prev.mpv-unwrapped;
     };
 
-    fish = prev.fish.overrideAttrs (oldAttrs: {
+    fish = prev.fish.overrideAttrs (_: {
       postBuild = ''
         rm /build/source/share/functions/cdh.fish
       '';
