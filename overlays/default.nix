@@ -14,32 +14,8 @@ in {
     };
   };
 
-  additions = final: prev: {
-    base24-schemes = final.base16-schemes.overrideAttrs (oldAttrs: {
-      pname = "base24-schemes";
-      installPhase = ''
-        runHook preInstall
-
-        mkdir -p $out/share/themes/
-        install base24/*.yaml $out/share/themes/
-
-        runHook postInstall
-      '';
-    });
-  };
-
   # Modifications to existing packages
   modifications = _final: prev: {
-    base16-schemes = prev.base16-schemes.overrideAttrs (oldAttrs: {
-      version = "0-unstable-2026-01-15";
-      src = prev.fetchFromGitHub {
-        owner = "tinted-theming";
-        repo = "schemes";
-        rev = "43dd14f6466a782bd57419fdfb5f398c74d6ac53";
-        hash = "sha256-AWTIYZ1tZab0YwAQwgt5yO4ucqZoc4iXX002Byy7pRY=";
-      };
-    });
-
     beets = addPatches prev.beets [
       # Don't send user-agent bc some lyrics providers block it
       (prev.fetchpatch {
