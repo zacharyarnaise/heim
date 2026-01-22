@@ -54,7 +54,7 @@
       light = "Papirus-Light";
     };
     opacity = {
-      applications = 0.95;
+      applications = 0.9;
       desktop = 0.6;
       popups = 0.5;
       terminal = 0.75;

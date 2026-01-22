@@ -10,7 +10,7 @@
 
     settings = {
       main = {
-        shell = "${pkgs.zsh}/bin/zsh";
+        shell = "${pkgs.fish}/bin/fish";
         selection-target = "primary";
         term = "xterm-256color";
       };

@@ -33,6 +33,12 @@ in {
       mpv = prev.mpv-unwrapped;
     };
 
+    fish = prev.fish.overrideAttrs (_: {
+      postBuild = ''
+        rm /build/source/share/functions/cdh.fish
+      '';
+    });
+
     # See: https://github.com/k3d-io/k3d/issues/1560
     k3d = prev.k3d.override {
       k3sVersion = "1.33.6-k3s1";
