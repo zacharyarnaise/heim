@@ -9,7 +9,7 @@
     enable = true;
     overlays.enable = false;
 
-    base16Scheme = "${pkgs.base24-schemes}/share/themes/catppuccin-mocha.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
     polarity = "dark";
     image = ../../../wallpapers/11.jpg;
     cursor = {
@@ -54,7 +54,7 @@
       light = "Papirus-Light";
     };
     opacity = {
-      applications = 0.95;
+      applications = 0.9;
       desktop = 0.6;
       popups = 0.5;
       terminal = 0.75;

@@ -33,7 +33,7 @@
         vsext.redhat.vscode-yaml
 
         vsext.github.copilot
-        vsext.teabyii.ayu
+        vsext.github.github-vscode-theme
         vsext.vscode-icons-team.vscode-icons
 
         marketplace.lextudio.restructuredtext
@@ -44,13 +44,17 @@
       userSettings = {
         "extensions.autoUpdate" = false;
         "extensions.ignoreRecommendations" = true;
+        "security.workspace.trust.banner" = "never";
         "security.workspace.trust.enabled" = false;
         "redhat.telemetry.enabled" = false;
+        "telemetry.editStats.enabled" = false;
         "telemetry.telemetryLevel" = "off";
         "telemetry.feedback.enabled" = false;
         "vsicons.dontShowNewVersionMessage" = true;
         "update.showReleaseNotes" = false;
+        "window.commandCenter" = false;
         "window.customTitleBarVisibility" = "never";
+        "window.density.editorTabHeight" = "compact";
         "window.dialogStyle" = "native";
         "window.menuBarVisibility" = "toggle";
         "window.openFoldersInNewWindow" = "off";
@@ -62,6 +66,7 @@
         "files.insertFinalNewline" = true;
         "files.trimTrailingWhitespace" = true;
 
+        "editor.autoIndentOnPaste" = true;
         "editor.bracketPairColorization.enabled" = true;
         "editor.bracketPairColorization.independentColorPoolPerBracketType" = true;
         "editor.cursorBlinking" = "blink";
@@ -96,6 +101,10 @@
         "editor.wrappingIndent" = "indent";
 
         "explorer.confirmDelete" = false;
+        "explorer.confirmUndo" = "verbose";
+
+        "scm.countBadge" = "off";
+        "scm.defaultViewMode" = "tree";
 
         "search.actionsPosition" = "auto";
         "search.collapseResults" = "auto";
@@ -103,15 +112,24 @@
         "search.smartCase" = true;
 
         "workbench.activityBar.location" = "top";
-        "workbench.colorTheme" = lib.mkForce "Ayu Dark Bordered";
+        "workbench.cloudChanges.autoResume" = "off";
+        "workbench.cloudChanges.continueOn" = "off";
+        "workbench.colorTheme" = lib.mkForce "GitHub Dark Default";
+        "workbench.editor.alwaysShowEditorActions" = true;
         "workbench.editor.empty.hint" = "hidden";
         "workbench.editor.enablePreview" = false;
         "workbench.editor.highlightModifiedTabs" = true;
+        "workbench.editor.scrollToSwitchTabs" = true;
         "workbench.editor.tabActionCloseVisibility" = false;
+        "workbench.editor.tabSizing" = "shrink";
+        "workbench.enableExperiments" = false;
         "workbench.iconTheme" = "vscode-icons";
+        "workbench.secondarySideBar.defaultVisibility" = "hidden";
         "workbench.sideBar.location" = "right";
         "workbench.startupEditor" = "none";
-        "workbench.tree.indent" = 12;
+        "workbench.tips.enabled" = false;
+        "workbench.tree.indent" = 10;
+        "workbench.tree.renderIndentGuides" = "always";
 
         "github.copilot.enable" = {
           "*" = true;

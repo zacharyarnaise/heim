@@ -1,7 +1,6 @@
 {pkgs, ...}: {
   imports = [
     ./abbreviations.nix
-    ./colors.nix
     ./functions.nix
     ./starship.nix
   ];
@@ -21,8 +20,12 @@
         inherit (pkgs.fishPlugins.forgit) src;
       }
       {
+        name = "fzf-fish";
+        inherit (pkgs.fishPlugins.fzf-fish) src;
+      }
+      {
         name = "plugin-sudope";
-        src = pkgs.fishPlugins.plugin-sudope.src;
+        inherit (pkgs.fishPlugins.plugin-sudope) src;
       }
     ];
   };

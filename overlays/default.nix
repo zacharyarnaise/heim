@@ -31,12 +31,12 @@ in {
   # Modifications to existing packages
   modifications = _final: prev: {
     base16-schemes = prev.base16-schemes.overrideAttrs (oldAttrs: {
-      version = "0-unstable-2026-01-08";
+      version = "0-unstable-2026-01-15";
       src = prev.fetchFromGitHub {
         owner = "tinted-theming";
         repo = "schemes";
-        rev = "0c25cbcb7bc5e656577f60adf25be5011feabbe5";
-        hash = "sha256-kKUjOPC5UKZfWAtI7Drj+wB+zGs17J61kg7FH3j7Et8=";
+        rev = "43dd14f6466a782bd57419fdfb5f398c74d6ac53";
+        hash = "sha256-AWTIYZ1tZab0YwAQwgt5yO4ucqZoc4iXX002Byy7pRY=";
       };
     });
 
@@ -56,6 +56,12 @@ in {
     feishin = prev.feishin.override {
       mpv = prev.mpv-unwrapped;
     };
+
+    fish = prev.fish.overrideAttrs (oldAttrs: {
+      postBuild = ''
+        rm /build/source/share/functions/cdh.fish
+      '';
+    });
 
     # See: https://github.com/k3d-io/k3d/issues/1560
     k3d = prev.k3d.override {
