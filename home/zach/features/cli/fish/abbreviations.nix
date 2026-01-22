@@ -19,6 +19,7 @@ in {
       rd = "rmdir";
       rm = "rm -iv";
 
+      gcam = "git commit -am";
       gcl = "git clone";
       gcp = "git cherry-pick";
       gl = "git pull";
