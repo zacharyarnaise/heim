@@ -14,6 +14,8 @@ in {
     };
   };
 
+  additions = final: _: import ../pkgs {pkgs = final;};
+
   # Modifications to existing packages
   modifications = _final: prev: {
     beets = addPatches prev.beets [
@@ -27,10 +29,6 @@ in {
     gopass = prev.gopass.override {
       xclip = null;
       passAlias = true;
-    };
-
-    feishin = prev.feishin.override {
-      mpv = prev.mpv-unwrapped;
     };
 
     fish = prev.fish.overrideAttrs (_: {
