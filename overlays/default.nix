@@ -41,7 +41,7 @@ in {
 
     # See: https://github.com/k3d-io/k3d/issues/1560
     k3d = prev.k3d.override {
-      k3sVersion = "1.33.6-k3s1";
+      k3sVersion = "1.34.3-k3s1";
     };
 
     # ly should read from /etc/login.defs but it doesn't seems to be working
