@@ -160,8 +160,8 @@
         "go.survey.prompt" = false;
         "go.terminal.activateEnvironment" = false;
         "go.toolsEnvVars" = {
-          "GOBIN" = "${config.home.homeDirectory}/${config.programs.go.goBin}";
-          "GOPATH" = "${config.home.homeDirectory}/${config.programs.go.goPath}";
+          "GOBIN" = config.programs.go.env.GOBIN;
+          "GOPATH" = config.programs.go.env.GOPATH;
           "GOPRIVATE" = config.programs.go.env.GOPRIVATE;
           "GOTELEMETRY" = config.programs.go.telemetry.mode;
         };
