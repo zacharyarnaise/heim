@@ -21,10 +21,6 @@
         inherit (pkgs.fishPlugins.forgit) src;
       }
       {
-        name = "fzf-fish";
-        inherit (pkgs.fishPlugins.fzf-fish) src;
-      }
-      {
         name = "plugin-sudope";
         inherit (pkgs.fishPlugins.plugin-sudope) src;
       }
