@@ -5,7 +5,7 @@
     enableTransience = true;
 
     settings = {
-      add_newline = true;
+      add_newline = false;
       fill.symbol = " ";
       follow_symlinks = true;
       scan_timeout = 100;
