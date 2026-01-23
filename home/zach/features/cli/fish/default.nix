@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   imports = [
     ./abbreviations.nix
+    ./aliases.nix
     ./functions.nix
     ./starship.nix
   ];

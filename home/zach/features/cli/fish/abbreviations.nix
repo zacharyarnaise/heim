@@ -19,6 +19,9 @@ in {
       rd = "rmdir";
       rm = "rm -iv";
 
+      gaa = "git add --all";
+      gain = "git add --interactive";
+      gapa = "git add --patch";
       gcam = "git commit -am";
       gcl = "git clone";
       gcp = "git cherry-pick";
@@ -30,21 +33,14 @@ in {
       grb = "git rebase";
       grba = "git rebase --abort";
       grbc = "git rebase --continue";
-      grhh = "git reset --hard";
+      grh = "git reset --hard";
+      grk = "git reset --keep";
+      grs = "git reset --soft";
+      grhh = "git reset --hard HEAD";
+      grkh = "git reset --keep HEAD";
+      grsh = "git reset --soft HEAD";
       gsm = "git switch main";
       gst = "git status";
-    }
-    // lib.optionalAttrs (hasPkg "bat") {
-      cat = "bat";
-      diff = "batdiff";
-      man = "batman";
-      rg = "batgrep";
-    }
-    // lib.optionalAttrs (hasPkg "eza") {
-      l = "eza -la";
-      la = "eza -la";
-      ll = "eza -l";
-      ls = "eza -l";
     }
     // lib.optionalAttrs (hasPkg "kubectl") {
       k = "kubectl";
