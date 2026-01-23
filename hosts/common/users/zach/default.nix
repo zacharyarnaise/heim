@@ -12,13 +12,14 @@ in {
   home-manager.users.zach =
     import ../../../../home/zach/${config.hostSpec.name}.nix;
 
+  programs.fish.enable = true;
   programs.zsh.enable = true;
 
   users.groups.zach = {};
   users.users.zach = {
     packages = [pkgs.home-manager];
     isNormalUser = true;
-    shell = pkgs.zsh;
+    shell = pkgs.fish;
     group = "zach";
     uid = 1000;
     extraGroups =
