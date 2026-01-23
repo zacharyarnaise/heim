@@ -14,9 +14,9 @@
       style = "auto";
       inline_height = 20;
       prefers_reduced_motion = true;
-      search_mode = "skim";
+      search_mode = "fuzzy";
       filter_mode = "host";
-      search_mode_shell_up_key_binding = "skim";
+      search_mode_shell_up_key_binding = "fuzzy";
       filter_mode_shell_up_key_binding = "session";
       workspaces = true;
       keymap_mode = "emacs";
