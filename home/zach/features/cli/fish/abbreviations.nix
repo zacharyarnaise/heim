@@ -24,15 +24,11 @@ in {
       gapa = "git add --patch";
       gcam = "git commit -am";
       gcl = "git clone";
-      gcp = "git cherry-pick";
       gl = "git pull";
       gm = "git merge";
       gma = "git merge --abort";
       gmc = "git merge --continue";
       gp = "git push";
-      grb = "git rebase";
-      grba = "git rebase --abort";
-      grbc = "git rebase --continue";
       grh = "git reset --hard";
       grk = "git reset --keep";
       grs = "git reset --soft";
