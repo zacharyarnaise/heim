@@ -8,7 +8,10 @@
     daemonIOSchedClass = "best-effort";
   };
 
-  boot.kernelParams = ["panic=1" "boot.panic_on_fail=1"];
+  boot = {
+    loader.timeout = 0;
+    kernelParams = ["panic=1" "boot.panic_on_fail=1"];
+  };
   systemd = {
     enableEmergencyMode = false;
     services = {
