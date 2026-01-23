@@ -63,6 +63,7 @@
 
         "files.autoSave" = "afterDelay";
         "files.autoSaveDelay" = 5000;
+        "files.enableTrash" = false;
         "files.insertFinalNewline" = true;
         "files.trimTrailingWhitespace" = true;
 
@@ -124,6 +125,8 @@
         "workbench.editor.tabSizing" = "shrink";
         "workbench.enableExperiments" = false;
         "workbench.iconTheme" = "vscode-icons";
+        "workbench.reduceMotion" = "on";
+        "workbench.remoteIndicator.showExtensionRecommendations" = false;
         "workbench.secondarySideBar.defaultVisibility" = "hidden";
         "workbench.sideBar.location" = "right";
         "workbench.startupEditor" = "none";

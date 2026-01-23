@@ -8,7 +8,7 @@
         if test -e $dest
           mv $orig $dest.tmp
           mv $dest $orig
-          mv $orig.tmp $dest
+          mv $dest.tmp $dest
         else
           mv $orig $dest
           cp $dest $orig

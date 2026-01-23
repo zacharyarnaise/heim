@@ -37,6 +37,7 @@ in {
       grsh = "git reset --soft HEAD";
       gsm = "git switch main";
       gst = "git status";
+      gsw = "git switch";
     }
     // lib.optionalAttrs (hasPkg "kubectl") {
       k = "kubectl";
