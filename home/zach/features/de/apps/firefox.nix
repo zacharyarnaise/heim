@@ -39,9 +39,11 @@ in {
           "NixOS packages"
           "NixOS options"
           "Home-Manager options"
-          "cheat.sh"
+          "Noogle"
+          "golang"
           "Grep.app"
-          "reddit"
+          "Sourcegraph Go"
+          "Sourcegraph Nix"
         ];
 
         engines = {
@@ -65,28 +67,18 @@ in {
             icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
             definedAliases = ["@ngl"];
           };
+
+          "golang" = {
+            urls = [{template = "https://pkg.go.dev/search?q={searchTerms}";}];
+            icon = "https://pkg.go.dev/static/shared/icon/favicon.ico";
+            updateInterval = 7 * (24 * 60 * 60 * 1000);
+            definedAliases = ["@go"];
+          };
           "Grep.app" = {
             urls = [{template = "https://grep.app/search?q={searchTerms}";}];
             icon = "https://grep.app/icon.png";
             updateInterval = 7 * (24 * 60 * 60 * 1000);
             definedAliases = ["@gr"];
-          };
-          "reddit" = {
-            urls = [{template = "https://old.reddit.com/search?q={searchTerms}";}];
-            icon = "https://www.redditstatic.com/shreddit/assets/favicon/128x128.png";
-            updateInterval = 7 * (24 * 60 * 60 * 1000);
-            definedAliases = ["@rd"];
-          };
-          "cheat.sh" = {
-            urls = [{template = "https://cheat.sh/{searchTerms}";}];
-            definedAliases = ["@chs"];
-          };
-
-          "Sourcegraph Nix" = {
-            urls = [{template = "https://sourcegraph.com/search?q=context:global+file:.nix%24+{searchTerms}&patternType=literal";}];
-            icon = "https://sourcegraph.com/favicon.ico";
-            updateInterval = 7 * (24 * 60 * 60 * 1000);
-            definedAliases = ["@snx"];
           };
           "Sourcegraph Go" = {
             urls = [{template = "https://sourcegraph.com/search?q=context:global+file:.go%24+{searchTerms}&patternType=literal";}];
@@ -94,10 +86,18 @@ in {
             updateInterval = 7 * (24 * 60 * 60 * 1000);
             definedAliases = ["@sgo"];
           };
+          "Sourcegraph Nix" = {
+            urls = [{template = "https://sourcegraph.com/search?q=context:global+file:.nix%24+{searchTerms}&patternType=literal";}];
+            icon = "https://sourcegraph.com/favicon.ico";
+            updateInterval = 7 * (24 * 60 * 60 * 1000);
+            definedAliases = ["@snx"];
+          };
 
           "amazondotcom-us".metaData.hidden = true;
           "bing".metaData.hidden = true;
           "ebay".metaData.hidden = true;
+          "perplexity".metaData.hidden = true;
+          "qwant".metaData.hidden = true;
           "google".metaData.alias = "@g";
           "wikipedia".metaData.alias = "@w";
         };
