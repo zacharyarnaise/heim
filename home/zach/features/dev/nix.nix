@@ -5,6 +5,7 @@
       alejandra
       nil
       nix-tree
+      nixpkgs-review
       ;
   };
 
