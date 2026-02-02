@@ -50,11 +50,10 @@ in {
 
   services.displayManager = {
     sessionPackages = [moonlight-gamescope-session];
-    # TODO: re-enable when https://github.com/NixOS/nixpkgs/pull/473013 is merged
-    #autoLogin = {
-    #  enable = true;
-    #  user = "tv";
-    #};
+    autoLogin = {
+      enable = true;
+      user = "tv";
+    };
   };
   systemd.user.targets.moonlight-gamescope-session = {
     description = "Moonlight session";
