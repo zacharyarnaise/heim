@@ -212,7 +212,6 @@ in {
         "browser.topsites.contile.enabled" = false;
         "browser.translations.enabled" = false;
         "dom.battery.enabled" = false;
-        "dom.event.clipboardevents.enabled" = false;
         "dom.event.contextmenu.enabled" = false;
         "dom.gamepad.enabled" = false;
         "dom.security.https_only_mode" = true;
