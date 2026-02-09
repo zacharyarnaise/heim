@@ -42,11 +42,10 @@ in {
       k3sVersion = "1.34.3-k3s1";
     };
 
-    # ly should read from /etc/login.defs but it doesn't seems to be working
+    # Build broken, fixed by this commit: https://github.com/NixOS/nixpkgs/commit/68b5fdc
     ly = prev.ly.overrideAttrs (oldAttrs: {
-      zigBuildFlags =
-        (oldAttrs.zigBuildFlags or [])
-        ++ ["-Dfallback_uid_max=29999"];
+      postConfigure = oldAttrs.postPatch;
+      postPatch = null;
     });
 
     sbctl = prev.sbctl.override {
