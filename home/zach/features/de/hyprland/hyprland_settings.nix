@@ -52,12 +52,12 @@ in {
         "match:namespace rofi, animation slide"
         "match:namespace rofi, order 0"
 
-        "match:namespace waybar, animation fade"
+        "match:namespace main-bar, animation fade"
       ]
       ++ [
         (mkDecorationRules "notifications" 0.5)
         (mkDecorationRules "rofi" 0.5)
-        (mkDecorationRules "waybar" 0.25)
+        (mkDecorationRules "main-bar" 0.25)
       ];
     windowrule = [
       "match:fullscreen 1, no_dim true"
