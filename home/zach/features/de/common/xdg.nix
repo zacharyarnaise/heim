@@ -33,7 +33,7 @@ in {
       download = "${home}/Downloads";
       pictures = "${home}/Pictures";
       videos = "${home}/Videos";
-      extraConfig.XDG_SCREENSHOTS_DIR = "${home}/Pictures/Screenshots";
+      extraConfig.SCREENSHOTS = "${home}/Pictures/Screenshots";
     };
   };
 }
