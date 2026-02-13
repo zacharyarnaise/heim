@@ -42,12 +42,6 @@ in {
       k3sVersion = "1.34.3-k3s1";
     };
 
-    # Build broken, fixed by this commit: https://github.com/NixOS/nixpkgs/commit/68b5fdc
-    ly = prev.ly.overrideAttrs (oldAttrs: {
-      postConfigure = oldAttrs.postPatch;
-      postPatch = null;
-    });
-
     sbctl = prev.sbctl.override {
       databasePath = "/persist/etc/secureboot";
     };
