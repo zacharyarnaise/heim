@@ -19,8 +19,9 @@
   home.packages = builtins.attrValues {
     inherit
       (pkgs)
+      act
       openssl
-      postgresql_17
+      postgresql_18
       redpanda-client
       sops
       ;
