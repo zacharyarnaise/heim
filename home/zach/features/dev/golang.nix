@@ -18,6 +18,7 @@
     };
   };
 
+  home.sessionPath = [config.programs.go.env.GOBIN];
   home.packages = builtins.attrValues {
     inherit
       (pkgs)
