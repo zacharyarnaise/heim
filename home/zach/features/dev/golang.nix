@@ -24,10 +24,8 @@
       (pkgs)
       delve
       golangci-lint
-      gomodifytags
       gopls
-      gotools
-      go-tools
+      revive
       yaegi
       ;
   };

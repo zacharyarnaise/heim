@@ -140,6 +140,7 @@
           "plaintext" = false;
           "scminput" = false;
         };
+        "github.copilot.nextEditSuggestions.enabled" = true;
 
         "ansible.ansible.path" = "${pkgs.ansible}/bin/ansible";
         "ansible.lightspeed.enabled" = false;
@@ -147,21 +148,21 @@
         "ansible.python.interpreterPath" = "${pkgs.python313}/bin/python3";
 
         "go.alternateTools" = {
-          "delve" = "${pkgs.delve}/bin/dlv";
+          "dlv" = "${pkgs.delve}/bin/dlv";
           "gofumpt" = "${pkgs.gofumpt}/bin/gofumpt";
-          "goimports" = "${pkgs.gotools}/bin/goimports";
           "golangci-lint-v2" = "${pkgs.golangci-lint}/bin/golangci-lint";
-          "gomodifytags" = "${pkgs.gomodifytags}/bin/gomodifytags";
           "gopls" = "${pkgs.gopls}/bin/gopls";
-          "staticcheck" = "${pkgs.go-tools}/bin/staticcheck";
+          "revive" = "${pkgs.revive}/bin/revive";
         };
-        "go.diagnostic.vulncheck" = "Imports";
+        "go.diagnostic.vulncheck" = "Prompt";
         "go.inlayHints.constantValues" = true;
         "go.inlayHints.rangeVariableTypes" = true;
         "go.lintTool" = "golangci-lint-v2";
         "go.showWelcome" = false;
         "go.survey.prompt" = false;
+        "go.tasks.provideDefault" = false;
         "go.terminal.activateEnvironment" = false;
+        "go.testExplorer.enable" = false;
         "go.toolsEnvVars" = {
           "GOBIN" = config.programs.go.env.GOBIN;
           "GOPATH" = config.programs.go.env.GOPATH;
@@ -171,7 +172,12 @@
         "go.toolsManagement.autoUpdate" = false;
         "go.toolsManagement.checkForUpdates" = "off";
         "go.useLanguageServer" = true;
-        "gopls"."ui.semanticTokens" = true;
+        "gopls" = {
+          "formatting.gofumpt" = true;
+          "ui.completion.usePlaceholders" = true;
+          "ui.diagnostic.staticcheck" = "unset";
+          "ui.semanticTokens" = true;
+        };
 
         "nix.enableLanguageServer" = true;
         "nix.hiddenLanguageServerErrors" = [
