@@ -175,7 +175,6 @@
         "gopls" = {
           "formatting.gofumpt" = true;
           "ui.completion.usePlaceholders" = true;
-          "ui.diagnostic.staticcheck" = "unset";
           "ui.semanticTokens" = true;
         };
 
