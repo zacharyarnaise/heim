@@ -39,7 +39,7 @@ in {
 
     # See: https://github.com/k3d-io/k3d/issues/1560
     k3d = prev.k3d.override {
-      k3sVersion = "1.34.3-k3s1";
+      k3sVersion = "1.35.1-k3s1";
     };
 
     sbctl = prev.sbctl.override {
