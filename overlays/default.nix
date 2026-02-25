@@ -42,13 +42,17 @@ in {
       k3sVersion = "1.35.1-k3s1";
     };
 
-    python3Packages.picosvg = addPatches prev.python3Packages.picosvg [
-      # Unti https://github.com/NixOS/nixpkgs/pull/493376 hits unstable
-      (prev.fetchpatch {
-        url = "https://github.com/googlefonts/picosvg/commit/885ee64b75f526e938eb76e09fab7d93e946a355.patch";
-        hash = "sha256-fR3FfnEPHwSO1rMtmQEr1pyvByTx8T53FxSpuAKWIjw=";
-      })
-    ];
+    python313 = prev.python313.override {
+      packageOverrides = _: super: {
+        picosvg = addPatches super.picosvg [
+          # Until https://github.com/NixOS/nixpkgs/pull/493376 hits unstable
+          (prev.fetchpatch {
+            url = "https://github.com/googlefonts/picosvg/commit/885ee64b75f526e938eb76e09fab7d93e946a355.patch";
+            hash = "sha256-fR3FfnEPHwSO1rMtmQEr1pyvByTx8T53FxSpuAKWIjw=";
+          })
+        ];
+      };
+    };
 
     sbctl = prev.sbctl.override {
       databasePath = "/persist/etc/secureboot";
