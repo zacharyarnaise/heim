@@ -21,6 +21,14 @@
       body = ''
         git add -A
         git rm $(git ls-files --deleted) 2> /dev/null
+        git commit --no-verify --no-gpg-sign --message "--wip--"
+      '';
+    };
+    gwipc = {
+      description = "Commit all current changes with a WIP message.";
+      body = ''
+        git add -A
+        git rm $(git ls-files --deleted) 2> /dev/null
         git commit --no-verify --no-gpg-sign --message "--wip-- [skip ci]"
       '';
     };
