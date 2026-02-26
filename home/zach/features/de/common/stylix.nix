@@ -19,7 +19,7 @@
     };
     fonts = {
       emoji = {
-        package = pkgs.openmoji-color;
+        package = pkgs.stable.openmoji-color;
         name = "OpenMoji Color";
       };
       monospace = {
