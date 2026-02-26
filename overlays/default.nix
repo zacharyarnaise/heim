@@ -7,7 +7,7 @@ in {
   # Adds pkgs.stable
   stable = final: _prev: {
     stable = import inputs.nixpkgs-stable {
-      inherit (final) system;
+      inherit (final.stdenv.hostPlatform) system;
       config = {
         allowUnfree = true;
       };
