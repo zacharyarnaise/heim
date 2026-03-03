@@ -8,6 +8,7 @@
 
   programs.beets = {
     enable = true;
+    package = pkgs.stable.beets;
 
     settings = {
       library = "/storage/data01/beets/library.db";
