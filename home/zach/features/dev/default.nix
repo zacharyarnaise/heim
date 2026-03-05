@@ -16,14 +16,11 @@
     ./vscode.nix
   ];
 
-  home.packages = builtins.attrValues {
-    inherit
-      (pkgs)
-      act
-      openssl
-      postgresql_18
-      redpanda-client
-      sops
-      ;
-  };
+  home.packages = [
+    pkgs.openssl
+    pkgs.stable.pgbadger
+    pkgs.postgresql_18
+    pkgs.redpanda-client
+    pkgs.sops
+  ];
 }

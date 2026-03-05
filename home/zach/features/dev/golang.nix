@@ -25,7 +25,6 @@
       delve
       golangci-lint
       gopls
-      revive
       yaegi
       ;
   };
