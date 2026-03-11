@@ -35,6 +35,7 @@ in {
       "cache=loose"
       "iocharset=utf8"
       "vers=3.0"
+      "noperm"
 
       "_netdev"
       "auto"
