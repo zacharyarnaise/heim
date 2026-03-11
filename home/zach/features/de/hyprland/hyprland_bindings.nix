@@ -109,8 +109,8 @@ in {
       ++ (lib.mapAttrsToList (n: key: "${modShift}, ${key}, Moves active window to workspace ${n}, movetoworkspacesilent, ${n}") workspaces);
 
     binddle = [
-      ", XF86MonBrightnessUp,   Increase brightness, exec, light -A 5"
-      ", XF86MonBrightnessDown, Decrease brightness, exec, light -U 5"
+      ", XF86MonBrightnessUp,   Increase brightness, exec, brightnessctl set +5%"
+      ", XF86MonBrightnessDown, Decrease brightness, exec, brightnessctl set 5%-"
       ", XF86AudioRaiseVolume, Increase volume, exec, ${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 5%+"
       ", XF86AudioLowerVolume, Decrease volume, exec, ${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 5%-"
     ];

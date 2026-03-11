@@ -16,8 +16,6 @@
     kernel.sysctl."vm.dirty_writeback_centisecs" = "3000";
   };
 
-  programs.light.enable = true;
-
   nix.settings.max-jobs = 12;
   hardware.cpu.amd.updateMicrocode = true;
   powerManagement.cpuFreqGovernor = "ondemand";
