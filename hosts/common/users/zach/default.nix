@@ -29,7 +29,6 @@ in {
       ++ ifTheyExist [
         "audio"
         "video"
-        "navidrome"
         "network"
         "docker"
         "podman"
