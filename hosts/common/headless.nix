@@ -1,24 +1,31 @@
 {lib, ...}: {
   imports = [
     ./global
+
+    ./optional/boot/systemd-boot.nix
   ];
+
+  boot.kernelParams = ["panic=1" "boot.panic_on_fail=1"];
+
+  documentation = {
+    enable = false;
+    doc.enable = false;
+    info.enable = false;
+    man.enable = false;
+    nixos.enable = false;
+  };
 
   nix = {
     daemonCPUSchedPolicy = "batch";
     daemonIOSchedClass = "best-effort";
   };
 
-  boot = {
-    loader.timeout = lib.mkForce 0;
-    kernelParams = ["panic=1" "boot.panic_on_fail=1"];
-  };
   systemd = {
     enableEmergencyMode = false;
     services = {
-      "serial-getty@ttyS0".enable = lib.mkDefault false;
-      "serial-getty@hvc0".enable = lib.mkDefault false;
-      "getty@tty1".enable = lib.mkDefault false;
-      "autovt@".enable = lib.mkDefault false;
+      "autovt@".enable = lib.mkForce false;
+      "getty@".enable = lib.mkForce false;
+      "serial-getty@".enable = lib.mkForce false;
     };
   };
 }
