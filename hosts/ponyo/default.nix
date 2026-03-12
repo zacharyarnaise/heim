@@ -4,10 +4,10 @@
     ./wireguard.nix
 
     ../common/pc.nix
+    ../common/optional/laptop
     ../common/users/zach
 
     ../common/optional/bluetooth.nix
-    ../common/optional/powertop.nix
     ../common/optional/wireless.nix
   ];
 

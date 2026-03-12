@@ -20,6 +20,8 @@
     daemonIOSchedClass = "best-effort";
   };
 
+  powerManagement.enable = false;
+
   systemd = {
     enableEmergencyMode = false;
     services = {
