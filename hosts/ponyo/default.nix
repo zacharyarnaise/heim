@@ -7,6 +7,7 @@
     ../common/optional/laptop
     ../common/users/zach
 
+    ../common/optional/boot/lanzaboote.nix
     ../common/optional/bluetooth.nix
     ../common/optional/wireless.nix
   ];

@@ -2,7 +2,6 @@
   imports = [
     ./global
 
-    ./optional/boot/lanzaboote.nix
     ./optional/boot/quiet.nix
     ./optional/dconf.nix
     ./optional/display-manager.nix

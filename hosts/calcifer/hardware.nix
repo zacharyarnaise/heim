@@ -7,29 +7,7 @@
     inputs.nixos-hardware.nixosModules.common-cpu-intel-cpu-only
     inputs.nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
     inputs.nixos-hardware.nixosModules.common-pc-ssd
-
-    ./filesystems.nix
-    ./nvidia.nix
   ];
-
-  boot = {
-    initrd.availableKernelModules = [
-      "xhci_pci"
-      "ahci"
-      "nvme"
-      "usbhid"
-      "usb_storage"
-      "sd_mod"
-    ];
-    kernelModules = [
-      "kvm-intel"
-      "nct6683"
-      "i2c-dev"
-    ];
-    kernelParams = [
-      "i8042.nopnp=1"
-    ];
-  };
 
   services.pipewire = {
     extraConfig.pipewire = {
@@ -60,8 +38,8 @@
     };
   };
 
-  nix.settings.max-jobs = 28;
   hardware.cpu.intel.updateMicrocode = true;
-  swapDevices = lib.mkForce [];
+  nix.settings.max-jobs = 28;
   powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
+  swapDevices = lib.mkForce [];
 }
