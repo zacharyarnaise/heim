@@ -9,7 +9,7 @@
   };
 
   boot = {
-    loader.timeout = 0;
+    loader.timeout = lib.mkForce 0;
     kernelParams = ["panic=1" "boot.panic_on_fail=1"];
   };
   systemd = {
