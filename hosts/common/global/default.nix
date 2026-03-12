@@ -37,6 +37,7 @@
   # Disable unused stuff
   documentation.doc.enable = false;
   documentation.info.enable = false;
+  services.speechd.enable = false;
 
   services.irqbalance.enable = true;
   systemd = {

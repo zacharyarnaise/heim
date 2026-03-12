@@ -42,10 +42,6 @@ in {
       k3sVersion = "1.35.1-k3s1";
     };
 
-    sbctl = prev.sbctl.override {
-      databasePath = "/persist/etc/secureboot";
-    };
-
     waybar = addPatches prev.waybar [
       ./waybar_wireplumber_notfound.diff
     ];
