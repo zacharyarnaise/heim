@@ -11,13 +11,21 @@ in {
       efiInstallAsRemovable = false;
       efiSupport = true;
       enableEditor = false;
+      enrollConfig = true;
       extraConfig = lib.concatLines [
         "remember_last_entry: yes"
       ];
       maxGenerations = 10;
+      panicOnChecksumMismatch = true;
       secureBoot.enable = true;
-      style.interface = {
-        helpHidden = true;
+      style = {
+        interface = {
+          branding = " ";
+          helpHidden = true;
+        };
+        backdrop = "59514A";
+        wallpapers = [./limine-bg.png];
+        wallpaperStyle = "centered";
       };
     };
     timeout = 5;

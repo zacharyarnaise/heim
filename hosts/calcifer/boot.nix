@@ -17,10 +17,13 @@
       "i8042.nopnp=1"
     ];
 
-    loader.limine.extraEntries = ''
-      /Windows
-        protocol: efi
-        path: uuid(b98f5ad8-5c00-4c12-90aa-338547c53bf2):/EFI/Microsoft/Boot/bootmgfw.efi
-    '';
+    loader.limine = {
+      extraEntries = ''
+        /Windows
+          protocol: efi
+          path: uuid(b98f5ad8-5c00-4c12-90aa-338547c53bf2):/EFI/Microsoft/Boot/bootmgfw.efi
+      '';
+      style.interface.resolution = "3840x2160x32";
+    };
   };
 }
