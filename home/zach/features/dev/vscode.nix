@@ -17,7 +17,7 @@
       enableExtensionUpdateCheck = false;
       enableUpdateCheck = false;
       extensions = let
-        vsext = pkgs.nix-vscode-extensions.vscode-marketplace;
+        vsext = pkgs.nix-vscode-extensions.vscode-marketplace-release;
       in [
         vsext.charliermarsh.ruff
         vsext.github.copilot
