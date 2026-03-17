@@ -22,7 +22,6 @@
       act
       nodejs
       openssl
-      pgbadger
       pnpm
       postgresql_18
       redpanda-client
