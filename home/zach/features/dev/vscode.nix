@@ -17,25 +17,21 @@
       enableExtensionUpdateCheck = false;
       enableUpdateCheck = false;
       extensions = let
-        marketplace = pkgs.vscode-marketplace;
-        vsext = pkgs.vscode-extensions;
+        vsext = pkgs.nix-vscode-extensions.vscode-marketplace;
       in [
-        marketplace.chrisjsewell.myst-tml-syntax
-        marketplace.lextudio.restructuredtext
-        marketplace.swyddfa.esbonio
-        marketplace.trond-snekvik.simple-rst
-
         vsext.charliermarsh.ruff
         vsext.github.copilot
         vsext.github.github-vscode-theme
         vsext.golang.go
         vsext.jnoortheen.nix-ide
+        vsext.lextudio.restructuredtext
         vsext.ms-kubernetes-tools.vscode-kubernetes-tools
         vsext.ms-python.python
         vsext.ms-python.vscode-pylance
-        vsext.ms-vscode.vscode-typescript-next
         vsext.redhat.ansible
         vsext.redhat.vscode-yaml
+        vsext.swyddfa.esbonio
+        vsext.trond-snekvik.simple-rst
         vsext.vscode-icons-team.vscode-icons
       ];
       userSettings = {
