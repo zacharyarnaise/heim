@@ -20,6 +20,7 @@
         vsext = pkgs.nix-vscode-extensions.vscode-marketplace-release;
       in [
         vsext.charliermarsh.ruff
+        vsext.chrisjsewell.myst-tml-syntax
         vsext.github.copilot
         vsext.github.github-vscode-theme
         vsext.golang.go
