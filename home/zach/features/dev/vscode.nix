@@ -17,29 +17,26 @@
       enableExtensionUpdateCheck = false;
       enableUpdateCheck = false;
       extensions = let
-        vsext = pkgs.vscode-extensions;
         marketplace = pkgs.vscode-marketplace;
+        vsext = pkgs.vscode-extensions;
       in [
-        vsext.jnoortheen.nix-ide
-
-        vsext.golang.go
+        marketplace.chrisjsewell.myst-tml-syntax
+        marketplace.lextudio.restructuredtext
+        marketplace.swyddfa.esbonio
+        marketplace.trond-snekvik.simple-rst
 
         vsext.charliermarsh.ruff
-        vsext.ms-python.python
-        vsext.ms-python.vscode-pylance
-        vsext.ms-kubernetes-tools.vscode-kubernetes-tools
-
-        vsext.redhat.ansible
-        vsext.redhat.vscode-yaml
-
         vsext.github.copilot
         vsext.github.github-vscode-theme
+        vsext.golang.go
+        vsext.jnoortheen.nix-ide
+        vsext.ms-kubernetes-tools.vscode-kubernetes-tools
+        vsext.ms-python.python
+        vsext.ms-python.vscode-pylance
+        vsext.ms-vscode.vscode-typescript-next
+        vsext.redhat.ansible
+        vsext.redhat.vscode-yaml
         vsext.vscode-icons-team.vscode-icons
-
-        marketplace.lextudio.restructuredtext
-        marketplace.trond-snekvik.simple-rst
-        marketplace.swyddfa.esbonio
-        marketplace.chrisjsewell.myst-tml-syntax
       ];
       userSettings = {
         "extensions.autoUpdate" = false;
