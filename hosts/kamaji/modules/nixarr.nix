@@ -24,7 +24,6 @@
     };
 
     jellyfin.enable = true;
-    bazarr.enable = true;
     sonarr.enable = true;
     radarr.enable = true;
     lidarr.enable = true;
@@ -38,9 +37,11 @@
     };
   };
 
-  systemd.services.jellyseerr = {
-    environment = {
-      LOG_LEVEL = "info";
-    };
+  systemd.services = {
+    jellyseerr.environment.LOG_LEVEL = "warn";
+    lidarr.environment.LIDARR__LOG__LEVEL = "Warn";
+    prowlarr.environment.PROWLARR__LOG__LEVEL = "Warn";
+    radarr.environment.RADARR__LOG__LEVEL = "Warn";
+    sonarr.environment.SONARR__LOG__LEVEL = "Warn";
   };
 }
