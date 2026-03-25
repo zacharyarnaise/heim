@@ -1,8 +1,6 @@
 {lib, ...}: {
   imports = [
     ./global
-
-    ./optional/boot/systemd-boot.nix
   ];
 
   boot.kernelParams = ["panic=1" "boot.panic_on_fail=1"];

@@ -20,11 +20,7 @@ in {
       "sd_mod"
       "sr_mod"
     ];
-
-    loader = {
-      systemd-boot.enable = lib.mkForce false;
-      grub.enable = true;
-    };
+    loader.grub.enable = true;
   };
 
   sops.secrets = {

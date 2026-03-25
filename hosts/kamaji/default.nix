@@ -4,6 +4,7 @@
 
     ../common/headless.nix
     ../common/users/zach
+    ../common/optional/boot/systemd-boot.nix
     ../common/optional/display-manager.nix
     ../common/optional/pipewire.nix
 
