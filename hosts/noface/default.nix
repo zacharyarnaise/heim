@@ -4,6 +4,7 @@
 
     ../common/headless.nix
     ../common/users/zach
+    ../common/optional/boot/systemd-boot.nix
   ];
 
   system.stateVersion = "25.11";
