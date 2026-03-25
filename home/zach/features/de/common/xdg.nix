@@ -24,6 +24,7 @@ in {
 
     userDirs = {
       enable = true;
+      setSessionVariables = false;
 
       desktop = null;
       music = null;
