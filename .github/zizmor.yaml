@@ -1,6 +1,0 @@
-rules:
-  secrets-outside-env:
-    disable: true
-    # Will be introduced in next version
-    # config:
-    #   allow: [NIX_TOKEN]

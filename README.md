@@ -2,14 +2,12 @@
 
 # ~/heim
 [![Built with Nix badge](https://img.shields.io/badge/Built%20with%20Nix%20and%20%E2%9D%A4%EF%B8%8F-5277C3?logo=nixos&logoColor=FFFFFF)](https://builtwithnix.org/)
-[![Lint & flake check badge](https://github.com/zacharyarnaise/heim/actions/workflows/lint.yaml/badge.svg)](https://github.com/zacharyarnaise/heim/actions/workflows/lint.yaml)
 
 Here you'll find my [NixOS](https://nixos.org/) & [home-manager](https://github.com/nix-community/home-manager) configurations for my systems, declared as a single Nix flake.
 
 </div>
 
 ## Notable features
-- Automated update of lockfile and linting via CI & [pre-commit hooks](https://github.com/cachix/git-hooks.nix)
 - Declarative disk partitioning ([disko](https://github.com/nix-community/disko))
 - Full disk encryption
 - [Impermanence](https://github.com/nix-community/impermanence), ephemeral root in ramfs
@@ -40,7 +38,6 @@ Here you'll find my [NixOS](https://nixos.org/) & [home-manager](https://github.
 ## Repo structure
 ```sh
 .
-├─ .github/workflows/ # CI/CD for linting, flake checking and updates
 ├─ home/              # Home-manager configurations
 ├─ hosts/             # NixOS configurations
 │  ├─ common/ # Shared configurations
