@@ -21,8 +21,8 @@ in {
     beets = addPatches prev.beets [
       # Don't send user-agent bc some lyrics providers block it
       (prev.fetchpatch {
-        url = "https://github.com/beetbox/beets/commit/095c69a853f6de70f131a1bfc62256e3d2c5cebe.patch";
-        hash = "sha256-CsJwQiXiRk3f5NFMuodpsb+lD3u3pbOzEejip5X28Po=";
+        url = "https://github.com/snejus/beets/commit/2d6c6c188329093c4b78e42a2d0073763c2f9053.patch";
+        hash = "sha256-gS1NXX0un1RXgDz+Z5HRv4Pq1sM5TjdpY5HJIe8Y6RY=";
       })
     ];
 
