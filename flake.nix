@@ -53,7 +53,7 @@
 
     # Desktop specific inputs
     stylix = {
-      url = "github:zacharyarnaise/stylix/foot-fix";
+      url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     firefox-addons = {
