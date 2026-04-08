@@ -3,7 +3,7 @@
   lib,
   ...
 }: let
-  pkiBundle = "/etc/secureboot";
+  pkiBundle = "/var/lib/sbctl";
 in {
   imports = [
     inputs.lanzaboote.nixosModules.lanzaboote
