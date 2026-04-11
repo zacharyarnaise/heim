@@ -30,7 +30,7 @@ in {
 
       AutoImportPlaylists = false;
       CovertArtPriority = "*.jpg, *.JPG, *.jpeg, *.JPEG";
-      CoverJpegQuality = 80;
+      CoverArtQuality = 80;
       DefaultUIVolume = 50;
       EnableFavourites = true;
       EnableMediaFileCoverArt = false;
@@ -43,6 +43,8 @@ in {
       "Scanner.ScanOnStartup" = false;
       "Scanner.WatcherWait" = "1m";
       SessionTimeout = "72h";
+      "Subsonic.AppendAlbumVersion" = false;
+      UICoverArtSize = 600;
       UIWelcomeMessage = "( ͡° ͜ʖ ͡°)";
     };
   };
