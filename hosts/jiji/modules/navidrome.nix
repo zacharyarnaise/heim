@@ -35,6 +35,7 @@ in {
       EnableFavourites = true;
       EnableMediaFileCoverArt = false;
       EnableStarRating = true;
+      EnableWebPEncoding = true;
       ImageCacheSize = "500MB";
       "LastFM.Enabled" = true;
       "ListenBrainz.Enabled" = true;
@@ -44,7 +45,8 @@ in {
       "Scanner.WatcherWait" = "1m";
       SessionTimeout = "72h";
       "Subsonic.AppendAlbumVersion" = false;
-      UICoverArtSize = 600;
+      TranscodingCacheSize = "5GB";
+      UICoverArtSize = 500;
       UIWelcomeMessage = "( ͡° ͜ʖ ͡°)";
     };
   };
