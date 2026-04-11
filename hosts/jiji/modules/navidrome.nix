@@ -29,12 +29,15 @@ in {
       LogLevel = "warn";
 
       AutoImportPlaylists = false;
-      CovertArtPriority = "*.jpg, *.JPG, *.jpeg, *.JPEG";
+      CovertArtPriority = "cover.*";
       CoverArtQuality = 80;
+      DefaultDownsamplingFormat = "opus";
       DefaultUIVolume = 50;
+      DiscArtPriority = "";
       EnableFavourites = true;
       EnableMediaFileCoverArt = false;
       EnableStarRating = true;
+      EnableTranscodingCancellation = true;
       EnableWebPEncoding = true;
       ImageCacheSize = "500MB";
       "LastFM.Enabled" = true;
