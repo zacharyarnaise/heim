@@ -21,6 +21,7 @@
         "lastgenre"
         "lyrics"
         "autobpm"
+        "zero"
       ];
       paths = {
         default = "$albumartist/$album%aunique{}/$track $title";
@@ -50,6 +51,10 @@
       replaygain = {
         backend = "ffmpeg";
         overwrite = true;
+      };
+      zero = {
+        auto = true;
+        fields = ["images"];
       };
     };
   };
