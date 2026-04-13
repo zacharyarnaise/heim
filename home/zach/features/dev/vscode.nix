@@ -29,6 +29,7 @@
         vsext.ms-kubernetes-tools.vscode-kubernetes-tools
         vsext.ms-python.python
         vsext.ms-python.vscode-pylance
+        vsext.ms-python.vscode-python-envs
         vsext.redhat.ansible
         vsext.redhat.vscode-yaml
         vsext.swyddfa.esbonio
