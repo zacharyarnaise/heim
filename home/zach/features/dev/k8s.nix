@@ -19,6 +19,7 @@
     "jetstack" = "https://charts.jetstack.io";
     "datadog" = "https://helm.datadoghq.com";
     "traefik" = "https://traefik.github.io/charts";
+    "oauth2-proxy" = "https://oauth2-proxy.github.io/manifests";
   };
 in {
   programs.k9s = {
