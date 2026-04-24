@@ -43,7 +43,7 @@ in {
 
   # TODO: Most of these shouldn't be included unconditionally
   environment.persistence."/persist".users.zach = {
-    directories = lib.mkIf (config.hostSpec.kind != "headless") [
+    directories = lib.mkIf (config.hostSpec.kind != "fff") [
       {
         directory = ".config/mozilla";
         mode = "0750";

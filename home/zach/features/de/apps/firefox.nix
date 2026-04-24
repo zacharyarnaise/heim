@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  config,
   ...
 }: let
   firefox-addons = inputs.firefox-addons.packages.${pkgs.stdenv.system};
@@ -16,6 +17,7 @@ in {
   programs.firefox = {
     enable = true;
     package = pkgs.firefox-bin;
+    configPath = "${config.xdg.configHome}/mozilla/firefox";
 
     profiles.default = {
       id = 0;
