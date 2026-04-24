@@ -19,9 +19,9 @@
       extensions = let
         vsext = pkgs.nix-vscode-extensions.vscode-marketplace-release;
       in [
+        vsext.anthropic.claude-code
         vsext.charliermarsh.ruff
         vsext.chrisjsewell.myst-tml-syntax
-        vsext.github.copilot
         vsext.github.github-vscode-theme
         vsext.golang.go
         vsext.jnoortheen.nix-ide

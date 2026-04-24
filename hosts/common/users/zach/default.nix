@@ -45,6 +45,10 @@ in {
   environment.persistence."/persist".users.zach = {
     directories = lib.mkIf (config.hostSpec.kind != "headless") [
       {
+        directory = ".config/mozilla";
+        mode = "0750";
+      }
+      {
         directory = ".config/sops";
         mode = "0700";
       }
@@ -55,10 +59,6 @@ in {
       {
         directory = ".kube";
         mode = "0700";
-      }
-      {
-        directory = ".mozilla/firefox/default";
-        mode = "0750";
       }
       {
         directory = ".local/state/wireplumber";
