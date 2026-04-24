@@ -20,11 +20,11 @@
     inherit
       (pkgs)
       act
+      hugo
       nodejs
       openssl
       pnpm
       postgresql_18
-      redpanda-client
       sops
       ;
   };
