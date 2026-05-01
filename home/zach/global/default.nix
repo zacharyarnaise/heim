@@ -31,8 +31,21 @@
 
     persistence."/persist" = {
       directories = lib.optionals (hostSpec.kind != "headless") [
+        ".config/mozilla"
+        {
+          directory = ".config/sops";
+          mode = "0700";
+        }
+        {
+          directory = ".gnupg/private-keys-v1.d";
+          mode = "0700";
+        }
         {
           directory = ".local/share/keyrings";
+          mode = "0700";
+        }
+        {
+          directory = ".local/state/wireplumber";
           mode = "0700";
         }
         "Code"

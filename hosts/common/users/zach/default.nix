@@ -40,32 +40,6 @@ in {
       lib.splitString "\n" (builtins.readFile "${secretsDir}/users/zach/id_zach_sk.pub");
   };
 
-  # TODO: Most of these shouldn't be included unconditionally
-  environment.persistence."/persist".users.zach = {
-    directories = lib.mkIf (config.hostSpec.kind != "fff") [
-      {
-        directory = ".config/mozilla";
-        mode = "0750";
-      }
-      {
-        directory = ".config/sops";
-        mode = "0700";
-      }
-      {
-        directory = ".gnupg/private-keys-v1.d";
-        mode = "0750";
-      }
-      {
-        directory = ".kube";
-        mode = "0700";
-      }
-      {
-        directory = ".local/state/wireplumber";
-        mode = "0700";
-      }
-    ];
-  };
-
   security.pam.services = {
     hyprlock = {};
   };

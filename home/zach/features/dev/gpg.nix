@@ -4,14 +4,13 @@
   pkgs,
   ...
 }: let
-  cacheTTL = 300;
   secretsDir = builtins.toString inputs.secrets;
 in {
   services.gpg-agent = {
     enable = true;
 
-    defaultCacheTtl = cacheTTL;
-    maxCacheTtl = cacheTTL;
+    defaultCacheTtl = 300;
+    maxCacheTtl = 900;
     enableScDaemon = true;
     enableSshSupport = false;
     pinentry.package = pkgs.pinentry-rofi.override {
