@@ -20,20 +20,17 @@
         vsext = pkgs.nix-vscode-extensions.vscode-marketplace-release;
       in [
         vsext.anthropic.claude-code
+        vsext.budparr.language-hugo-vscode
         vsext.charliermarsh.ruff
-        vsext.chrisjsewell.myst-tml-syntax
         vsext.github.github-vscode-theme
         vsext.golang.go
         vsext.jnoortheen.nix-ide
-        vsext.lextudio.restructuredtext
         vsext.ms-kubernetes-tools.vscode-kubernetes-tools
         vsext.ms-python.python
         vsext.ms-python.vscode-pylance
         vsext.ms-python.vscode-python-envs
         vsext.redhat.ansible
         vsext.redhat.vscode-yaml
-        vsext.swyddfa.esbonio
-        vsext.trond-snekvik.simple-rst
         vsext.vscode-icons-team.vscode-icons
       ];
       userSettings = {
@@ -197,6 +194,10 @@
         "python.analysis.languageServerMode" = "full";
         "python.analysis.typeCheckingMode" = "basic";
         "python.languageServer" = "Pylance";
+
+        "[yaml]" = {
+          "editor.formatOnSave" = false;
+        };
       };
     };
   };
