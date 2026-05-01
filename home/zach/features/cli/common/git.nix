@@ -1,8 +1,4 @@
 {
-  lib,
-  config,
-  ...
-}: {
   programs.git = {
     enable = true;
 
@@ -29,9 +25,5 @@
       pull.rebase = true;
       push.autoSetupRemote = true;
     };
-  };
-
-  programs.zsh = lib.mkIf config.programs.zsh.enable {
-    oh-my-zsh.plugins = ["git"];
   };
 }

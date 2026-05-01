@@ -14,8 +14,4 @@
 
     flake = "$HOME/Code/Nix/heim";
   };
-
-  programs.zsh.dirHashes = {
-    heim = "$HOME/Code/Nix/heim";
-  };
 }

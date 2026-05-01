@@ -13,7 +13,6 @@ in {
     import ../../../../home/zach/${config.hostSpec.name}.nix;
 
   programs.fish.enable = true;
-  programs.zsh.enable = true;
 
   users.groups.zach = {};
   users.users.zach = {

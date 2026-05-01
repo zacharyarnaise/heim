@@ -1,9 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   programs.bat = {
     enable = true;
 
@@ -13,12 +8,5 @@
     extraPackages = builtins.attrValues {
       inherit (pkgs.bat-extras) batdiff batman batgrep;
     };
-  };
-
-  programs.zsh.shellAliases = lib.mkIf config.programs.zsh.enable {
-    cat = "bat";
-    diff = "batdiff";
-    rg = "batgrep";
-    man = "batman";
   };
 }

@@ -12,7 +12,6 @@
 
       ../features/cli/common
       ../features/cli/fish
-      ../features/cli/zsh
     ];
 
   inherit hostSpec;

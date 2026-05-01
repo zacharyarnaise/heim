@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   home.packages = builtins.attrValues {
     inherit
       (pkgs)
@@ -14,7 +10,6 @@
   programs.yazi = {
     enable = true;
 
-    enableZshIntegration = config.programs.zsh.enable;
     shellWrapperName = "y";
     initLua = ./init.lua;
     keymap = import ./keymap.nix;

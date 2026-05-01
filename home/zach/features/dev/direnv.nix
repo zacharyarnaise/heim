@@ -9,7 +9,6 @@ in {
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
-    enableZshIntegration = config.programs.zsh.enable;
 
     config = {
       global = {
