@@ -1,7 +1,6 @@
 {
   pkgs,
   lib,
-  config,
   ...
 }: let
   mkReposSet = repos:
@@ -39,6 +38,26 @@ in {
       logger = {
         buffer = 5000;
         tail = 300;
+        textWrap = true;
+        showTime = true;
+      };
+    };
+
+    plugins = {
+      stern = {
+        shortCut = "Ctrl-L";
+        confirm = false;
+        description = "Logs (stern)";
+        scopes = ["pods"];
+        command = "stern";
+        background = false;
+        args = [
+          "$FILTER"
+          "--context=$CONTEXT"
+          "--namespace=$NAMESPACE"
+          "--tail=-1"
+          "--template={{color .PodColor .PodName}} {{.Message}}\n"
+        ];
       };
     };
   };
@@ -51,13 +70,8 @@ in {
       kubecolor
       kubectx
       k3d
+      stern
       ;
-  };
-
-  programs.zsh.shellAliases = lib.mkIf config.programs.zsh.enable {
-    k = "kubecolor";
-    kcx = "kubectx";
-    kns = "kubens";
   };
 
   xdg.configFile."helm/repositories.yaml".text = lib.generators.toYAML {} {
