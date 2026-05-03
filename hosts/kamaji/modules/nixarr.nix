@@ -4,7 +4,46 @@
   config,
   pkgs,
   ...
-}: {
+}: let
+  qbittorrentPortForward = pkgs.writeShellApplication {
+    name = "qbittorrent-port-forward";
+    runtimeInputs = [
+      pkgs.curl
+      pkgs.gawk
+      pkgs.iptables
+      pkgs.libnatpmp
+    ];
+    text = ''
+      natpmpc_out=$(natpmpc -a 1 0 tcp 60 -g 10.2.0.1 2>&1) || true
+      natpmpc -a 1 0 udp 60 -g 10.2.0.1 > /dev/null 2>&1 || true
+      mapped_port=$(echo "$natpmpc_out" | grep "Mapped public port" | awk '{print $4}')
+
+      if [ -z "$mapped_port" ]; then
+        printf 'naptpmc failed. Output:\n%s\n' "$natpmpc_out"
+        exit 1
+      fi
+
+      printf 'natpmpc succeeded, mapped public port: %s\n' "$mapped_port"
+
+      curl -fs -X POST http://192.168.15.1:8085/api/v2/app/setPreferences \
+        --data-urlencode "json={\"listen_port\": $mapped_port}" \
+        -H "Content-Type: application/x-www-form-urlencoded" \
+        -o /dev/null || {
+          echo "qBittorrent setPreferences API call failed."
+          exit 1
+        }
+
+      iptables -C INPUT -p tcp --dport "$mapped_port" -j ACCEPT -i wg0 2>/dev/null || {
+        iptables -A INPUT -p tcp --dport "$mapped_port" -j ACCEPT -i wg0
+        iptables -A INPUT -p udp --dport "$mapped_port" -j ACCEPT -i wg0
+        ip6tables -A INPUT -p tcp --dport "$mapped_port" -j ACCEPT -i wg0
+        ip6tables -A INPUT -p udp --dport "$mapped_port" -j ACCEPT -i wg0
+      }
+
+      echo "Success, exiting."
+    '';
+  };
+in {
   imports = [
     inputs.nixarr.nixosModules.default
   ];
@@ -55,26 +94,31 @@
     };
   };
 
-  services.qbittorrent.serverConfig = {
-    Application.MemoryWorkingSetLimit = 1024;
-    BitTorrent = {
-      "MergeTrackersEnabled" = true;
-      "Session\\DiskIOType" = "MMap";
-      "Session\\DiskQueueSize" = 4194304;
-      "Session\\HashingThreadsCount" = 4;
-      "Session\\MaxActiveCheckingTorrents" = 1;
-      "Session\\MaxActiveDownloads" = lib.mkForce 20;
-      "Session\\MaxActiveTorrents" = lib.mkForce 20;
-      "Session\\MaxActiveUploads" = lib.mkForce 5;
+  services.qbittorrent = {
+    serverConfig = {
+      Application.MemoryWorkingSetLimit = 1024;
+      BitTorrent = {
+        "MergeTrackersEnabled" = true;
+        "Session\\DiskIOType" = "MMap";
+        "Session\\DiskQueueSize" = 4194304;
+        "Session\\HashingThreadsCount" = 4;
+        "Session\\MaxActiveCheckingTorrents" = 1;
+        "Session\\MaxActiveDownloads" = lib.mkForce 20;
+        "Session\\MaxActiveTorrents" = lib.mkForce 20;
+        "Session\\MaxActiveUploads" = lib.mkForce 5;
+        "Session\\Interface" = "wg0";
+        "Session\\InterfaceName" = "wg0";
+      };
+      LegalNotice.Accepted = true;
+      Network.PortForwardingEnabled = false;
+      Preferences = {
+        "Connection\\NATPMPEnabled" = false;
+        "Connection\\UPnP" = false;
+        "General\\StatusbarExternalIPDisplayed" = true;
+        "WebUI\\AuthSubnetWhitelist" = lib.mkForce "192.168.1.0/20";
+      };
     };
-    LegalNotice.Accepted = true;
-    Network.PortForwardingEnabled = false;
-    Preferences = {
-      "Connection\\NATPMPEnabled" = false;
-      "Connection\\UPnP" = false;
-      "General\\StatusbarExternalIPDisplayed" = true;
-      "WebUI\\AuthSubnetWhitelist" = lib.mkForce "192.168.1.0/20";
-    };
+    torrentingPort = lib.mkForce null;
   };
   systemd = {
     # Set log level to reduce noise in journalctl
@@ -99,32 +143,11 @@
       };
       serviceConfig = {
         Group = "media";
-        User = "qbittorrent";
+        User = "root";
         PrivateNetwork = true;
         Restart = "no";
         Type = "oneshot";
-        ExecStart = pkgs.writeShellScript "qbittorrent-port-forward" ''
-          natpmpc_out=$(${pkgs.libnatpmp}/bin/natpmpc -a 1 0 tcp 60 -g 10.2.0.1 2>&1) || true
-          ${pkgs.libnatpmp}/bin/natpmpc -a 1 0 udp 60 -g 10.2.0.1 > /dev/null 2>&1 || true
-          mapped_port=$(echo "$natpmpc_out" | grep "Mapped public port" | ${pkgs.gawk}/bin/awk '{print $4}')
-
-          if [ -z "$mapped_port" ]; then
-            printf 'naptpmc failed. Output:\n%s\n' "$natpmpc_out"
-            exit 1
-          fi
-
-          printf 'natpmpc succeeded, mapped public port: %s\n' "$mapped_port"
-
-          ${pkgs.curl}/bin/curl -fs -X POST http://192.168.15.1:8085/api/v2/app/setPreferences \
-            --data-urlencode "json={\"listen_port\": $mapped_port}" \
-            -H "Content-Type: application/x-www-form-urlencoded" \
-            -o /dev/null || {
-              echo "qBittorrent setPreferences API call failed."
-              exit 1
-            }
-
-          echo "Success, exiting."
-        '';
+        ExecStart = "${qbittorrentPortForward}/bin/qbittorrent-port-forward";
       };
     };
     timers.qbittorrent-port-forward = {
@@ -137,4 +160,6 @@
       };
     };
   };
+  # Handled by qbittorrent-port-forward service
+  vpnNamespaces.wg.openVPNPorts = lib.mkForce [];
 }
