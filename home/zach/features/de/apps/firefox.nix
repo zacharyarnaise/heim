@@ -277,13 +277,15 @@ in {
         "privacy.antitracking.enableWebcompat" = false;
         "privacy.donottrackheader.enabled" = false;
         "privacy.exposeContentTitleInWindow.pbm" = false;
+        "privacy.fingerprintingProtection.overrides" = "+AllTargets,-CSSPrefersColorScheme";
+        "privacy.fingerprintingProtection" = true;
         "privacy.globalprivacycontrol.enabled" = true;
         "privacy.globalprivacycontrol.was_ever_enabled" = true;
         "privacy.partition.always_partition_third_party_non_cookie_storage.exempt_sessionstorage" = false;
         "privacy.partition.always_partition_third_party_non_cookie_storage" = true;
         "privacy.purge_trackers.enabled" = true;
         "privacy.query_stripping.strip_list" = "__hsfp __hssc __hstc __s _hsenc _openstat dclid fbclid gbraid gclid hsCtaTracking igshid mc_eid ml_subscriber ml_subscriber_hash msclkid oft_c oft_ck oft_d oft_id oft_ids oft_k oft_lk oft_sk oly_anon_id oly_enc_id rb_clickid s_cid twclid vero_conv vero_id wbraid wickedid yclid";
-        "privacy.resistFingerprinting" = true;
+        "privacy.resistFingerprinting" = false;
         "privacy.trackingprotection.cryptomining.enabled" = true;
         "privacy.trackingprotection.fingerprinting.enabled" = true;
         "privacy.userContext.enabled" = true;
