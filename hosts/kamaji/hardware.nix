@@ -1,7 +1,6 @@
 {
   config,
   inputs,
-  lib,
   ...
 }: let
   flakeSecrets = inputs.secrets.hosts."kamaji";
@@ -15,12 +14,18 @@ in {
     ./disko.nix
   ];
 
-  boot.initrd.availableKernelModules = [
-    "xhci_pci"
-    "ahci"
-    "nvme"
-    "sd_mod"
-  ];
+  boot = {
+    initrd.availableKernelModules = [
+      "xhci_pci"
+      "ahci"
+      "nvme"
+      "sd_mod"
+    ];
+    zswap = {
+      enable = true;
+      maxPoolPercent = 20;
+    };
+  };
 
   hardware.graphics.enable = true;
 
@@ -52,6 +57,5 @@ in {
   };
 
   nix.settings.max-jobs = 8;
-  swapDevices = lib.mkForce [];
   powerManagement.cpuFreqGovernor = "ondemand";
 }

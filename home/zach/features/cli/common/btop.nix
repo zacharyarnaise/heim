@@ -1,4 +1,4 @@
-{
+{config, ...}: {
   programs.btop = {
     enable = true;
 
@@ -6,7 +6,7 @@
       presets = "proc:0:default cpu:1:default,mem:0:default";
       rounded_corners = false;
       only_physical = true;
-      show_swap = false;
+      show_swap = config.hostSpec.hasSwap;
       swap_disk = false;
     };
   };

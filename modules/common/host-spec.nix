@@ -46,6 +46,11 @@ in {
       default = false;
       description = "Whether the host has a discrete GPU";
     };
+    hasSwap = mkOption {
+      type = types.bool;
+      default = false;
+      description = "Whether the host has swap space configured";
+    };
     wlanInterface = mkOption {
       type = types.nullOr types.str;
       description = "The name of the wireless LAN interface, if applicable";

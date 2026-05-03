@@ -48,6 +48,10 @@
                     mountpoint = "/var/log";
                     mountOptions = ["compress=lzo" "noatime" "lazytime"];
                   };
+                  "@swap" = {
+                    mountpoint = "/.swapvol";
+                    swap.swapfile.size = "16G";
+                  };
                 };
               };
             };
