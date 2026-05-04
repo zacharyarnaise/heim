@@ -1,5 +1,10 @@
-# Source: https://github.com/EmergentMind/nix-config/blob/dev/modules/common/host-spec.nix
-{lib, ...}: let
+# Attribute set defining host specifications
+# Based on https://github.com/EmergentMind/nix-config/blob/3ae368c/modules/hosts/common/host-spec.nix
+{
+  config,
+  lib,
+  ...
+}: let
   inherit (lib) mkOption types;
 in {
   options.hostSpec = {
@@ -16,6 +21,26 @@ in {
       type = types.bool;
       default = false;
       description = "Whether the host is used for work";
+    };
+
+    # Auto-derived options
+    isDesktop = mkOption {
+      type = types.bool;
+      default = config.hostSpec.kind == "desktop";
+      description = "Whether the host is a desktop";
+      readOnly = true;
+    };
+    isLaptop = mkOption {
+      type = types.bool;
+      default = config.hostSpec.kind == "laptop";
+      description = "Whether the host is a laptop";
+      readOnly = true;
+    };
+    isHeadless = mkOption {
+      type = types.bool;
+      default = config.hostSpec.kind == "headless";
+      description = "Whether the host is headless";
+      readOnly = true;
     };
 
     # Keyboard options

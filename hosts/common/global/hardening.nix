@@ -7,15 +7,21 @@
     protectKernelImage = true;
     virtualisation.flushL1DataCache = "always";
 
-    sudo = {
+    sudo.enable = false;
+    sudo-rs = {
+      enable = true;
       execWheelOnly = true;
       wheelNeedsPassword = true;
       extraConfig = let
         timeout =
-          if config.hostSpec.kind == "laptop"
+          if config.hostSpec.isLaptop
           then "2"
           else "15";
-      in "Defaults timestamp_timeout=${timeout}";
+      in
+        lib.mkAfter ''
+          Defaults lecture=never
+          Defaults timestamp_timeout=${timeout}
+        '';
     };
   };
 

@@ -17,11 +17,6 @@
     ];
   };
 
-  # Prevent sudo lecture at each reboot
-  security.sudo.extraConfig = ''
-    Defaults lecture = never
-  '';
-
   # Create persistent home directories for each user
   system.activationScripts.persistent-dirs.text = let
     mkHomePersist = user:
