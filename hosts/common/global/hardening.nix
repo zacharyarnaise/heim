@@ -46,9 +46,7 @@
     "fs.suid_dumpable" = "0";
   };
 
-  systemd.coredump.extraConfig = lib.mkDefault ''
-    Storage=none
-  '';
+  systemd.coredump.settings.Coredump.Storage = "none";
 
   environment.etc = {
     # Empty /etc/securetty to prevent root login on tty.
