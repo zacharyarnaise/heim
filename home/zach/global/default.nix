@@ -30,7 +30,7 @@
     sessionPath = ["$HOME/.local/bin"];
 
     persistence."/persist" = {
-      directories = lib.optionals (hostSpec.kind != "headless") [
+      directories = lib.optionals (!hostSpec.isHeadless) [
         ".config/mozilla"
         {
           directory = ".config/sops";
@@ -38,6 +38,10 @@
         }
         {
           directory = ".gnupg/private-keys-v1.d";
+          mode = "0700";
+        }
+        {
+          directory = ".kube";
           mode = "0700";
         }
         {
