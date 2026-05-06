@@ -1,7 +1,6 @@
 {
   lib,
   config,
-  pkgs,
   ...
 }: let
   isHeadless = config.hostSpec.kind == "headless";
@@ -19,8 +18,7 @@ in {
 
   programs.ssh = {
     enable = true;
-    enableDefaultConfig = false; # Disable it, will be deprecated in the future
-    package = pkgs.openssh_hpn;
+    enableDefaultConfig = false;
 
     matchBlocks = {
       "*" = {
