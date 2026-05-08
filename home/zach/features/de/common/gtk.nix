@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   gtk = let
     commonExtraConfig = {
       gtk-application-prefer-dark-theme = 1;
@@ -15,6 +19,7 @@
 
     gtk3.extraConfig = commonExtraConfig;
     gtk4.extraConfig = commonExtraConfig;
+    gtk4.theme = config.gtk.theme;
   };
 
   xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
