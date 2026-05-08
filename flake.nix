@@ -70,7 +70,7 @@
     };
 
     nixarr = {
-      url = "github:rasmus-kirk/nixarr";
+      url = "github:rasmus-kirk/nixarr/7eae4e19577017e1919a3a74f89b5ee52942f641";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
