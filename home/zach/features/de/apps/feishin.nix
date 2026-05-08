@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  home.packages = [pkgs.feishin-mpv-unwrapped];
+  home.packages = [pkgs.feishin];
 
   services.playerctld.enable = true;
 
