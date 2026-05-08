@@ -46,10 +46,6 @@ in {
       ./waybar_wireplumber_notfound.diff
     ];
 
-    wezterm = addPatches prev.wezterm [
-      ./wezterm-frac_scaling_fix.diff
-    ];
-
     yubikey-touch-detector = addPatches prev.yubikey-touch-detector [
       ./yubikey-touch-detector_notify.diff
     ];
