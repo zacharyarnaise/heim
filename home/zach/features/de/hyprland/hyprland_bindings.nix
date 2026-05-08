@@ -4,13 +4,14 @@
   lib,
   ...
 }: let
+  clipse = "${config.services.clipse.package}/bin/clipse";
+  foot = "${pkgs.foot}/bin/footclient";
+  grimblast = "${pkgs.grimblast}/bin/grimblast";
   hyprctl = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl";
   loginctl = "${pkgs.systemd}/bin/loginctl";
-  rofi = "${config.programs.rofi.package}/bin/rofi";
-  foot = "${pkgs.foot}/bin/footclient";
-  clipse = "${config.services.clipse.package}/bin/clipse";
+  nautilus = "${pkgs.nautilus}/bin/nautilus";
   qalculate = "${pkgs.qalculate-qt}/bin/qalculate-qt";
-  grimblast = "${pkgs.grimblast}/bin/grimblast";
+  rofi = "${config.programs.rofi.package}/bin/rofi";
   wpctl = "${pkgs.wireplumber}/bin/wpctl";
 
   mod = "SUPER";
@@ -89,11 +90,12 @@ in {
         "${modAlt}, UP, Moves focus to the upper monitor, focusmonitor, u"
         "${modAlt}, DOWN, Moves focus to the lower monitor, focusmonitor, d"
 
-        # Programs
+        # Apps
         "${mod},     Space, Opens rofi drun mode, exec, pkill rofi || ${rofi} -show drun"
         "${modCtrl}, Space, Opens rofi ssh mod, exec, pkill rofi || ${rofi} -show ssh -no-show-icons"
+        "${mod},     E, Opens nautilus, exec, nautilus || ${nautilus}"
         "${modCtrl}, V, Open clipse, exec, pkill clipse || ${foot} -a clipse ${clipse}"
-        "${modCtrl}, K, Open qalculate, exec, pkill qalculate || ${qalculate}"
+        "${modCtrl}, K, Open qalculate, exec, qalculate || ${qalculate}"
         "${mod},     Return, Opens terminal, exec, ${foot}"
 
         # Screenshot

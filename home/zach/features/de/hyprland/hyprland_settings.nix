@@ -74,10 +74,12 @@ in {
       "match:class .*qalculate-qt$, float true"
       "match:class .*qalculate-qt$, pin true"
       "match:class .*qalculate-qt$, size 640 500"
-      "match:class .*qalculate-qt$, opacity 1.0"
-
+      "match:class .*qalculate-qt$, opacity 1.0 override"
       "match:class io.github.Qalculate.qalculate-qt, size 640 500"
-      "match:class io.github.Qalculate.qalculate-qt, opacity 1.0"
+      "match:class io.github.Qalculate.qalculate-qt, opacity 1.0 override"
+
+      "match:class org.gnome.Nautilus, float true"
+      "match:class org.gnome.Nautilus, opacity 1.0 override"
 
       "match:initial_title Discord Popout, opacity 1.0 override"
       "match:initial_title Discord Popout, workspace 7"

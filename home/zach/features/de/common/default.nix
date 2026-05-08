@@ -13,6 +13,7 @@
   home.packages = builtins.attrValues {
     inherit
       (pkgs)
+      nautilus
       overskride
       pwvucontrol
       qalculate-qt
