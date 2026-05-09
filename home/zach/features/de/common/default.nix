@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   imports = [
     ./clipse.nix
+    ./dms.nix
     ./gtk.nix
     ./mako.nix
     ./pass.nix
