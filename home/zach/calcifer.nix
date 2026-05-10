@@ -3,6 +3,7 @@
     ./global
 
     ./features/de/common
+    ./features/de/dms
     ./features/de/hyprland
     ./features/de/apps
     ./features/de/services/wluma.nix

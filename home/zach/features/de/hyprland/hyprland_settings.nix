@@ -37,7 +37,7 @@ in {
         "match:namespace ${ns}, "
         + lib.concatStringsSep ", " [
           "blur true"
-          "ignore_alpha ${toString ignoreAlpha}"
+          "ignore_alpha ${builtins.substring 0 4 (toString ignoreAlpha)}"
         ];
     in
       [
@@ -46,30 +46,26 @@ in {
         "match:namespace overview, no_anim true"
         "match:namespace selection, no_anim true"
 
-        "match:namespace notifications, animation slide"
-        "match:namespace notifications, order 10"
-
         "match:namespace rofi, animation slide"
         "match:namespace rofi, order 0"
 
-        "match:namespace main-bar, animation fade"
+        "match:namespace dms:.*, no_anim true"
+        "match:namespace dms:bar, xray true"
+        "match:namespace dms:notification-popup, order 10"
+        "match:namespace dms:osd, animation slide bottom, no_anim false"
+        "match:namespace dms:osd, order 10"
+        "match:namespace dms:power-menu, animation fade, no_anim false"
+        "match:namespace dms:power-menu, blur true, xray true"
+        "match:namespace dms:power-menu, order 0"
+        "match:namespace dms:toast, animation slide top, no_anim false"
+        "match:namespace dms:toast, order 10"
       ]
       ++ [
-        (mkDecorationRules "notifications" 0.5)
+        (mkDecorationRules "dms:.*" 0.25)
         (mkDecorationRules "rofi" 0.5)
-        (mkDecorationRules "main-bar" 0.25)
       ];
     windowrule = [
       "match:fullscreen 1, no_dim true"
-
-      "match:class clipse, animation slide"
-      "match:class clipse, border_size 0"
-      "match:class clipse, float true"
-      "match:class clipse, pin true"
-      "match:class clipse, size 600 400"
-      "match:class clipse, move (monitor_w-window_w)*0.5 45"
-      "match:class clipse, no_screen_share true"
-      "match:class clipse, stay_focused true"
 
       "match:class .*qalculate-qt$, float true"
       "match:class .*qalculate-qt$, pin true"

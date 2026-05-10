@@ -1,9 +1,7 @@
 {pkgs, ...}: {
   imports = [
-    ./clipse.nix
-    ./dms.nix
+    ./fonts.nix
     ./gtk.nix
-    ./mako.nix
     ./pass.nix
     ./qt.nix
     ./stylix.nix
