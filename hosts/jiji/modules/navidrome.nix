@@ -56,6 +56,6 @@ in {
 
   systemd.services.navidrome = {
     after = ["network-online.target" "storage-sb01-music.mount"];
-    requires = ["network-online.target" "storage-sb01-music.mount"];
+    requires = ["network-online.target"];
   };
 }
