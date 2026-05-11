@@ -4,9 +4,11 @@
   ...
 }: let
   hyprctl = "${config.wayland.windowManager.hyprland.finalPackage}/bin/hyprctl";
+  noctalia = "${config.programs.noctalia-shell.package}/bin/noctalia-shell";
 in {
   wayland.windowManager.hyprland.settings = {
     exec-once = [
+      "${noctalia}"
       "${hyprctl} setcursor ${config.stylix.cursor.name} ${toString config.stylix.cursor.size}"
       "${hyprctl} dispatch workspace 1" # Focus the first workspace on startup
     ];
@@ -46,24 +48,15 @@ in {
         "match:namespace overview, no_anim true"
         "match:namespace selection, no_anim true"
 
-        "match:namespace rofi, animation slide"
-        "match:namespace rofi, order 0"
-
-        "match:namespace dms:.*, no_anim true"
-        "match:namespace dms:bar, xray true"
-        "match:namespace dms:notification-popup, order 10"
-        "match:namespace dms:notification-popup, xray true"
-        "match:namespace dms:osd, animation slide bottom, no_anim false"
-        "match:namespace dms:osd, order 10"
-        "match:namespace dms:power-menu, animation fade, no_anim false"
-        "match:namespace dms:power-menu, blur true, xray true"
-        "match:namespace dms:power-menu, order 0"
-        "match:namespace dms:toast, animation slide top, no_anim false"
-        "match:namespace dms:toast, order 10"
+        "match:namespace noctalia-.*, no_anim true"
+        "match:namespace noctalia-notifications-.*, animation slide top, no_anim false"
+        "match:namespace noctalia-notifications-.*, order 10"
+        "match:namespace noctalia-osd-.*, animation slide top, no_anim false"
+        "match:namespace noctalia-osd-.*, order 10"
+        "match:namespace noctalia-toast-.*, order 10"
       ]
       ++ [
-        (mkDecorationRules "dms:.*" 0.25)
-        (mkDecorationRules "rofi" 0.5)
+        (mkDecorationRules "noctalia-.*" 0.25)
       ];
     windowrule = [
       "match:fullscreen 1, no_dim true"

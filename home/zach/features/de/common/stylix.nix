@@ -42,7 +42,7 @@
         applications = 12;
         desktop = 11;
         popups = 10;
-        terminal = 12;
+        terminal = 11;
       };
     };
     icons = {

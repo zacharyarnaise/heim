@@ -4,12 +4,6 @@
     ./hyprland_bindings.nix
     ./hyprland_settings.nix
 
-    ./hypridle.nix
-    ./hyprlock.nix
     ./hyprpaper.nix
-    ./hyprsunset.nix
-
-    ./components/foot.nix
-    ./components/rofi.nix
   ];
 }

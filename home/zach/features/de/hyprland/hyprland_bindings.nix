@@ -4,14 +4,13 @@
   lib,
   ...
 }: let
-  dms = "${config.programs.dank-material-shell.package}/bin/dms";
   foot = "${pkgs.foot}/bin/footclient";
   grimblast = "${pkgs.grimblast}/bin/grimblast";
   hyprctl = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl";
   loginctl = "${pkgs.systemd}/bin/loginctl";
+  noctalia = "${config.programs.noctalia-shell.package}/bin/noctalia-shell ipc call";
   nautilus = "${pkgs.nautilus}/bin/nautilus";
   qalculate = "${pkgs.qalculate-qt}/bin/qalculate-qt";
-  rofi = "${config.programs.rofi.package}/bin/rofi";
 
   mod = "SUPER";
   modAlt = "SUPER_ALT";
@@ -58,7 +57,7 @@ in {
     bindd =
       [
         # General
-        "${mod},      End, Opens power menu, exec, ${dms} ipc powermenu open"
+        "${mod},      End, Opens power menu, exec, ${noctalia} sessionMenu toggle"
         "${modShift}, End, Terminate session, exit"
         "${modShift}, Backspace, Reload configuration, exec, ${hyprctl} reload"
         "${modShift}, L, Lock session, exec, ${loginctl} lock-session"
@@ -91,10 +90,10 @@ in {
         "${modAlt}, DOWN, Moves focus to the lower monitor, focusmonitor, d"
 
         # Apps
-        "${mod},     Space, Opens application launcher, exec, ${dms} ipc spotlight toggleWith apps"
-        "${modCtrl}, Space, Opens rofi ssh mod, exec, pkill rofi || ${rofi} -show ssh -no-show-icons"
+        "${mod},     Space, Opens application launcher, exec, ${noctalia} launcher toggle"
+        "${modCtrl}, Space, Opens SSH sessions, exec, ${noctalia} plugin:ssh-sessions toggle"
         "${mod},     E, Opens nautilus, exec, nautilus || ${nautilus}"
-        "${modCtrl}, V, Open clipboard history, exec, ${dms} ipc clipboard toggle"
+        "${modCtrl}, V, Open clipboard history, exec, ${noctalia} launcher clipboard"
         "${modCtrl}, K, Open qalculate, exec, qalculate || ${qalculate}"
         "${mod},     Return, Opens terminal, exec, ${foot}"
 
@@ -103,18 +102,18 @@ in {
         "SHIFT, Print, Takes a screenshot of the currently active output, exec, ${grimblast} --notify --freeze copy output"
 
         # Media
-        ", code:248, Toggle input mute, exec, ${dms} ipc audio micmute"
-        ", XF86AudioMicMute, Toggle input mute, exec, ${dms} ipc audio micmute"
-        ", XF86AudioMute, Toggle output mute, exec, ${dms} ipc audio mute"
+        ", code:248, Toggle input mute, exec, ${noctalia} volume muteInput"
+        ", XF86AudioMicMute, Toggle input mute, exec, ${noctalia} volume muteInput"
+        ", XF86AudioMute, Toggle output mute, exec, ${noctalia} volume muteOutput"
       ]
       ++ (lib.mapAttrsToList (n: key: "${mod}, ${key}, Switch to workspace ${n}, workspace, ${n}") workspaces)
       ++ (lib.mapAttrsToList (n: key: "${modShift}, ${key}, Moves active window to workspace ${n}, movetoworkspacesilent, ${n}") workspaces);
 
     binddle = [
-      ", XF86AudioLowerVolume, Decrease volume, exec, ${dms} ipc audio decrement 5"
-      ", XF86AudioRaiseVolume, Increase volume, exec, ${dms} ipc audio increment 5"
-      ", XF86MonBrightnessDown, Decrease brightness, exec, ${dms} ipc brightness decrement 5 ''"
-      ", XF86MonBrightnessUp,   Increase brightness, exec, ${dms} ipc brightness increment 5 ''"
+      ", XF86AudioLowerVolume, Decrease volume, exec, ${noctalia} volume decrease"
+      ", XF86AudioRaiseVolume, Increase volume, exec, ${noctalia} volume increase"
+      ", XF86MonBrightnessDown, Decrease brightness, exec, ${noctalia} brightness decrease"
+      ", XF86MonBrightnessUp,   Increase brightness, exec, ${noctalia} brightness increase"
     ];
   };
 }
