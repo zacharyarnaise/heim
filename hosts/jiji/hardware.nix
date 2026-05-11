@@ -21,6 +21,10 @@ in {
       "sr_mod"
     ];
     loader.grub.enable = true;
+    zswap = {
+      enable = true;
+      maxPoolPercent = 20;
+    };
   };
 
   sops.secrets = {
