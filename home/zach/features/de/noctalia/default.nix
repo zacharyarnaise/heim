@@ -364,7 +364,7 @@ in {
         avatarImage = "";
         boxRadiusRatio = 1;
         clockFormat = "hh\\nmm";
-        clockStyle = "custom";
+        clockStyle = "analog";
         compactLockScreen = true;
         dimmerOpacity = 0.25;
         enableBlurBehind = false;
@@ -388,10 +388,10 @@ in {
         language = "";
         lockOnSuspend = true;
         lockScreenAnimations = true;
-        lockScreenBlur = 0;
+        lockScreenBlur = 0.75;
         lockScreenCountdownDuration = 10000;
         lockScreenMonitors = [config.primaryMonitor.name];
-        lockScreenTint = 0;
+        lockScreenTint = 0.25;
         passwordChars = true;
         radiusRatio = 1;
         reverseScroll = false;
