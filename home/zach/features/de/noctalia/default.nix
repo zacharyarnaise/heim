@@ -14,14 +14,15 @@ in {
     ./plugins.nix
   ];
 
-  home.file.".cache/noctalia/shell-state.json".text = lib.generators.toJSON {} {
-    changelogState.lastSeenVersion = "";
-    telemetry.instanceId = "";
-  };
-  home.persistence."/persist" = {
-    directories = [
-      ".config/noctalia/plugins"
-    ];
+  home = {
+    file.".cache/noctalia/shell-state.json".text = lib.generators.toJSON {} {
+      # See https://github.com/noctalia-dev/noctalia-shell/blob/761869a/Services/Noctalia/UpdateService.qml#L20
+      changelogState.lastSeenVersion = "v4.0.2";
+      telemetry.instanceId = "";
+    };
+    persistence."/persist" = {
+      directories = [".config/noctalia/plugins"];
+    };
   };
 
   programs.noctalia-shell = {
@@ -173,11 +174,11 @@ in {
               width = 15;
             }
             {
-              compactMode = true;
+              compactMode = false;
               hideMode = "hidden";
               hideWhenIdle = false;
               id = "MediaMini";
-              maxWidth = 330;
+              maxWidth = 350;
               panelShowAlbumArt = true;
               scrollingMode = "hover";
               showAlbumArt = false;
@@ -266,7 +267,7 @@ in {
         backlightDeviceMappings = [];
         brightnessStep = 5;
         enableDdcSupport = true;
-        enforceMinimum = true;
+        enforceMinimum = false;
       };
       calendar = {
         cards = [
@@ -400,7 +401,7 @@ in {
         shadowDirection = "center";
         shadowOffsetX = 0;
         shadowOffsetY = 0;
-        showChangelogOnStartup = true;
+        showChangelogOnStartup = false;
         showHibernateOnLockScreen = false;
         showScreenCorners = false;
         showSessionButtonsOnLockScreen = false;
@@ -502,7 +503,6 @@ in {
           0
           1
           2
-          3
         ];
         location = "top_right";
         monitors = [config.primaryMonitor.name];
@@ -515,7 +515,7 @@ in {
       sessionMenu = {
         countdownDuration = 3000;
         enableCountdown = true;
-        largeButtonsLayout = "single-row";
+        largeButtonsLayout = "grid";
         largeButtonsStyle = true;
         position = "center";
         powerOptions = [
@@ -555,25 +555,18 @@ in {
             keybind = "4";
           }
           {
-            action = "userspaceReboot";
+            action = "reboot";
             command = "";
             countdownEnabled = true;
             enabled = true;
             keybind = "5";
           }
           {
-            action = "reboot";
-            command = "";
-            countdownEnabled = true;
-            enabled = true;
-            keybind = "6";
-          }
-          {
             action = "rebootToUefi";
             command = "";
             countdownEnabled = true;
             enabled = true;
-            keybind = "7";
+            keybind = "6";
           }
         ];
         showHeader = true;
