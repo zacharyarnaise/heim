@@ -1,13 +1,15 @@
 {pkgs, ...}: {
   imports = [
-    ./clipse.nix
+    ./fonts.nix
+    ./foot.nix
     ./gtk.nix
-    ./mako.nix
     ./pass.nix
     ./qt.nix
+    ./rofi.nix
     ./stylix.nix
     ./wayland.nix
     ./xdg.nix
+    ./yubikey.nix
   ];
 
   home.packages = builtins.attrValues {

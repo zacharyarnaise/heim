@@ -22,9 +22,10 @@
         package = pkgs.stable.openmoji-color;
         name = "OpenMoji Color";
       };
+
       monospace = {
-        package = pkgs.nerd-fonts.fantasque-sans-mono;
-        name = "FantasqueSansM Nerd Font";
+        package = pkgs.nerd-fonts.iosevka;
+        name = "Iosevka Nerd Font";
       };
 
       sansSerif = {
@@ -41,7 +42,7 @@
         applications = 12;
         desktop = 11;
         popups = 10;
-        terminal = 12;
+        terminal = 11;
       };
     };
     icons = {
@@ -56,7 +57,7 @@
     opacity = {
       applications = 0.9;
       desktop = 0.6;
-      popups = 0.5;
+      popups = 0.75;
       terminal = 0.75;
     };
   };

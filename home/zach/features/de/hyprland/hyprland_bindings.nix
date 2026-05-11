@@ -4,15 +4,13 @@
   lib,
   ...
 }: let
-  clipse = "${config.services.clipse.package}/bin/clipse";
   foot = "${pkgs.foot}/bin/footclient";
   grimblast = "${pkgs.grimblast}/bin/grimblast";
   hyprctl = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl";
   loginctl = "${pkgs.systemd}/bin/loginctl";
+  noctalia = "${config.programs.noctalia-shell.package}/bin/noctalia-shell ipc call";
   nautilus = "${pkgs.nautilus}/bin/nautilus";
   qalculate = "${pkgs.qalculate-qt}/bin/qalculate-qt";
-  rofi = "${config.programs.rofi.package}/bin/rofi";
-  wpctl = "${pkgs.wireplumber}/bin/wpctl";
 
   mod = "SUPER";
   modAlt = "SUPER_ALT";
@@ -59,6 +57,7 @@ in {
     bindd =
       [
         # General
+        "${mod},      End, Opens power menu, exec, ${noctalia} sessionMenu toggle"
         "${modShift}, End, Terminate session, exit"
         "${modShift}, Backspace, Reload configuration, exec, ${hyprctl} reload"
         "${modShift}, L, Lock session, exec, ${loginctl} lock-session"
@@ -91,10 +90,10 @@ in {
         "${modAlt}, DOWN, Moves focus to the lower monitor, focusmonitor, d"
 
         # Apps
-        "${mod},     Space, Opens rofi drun mode, exec, pkill rofi || ${rofi} -show drun"
-        "${modCtrl}, Space, Opens rofi ssh mod, exec, pkill rofi || ${rofi} -show ssh -no-show-icons"
+        "${mod},     Space, Opens application launcher, exec, ${noctalia} launcher toggle"
+        "${modCtrl}, Space, Opens SSH sessions, exec, ${noctalia} plugin:ssh-sessions toggle"
         "${mod},     E, Opens nautilus, exec, nautilus || ${nautilus}"
-        "${modCtrl}, V, Open clipse, exec, pkill clipse || ${foot} -a clipse ${clipse}"
+        "${modCtrl}, V, Open clipboard history, exec, ${noctalia} launcher clipboard"
         "${modCtrl}, K, Open qalculate, exec, qalculate || ${qalculate}"
         "${mod},     Return, Opens terminal, exec, ${foot}"
 
@@ -103,18 +102,18 @@ in {
         "SHIFT, Print, Takes a screenshot of the currently active output, exec, ${grimblast} --notify --freeze copy output"
 
         # Media
-        ", XF86AudioMute, Toggle output mute, exec, ${wpctl} set-mute @DEFAULT_AUDIO_SINK@ toggle"
-        ", XF86AudioMicMute, Toggle input mute, exec, ${wpctl} set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
-        ", code:248, Toggle input mute, exec, ${wpctl} set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+        ", code:248, Toggle input mute, exec, ${noctalia} volume muteInput"
+        ", XF86AudioMicMute, Toggle input mute, exec, ${noctalia} volume muteInput"
+        ", XF86AudioMute, Toggle output mute, exec, ${noctalia} volume muteOutput"
       ]
       ++ (lib.mapAttrsToList (n: key: "${mod}, ${key}, Switch to workspace ${n}, workspace, ${n}") workspaces)
       ++ (lib.mapAttrsToList (n: key: "${modShift}, ${key}, Moves active window to workspace ${n}, movetoworkspacesilent, ${n}") workspaces);
 
     binddle = [
-      ", XF86MonBrightnessUp,   Increase brightness, exec, brightnessctl set +5%"
-      ", XF86MonBrightnessDown, Decrease brightness, exec, brightnessctl set 5%-"
-      ", XF86AudioRaiseVolume, Increase volume, exec, ${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 5%+"
-      ", XF86AudioLowerVolume, Decrease volume, exec, ${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+      ", XF86AudioLowerVolume, Decrease volume, exec, ${noctalia} volume decrease"
+      ", XF86AudioRaiseVolume, Increase volume, exec, ${noctalia} volume increase"
+      ", XF86MonBrightnessDown, Decrease brightness, exec, ${noctalia} brightness decrease"
+      ", XF86MonBrightnessUp,   Increase brightness, exec, ${noctalia} brightness increase"
     ];
   };
 }
