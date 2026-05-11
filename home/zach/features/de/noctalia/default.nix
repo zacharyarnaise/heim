@@ -367,7 +367,7 @@ in {
         clockFormat = "hh\\nmm";
         clockStyle = "analog";
         compactLockScreen = true;
-        dimmerOpacity = 0.25;
+        dimmerOpacity = 0.1;
         enableBlurBehind = false;
         enableLockScreenCountdown = true;
         enableLockScreenMediaControls = false;
