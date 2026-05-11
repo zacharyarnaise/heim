@@ -38,7 +38,10 @@
     };
   };
 
-  hardware.cpu.intel.updateMicrocode = true;
+  hardware = {
+    cpu.intel.updateMicrocode = true;
+    i2c.enable = true;
+  };
   nix.settings.max-jobs = 28;
   powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
   swapDevices = lib.mkForce [];
