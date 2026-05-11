@@ -38,7 +38,7 @@ in {
       EnableMediaFileCoverArt = false;
       EnableStarRating = true;
       EnableTranscodingCancellation = true;
-      EnableWebPEncoding = true;
+      EnableWebPEncoding = false;
       ImageCacheSize = "500MB";
       "LastFM.Enabled" = true;
       "ListenBrainz.Enabled" = true;
