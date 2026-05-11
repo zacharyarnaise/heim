@@ -7,6 +7,7 @@
     ./stylix.nix
     ./wayland.nix
     ./xdg.nix
+    ./yubikey.nix
   ];
 
   home.packages = builtins.attrValues {

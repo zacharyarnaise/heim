@@ -5,14 +5,7 @@
 }: let
   inherit (config.sops) secrets;
 in {
-  environment.systemPackages = builtins.attrValues {
-    inherit
-      (pkgs)
-      yubikey-manager
-      yubioath-flutter
-      pam_u2f
-      ;
-  };
+  environment.systemPackages = [pkgs.pam_u2f];
 
   hardware.gpgSmartcards.enable = true;
   services.pcscd.enable = true;

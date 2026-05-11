@@ -7,8 +7,7 @@
   imports =
     (map lib.custom.relativeToRoot ["modules/home-manager" "modules/common"])
     ++ [
-      # Unused for now
-      #./secrets.nix
+      ./secrets.nix
 
       ../features/cli/common
       ../features/cli/fish

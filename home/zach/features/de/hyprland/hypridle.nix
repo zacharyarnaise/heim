@@ -13,7 +13,7 @@
     else 900;
 in {
   services.hypridle = {
-    enable = true;
+    enable = false;
 
     settings = {
       general = {

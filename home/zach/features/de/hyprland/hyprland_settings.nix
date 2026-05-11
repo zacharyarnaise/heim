@@ -52,6 +52,7 @@ in {
         "match:namespace dms:.*, no_anim true"
         "match:namespace dms:bar, xray true"
         "match:namespace dms:notification-popup, order 10"
+        "match:namespace dms:notification-popup, xray true"
         "match:namespace dms:osd, animation slide bottom, no_anim false"
         "match:namespace dms:osd, order 10"
         "match:namespace dms:power-menu, animation fade, no_anim false"

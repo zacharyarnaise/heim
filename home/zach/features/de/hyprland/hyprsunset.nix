@@ -1,6 +1,6 @@
 {config, ...}: {
   services.hyprsunset = {
-    enable = true;
+    enable = false;
     systemdTarget = config.wayland.systemd.target;
 
     settings.profile = [

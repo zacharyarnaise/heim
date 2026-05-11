@@ -39,8 +39,4 @@ in {
     openssh.authorizedKeys.keys =
       lib.splitString "\n" (builtins.readFile "${secretsDir}/users/zach/id_zach_sk.pub");
   };
-
-  security.pam.services = {
-    hyprlock = {};
-  };
 }
