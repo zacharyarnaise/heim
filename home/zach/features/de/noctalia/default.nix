@@ -14,6 +14,10 @@ in {
     ./plugins.nix
   ];
 
+  home.file.".cache/noctalia/shell-state.json".text = lib.generators.toJSON {} {
+    changelogState.lastSeenVersion = "";
+    telemetry.instanceId = "";
+  };
   home.persistence."/persist" = {
     directories = [
       ".config/noctalia/plugins"
