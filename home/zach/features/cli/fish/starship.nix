@@ -62,7 +62,7 @@
       directory = {
         format = "[ $path ](bold fg:#f0f0f0 bg:#769ff0)";
         truncation_length = 30;
-        truncation_symbol = "…/";
+        truncation_symbol = ".../";
         substitutions = {
           "Code" = "󰈮 ";
           "Documents" = "󰈙 ";
