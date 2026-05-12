@@ -6,6 +6,10 @@
 }: {
   stylix.targets.vscode.profileNames = ["default"];
 
+  home.persistence."/persist" = {
+    directories = [".config/Code/User"];
+  };
+
   programs.vscode = {
     enable = true;
     package = pkgs.vscode.override {
