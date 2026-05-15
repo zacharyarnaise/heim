@@ -28,7 +28,6 @@ in {
     };
 
     dwindle = {
-      pseudotile = true;
       preserve_split = true;
       force_split = 2;
       split_width_multiplier = 1.5;
@@ -193,7 +192,6 @@ in {
       disable_hyprland_logo = true;
       disable_splash_rendering = true;
       force_default_wallpaper = 0;
-      vfr = true;
       vrr = 3;
       mouse_move_enables_dpms = true;
       key_press_enables_dpms = true;
