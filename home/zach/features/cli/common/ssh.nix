@@ -20,24 +20,24 @@ in {
     enable = true;
     enableDefaultConfig = false;
 
-    matchBlocks = {
+    settings = {
       "*" = {
-        addKeysToAgent = lib.mkDefault "no";
-        compression = false;
-        controlMaster = lib.mkDefault "no";
-        controlPersist = lib.mkDefault "no";
-        hashKnownHosts = true;
-        userKnownHostsFile = "${config.home.homeDirectory}/.ssh/known_hosts.d/hosts";
-        serverAliveCountMax = 3;
-        serverAliveInterval = 5;
+        AddKeysToAgent = lib.mkDefault "no";
+        Compression = lib.mkDefault "no";
+        ControlMaster = lib.mkDefault "no";
+        ControlPersist = lib.mkDefault "no";
+        HashKnownHosts = true;
+        ServerAliveCountMax = 3;
+        ServerAliveInterval = 5;
+        UserKnownHostsFile = "${config.home.homeDirectory}/.ssh/known_hosts.d/hosts";
       };
 
       "github.com" = {
-        host = "github.com";
-        user = "git";
-        forwardAgent = isHeadless;
-        identitiesOnly = !isHeadless;
-        identityFile = lib.optionals (!isHeadless) identityFiles;
+        Host = "github.com";
+        User = "git";
+        ForwardAgent = isHeadless;
+        IdentitiesOnly = !isHeadless;
+        IdentityFile = lib.optionals (!isHeadless) identityFiles;
       };
     };
   };

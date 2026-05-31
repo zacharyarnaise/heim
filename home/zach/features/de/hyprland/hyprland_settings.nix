@@ -6,6 +6,7 @@
   hyprctl = "${config.wayland.windowManager.hyprland.finalPackage}/bin/hyprctl";
   noctalia = "${config.programs.noctalia-shell.package}/bin/noctalia-shell";
 in {
+  wayland.windowManager.hyprland.configType = "hyprlang";
   wayland.windowManager.hyprland.settings = {
     exec-once = [
       "${noctalia}"

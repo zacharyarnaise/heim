@@ -24,16 +24,16 @@
 
   privateConfig =
     if config.hostSpec.isWork
-    then secrets.work.ssh.matchBlocks
+    then secrets.work.ssh.settings
     else {};
 in {
-  programs.ssh.matchBlocks =
+  programs.ssh.settings =
     {
       "*" = {
-        addKeysToAgent = "yes";
-        controlMaster = "auto";
-        controlPath = "~/.ssh/sockets/control-%r@%h:%p";
-        controlPersist = "15m";
+        AddKeysToAgent = "yes";
+        ControlMaster = "auto";
+        ControlPath = "~/.ssh/sockets/control-%r@%h:%p";
+        ControlPersist = "15m";
       };
     }
     // hostsConfig // privateConfig;
