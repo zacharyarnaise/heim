@@ -2,8 +2,8 @@
   description = "My NixOS configurations";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable-small";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-26.05";
 
     # Inputs used by all configurations
     nixos-hardware.url = "github:nixos/nixos-hardware";
@@ -41,10 +41,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nixvim.url = "github:nix-community/nixvim";
 
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
@@ -74,7 +71,7 @@
     };
 
     nixarr = {
-      url = "github:rasmus-kirk/nixarr/7eae4e19577017e1919a3a74f89b5ee52942f641";
+      url = "github:rasmus-kirk/nixarr";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

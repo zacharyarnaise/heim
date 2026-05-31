@@ -65,14 +65,6 @@ in {
       enable = true;
       openFirewall = true;
     };
-    sonarr = {
-      enable = true;
-      openFirewall = true;
-    };
-    radarr = {
-      enable = true;
-      openFirewall = true;
-    };
     lidarr = {
       enable = true;
       openFirewall = true;
@@ -81,15 +73,23 @@ in {
       enable = true;
       openFirewall = true;
     };
-    jellyseerr = {
-      enable = true;
-      openFirewall = true;
-    };
     qbittorrent = {
       enable = true;
       qui.enable = true;
       vpn.enable = true;
 
+      openFirewall = true;
+    };
+    radarr = {
+      enable = true;
+      openFirewall = true;
+    };
+    seerr = {
+      enable = true;
+      openFirewall = true;
+    };
+    sonarr = {
+      enable = true;
       openFirewall = true;
     };
   };
@@ -123,10 +123,10 @@ in {
   systemd = {
     # Set log level to reduce noise in journalctl
     services = {
-      jellyseerr.environment.LOG_LEVEL = "warn";
       lidarr.environment.LIDARR__LOG__LEVEL = "Warn";
       prowlarr.environment.PROWLARR__LOG__LEVEL = "Warn";
       radarr.environment.RADARR__LOG__LEVEL = "Warn";
+      seerr.environment.LOG_LEVEL = "warn";
       sonarr.environment.SONARR__LOG__LEVEL = "Warn";
     };
 

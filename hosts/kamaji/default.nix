@@ -22,5 +22,5 @@
   };
 
   networking.hostId = lib.mkForce "5d84e14a"; # for ZFS
-  system.stateVersion = "25.11";
+  system.stateVersion = "26.05";
 }
