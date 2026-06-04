@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: {
   gtk = let
@@ -19,7 +20,7 @@
 
     gtk3.extraConfig = commonExtraConfig;
     gtk4.extraConfig = commonExtraConfig;
-    gtk4.theme = config.gtk.theme;
+    gtk4.theme = lib.mkForce config.gtk.theme;
   };
 
   xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
