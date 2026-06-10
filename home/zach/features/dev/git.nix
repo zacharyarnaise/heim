@@ -51,6 +51,9 @@ in {
           showBranchCommitHash = true;
           showNumstatInFilesView = true;
           timeFormat = "Mon 02/01/2006 15:04";
+          showRootItemInFileTree = false;
+          fileTreeSortOrder = "foldersFirst";
+          showDivergenceFromBaseBranch = "arrowAndNumber";
         };
         update.method = "never";
       };
