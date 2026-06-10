@@ -47,10 +47,10 @@ in {
           commandLogSize = 5;
           language = "en";
           nerdFontsVersion = "3";
-          shortTimeFormat = "15:04:05 -0700";
+          shortTimeFormat = "15:04:05";
           showBranchCommitHash = true;
           showNumstatInFilesView = true;
-          timeFormat = "Mon 02/01/2006 15:04:05 -0700";
+          timeFormat = "Mon 02/01/2006 15:04";
         };
         update.method = "never";
       };
