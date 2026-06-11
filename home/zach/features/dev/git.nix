@@ -40,6 +40,7 @@ in {
       settings = {
         disableStartupPopups = true;
         git = {
+          autoStageResolvedConflicts = false;
           diffContextSize = 4;
           mainBranches = ["main" "master" "develop"];
         };
