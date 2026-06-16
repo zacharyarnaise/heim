@@ -2,7 +2,9 @@
   inputs,
   config,
   ...
-}: {
+}: let
+  wallsDir = "${config.home.homeDirectory}/Pictures/Walls";
+in {
   imports = [
     inputs.noctalia.homeModules.default
   ];
@@ -117,6 +119,7 @@
         schema_version = 2;
         widget_order = [
           "lockscreen-login-box@${config.primaryMonitor.name}"
+          "lockscreen-login-box@DP-2"
         ];
         grid = {
           cell_size = 16;
@@ -124,6 +127,23 @@
           visible = true;
         };
         widget = {
+          "lockscreen-login-box@DP-2" = {
+            box_height = 0.0;
+            box_width = 0.0;
+            cx = 720.0;
+            cy = 2437.0;
+            output = "DP-2";
+            rotation = 0.0;
+            type = "login_box";
+            settings = {
+              background_color = "surface_variant";
+              background_opacity = 0.88;
+              background_radius = 12.0;
+              input_opacity = 1.0;
+              input_radius = 6.0;
+              show_login_button = true;
+            };
+          };
           "lockscreen-login-box@${config.primaryMonitor.name}" = {
             box_height = 0.0;
             box_width = 0.0;
@@ -218,14 +238,25 @@
       };
 
       theme = {
-        builtin = "Tokyo-Night";
+        source = "community";
+        mode = "dark";
+        community_palette = "Ayu Blue";
         templates = {
           enable_builtin_templates = false;
           enable_community_templates = false;
         };
       };
 
-      wallpaper.enabled = false;
+      wallpaper = {
+        directory = wallsDir;
+        edge_smoothness = 0.5;
+        enabled = true;
+        transition = ["wipe"];
+        transition_duration = 1000;
+        transition_on_startup = true;
+        default.path = "${wallsDir}/wallhaven-x6128o.jpg";
+        last.path = "${wallsDir}/wallhaven-x6128o.jpg";
+      };
 
       widget = {
         audio_visualizer = {

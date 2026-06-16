@@ -41,7 +41,6 @@ in {
         ];
     in
       [
-        "match:namespace hyprpaper, no_anim true"
         "match:namespace hyprpicker, no_anim true"
         "match:namespace overview, no_anim true"
         "match:namespace selection, no_anim true"
