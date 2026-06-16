@@ -4,12 +4,10 @@
   ...
 }: let
   hyprctl = "${config.wayland.windowManager.hyprland.finalPackage}/bin/hyprctl";
-  noctalia = "${config.programs.noctalia-shell.package}/bin/noctalia-shell";
 in {
   wayland.windowManager.hyprland.configType = "hyprlang";
   wayland.windowManager.hyprland.settings = {
     exec-once = [
-      "${noctalia}"
       "${hyprctl} setcursor ${config.stylix.cursor.name} ${toString config.stylix.cursor.size}"
       "${hyprctl} dispatch workspace 1" # Focus the first workspace on startup
     ];
@@ -49,14 +47,15 @@ in {
         "match:namespace selection, no_anim true"
 
         "match:namespace noctalia-.*, no_anim true"
-        "match:namespace noctalia-notifications-.*, animation slide top, no_anim false"
-        "match:namespace noctalia-notifications-.*, order 10"
-        "match:namespace noctalia-osd-.*, animation slide top, no_anim false"
-        "match:namespace noctalia-osd-.*, order 10"
-        "match:namespace noctalia-toast-.*, order 10"
+        "match:namespace noctalia-notification, animation slide right, no_anim false"
+        "match:namespace noctalia-notification, order 10"
+        "match:namespace noctalia-osd, animation slide right, no_anim false"
+        "match:namespace noctalia-osd, order 10"
+        "match:namespace noctalia-panel, dim_around true"
+        "match:namespace noctalia-panel, order 10"
       ]
       ++ [
-        (mkDecorationRules "noctalia-.*" 0.25)
+        (mkDecorationRules "noctalia-.*" 0.1)
       ];
     windowrule = [
       "match:fullscreen 1, no_dim true"
@@ -70,6 +69,8 @@ in {
 
       "match:class org.gnome.Nautilus, float true"
       "match:class org.gnome.Nautilus, opacity 1.0 override"
+
+      "match:class dev.noctalia.Noctalia.Settings, float true"
 
       "match:initial_title Discord Popout, opacity 1.0 override"
       "match:initial_title Discord Popout, workspace 7"

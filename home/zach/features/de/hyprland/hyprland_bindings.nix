@@ -5,10 +5,9 @@
   ...
 }: let
   foot = "${pkgs.foot}/bin/footclient";
-  grimblast = "${pkgs.grimblast}/bin/grimblast";
   hyprctl = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl";
   loginctl = "${pkgs.systemd}/bin/loginctl";
-  noctalia = "${config.programs.noctalia-shell.package}/bin/noctalia-shell ipc call";
+  noctalia = "${config.programs.noctalia.package}/bin/noctalia msg";
   nautilus = "${pkgs.nautilus}/bin/nautilus";
   qalculate = "${pkgs.qalculate-qt}/bin/qalculate-qt";
 
@@ -57,7 +56,7 @@ in {
     bindd =
       [
         # General
-        "${mod},      End, Opens power menu, exec, ${noctalia} sessionMenu toggle"
+        "${mod},      End, Opens power menu, exec, ${noctalia} panel-toggle session"
         "${modShift}, End, Terminate session, exit"
         "${modShift}, Backspace, Reload configuration, exec, ${hyprctl} reload"
         "${modShift}, L, Lock session, exec, ${loginctl} lock-session"
@@ -90,30 +89,28 @@ in {
         "${modAlt}, DOWN, Moves focus to the lower monitor, focusmonitor, d"
 
         # Apps
-        "${mod},     Space, Opens application launcher, exec, ${noctalia} launcher toggle"
-        "${modCtrl}, Space, Opens SSH sessions, exec, ${noctalia} plugin:ssh-sessions toggle"
+        "${mod},     Space, Opens application launcher, exec, ${noctalia} panel-toggle launcher"
         "${mod},     E, Opens nautilus, exec, nautilus || ${nautilus}"
-        "${modCtrl}, V, Open clipboard history, exec, ${noctalia} launcher clipboard"
+        "${modCtrl}, V, Open clipboard history, exec, ${noctalia} panel-toggle clipboard"
         "${modCtrl}, K, Open qalculate, exec, qalculate || ${qalculate}"
         "${mod},     Return, Opens terminal, exec, ${foot}"
 
         # Screenshot
-        ",      Print, Takes a screenshot of a region, exec, ${grimblast} --notify --freeze copy area"
-        "SHIFT, Print, Takes a screenshot of the currently active output, exec, ${grimblast} --notify --freeze copy output"
+        ",      Print, Takes a screenshot of a region, exec, ${noctalia} screenshot-region"
 
         # Media
-        ", code:248, Toggle input mute, exec, ${noctalia} volume muteInput"
-        ", XF86AudioMicMute, Toggle input mute, exec, ${noctalia} volume muteInput"
-        ", XF86AudioMute, Toggle output mute, exec, ${noctalia} volume muteOutput"
+        ", code:248, Toggle input mute, exec, ${noctalia} mic-mute"
+        ", XF86AudioMicMute, Toggle input mute, exec, ${noctalia} mic-mute"
+        ", XF86AudioMute, Toggle output mute, exec, ${noctalia} volume-mute"
       ]
       ++ (lib.mapAttrsToList (n: key: "${mod}, ${key}, Switch to workspace ${n}, workspace, ${n}") workspaces)
       ++ (lib.mapAttrsToList (n: key: "${modShift}, ${key}, Moves active window to workspace ${n}, movetoworkspacesilent, ${n}") workspaces);
 
     binddle = [
-      ", XF86AudioLowerVolume, Decrease volume, exec, ${noctalia} volume decrease"
-      ", XF86AudioRaiseVolume, Increase volume, exec, ${noctalia} volume increase"
-      ", XF86MonBrightnessDown, Decrease brightness, exec, ${noctalia} brightness decrease"
-      ", XF86MonBrightnessUp,   Increase brightness, exec, ${noctalia} brightness increase"
+      ", XF86AudioLowerVolume, Decrease volume, exec, ${noctalia} volume-down"
+      ", XF86AudioRaiseVolume, Increase volume, exec, ${noctalia} volume-up"
+      ", XF86MonBrightnessDown, Decrease brightness, exec, ${noctalia} brightness-down"
+      ", XF86MonBrightnessUp,   Increase brightness, exec, ${noctalia} brightness-up"
     ];
   };
 }
