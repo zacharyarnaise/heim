@@ -27,7 +27,7 @@
       workspaces = ["8" "9" "10"];
       primary = false;
       position = "2160x-685";
-      extraArgs = "transform,1";
+      transform = 1;
     }
   ];
 

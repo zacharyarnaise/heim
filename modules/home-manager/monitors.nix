@@ -36,6 +36,10 @@
         type = types.str;
         default = "auto";
       };
+      transform = mkOption {
+        type = types.int;
+        default = 0;
+      };
       enabled = mkOption {
         type = types.bool;
         default = true;
@@ -44,10 +48,6 @@
         type = types.listOf types.str;
         default = [];
         example = ["1" "2" "3"];
-      };
-      extraArgs = mkOption {
-        type = types.nullOr types.str;
-        default = null;
       };
     };
   };

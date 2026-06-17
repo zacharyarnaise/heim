@@ -194,6 +194,14 @@ in {
         offset_x = 4;
         offset_y = 4;
         show_app_name = false;
+
+        filter = {
+          filter = {
+            enabled = true;
+            match = "yubikey-touch-detector";
+            save_history = false;
+          };
+        };
       };
 
       osd = {
@@ -284,7 +292,6 @@ in {
           scale = 1.3;
         };
         media = {
-          font_family = "Noto Sans CJK HK";
           hide_when_no_media = true;
           max_length = 320;
           min_length = 150;
