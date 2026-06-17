@@ -126,8 +126,8 @@
         leaf = "specialWorkspace";
         enabled = true;
         speed = 3;
-        bezier = "easeOutBack";
-        style = "slidefadevert 10%";
+        bezier = "easeInOutQuad";
+        style = "slidevert bottom 50%";
       }
 
       # --------------------------------- Misc ---------------------------------

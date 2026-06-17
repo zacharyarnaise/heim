@@ -1,6 +1,6 @@
 {
   wayland.windowManager.hyprland.settings.window_rule = [
-    # ---- Fullscreen ----
+    # ------------------------------- Fullscreen -------------------------------
     {
       match = {
         fullscreen = true;
@@ -9,7 +9,7 @@
       opaque = true;
     }
 
-    # ---- Popups ----
+    # --------------------------------- Popups ---------------------------------
     {
       match = {
         class = "xdg-desktop-portal-gtk";
@@ -29,7 +29,7 @@
       size = ["monitor_w * 0.3" "monitor_h * 0.3"];
     }
 
-    # ---- Browsers ----
+    # -------------------------------- Browsers --------------------------------
     {
       match = {
         class = "chromium-browser|firefox";
@@ -37,7 +37,7 @@
       opacity = "1.0 override 0.95 override";
     }
 
-    # ---- Discord ----
+    # -------------------------------- Discord --------------------------------
     # TODO: detect if workspace 8 is available (e.g. external screen)
     {
       match = {
@@ -63,7 +63,7 @@
       workspace = "8";
     }
 
-    # ---- Feishin ----
+    # -------------------------------- Feishin --------------------------------
     # TODO: detect if workspace 9 is available (e.g. external screen)
     {
       match = {
@@ -74,7 +74,7 @@
       workspace = "9";
     }
 
-    # ---- Nautilus ----
+    # -------------------------------- Nautilus --------------------------------
     {
       match = {
         class = "org.gnome.Nautilus";
@@ -84,7 +84,7 @@
       size = ["monitor_w * 0.5" "monitor_h * 0.5"];
     }
 
-    # ---- Noctalia ----
+    # -------------------------------- Noctalia --------------------------------
     {
       match = {
         class = "dev.noctalia.Noctalia.Settings";
@@ -94,7 +94,7 @@
       size = ["monitor_w * 0.5" "monitor_h * 0.5"];
     }
 
-    # ---- Qalculate! ----
+    # ------------------------------- Qalculate! -------------------------------
     {
       match = {
         class = "io.github.Qalculate.qalculate-qt";
@@ -103,6 +103,21 @@
       opacity = "0.9 override";
       pin = true;
       size = ["monitor_w * 0.2" "monitor_h * 0.3"];
+    }
+
+    # --------------------------- Special workspace ---------------------------
+    {
+      match = {
+        workspace = "special:scratchpad";
+      };
+      border_size = 0;
+      float = true;
+      max_size = ["monitor_w" "monitor_h * 0.9"];
+      move = ["monitor_w * 0.005" "monitor_h * 0.03"];
+      no_anim = true;
+      no_dim = true;
+      opacity = "0.75 override";
+      size = ["monitor_w * 0.99" "monitor_h * 0.4"];
     }
   ];
 }

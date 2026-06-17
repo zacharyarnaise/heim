@@ -19,7 +19,7 @@
 in {
   wayland.windowManager.hyprland.settings.workspace_rule =
     [
-      # ---- Smart gaps ----
+      # ------------------------------ Smart gaps ------------------------------
       {
         workspace = "f[1]s[false]";
         gaps_in = 0;
@@ -30,8 +30,14 @@ in {
         gaps_in = 0;
         gaps_out = 2;
       }
+
+      # ------------------------------ Scratchpad ------------------------------
+      {
+        workspace = "special:scratchpad";
+        on_created_empty = "foot";
+      }
     ]
-    # ---- Bind workspaces to monitors ----
+    # ---------------------- Bind workspaces to monitors ----------------------
     ++ builtins.concatLists (map (m:
       lib.lists.imap0 (
         i: workspace: mkMonitorRule i m workspace
