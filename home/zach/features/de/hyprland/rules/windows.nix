@@ -29,6 +29,39 @@
       size = ["monitor_w * 0.3" "monitor_h * 0.3"];
     }
 
+    # ------------------------------- Smart gaps -------------------------------
+    {
+      match = {
+        float = false;
+        workspace = "f[1]";
+      };
+      border_size = 1;
+      opacity = "${toString config.stylix.opacity.applications} override";
+    }
+    {
+      match = {
+        float = false;
+        workspace = "w[tv1]";
+      };
+      border_size = 1;
+      opacity = "${toString config.stylix.opacity.applications} override";
+    }
+
+    # --------------------------- Special workspace ---------------------------
+    {
+      match = {
+        workspace = "special:scratchpad";
+      };
+      border_size = 0;
+      float = true;
+      max_size = ["monitor_w" "monitor_h * 0.9"];
+      move = ["monitor_w * 0.005" "monitor_h * 0.03"];
+      no_anim = true;
+      no_dim = true;
+      opacity = "0.75 override";
+      size = ["monitor_w * 0.99" "monitor_h * 0.4"];
+    }
+
     # -------------------------------- Browsers --------------------------------
     {
       match = {
@@ -103,39 +136,6 @@
       opacity = "0.9 override";
       pin = true;
       size = ["monitor_w * 0.2" "monitor_h * 0.3"];
-    }
-
-    # ------------------------------- Smart gaps -------------------------------
-    {
-      match = {
-        float = false;
-        workspace = "f[1]";
-      };
-      border_size = 1;
-      opacity = "${toString config.stylix.opacity.applications} override";
-    }
-    {
-      match = {
-        float = false;
-        workspace = "w[tv1]";
-      };
-      border_size = 1;
-      opacity = "${toString config.stylix.opacity.applications} override";
-    }
-
-    # --------------------------- Special workspace ---------------------------
-    {
-      match = {
-        workspace = "special:scratchpad";
-      };
-      border_size = 0;
-      float = true;
-      max_size = ["monitor_w" "monitor_h * 0.9"];
-      move = ["monitor_w * 0.005" "monitor_h * 0.03"];
-      no_anim = true;
-      no_dim = true;
-      opacity = "0.75 override";
-      size = ["monitor_w * 0.99" "monitor_h * 0.4"];
     }
   ];
 }
