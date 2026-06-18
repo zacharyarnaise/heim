@@ -1,4 +1,4 @@
-{
+{config, ...}: {
   wayland.windowManager.hyprland.settings.window_rule = [
     # ------------------------------- Fullscreen -------------------------------
     {
@@ -103,6 +103,24 @@
       opacity = "0.9 override";
       pin = true;
       size = ["monitor_w * 0.2" "monitor_h * 0.3"];
+    }
+
+    # ------------------------------- Smart gaps -------------------------------
+    {
+      match = {
+        float = false;
+        workspace = "f[1]";
+      };
+      border_size = 1;
+      opacity = "${toString config.stylix.opacity.applications} override";
+    }
+    {
+      match = {
+        float = false;
+        workspace = "w[tv1]";
+      };
+      border_size = 1;
+      opacity = "${toString config.stylix.opacity.applications} override";
     }
 
     # --------------------------- Special workspace ---------------------------
