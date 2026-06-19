@@ -117,5 +117,6 @@ in {
       (mkBind ''"${mod} + dead_grave"'' ''hl.dsp.workspace.toggle_special("scratchpad")'' {description = "Toggle scratchpad workspace";})
     ]
     ++ (lib.mapAttrsToList (n: key: mkBind ''"${mod} + ${key}"'' ''hl.dsp.focus({workspace = "${n}"})'' {description = "Move focus to workspace ${n}";}) workspaces)
-    ++ (lib.mapAttrsToList (n: key: mkBind ''"${modShift} + ${key}"'' ''hl.dsp.window.move({workspace = "${n}"})'' {description = "Move the active window to workspace ${n}";}) workspaces);
+    ++ (lib.mapAttrsToList (n: key: mkBind ''"${modCtrl} + ${key}"'' ''hl.dsp.window.move({workspace = "${n}"})'' {description = "Move the active window to workspace ${n}";}) workspaces)
+    ++ (lib.mapAttrsToList (n: key: mkBind ''"${modShift} + ${key}"'' ''hl.dsp.window.move({workspace = "${n}", follow = false})'' {description = "Move the active window to workspace ${n} without following";}) workspaces);
 }
