@@ -135,6 +135,7 @@
       float = true;
       opacity = "0.9 override";
       pin = true;
+      render_unfocused = true;
       size = ["monitor_w * 0.2" "monitor_h * 0.3"];
     }
   ];
