@@ -1,5 +1,39 @@
 {config, ...}: {
   wayland.windowManager.hyprland.settings.window_rule = [
+    # ---------------------------------- TAGS ----------------------------------
+    {
+      match = {
+        class = "chromium-browser|firefox";
+      };
+      tag = "browser";
+    }
+    {
+      match = {
+        class = "xdg-desktop-portal-gtk";
+      };
+      tag = "popup";
+    }
+    {
+      match = {
+        initial_title = "Open|Progress|Save As|Save File";
+      };
+      tag = "popup";
+    }
+    {
+      match = {
+        float = false;
+        workspace = "f[1]";
+      };
+      tag = "smartgaps";
+    }
+    {
+      match = {
+        float = false;
+        workspace = "w[tv1]";
+      };
+      tag = "smartgaps";
+    }
+
     # ------------------------------- Fullscreen -------------------------------
     {
       match = {
@@ -12,38 +46,24 @@
     # --------------------------------- Popups ---------------------------------
     {
       match = {
-        class = "xdg-desktop-portal-gtk";
+        tag = "popup";
       };
       center = true;
       float = true;
-      pin = true;
-      size = ["monitor_w * 0.3" "monitor_h * 0.3"];
-    }
-    {
-      match = {
-        initial_title = "Open|Progress|Save As|Save File";
-      };
-      center = true;
-      float = true;
-      pin = true;
       size = ["monitor_w * 0.3" "monitor_h * 0.3"];
     }
 
     # ------------------------------- Smart gaps -------------------------------
     {
       match = {
-        float = false;
-        workspace = "f[1]";
+        tag = "smartgaps";
       };
       border_size = 1;
-      opacity = "${toString config.stylix.opacity.applications} override";
     }
     {
       match = {
-        float = false;
-        workspace = "w[tv1]";
+        tag = "smartgaps";
       };
-      border_size = 1;
       opacity = "${toString config.stylix.opacity.applications} override";
     }
 
@@ -65,7 +85,7 @@
     # -------------------------------- Browsers --------------------------------
     {
       match = {
-        class = "chromium-browser|firefox";
+        tag = "browser";
       };
       opacity = "1.0 override 0.95 override";
     }
