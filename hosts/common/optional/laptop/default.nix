@@ -2,6 +2,7 @@
   imports = [
     ./powertop.nix
     ./tlp.nix
+    ./upower.nix
   ];
 
   boot.kernel.sysctl = {
