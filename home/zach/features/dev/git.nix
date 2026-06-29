@@ -10,7 +10,7 @@ in {
     difftastic = {
       enable = true;
       git.enable = true;
-      git.diffToolMode = true;
+      git.mode = "external";
       options = {
         background = "dark";
         color = "always";
