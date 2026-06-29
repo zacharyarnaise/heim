@@ -4,6 +4,7 @@
   ...
 }: let
   wallsDir = "${config.home.homeDirectory}/Pictures/Walls";
+  currentWall = "${wallsDir}/Japanese Wallpapers/16x9/timo-volz-DGsqL2j028E-unsplash.jpg";
 in {
   imports = [
     inputs.noctalia.homeModules.default
@@ -214,6 +215,7 @@ in {
         kinds = {
           keyboard_layout = false;
           lock_keys = false;
+          privacy = false;
         };
       };
 
@@ -232,7 +234,8 @@ in {
           open_near_click_clipboard = true;
           open_near_click_control_center = true;
           open_near_click_launcher = true;
-          session_placement = "centered";
+          session_placement = "floating";
+          session_position = "center";
           transparency_mode = "glass";
         };
         screenshot.save_to_file = false;
@@ -246,9 +249,9 @@ in {
       };
 
       theme = {
-        source = "community";
+        source = "builtin";
         mode = "dark";
-        community_palette = "Ayu Blue";
+        builtin = "Tokyo-Night";
         templates = {
           enable_builtin_templates = false;
           enable_community_templates = false;
@@ -262,8 +265,8 @@ in {
         transition = ["wipe"];
         transition_duration = 1000;
         transition_on_startup = true;
-        default.path = "${wallsDir}/wallhaven-x6128o.jpg";
-        last.path = "${wallsDir}/wallhaven-x6128o.jpg";
+        default.path = currentWall;
+        last.path = currentWall;
       };
 
       widget = {
@@ -296,6 +299,13 @@ in {
           max_length = 320;
           min_length = 150;
           title_scroll = "on_hover";
+        };
+        privacy = {
+          capsule = true;
+          capsule_opacity = 0.25;
+          capsule_padding = 8.0;
+          hide_inactive = true;
+          icon_spacing = 1;
         };
         ram = {
           display = "text";
