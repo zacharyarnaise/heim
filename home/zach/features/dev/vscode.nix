@@ -38,16 +38,19 @@
         vsext.vscode-icons-team.vscode-icons
       ];
       userSettings = {
-        "extensions.autoUpdate" = false;
+        "extensions.autoUpdate" = "off";
         "extensions.ignoreRecommendations" = true;
+        "http.fetchAdditionalSupport" = false;
         "security.workspace.trust.banner" = "never";
         "security.workspace.trust.enabled" = false;
         "redhat.telemetry.enabled" = false;
+        "remote.autoForwardPorts" = false;
         "telemetry.editStats.enabled" = false;
         "telemetry.telemetryLevel" = "off";
         "telemetry.feedback.enabled" = false;
         "vsicons.dontShowNewVersionMessage" = true;
         "update.showReleaseNotes" = false;
+        "update.titleBar" = false;
         "window.commandCenter" = false;
         "window.customTitleBarVisibility" = "never";
         "window.density.editorTabHeight" = "compact";
@@ -100,6 +103,7 @@
         "explorer.confirmDelete" = false;
         "explorer.confirmUndo" = "verbose";
 
+        "scm.autoReveal" = false;
         "scm.countBadge" = "off";
         "scm.defaultViewMode" = "tree";
 
@@ -130,6 +134,18 @@
         "workbench.tree.indent" = 10;
         "workbench.tree.renderIndentGuides" = "always";
 
+        # -------------------- Extensions/Language settings --------------------
+
+        "ansible.ansible.path" = "${pkgs.ansible}/bin/ansible";
+        "ansible.lightspeed.enabled" = false;
+        "ansible.lightspeed.suggestions.enabled" = false;
+        "ansible.validation.lint.path" = "${pkgs.ansible-lint}/bin/ansible-lint";
+        "ansible.python.interpreterPath" = "${pkgs.python313}/bin/python3";
+
+        "claudeCode.hideOnboarding" = true;
+        "claudeCode.initialPermissionMode" = "plan";
+        "claudeCode.useCtrlEnterToSend" = true;
+
         "github.copilot.enable" = {
           "*" = true;
           "markdown" = true;
@@ -138,11 +154,6 @@
         };
         "github.copilot.nextEditSuggestions.enabled" = true;
 
-        "ansible.ansible.path" = "${pkgs.ansible}/bin/ansible";
-        "ansible.lightspeed.enabled" = false;
-        "ansible.validation.lint.path" = "${pkgs.ansible-lint}/bin/ansible-lint";
-        "ansible.python.interpreterPath" = "${pkgs.python313}/bin/python3";
-
         "go.alternateTools" = {
           "dlv" = "${pkgs.delve}/bin/dlv";
           "gofumpt" = "${pkgs.gofumpt}/bin/gofumpt";
@@ -150,7 +161,7 @@
           "gopls" = "${pkgs.gopls}/bin/gopls";
           "revive" = "${pkgs.revive}/bin/revive";
         };
-        "go.diagnostic.vulncheck" = "Prompt";
+        "go.diagnostic.vulncheck" = "Off";
         "go.inlayHints.constantValues" = true;
         "go.inlayHints.rangeVariableTypes" = true;
         "go.lintTool" = "golangci-lint-v2";
@@ -158,7 +169,8 @@
         "go.survey.prompt" = false;
         "go.tasks.provideDefault" = false;
         "go.terminal.activateEnvironment" = false;
-        "go.testExplorer.enable" = false;
+        "go.testExplorer.enable" = true;
+        "go.testExplorer.packageDisplayMode" = "nested";
         "go.toolsEnvVars" = {
           "GOBIN" = config.programs.go.env.GOBIN;
           "GOPATH" = config.programs.go.env.GOPATH;
