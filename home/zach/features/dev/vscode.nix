@@ -29,12 +29,14 @@
         vsext.github.github-vscode-theme
         vsext.golang.go
         vsext.jnoortheen.nix-ide
+        vsext.johnnymorganz.luau-lsp
         vsext.ms-kubernetes-tools.vscode-kubernetes-tools
         vsext.ms-python.python
         vsext.ms-python.vscode-pylance
         vsext.ms-python.vscode-python-envs
         vsext.redhat.ansible
         vsext.redhat.vscode-yaml
+        vsext.sumneko.lua
         vsext.vscode-icons-team.vscode-icons
       ];
       userSettings = {

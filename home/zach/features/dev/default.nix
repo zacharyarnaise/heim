@@ -8,6 +8,7 @@
     ./golang.nix
     ./gpg.nix
     ./k8s.nix
+    ./lua.nix
     ./nix.nix
     ./podman.nix
     ./python.nix
