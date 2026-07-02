@@ -2,7 +2,7 @@
   home.packages = builtins.attrValues {
     inherit
       (pkgs)
-      lua
+      lua5_5
       luau
       luau-lsp
       selene

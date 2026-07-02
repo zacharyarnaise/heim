@@ -188,6 +188,10 @@
           "ui.semanticTokens" = true;
         };
 
+        "Lua.runtime.version" = "Lua 5.5";
+        "luau-lsp.platform.type" = "standard";
+        "luau-lsp.server.path" = "${pkgs.luau-lsp}/bin/luau-lsp";
+
         "nix.enableLanguageServer" = true;
         "nix.hiddenLanguageServerErrors" = [
           "textDocument/documentSymbol"
