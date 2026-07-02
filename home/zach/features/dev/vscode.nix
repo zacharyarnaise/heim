@@ -56,7 +56,7 @@
         "window.density.editorTabHeight" = "compact";
         "window.dialogStyle" = "native";
         "window.menuBarVisibility" = "toggle";
-        "window.openFoldersInNewWindow" = "off";
+        "window.openFoldersInNewWindow" = "on";
         "window.titleBarStyle" = "native";
         "window.restoreWindows" = "none";
 
