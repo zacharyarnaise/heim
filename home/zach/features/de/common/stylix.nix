@@ -59,5 +59,7 @@
       popups = 0.75;
       terminal = 0.75;
     };
+
+    targets.noctalia.enable = false;
   };
 }
