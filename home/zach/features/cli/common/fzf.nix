@@ -6,5 +6,6 @@
       "--color 16"
       "--border"
     ];
+    historyWidget.command = "";
   };
 }

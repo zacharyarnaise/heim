@@ -20,7 +20,6 @@
   home.packages = builtins.attrValues {
     inherit
       (pkgs)
-      act
       hugo
       nodejs
       openssl
