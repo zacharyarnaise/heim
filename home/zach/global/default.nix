@@ -30,6 +30,7 @@
 
     persistence."/persist" = {
       directories = lib.optionals (!hostSpec.isHeadless) [
+        ".claude"
         ".config/mozilla"
         {
           directory = ".config/sops";
