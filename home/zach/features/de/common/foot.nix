@@ -18,6 +18,8 @@
         notify = "no";
         visual = "yes";
       };
+      colors-dark.blur = "yes";
+      colors-light.blur = "yes";
       cursor = {
         style = "block";
         blink = "yes";
