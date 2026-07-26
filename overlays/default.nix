@@ -26,16 +26,16 @@ in {
       })
     ];
 
-    gopass = prev.gopass.override {
-      xclip = null;
-      passAlias = true;
-    };
-
     fish = prev.fish.overrideAttrs (_: {
       postBuild = ''
         rm /build/source/share/functions/cdh.fish
       '';
     });
+
+    gopass = prev.gopass.override {
+      xclip = null;
+      passAlias = true;
+    };
 
     # See: https://github.com/k3d-io/k3d/issues/1560
     k3d = prev.k3d.override {
