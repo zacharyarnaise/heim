@@ -14,12 +14,12 @@
       style = "auto";
       inline_height = 20;
       prefers_reduced_motion = true;
-      search_mode = "fuzzy";
+      search_mode = "daemon-fuzzy";
       filter_mode = "host";
-      search_mode_shell_up_key_binding = "fuzzy";
+      search_mode_shell_up_key_binding = "daemon-fuzzy";
       filter_mode_shell_up_key_binding = "session";
       workspaces = true;
-      keymap_mode = "emacs";
+      keymap_mode = "vim-normal";
       enter_accept = false;
       show_help = false;
 
