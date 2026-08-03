@@ -12,18 +12,29 @@
     ];
 
     settings = {
+      ClientAliveCountMax = "3";
+      ClientAliveInterval = "10";
+      HostbasedAuthentication = false;
+      IgnoreRhosts = true;
       KbdInteractiveAuthentication = false;
+      LoginGraceTime = "10s";
+      MaxAuthTries = "1";
+      MaxStartups = "1";
       PasswordAuthentication = false;
-      PermitRootLogin = "no";
+      PermitRootLogin = false;
       StrictModes = true;
+      UseDNS = false;
       X11Forwarding = false;
-      UseDns = false;
 
-      Ciphers = [
-        "chacha20-poly1305@openssh.com"
-      ];
+      Ciphers = ["chacha20-poly1305@openssh.com"];
       KexAlgorithms = [
+        "mlkem768x25519-sha256"
+        "sntrup761x25519-sha512"
         "sntrup761x25519-sha512@openssh.com"
+      ];
+      MACs = [
+        "hmac-sha2-512-etm@openssh.com"
+        "hmac-sha2-512"
       ];
     };
   };

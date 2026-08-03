@@ -22,14 +22,21 @@ in {
 
     settings = {
       "*" = {
-        AddKeysToAgent = lib.mkDefault "no";
-        Compression = lib.mkDefault "no";
-        ControlMaster = lib.mkDefault "no";
-        ControlPersist = lib.mkDefault "no";
+        AddKeysToAgent = lib.mkDefault false;
+        AddressFamily = "inet";
+        Ciphers = ["chacha20-poly1305@openssh.com"];
+        ControlMaster = lib.mkDefault false;
+        ControlPersist = lib.mkDefault false;
+        ForwardAgent = lib.mkDefault false;
         HashKnownHosts = true;
-        ServerAliveCountMax = 3;
-        ServerAliveInterval = 5;
+        HostKeyAlgorithms = ["ssh-ed25519" "rsa-sha2-512"];
+        KexAlgorithms = ["mlkem768x25519-sha256" "sntrup761x25519-sha512" "sntrup761x25519-sha512@openssh.com"];
+        MACs = ["hmac-sha2-512-etm@openssh.com" "umac-128-etm@openssh.com" "hmac-sha2-512"];
+        ServerAliveCountMax = 4;
+        ServerAliveInterval = 30;
+        StrictHostKeyChecking = "ask";
         UserKnownHostsFile = "${config.home.homeDirectory}/.ssh/known_hosts.d/hosts";
+        VisualHostKey = true;
       };
 
       "github.com" = {
