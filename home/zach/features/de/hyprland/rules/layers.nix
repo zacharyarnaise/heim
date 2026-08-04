@@ -13,7 +13,6 @@
         namespace = "noctalia-.*";
       };
       blur = true;
-      ignore_alpha = 0.1;
       no_anim = true;
     }
     {

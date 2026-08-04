@@ -4,7 +4,7 @@
   ...
 }: let
   wallsDir = "${config.home.homeDirectory}/Pictures/Walls";
-  currentWall = "${wallsDir}/Japanese Wallpapers/16x9/timo-volz-DGsqL2j028E-unsplash.jpg";
+  currentWall = "${wallsDir}/Ghibli Upscaled/Princess Mononoke/09-upscaled-scale-2_00x.png";
 in {
   imports = [
     inputs.noctalia.homeModules.default
@@ -20,52 +20,47 @@ in {
 
     settings = {
       bar.widgets = {
-        background_opacity = 0.25;
+        enabled = false;
+        monitor.${config.primaryMonitor.name}.enabled = true;
+
+        background_opacity = 0.2;
         border = "primary";
         capsule_opacity = 0.5;
         capsule_thickness = 0.75;
-        center = ["taskbar"];
-        enabled = false;
+        center = ["taskbar" "widget"];
         end = ["group:g4" "spacer_1" "group:g2" "spacer_2" "date"];
         font_family = "Inter Display";
         font_weight = 400;
         margin_edge = 0;
         margin_ends = 6;
         padding = 10;
-        panel_overlap = 2;
+        panel_overlap = 0;
         radius = 0;
         radius_bottom_left = 30;
         radius_bottom_right = 30;
         shadow = false;
-        start = ["launcher" "spacer_1" "group:g1" "spacer_1" "group:g3"];
+        start = ["launcher" "spacer_1" "group:g1" "spacer_1" "media"];
         thickness = 36;
-        monitor.${config.primaryMonitor.name}.enabled = true;
+
         capsule_group = [
           {
-            fill = "surface_variant";
             id = "g1";
+            fill = "surface_variant";
             members = ["cpu" "temp" "ram"];
             opacity = 0.25;
             padding = 8.0;
           }
           {
+            id = "g2";
             fill = "surface_variant";
-            id = "g3";
-            members = ["media" "audio_visualizer"];
-            opacity = 0.25;
-            padding = 6.0;
-          }
-          {
-            fill = "surface_variant";
-            id = "g4";
-            members = ["tray" "notifications" "nightlight" "caffeine"];
+            members = ["output_volume" "input_volume" "brightness" "battery"];
             opacity = 0.25;
             padding = 8.0;
           }
           {
+            id = "g4";
             fill = "surface_variant";
-            id = "g2";
-            members = ["output_volume" "input_volume" "brightness" "battery"];
+            members = ["tray" "notifications" "nightlight" "caffeine"];
             opacity = 0.25;
             padding = 8.0;
           }
@@ -74,13 +69,28 @@ in {
 
       brightness.enable_ddcutil = true;
 
-      control_center.shortcuts = [
-        {type = "wifi";}
-        {type = "bluetooth";}
-        {type = "caffeine";}
-        {type = "nightlight";}
-        {type = "notification";}
-      ];
+      calendar = {
+        enabled = true;
+        refresh_minutes = 30;
+        account = {
+          work = {
+            color = "tertiary";
+            name = "Work";
+            type = "google";
+          };
+        };
+      };
+
+      control_center = {
+        calendar.show_week_numbers = true;
+        shortcuts = [
+          {type = "wifi";}
+          {type = "bluetooth";}
+          {type = "caffeine";}
+          {type = "nightlight";}
+          {type = "notification";}
+        ];
+      };
 
       desktop_widgets.enabled = false;
 
@@ -118,33 +128,13 @@ in {
       lockscreen_widgets = {
         enabled = false;
         schema_version = 2;
-        widget_order = [
-          "lockscreen-login-box@${config.primaryMonitor.name}"
-          "lockscreen-login-box@DP-2"
-        ];
+        widget_order = ["lockscreen-login-box@${config.primaryMonitor.name}"];
         grid = {
           cell_size = 16;
           major_interval = 4;
           visible = true;
         };
         widget = {
-          "lockscreen-login-box@DP-2" = {
-            box_height = 0.0;
-            box_width = 0.0;
-            cx = 720.0;
-            cy = 2437.0;
-            output = "DP-2";
-            rotation = 0.0;
-            type = "login_box";
-            settings = {
-              background_color = "surface_variant";
-              background_opacity = 0.88;
-              background_radius = 12.0;
-              input_opacity = 1.0;
-              input_radius = 6.0;
-              show_login_button = true;
-            };
-          };
           "lockscreen-login-box@${config.primaryMonitor.name}" = {
             box_height = 0.0;
             box_width = 0.0;
@@ -160,25 +150,6 @@ in {
               input_opacity = 1.0;
               input_radius = 6.0;
               show_login_button = true;
-            };
-          };
-          "lockscreen-widget-0000000000000001" = {
-            box_height = 0.0;
-            box_width = 0.0;
-            cx = 1280.0;
-            cy = 125.87890625;
-            output = config.primaryMonitor.name;
-            rotation = 0.0;
-            type = "clock";
-            settings = {
-              background = true;
-              background_color = "primary";
-              background_opacity = 0.2;
-              background_padding = 10.0;
-              background_radius = 30.0;
-              clock_style = "digital";
-              font_family = "";
-              format = "{:%H:%M:%S}";
             };
           };
         };
@@ -220,6 +191,7 @@ in {
       };
 
       shell = {
+        clipboard_auto_paste = "off";
         font_family = "Inter Display";
         lang = "en";
         password_style = "random";
@@ -234,6 +206,7 @@ in {
           open_near_click_clipboard = true;
           open_near_click_control_center = true;
           open_near_click_launcher = true;
+          polkit_position = "top_center";
           session_placement = "floating";
           session_position = "center";
           transparency_mode = "glass";
@@ -249,9 +222,10 @@ in {
       };
 
       theme = {
-        source = "builtin";
+        source = "wallpaper";
         mode = "dark";
         builtin = "Tokyo-Night";
+        wallpaper_scheme = "m3-rainbow";
         templates = {
           enable_builtin_templates = false;
           enable_community_templates = false;
