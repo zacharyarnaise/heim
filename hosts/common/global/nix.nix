@@ -5,13 +5,13 @@
 
     gc = {
       automatic = true;
-      dates = "Sat *-*-* 00:00:00";
+      dates = "*-*-01/2 00:00:00";
       options = "--delete-older-than 7d";
       persistent = true;
     };
     optimise = {
       automatic = true;
-      dates = ["Sat *-*-* 00:00:00"];
+      dates = ["Mon *-*-* 00:00:00"];
       persistent = true;
     };
 
