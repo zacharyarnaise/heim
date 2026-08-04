@@ -42,7 +42,6 @@ in {
         ServerAliveInterval = 30;
         StrictHostKeyChecking = "ask";
         UserKnownHostsFile = "${config.home.homeDirectory}/.ssh/known_hosts.d/hosts";
-        VisualHostKey = true;
       };
 
       "github.com" = {
