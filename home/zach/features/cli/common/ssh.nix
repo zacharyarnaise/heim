@@ -30,7 +30,13 @@ in {
         ForwardAgent = lib.mkDefault false;
         HashKnownHosts = true;
         HostKeyAlgorithms = ["ssh-ed25519" "rsa-sha2-512"];
-        KexAlgorithms = ["mlkem768x25519-sha256" "sntrup761x25519-sha512" "sntrup761x25519-sha512@openssh.com"];
+        KexAlgorithms = [
+          "mlkem768x25519-sha256"
+          "sntrup761x25519-sha512"
+          "sntrup761x25519-sha512@openssh.com"
+          "curve25519-sha256"
+          "curve25519-sha256@libssh.org"
+        ];
         MACs = ["hmac-sha2-512-etm@openssh.com" "umac-128-etm@openssh.com" "hmac-sha2-512"];
         ServerAliveCountMax = 4;
         ServerAliveInterval = 30;
