@@ -140,7 +140,8 @@
     # -------------------------------- Noctalia --------------------------------
     {
       match = {
-        class = "dev.noctalia.Noctalia.Settings";
+        class = "dev.noctalia.Noctalia";
+        initial_title = "Noctalia Settings";
       };
       center = true;
       float = true;
