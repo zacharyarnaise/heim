@@ -4,7 +4,7 @@
   ...
 }: {
   boot = {
-    kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_latest;
+    kernelPackages = lib.mkDefault pkgs.linuxKernel.packages.linux_xanmod_latest;
     kernelParams = ["hibernate=no"];
     loader.timeout = lib.mkDefault 0;
 

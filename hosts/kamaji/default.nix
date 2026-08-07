@@ -1,4 +1,8 @@
-{lib, ...}: {
+{
+  lib,
+  pkgs,
+  ...
+}: {
   imports = [
     ./hardware.nix
 
@@ -17,6 +21,7 @@
   ];
 
   boot = {
+    kernelPackages = pkgs.linuxKernel.packages.linux_xanmod;
     supportedFilesystems = ["zfs"];
     zfs.forceImportRoot = false;
   };
