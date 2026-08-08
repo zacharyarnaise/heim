@@ -240,7 +240,6 @@ in {
         transition_duration = 1000;
         transition_on_startup = true;
         default.path = currentWall;
-        last.path = currentWall;
       };
 
       widget = {
