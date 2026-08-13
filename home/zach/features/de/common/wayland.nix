@@ -2,7 +2,6 @@
   home.packages = builtins.attrValues {
     inherit
       (pkgs)
-      wf-recorder
       wl-clipboard
       ;
   };
