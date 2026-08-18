@@ -1,0 +1,11 @@
+--- a/completions/git-forgit.fish
++++ b/completions/git-forgit.fish
+@@ -21,7 +21,7 @@
+ end
+
+ # Load helper functions in git completion file
+-not functions -q __fish_git && source $__fish_data_dir/completions/git.fish
++not functions -q __fish_git && complete --do-complete "git " >/dev/null 2>&1
+
+ # No file completion by default
+ complete -c git-forgit -x
