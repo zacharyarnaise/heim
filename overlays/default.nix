@@ -13,6 +13,14 @@ in {
       };
     };
   };
+  master = final: _prev: {
+    master = import inputs.nixpkgs-master {
+      inherit (final.stdenv.hostPlatform) system;
+      config = {
+        allowUnfree = true;
+      };
+    };
+  };
 
   additions = final: _: import ../pkgs {pkgs = final;};
 

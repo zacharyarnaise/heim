@@ -454,6 +454,22 @@
         "url": "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz"
       }
     },
+    "nixpkgs-master": {
+      "locked": {
+        "lastModified": 1787158731,
+        "narHash": "sha256-0pAIEsP87mGGmLPVNEqHMl+l9IiEF9Dimd1+mnwRhB4=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "30a8631bb18996a3cf754344f31f1a49050e56b9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "30a8631bb18996a3cf754344f31f1a49050e56b9",
+        "type": "github"
+      }
+    },
     "nixpkgs-stable": {
       "locked": {
         "lastModified": 1787101114,
@@ -625,6 +641,7 @@
         "nixarr": "nixarr",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
+        "nixpkgs-master": "nixpkgs-master",
         "nixpkgs-stable": "nixpkgs-stable",
         "nixvim": "nixvim",
         "noctalia": "noctalia",
