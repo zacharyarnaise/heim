@@ -113,6 +113,7 @@ in {
           "screen-off" = {
             action = "screen_off";
             enabled = true;
+            locked_timeout = 120;
             timeout = 660;
           };
         };
@@ -188,6 +189,10 @@ in {
           lock_keys = false;
           privacy = false;
         };
+      };
+
+      plugins = {
+        auto_update = "none";
       };
 
       shell = {
