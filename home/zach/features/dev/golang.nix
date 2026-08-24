@@ -7,7 +7,7 @@
 }: {
   programs.go = {
     enable = true;
-    package = pkgs.master.go_1_27;
+    package = pkgs.go_1_27;
 
     telemetry.mode = "off";
     env = {

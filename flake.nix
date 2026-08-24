@@ -4,8 +4,6 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-26.05";
-    # For Go 1.27.0
-    nixpkgs-master.url = "github:nixos/nixpkgs/30a8631bb18996a3cf754344f31f1a49050e56b9";
 
     # Inputs used by all configurations
     nixos-hardware.url = "github:nixos/nixos-hardware";
