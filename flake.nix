@@ -65,10 +65,6 @@
       url = "github:nix-community/nix-vscode-extensions";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    noctalia = {
-      url = "github:noctalia-dev/noctalia-shell/v5.0.0-beta.9";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     nixarr = {
       url = "github:rasmus-kirk/nixarr";

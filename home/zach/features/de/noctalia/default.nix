@@ -6,10 +6,6 @@
   wallsDir = "${config.home.homeDirectory}/Pictures/Walls";
   currentWall = "${wallsDir}/Ghibli Upscaled/Princess Mononoke/09-upscaled-scale-2_00x.png";
 in {
-  imports = [
-    inputs.noctalia.homeModules.default
-  ];
-
   home = {
     file.".local/state/noctalia/.setup-complete".text = "";
   };

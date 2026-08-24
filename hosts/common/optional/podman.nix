@@ -70,19 +70,6 @@ in {
     fi
   '';
 
-  # https://github.com/nikstur/userborn/issues/7#issuecomment-2462106017
-  environment.etc = let
-    autosubs = lib.pipe normalUsers [
-      lib.attrValues
-      (lib.concatMapStrings (u: "${toString u.uid}:${toString (100000 + u.uid * 65536)}:65536\n"))
-    ];
-  in {
-    "subuid".text = autosubs;
-    "subuid".mode = "0444";
-    "subgid".text = autosubs;
-    "subgid".mode = "0444";
-  };
-
   # https://github.com/containers/podman/blob/main/troubleshooting.md#26-running-containers-with-resource-limits-fails-with-a-permissions-error
   systemd.services."user@".serviceConfig = {
     Delegate = "cpu cpuset io memory pids";
