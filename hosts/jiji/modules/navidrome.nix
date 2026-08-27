@@ -6,9 +6,11 @@ in {
     owner = "navidrome";
   };
 
+  networking.firewall.interfaces.wg0.allowedTCPPorts = [4533];
+
   services.navidrome = {
     enable = true;
-    openFirewall = true;
+    openFirewall = false;
 
     environmentFile = secrets.navidrome.path;
     settings = {

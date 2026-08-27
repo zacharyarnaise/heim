@@ -6,10 +6,12 @@ in {
     owner = "slskd";
   };
 
+  networking.firewall.interfaces.wg0.allowedTCPPorts = [5030];
+
   services.slskd = {
     enable = true;
     domain = null; # Disable nginx vhost
-    openFirewall = true;
+    openFirewall = true; # Only opens peer port
 
     environmentFile = secrets."slskd".path;
     # https://github.com/slskd/slskd/blob/master/config/slskd.example.yml
@@ -80,7 +82,6 @@ in {
   systemd = {
     services.slskd = {
       after = ["storage-sb01-music.mount"];
-      unitConfig.RequiresMountsFor = "/storage/sb01/music";
       serviceConfig = {
         CPUWeight = 20;
         IOSchedulingClass = "idle";
