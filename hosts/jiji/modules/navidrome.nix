@@ -1,19 +1,10 @@
 {config, ...}: let
   inherit (config.sops) secrets;
 in {
-  sops.secrets = let
-    names = [
-      "navidrome"
-    ];
-  in
-    builtins.listToAttrs (map (name: {
-        inherit name;
-        value = {
-          group = "navidrome";
-          owner = "navidrome";
-        };
-      })
-      names);
+  sops.secrets."navidrome" = {
+    group = "navidrome";
+    owner = "navidrome";
+  };
 
   services.navidrome = {
     enable = true;
@@ -57,5 +48,10 @@ in {
   systemd.services.navidrome = {
     after = ["network-online.target" "storage-sb01-music.mount"];
     requires = ["network-online.target"];
+    serviceConfig = {
+      IOSchedulingClass = "best-effort";
+      IOSchedulingPriority = 0;
+      IOWeight = 500;
+    };
   };
 }
