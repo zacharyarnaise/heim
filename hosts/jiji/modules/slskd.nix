@@ -71,7 +71,7 @@ in {
       };
 
       web = {
-        ip_address = "10.0.1.2";
+        ip_address = "10.0.1.3";
         port = 5030;
       };
     };
