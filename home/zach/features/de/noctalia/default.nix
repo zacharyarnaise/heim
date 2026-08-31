@@ -3,7 +3,7 @@
   config,
   ...
 }: let
-  wallsDir = "${config.home.homeDirectory}/Pictures/Walls";
+  wallsDir = "/persist${config.home.homeDirectory}/Pictures/Walls";
   currentWall = "${wallsDir}/Ghibli Upscaled/Princess Mononoke/09-upscaled-scale-2_00x.png";
 in {
   home = {
@@ -281,11 +281,7 @@ in {
           hide_inactive = true;
           icon_spacing = 1;
         };
-        ram = {
-          display = "text";
-          font_family = "Iosevka";
-          show_label = false;
-        };
+        ram.font_family = "Iosevka";
         spacer_1 = {
           length = 10;
           type = "spacer";
@@ -309,11 +305,7 @@ in {
           scale = 1.2;
           show_active_indicator = false;
         };
-        temp = {
-          display = "text";
-          font_family = "Iosevka";
-          show_label = false;
-        };
+        temp.font_family = "Iosevka";
         tray.drawer = true;
         workspaces.font_family = "Iosevka Medium";
       };
