@@ -51,7 +51,7 @@ in {
 
     # See: https://github.com/k3d-io/k3d/issues/1560
     k3d = prev.k3d.override {
-      k3sVersion = "1.36.4+k3s1";
+      k3sVersion = "1.36.4-k3s1";
     };
 
     waybar = addPatches prev.waybar [
