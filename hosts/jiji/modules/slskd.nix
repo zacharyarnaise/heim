@@ -40,7 +40,7 @@ in {
         };
         upload = {
           slots = 10;
-          speed_limit = 20000;
+          speed_limit = 50000;
           limits = {
             queued = {
               files = 100;
@@ -56,7 +56,7 @@ in {
         };
         groups.leechers.upload = {
           slots = 2;
-          speed_limit = 2000;
+          speed_limit = 10000;
           limits = {
             queued = {
               files = 20;
@@ -65,8 +65,8 @@ in {
             daily = null;
             weekly = {
               files = 100;
-              megabytes = 1000;
-              failures = 10;
+              megabytes = 5000;
+              failures = 20;
             };
           };
         };
