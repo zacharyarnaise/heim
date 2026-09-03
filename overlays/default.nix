@@ -54,6 +54,13 @@ in {
       k3sVersion = "1.36.4-k3s1";
     };
 
+    noctalia = addPatches prev.noctalia [
+      (prev.fetchpatch {
+        url = "https://patch-diff.githubusercontent.com/raw/noctalia-dev/noctalia/pull/4224.patch";
+        hash = "sha256-UWoQCNnkc9H7cpHqFXiqxmUQoqy6mIc1eX2cBEBczhs=";
+      })
+    ];
+
     waybar = addPatches prev.waybar [
       ./waybar_wireplumber_notfound.diff
     ];
