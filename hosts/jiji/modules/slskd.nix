@@ -49,23 +49,23 @@ in {
             daily = null;
             weekly = {
               files = 2000;
-              megabytes = 20000;
+              megabytes = 30000;
               failures = 100;
             };
           };
         };
         groups.leechers.upload = {
           slots = 2;
-          speed_limit = 10000;
+          speed_limit = 20000;
           limits = {
             queued = {
-              files = 20;
-              megabytes = 500;
+              files = 30;
+              megabytes = 2000;
             };
             daily = null;
             weekly = {
-              files = 100;
-              megabytes = 5000;
+              files = 300;
+              megabytes = 10000;
               failures = 20;
             };
           };
