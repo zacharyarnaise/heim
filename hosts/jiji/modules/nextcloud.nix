@@ -37,7 +37,6 @@ in {
     package = pkgs.nextcloud34;
 
     autoUpdateApps.enable = true;
-    configureRedis = false;
     database.createLocally = true;
     home = "/storage/data01/nextcloud";
     hostName = flakeSecrets.acme.domain;
