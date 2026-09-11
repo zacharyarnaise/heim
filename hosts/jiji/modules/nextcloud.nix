@@ -1,16 +1,31 @@
 {
   config,
+  inputs,
   pkgs,
   ...
 }: let
   inherit (config.sops) secrets;
+  inherit (inputs.secrets.hosts."jiji") acme;
 in {
-  sops.secrets."nextcloud" = {
-    group = "nextcloud";
-    owner = "nextcloud";
+  sops.secrets = {
+    "acme-nxc" = {};
+    "nextcloud" = {
+      group = "nextcloud";
+      owner = "nextcloud";
+    };
   };
 
-  networking.firewall.interfaces.wg0.allowedTCPPorts = [80];
+  networking.firewall.interfaces.wg0.allowedTCPPorts = [80 443];
+
+  security.acme = {
+    acceptTerms = true;
+    defaults.email = acme.email;
+    certs.${acme.domain} = {
+      inherit (acme) dnsProvider dnsResolver;
+      environmentFile = secrets."acme-nxc".path;
+      group = "nginx";
+    };
+  };
 
   services.nextcloud = {
     enable = true;
@@ -19,7 +34,9 @@ in {
     configureRedis = false;
     database.createLocally = true;
     home = "/storage/data01/nextcloud";
-    hostName = "10.0.1.4";
+    hostName = acme.domain;
+    https = true;
+    settings.trusted_domains = ["10.0.1.4"];
 
     config = {
       adminpassFile = secrets."nextcloud".path;
@@ -36,10 +53,9 @@ in {
     };
   };
 
-  services.nginx.virtualHosts."10.0.1.4".listen = [
-    {
-      addr = "10.0.1.4";
-      port = 80;
-    }
-  ];
+  services.nginx.virtualHosts.${acme.domain} = {
+    forceSSL = true;
+    listenAddresses = ["10.0.1.4"];
+    useACMEHost = acme.domain;
+  };
 }
