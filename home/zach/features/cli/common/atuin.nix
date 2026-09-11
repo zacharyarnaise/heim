@@ -19,7 +19,7 @@
       search_mode_shell_up_key_binding = "daemon-fuzzy";
       filter_mode_shell_up_key_binding = "session";
       workspaces = true;
-      keymap_mode = "vim-normal";
+      keymap_mode = "vim-insert";
       enter_accept = false;
       show_help = false;
 
