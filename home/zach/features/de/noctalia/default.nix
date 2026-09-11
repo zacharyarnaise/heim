@@ -23,7 +23,7 @@ in {
         border = "primary";
         capsule_opacity = 0.5;
         capsule_thickness = 0.75;
-        center = ["taskbar" "widget"];
+        center = ["taskbar"];
         end = ["group:g4" "spacer_1" "group:g2" "spacer_2" "date"];
         font_family = "Inter Display";
         font_weight = 400;
