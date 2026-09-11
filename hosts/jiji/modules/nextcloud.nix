@@ -5,24 +5,29 @@
   ...
 }: let
   inherit (config.sops) secrets;
-  inherit (inputs.secrets.hosts."jiji") acme;
+  flakeSecrets = inputs.secrets.hosts."jiji";
 in {
-  sops.secrets = {
-    "acme-nxc" = {};
-    "nextcloud" = {
+  sops.secrets = let
+    nextcloud = {
       group = "nextcloud";
       owner = "nextcloud";
     };
+  in {
+    "acme-nextcloud" = {};
+    "nextcloud/admin" = nextcloud;
+    "nextcloud/config" = nextcloud;
+    "nextcloud/s3" = nextcloud;
+    "nextcloud/sse-c" = nextcloud;
   };
 
   networking.firewall.interfaces.wg0.allowedTCPPorts = [80 443];
 
   security.acme = {
     acceptTerms = true;
-    defaults.email = acme.email;
-    certs.${acme.domain} = {
-      inherit (acme) dnsProvider dnsResolver;
-      environmentFile = secrets."acme-nxc".path;
+    defaults.email = flakeSecrets.acme.email;
+    certs.${flakeSecrets.acme.domain} = {
+      inherit (flakeSecrets.acme) dnsProvider dnsResolver;
+      environmentFile = secrets."acme-nextcloud".path;
       group = "nginx";
     };
   };
@@ -34,13 +39,24 @@ in {
     configureRedis = false;
     database.createLocally = true;
     home = "/storage/data01/nextcloud";
-    hostName = acme.domain;
+    hostName = flakeSecrets.acme.domain;
     https = true;
+    secretFile = secrets."nextcloud/config".path;
     settings.trusted_domains = ["10.0.1.4"];
 
     config = {
-      adminpassFile = secrets."nextcloud".path;
+      adminpassFile = secrets."nextcloud/admin".path;
       dbtype = "pgsql";
+
+      objectstore.s3 = {
+        enable = true;
+        bucket = "";
+        key = "";
+        secretFile = secrets."nextcloud/s3".path;
+        sseCKeyFile = secrets."nextcloud/sse-c".path;
+        usePathStyle = true;
+        useSsl = true;
+      };
     };
 
     poolSettings = {
@@ -53,9 +69,9 @@ in {
     };
   };
 
-  services.nginx.virtualHosts.${acme.domain} = {
+  services.nginx.virtualHosts.${flakeSecrets.acme.domain} = {
     forceSSL = true;
     listenAddresses = ["10.0.1.4"];
-    useACMEHost = acme.domain;
+    useACMEHost = flakeSecrets.acme.domain;
   };
 }
