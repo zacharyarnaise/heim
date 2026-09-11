@@ -10,6 +10,7 @@
     ./modules/postgresql.nix
     ./modules/atuin.nix
     ./modules/navidrome.nix
+    ./modules/nextcloud.nix
     ./modules/slskd.nix
   ];
 
