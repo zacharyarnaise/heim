@@ -36,16 +36,18 @@ in {
     enable = true;
     package = pkgs.nextcloud34;
 
+    autoUpdateApps.enable = true;
     configureRedis = false;
     database.createLocally = true;
     home = "/storage/data01/nextcloud";
     hostName = flakeSecrets.acme.domain;
     https = true;
+    phpOptions."opcache.interned_strings_buffer" = 32;
     secretFile = secrets."nextcloud/config".path;
-    settings.trusted_domains = ["10.0.1.4"];
 
     config = {
       adminpassFile = secrets."nextcloud/admin".path;
+      adminuser = "zach";
       dbtype = "pgsql";
 
       objectstore.s3 = {
@@ -66,6 +68,11 @@ in {
       "pm.max_spare_servers" = "3";
       "pm.min_spare_servers" = "1";
       "pm.start_servers" = "2";
+    };
+
+    settings = {
+      maintenance_window_start = 1;
+      trusted_domains = ["10.0.1.4"];
     };
   };
 
