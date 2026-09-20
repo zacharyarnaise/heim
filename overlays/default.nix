@@ -32,18 +32,6 @@ in {
       '';
     });
 
-    # https://github.com/wfxr/forgit/issues/548
-    fishPlugins =
-      prev.fishPlugins
-      // {
-        forgit = prev.fishPlugins.forgit.overrideAttrs (oldAttrs: {
-          src = prev.applyPatches {
-            inherit (oldAttrs) src;
-            patches = [./forgit-fix_completion.diff];
-          };
-        });
-      };
-
     gopass = prev.gopass.override {
       xclip = null;
       passAlias = true;
