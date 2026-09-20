@@ -30,7 +30,7 @@ in {
       EnableFavourites = true;
       EnableMediaFileCoverArt = false;
       EnableStarRating = true;
-      EnableTranscodingCancellation = true;
+      "Transcoding.EnableCancellation" = true;
       EnableWebPEncoding = false;
       ImageCacheSize = "500MB";
       "LastFM.Enabled" = true;
