@@ -1,6 +1,7 @@
 {
   config,
   inputs,
+  lib,
   pkgs,
   ...
 }: let
@@ -14,10 +15,39 @@ in {
     };
   in {
     "acme-nextcloud" = {};
+    "nextcloud/automation" = {};
+
     "nextcloud/admin" = nextcloud;
     "nextcloud/config" = nextcloud;
     "nextcloud/s3" = nextcloud;
     "nextcloud/sse-c" = nextcloud;
+  };
+
+  systemd = {
+    services.nextcloud-deck_daily = {
+      after = [
+        "network-online.target"
+        "phpfpm-nextcloud.service"
+      ];
+      wants = ["network-online.target"];
+      unitConfig.StartLimitBurst = 3;
+      serviceConfig = {
+        DynamicUser = true;
+        EnvironmentFile = secrets."nextcloud/automation".path;
+        ExecStart = lib.getExe pkgs.nextcloud-deck_daily;
+        Restart = "on-failure";
+        RestartSec = 60;
+        Type = "oneshot";
+      };
+    };
+
+    timers.nextcloud-deck_daily = {
+      wantedBy = ["timers.target"];
+      timerConfig = {
+        OnCalendar = "*-*-* 06:00:00";
+        Persistent = true;
+      };
+    };
   };
 
   networking.firewall.interfaces.wg0.allowedTCPPorts = [80 443];
