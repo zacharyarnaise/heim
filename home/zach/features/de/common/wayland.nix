@@ -16,6 +16,7 @@
 
   xdg.configFile."electron-flags.conf".text = ''
     --enable-features=UseOzonePlatform
+    --enable-features=WaylandLinuxDrmSyncobj
     --ozone-platform=wayland
   '';
 }
