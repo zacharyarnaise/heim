@@ -6,7 +6,7 @@
 
     kbdModel = "pc105";
     kbdLayout = "us";
-    kbdVariant = "intl";
+    kbdVariant = "altgr-intl";
 
     cpuThermalZone = 1;
     hasDiscreteGPU = true;
