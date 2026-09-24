@@ -6,7 +6,7 @@
 
     kbdModel = "pc105";
     kbdLayout = "us";
-    kbdVariant = "altgr-intl";
+    kbdOptions = ["compose:caps" "shift:both_capslock_cancel"];
 
     cpuThermalZone = 1;
     hasDiscreteGPU = true;

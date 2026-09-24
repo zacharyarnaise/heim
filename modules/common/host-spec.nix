@@ -59,6 +59,12 @@ in {
       description = "Keyboard variant";
       default = "";
     };
+    kbdOptions = mkOption {
+      type = types.listOf types.str;
+      description = "Additional keyboard options";
+      default = [];
+      apply = lib.concatStringsSep ",";
+    };
 
     # Hardware related options
     cpuThermalZone = mkOption {
