@@ -95,6 +95,7 @@
         kb_model = config.hostSpec.kbdModel;
         kb_layout = config.hostSpec.kbdLayout;
         kb_variant = config.hostSpec.kbdVariant;
+        kb_options = config.hostSpec.kbdOptions;
         numlock_by_default = true;
         repeat_rate = 50;
         repeat_delay = 400;
