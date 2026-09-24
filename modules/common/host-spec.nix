@@ -60,10 +60,14 @@ in {
       default = "";
     };
     kbdOptions = mkOption {
-      type = types.listOf types.str;
+      # Accepts a string too since the applied (concat) value is re-fed into HM
+      type = types.either (types.listOf types.str) types.str;
       description = "Additional keyboard options";
       default = [];
-      apply = lib.concatStringsSep ",";
+      apply = opts:
+        if lib.isList opts
+        then lib.concatStringsSep "," opts
+        else opts;
     };
 
     # Hardware related options
