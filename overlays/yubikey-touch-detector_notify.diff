@@ -8,6 +8,5 @@ index 9fc43a1..ec47fbb 100644
  		AppName: "yubikey-touch-detector",
 -		AppIcon: "yubikey-touch-detector",
 +		AppIcon: "stock_lock",
- 		Summary: "YubiKey is waiting for a touch",
  	}
-	notification.AddHint(notify.Hint{ID: "transient", Variant: dbus.MakeVariant(true)})
+ 	notification.AddHint(notify.Hint{ID: "transient", Variant: dbus.MakeVariant(true)})
