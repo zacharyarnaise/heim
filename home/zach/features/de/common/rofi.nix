@@ -10,9 +10,10 @@
       x11Support = false;
     };
 
-    font = lib.mkForce "${config.stylix.fonts.sansSerif.name} ${toString config.stylix.fonts.sizes.popups}";
-    terminal = "${pkgs.foot}/bin/footclient";
-    extraConfig = {
+    settings = {
+      font = lib.mkForce "${config.stylix.fonts.sansSerif.name} ${toString config.stylix.fonts.sizes.popups}";
+      terminal = "${pkgs.foot}/bin/footclient";
+
       modi = "drun,run,ssh";
       display-drun = "󱓞";
       display-run = "󰌧";
