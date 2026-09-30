@@ -15,6 +15,10 @@ in {
     systemd.enable = true;
 
     settings = {
+      audio = {
+        enable_sounds = false;
+      };
+
       bar.widgets = {
         enabled = false;
         monitor.${config.primaryMonitor.name}.enabled = true;
