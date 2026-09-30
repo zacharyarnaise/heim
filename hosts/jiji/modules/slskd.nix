@@ -34,39 +34,58 @@ in {
         filters = ["\\.ini$" "Thumbs\\.db$" "\\.DS_Store$" "\\.nfo$"];
       };
 
+      # All durations are in minutes
+      retention = {
+        search = 1152;
+        transfers = {
+          download = {
+            errored = 1152;
+            succeeded = 1152;
+          };
+          upload = {
+            errored = 14400;
+            succeeded = 43200;
+          };
+        };
+      };
+
+      global = {
+        download.speed_limit = 100000;
+        upload.speed_limit = 100000;
+      };
+
       transfers = {
         download = {
           slots = 100;
         };
         upload = {
-          slots = 10;
-          speed_limit = 50000;
+          slots = 50;
           limits = {
             queued = {
-              files = 100;
-              megabytes = 5000;
+              files = 500;
+              megabytes = 10000;
             };
             daily = null;
             weekly = {
-              files = 2000;
-              megabytes = 30000;
               failures = 100;
+              files = 5000;
+              megabytes = 50000;
             };
           };
         };
         groups.leechers.upload = {
-          slots = 2;
-          speed_limit = 20000;
+          slots = 10;
+          speed_limit = 50000;
           limits = {
             queued = {
-              files = 30;
-              megabytes = 2000;
+              files = 50;
+              megabytes = 5000;
             };
             daily = null;
             weekly = {
-              files = 300;
-              megabytes = 10000;
               failures = 20;
+              files = 500;
+              megabytes = 10000;
             };
           };
         };
