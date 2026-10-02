@@ -45,7 +45,8 @@
       lyrics = {
         auto = true;
         force = true;
-        sources = ["lrclib" "tekstowo"];
+        keep_synced = true;
+        sources = ["lrclib" "lrcmux" "tekstowo"];
         synced = true;
       };
       replaygain = {
