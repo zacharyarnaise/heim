@@ -3,6 +3,7 @@
     inherit
       (pkgs)
       ffmpeg-headless
+      imagemagick
       ;
   };
 
@@ -22,6 +23,7 @@
         "lyrics"
         "autobpm"
         "zero"
+        "fetchart"
       ];
       paths = {
         default = "$albumartist/$album%aunique{}/$track $title";
@@ -56,6 +58,17 @@
       zero = {
         auto = true;
         fields = ["images"];
+      };
+      fetchart = {
+        cautious = true;
+        minwidth = 1000;
+        maxwidth = 2000;
+        max_filesize = "1024kb";
+        enforce_ratio = true;
+        sources = ["coverart" "itunes" "amazon" "albumart"];
+        store_source = true;
+        high_resolution = true;
+        cover_format = "JPEG";
       };
     };
   };
