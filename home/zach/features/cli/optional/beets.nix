@@ -63,7 +63,7 @@
         cautious = true;
         minwidth = 1000;
         maxwidth = 2000;
-        max_filesize = 1024;
+        max_filesize = 1024 * 1024; # In bytes
         enforce_ratio = true;
         sources = ["coverart" "itunes" "amazon" "albumart"];
         store_source = true;
