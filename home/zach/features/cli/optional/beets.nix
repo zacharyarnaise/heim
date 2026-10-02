@@ -33,7 +33,7 @@
       };
       import = {
         copy = false;
-        move = false;
+        move = true;
         write = true;
       };
       match = {
