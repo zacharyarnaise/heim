@@ -42,10 +42,6 @@ in {
       k3sVersion = "1.36.4-k3s1";
     };
 
-    waybar = addPatches prev.waybar [
-      ./waybar_wireplumber_notfound.diff
-    ];
-
     yubikey-touch-detector = addPatches prev.yubikey-touch-detector [
       ./yubikey-touch-detector_notify.diff
     ];
