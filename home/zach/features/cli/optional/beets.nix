@@ -15,6 +15,7 @@
       directory = "/storage/sb01/music";
       original_date = true;
       plugins = builtins.concatStringsSep " " [
+        "info"
         "edit"
         "replaygain"
         "musicbrainz"
