@@ -27,9 +27,9 @@
         "fetchart"
       ];
       paths = {
-        default = "$albumartist/$original_year - $album%aunique{}/$track $title";
+        default = "$albumartist/$original_year - $album%aunique{}/$track - $title";
         singleton = "Non-Album/$artist/$title";
-        comp = "Compilations/$original_year - $album%aunique{}/$track $title";
+        comp = "Compilations/$original_year - $album%aunique{}/$track - $title";
       };
       import = {
         copy = false;
