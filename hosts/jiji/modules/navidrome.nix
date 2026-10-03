@@ -41,7 +41,7 @@ in {
       "Scanner.WatcherWait" = "1m";
       SessionTimeout = "72h";
       "Subsonic.AppendAlbumVersion" = false;
-      TranscodingCacheSize = "5GB";
+      TranscodingCacheSize = "4GB";
       UICoverArtSize = 500;
       UIWelcomeMessage = "( ͡° ͜ʖ ͡°)";
     };
