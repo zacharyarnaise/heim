@@ -1,8 +1,16 @@
 {
   inputs,
   lib,
+  pkgs,
   ...
-}: {
+}: let
+  # Fix A2DP - HFP switch
+  # See: https://github.com/abrus861/pipewire-hfp-atbcc-fix
+  # See: https://gitlab.freedesktop.org/pipewire/pipewire/-/issues/5506
+  pipewire_patched = pkgs.pipewire.overrideAttrs (oldAttrs: {
+    patches = (oldAttrs.patches or []) ++ [./pipewire_keep-transport-at-bcs.patch];
+  });
+in {
   imports = [
     inputs.nixos-hardware.nixosModules.common-cpu-intel-cpu-only
     inputs.nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
@@ -10,6 +18,8 @@
   ];
 
   services.pipewire = {
+    package = pipewire_patched;
+    wireplumber.package = pkgs.wireplumber.override {pipewire = pipewire_patched;};
     extraConfig.pipewire = {
       "10-clock-rate" = {
         "context.properties" = {
