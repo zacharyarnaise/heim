@@ -32,8 +32,8 @@
         comp = "Compilations/$original_year - $album%aunique{}/$track - $title";
       };
       import = {
-        copy = false;
-        move = true;
+        copy = true;
+        move = false;
         write = true;
       };
       match = {
