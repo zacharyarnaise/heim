@@ -16,7 +16,7 @@
               type = "filesystem";
               format = "vfat";
               mountpoint = "/boot";
-              mountOptions = ["defaults" "noexec" "umask=0077"];
+              mountOptions = ["defaults" "noexec" "nosuid" "nodev" "umask=0077"];
             };
           };
 
@@ -42,24 +42,23 @@
                 subvolumes = {
                   "@root" = {
                     mountpoint = "/";
-                    mountOptions = ["compress=lzo" "noatime"];
+                    mountOptions = ["compress=zstd:1" "noatime"];
                   };
                   "@persist" = {
                     mountpoint = "/persist";
-                    mountOptions = ["compress=lzo" "noatime"];
+                    mountOptions = ["compress=zstd:1" "noatime"];
                   };
                   "@nix" = {
                     mountpoint = "/nix";
                     mountOptions = [
-                      "compress=lzo"
+                      "compress=zstd:1"
                       "noatime"
                       "lazytime"
-                      "noacl"
                     ];
                   };
                   "@log" = {
                     mountpoint = "/var/log";
-                    mountOptions = ["compress=lzo" "noatime" "lazytime"];
+                    mountOptions = ["compress=zstd:1" "noatime" "lazytime" "nosuid" "nodev" "noexec"];
                   };
                 };
               };

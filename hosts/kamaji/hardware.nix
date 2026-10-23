@@ -43,17 +43,15 @@ in {
       "noperm"
 
       "_netdev"
-      "auto"
+      "x-systemd.automount"
+      "noauto"
+      "x-systemd.idle-timeout=2min"
+      "x-systemd.device-timeout=5s"
+      "x-systemd.mount-timeout=5s"
 
       "uid=lidarr"
       "gid=media"
     ];
-  };
-  # Needed for CIFS mount
-  systemd.network.wait-online = {
-    enable = true;
-    ignoredInterfaces = ["dummy0" "eno1"];
-    timeout = 30;
   };
 
   nix.settings.max-jobs = 8;

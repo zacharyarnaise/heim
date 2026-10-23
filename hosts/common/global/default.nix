@@ -9,6 +9,7 @@
       ./home-manager.nix
 
       ./boot.nix
+      ./btrfs.nix
       ./hardening.nix
       ./impermanence.nix
       ./locale.nix

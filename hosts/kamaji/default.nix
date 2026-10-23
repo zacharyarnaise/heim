@@ -26,6 +26,8 @@
     zfs.forceImportRoot = false;
   };
 
+  services.zfs.autoScrub.enable = true;
+
   networking.hostId = lib.mkForce "5d84e14a"; # for ZFS
   system.stateVersion = "26.05";
 }

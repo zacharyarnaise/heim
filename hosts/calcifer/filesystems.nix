@@ -11,7 +11,7 @@
     "/boot" = {
       device = "/dev/disk/by-label/nixESP";
       fsType = "vfat";
-      options = ["defaults" "noexec" "umask=0077"];
+      options = ["defaults" "noexec" "nosuid" "nodev" "umask=0077"];
     };
 
     "/" = {
@@ -23,32 +23,32 @@
     "/persist" = {
       device = "/dev/mapper/crypted";
       fsType = "btrfs";
-      options = ["subvol=@persist" "compress=lzo" "noatime"];
+      options = ["subvol=@persist" "compress=zstd:1" "noatime"];
       neededForBoot = true;
     };
 
     "/nix" = {
       device = "/dev/mapper/crypted";
       fsType = "btrfs";
-      options = ["subvol=@nix" "compress=lzo" "noatime" "lazytime" "noacl"];
+      options = ["subvol=@nix" "compress=zstd:1" "noatime" "lazytime"];
     };
 
     "/var/log" = {
       device = "/dev/mapper/crypted";
       fsType = "btrfs";
-      options = ["subvol=@log" "compress=lzo" "noatime" "lazytime"];
+      options = ["subvol=@log" "compress=zstd:1" "noatime" "lazytime" "nosuid" "nodev" "noexec"];
       neededForBoot = true;
     };
 
     "/persist/containers" = {
       device = "/dev/mapper/crypted";
       fsType = "btrfs";
-      options = ["subvol=@containers" "compress=lzo" "noatime" "lazytime"];
+      options = ["subvol=@containers" "compress=zstd:1" "noatime" "lazytime"];
     };
     "/persist/containers-rootless" = {
       device = "/dev/mapper/crypted";
       fsType = "btrfs";
-      options = ["subvol=@containers-rootless" "compress=lzo" "noatime" "lazytime"];
+      options = ["subvol=@containers-rootless" "compress=zstd:1" "noatime" "lazytime"];
     };
 
     "/.swapvol" = {
