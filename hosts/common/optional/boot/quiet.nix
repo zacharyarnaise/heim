@@ -1,7 +1,6 @@
 {
   boot = {
     consoleLogLevel = 0;
-    initrd.verbose = false;
     kernelParams = [
       "loglevel=3"
       "quiet"

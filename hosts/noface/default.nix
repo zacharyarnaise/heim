@@ -9,13 +9,9 @@
 
   system.stateVersion = "26.05";
 
-  boot = {
-    loader = {
-      timeout = 5;
-      systemd-boot.editor = true;
-    };
-    initrd.systemd.enable = true;
-    initrd.systemd.emergencyAccess = true;
+  boot.loader = {
+    timeout = 5;
+    systemd-boot.editor = true;
   };
 
   specialisation.debug.configuration = {
