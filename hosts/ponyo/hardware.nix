@@ -13,6 +13,7 @@
       "sd_mod"
     ];
     kernelModules = ["kvm-amd"];
+    zswap.enable = true;
   };
 
   nix.settings.max-jobs = 12;

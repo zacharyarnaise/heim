@@ -22,5 +22,10 @@
         protocol: efi
         path: uuid(b98f5ad8-5c00-4c12-90aa-338547c53bf2):/EFI/Microsoft/Boot/bootmgfw.efi
     '';
+
+    zswap = {
+      enable = true;
+      compressor = "lz4";
+    };
   };
 }

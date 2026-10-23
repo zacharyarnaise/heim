@@ -50,5 +50,10 @@
   };
   nix.settings.max-jobs = 28;
   powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
-  swapDevices = lib.mkForce [];
+  swapDevices = [
+    {
+      device = "/.swapvol/swapfile";
+      size = 8 * 1024;
+    }
+  ];
 }

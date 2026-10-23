@@ -10,5 +10,6 @@
 
     cpuThermalZone = 1;
     hasDiscreteGPU = true;
+    hasSwap = true;
   };
 }

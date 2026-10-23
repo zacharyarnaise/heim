@@ -50,5 +50,11 @@
       fsType = "btrfs";
       options = ["subvol=@containers-rootless" "compress=lzo" "noatime" "lazytime"];
     };
+
+    "/.swapvol" = {
+      device = "/dev/mapper/crypted";
+      fsType = "btrfs";
+      options = ["subvol=@swap" "noatime"];
+    };
   };
 }

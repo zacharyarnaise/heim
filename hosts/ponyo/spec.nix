@@ -10,5 +10,6 @@
 
     cpuThermalZone = 0;
     wlanInterface = "wlan0";
+    hasSwap = true;
   };
 }
