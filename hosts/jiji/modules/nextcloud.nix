@@ -75,8 +75,6 @@ in {
     secretFile = secrets."nextcloud/config".path;
 
     config = {
-      adminpassFile = secrets."nextcloud/admin".path;
-      adminuser = "zach";
       dbtype = "pgsql";
 
       objectstore.s3 = {
