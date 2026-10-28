@@ -4,6 +4,9 @@
   lib,
   ...
 }: {
+  # Font is set below, stylix still uses the deprecated programs.rofi.font
+  stylix.targets.rofi.fonts.enable = false;
+
   programs.rofi = {
     enable = true;
     package = pkgs.rofi-unwrapped.override {

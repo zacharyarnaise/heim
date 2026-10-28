@@ -25,11 +25,13 @@ in {
     };
 
     containers = {
+      storage.rootful.settings.storage = {
+        graphroot = "/persist/containers/storage";
+        runroot = "/run/containers/storage";
+      };
       storage.settings = {
         storage = {
           driver = "overlay";
-          graphroot = "/persist/containers/storage";
-          runroot = "/run/containers/storage";
           rootless_storage_path = "${rootlessPath}/$USER";
           options = {
             pull_options = {
