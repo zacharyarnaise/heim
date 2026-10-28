@@ -28,6 +28,8 @@ in {
       storage.rootful.settings.storage = {
         graphroot = "/persist/containers/storage";
         runroot = "/run/containers/storage";
+        # Rootless native overlay only supports it with a mount_program
+        options.overlay.force_mask = "0000";
       };
       storage.settings = {
         storage = {
@@ -38,10 +40,7 @@ in {
               enable_partial_images = "true";
               use_hard_links = "false";
             };
-            overlay = {
-              force_mask = "0000";
-              mountopt = builtins.concatStringsSep "," ["nodev" "metacopy=on"];
-            };
+            overlay.mountopt = builtins.concatStringsSep "," ["nodev" "metacopy=on"];
           };
         };
       };
