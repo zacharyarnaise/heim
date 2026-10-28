@@ -14,7 +14,11 @@ in {
     };
   };
 
-  additions = final: _: import ../pkgs {pkgs = final;};
+  additions = final: _:
+    import ../pkgs {
+      pkgs = final;
+      inherit inputs;
+    };
 
   # Modifications to existing packages
   modifications = _final: prev: {

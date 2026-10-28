@@ -159,7 +159,10 @@
         "go.alternateTools" = {
           "dlv" = "${pkgs.delve}/bin/dlv";
           "gofumpt" = "${pkgs.gofumpt}/bin/gofumpt";
-          "golangci-lint-v2" = "${pkgs.golangci-lint}/bin/golangci-lint";
+          "golangci-lint-v2" =
+            if config.hostSpec.isWork
+            then lib.getExe pkgs.custom-gcl
+            else "${pkgs.golangci-lint}/bin/golangci-lint";
           "gopls" = "${pkgs.gopls}/bin/gopls";
           "revive" = "${pkgs.revive}/bin/revive";
         };

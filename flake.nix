@@ -112,7 +112,7 @@
     };
   in {
     # Custom packages to be shared or upstreamed
-    packages = forEachSystem (pkgs: import ./pkgs {inherit pkgs;});
+    packages = forEachSystem (pkgs: import ./pkgs {inherit pkgs inputs;});
     # Nix formatter available through 'nix fmt'
     formatter = forEachSystem (pkgs: pkgs.alejandra);
 

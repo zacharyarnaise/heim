@@ -19,13 +19,15 @@
   };
 
   home.sessionPath = [config.programs.go.env.GOBIN];
-  home.packages = builtins.attrValues {
-    inherit
-      (pkgs)
-      delve
-      golangci-lint
-      gopls
-      yaegi
-      ;
-  };
+  home.packages =
+    builtins.attrValues {
+      inherit
+        (pkgs)
+        delve
+        golangci-lint
+        gopls
+        yaegi
+        ;
+    }
+    ++ lib.optionals config.hostSpec.isWork [pkgs.custom-gcl];
 }
