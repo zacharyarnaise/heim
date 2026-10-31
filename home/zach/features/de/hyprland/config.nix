@@ -3,7 +3,6 @@
     config = {
       animations = {
         enabled = true;
-        workspace_wraparound = true;
       };
 
       binds = {
@@ -31,13 +30,15 @@
           enabled = true;
           brightness = 0.75;
           contrast = 1.0;
-          noise = 0.06;
-          passes = 2;
+          noise = 0.05;
+          passes = 4;
           popups = true;
           popups_ignorealpha = 0.25;
-          size = 5;
-          vibrancy = 0.15;
-          vibrancy_darkness = 0.4;
+          proportional = true;
+          size = 1;
+          variant = "kawase";
+          vibrancy = 0.3;
+          vibrancy_darkness = 0.3;
           xray = true;
         };
 
@@ -113,6 +114,12 @@
         };
       };
 
+      master = {
+        mfact = 0.55;
+        orientation = "left";
+        slave_count_for_center_master = 1;
+      };
+
       misc = {
         disable_autoreload = true;
         disable_hyprland_logo = true;
@@ -126,6 +133,7 @@
 
       render = {
         direct_scanout = 1;
+        use_shader_blur_blend = true;
       };
 
       xwayland = {

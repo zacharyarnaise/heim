@@ -41,7 +41,7 @@ in {
     }
     {
       match = {
-        class = "xdg-desktop-portal-gtk";
+        class = "xdg-desktop-portal-gtk|hyprland-share-picker";
       };
       tag = "popup";
     }

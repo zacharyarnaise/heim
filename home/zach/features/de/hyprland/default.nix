@@ -13,11 +13,6 @@
       systemd = {
         enable = true;
         enableXdgAutostart = true;
-        extraCommands = [
-          "systemctl --user stop hyprland-session.target"
-          "systemctl --user reset-failed"
-          "systemctl --user start hyprland-session.target"
-        ];
       };
     };
   };
