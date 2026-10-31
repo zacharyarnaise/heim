@@ -10,7 +10,6 @@
     systemd.target = "hyprland-session.target";
     windowManager.hyprland = {
       enable = true;
-      configType = "lua";
       systemd = {
         enable = true;
         enableXdgAutostart = true;

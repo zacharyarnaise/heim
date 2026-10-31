@@ -17,31 +17,42 @@
       else {}
     );
 in {
-  wayland.windowManager.hyprland.settings.workspace_rule =
-    [
-      # ------------------------------ Smart gaps ------------------------------
-      {
-        workspace = "f[1]s[false]";
-        gaps_in = 0;
-        gaps_out = 2;
-      }
-      {
-        workspace = "w[tv1]s[false]";
-        gaps_in = 0;
-        gaps_out = 2;
-      }
+  wayland.windowManager.hyprland.settings = {
+    workspace_rule =
+      [
+        # ------------------------------ Smart gaps ------------------------------
+        {
+          workspace = "f[1]s[false]";
+          gaps_in = 0;
+          gaps_out = 2;
+        }
+        {
+          workspace = "w[tv1]s[false]";
+          gaps_in = 0;
+          gaps_out = 2;
+        }
+      ]
+      # ---------------------- Bind workspaces to monitors ----------------------
+      ++ builtins.concatLists (map (m:
+        lib.lists.imap0 (
+          i: workspace: mkMonitorRule i m workspace
+        )
+        m.workspaces)
+      config.monitors);
 
-      # ------------------------------ Scratchpad ------------------------------
+    # ------------------------------ Scratchpad ------------------------------
+    on = [
       {
-        workspace = "special:scratchpad";
-        on_created_empty = "foot";
+        _args = [
+          "workspace.created"
+          (lib.generators.mkLuaInline ''
+            function(ws)
+              if ws.name == "special:scratchpad" and ws.is_empty then
+                hl.exec_cmd("foot")
+              end
+            end'')
+        ];
       }
-    ]
-    # ---------------------- Bind workspaces to monitors ----------------------
-    ++ builtins.concatLists (map (m:
-      lib.lists.imap0 (
-        i: workspace: mkMonitorRule i m workspace
-      )
-      m.workspaces)
-    config.monitors);
+    ];
+  };
 }

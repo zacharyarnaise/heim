@@ -1,4 +1,36 @@
-{config, ...}: {
+{
+  config,
+  lib,
+  ...
+}: let
+  workspaceAvailable = workspace: let
+    monitor = lib.findFirst (m: builtins.elem workspace m.workspaces) null config.monitors;
+  in
+    if monitor == null
+    then "false"
+    else ''hl.get_monitor("${monitor.name}") ~= nil'';
+in {
+  # Move Discord and Feishin to external screen, if connected
+  wayland.windowManager.hyprland.settings.on = [
+    {
+      _args = [
+        "window.open"
+        (lib.generators.mkLuaInline ''
+          function(w)
+            for _, tag in ipairs(w.tags) do
+              if tag == "discord" and ${workspaceAvailable "8"} then
+                hl.dispatch(hl.dsp.window.move({ workspace = "8", follow = false, window = w }))
+                hl.dispatch(hl.dsp.window.fullscreen({ action = "set", window = w }))
+              elseif tag == "feishin" and ${workspaceAvailable "9"} then
+                hl.dispatch(hl.dsp.window.move({ workspace = "9", window = w }))
+                hl.dispatch(hl.dsp.window.fullscreen({ action = "set", window = w }))
+              end
+            end
+          end'')
+      ];
+    }
+  ];
+
   wayland.windowManager.hyprland.settings.window_rule = [
     # ---------------------------------- TAGS ----------------------------------
     {
@@ -91,7 +123,6 @@
     }
 
     # -------------------------------- Discord --------------------------------
-    # TODO: detect if workspace 8 is available (e.g. external screen)
     {
       match = {
         class = "vesktop";
@@ -109,22 +140,19 @@
         initial_title = "Discord";
         modal = false;
       };
-      fullscreen = true;
       no_dim = true;
       no_initial_focus = true;
       opaque = true;
-      workspace = "8";
+      tag = "discord";
     }
 
     # -------------------------------- Feishin --------------------------------
-    # TODO: detect if workspace 9 is available (e.g. external screen)
     {
       match = {
         class = "feishin";
       };
-      fullscreen = true;
       opacity = "0.95 override";
-      workspace = "9";
+      tag = "feishin";
     }
 
     # -------------------------------- Nautilus --------------------------------
