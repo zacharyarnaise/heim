@@ -17,7 +17,7 @@
     "/" = {
       device = "none";
       fsType = "tmpfs";
-      options = ["defaults" "noatime" "mode=755" "size=8G"];
+      options = ["defaults" "noatime" "mode=755" "size=16G"];
     };
 
     "/persist" = {
