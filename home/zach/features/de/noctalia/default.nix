@@ -4,7 +4,7 @@
   ...
 }: let
   wallsDir = "/persist${config.home.homeDirectory}/Pictures/Walls";
-  currentWall = "${wallsDir}/Ghibli Upscaled/Princess Mononoke/09-upscaled-scale-2_00x.png";
+  currentWall = "${wallsDir}/wallhaven-jx65l5.jpg";
 in {
   home = {
     file.".local/state/noctalia/.setup-complete".text = "";
@@ -45,21 +45,21 @@ in {
         capsule_group = [
           {
             id = "g1";
-            fill = "surface_variant";
+            fill = "surface_container";
             members = ["cpu" "temp" "ram"];
             opacity = 0.25;
             padding = 8.0;
           }
           {
             id = "g2";
-            fill = "surface_variant";
+            fill = "surface_container";
             members = ["output_volume" "input_volume" "brightness" "battery"];
             opacity = 0.25;
             padding = 8.0;
           }
           {
             id = "g4";
-            fill = "surface_variant";
+            fill = "surface_container";
             members = ["tray" "notifications" "nightlight" "caffeine"];
             opacity = 0.25;
             padding = 8.0;
@@ -145,7 +145,7 @@ in {
             rotation = 0.0;
             type = "login_box";
             settings = {
-              background_color = "surface_variant";
+              background_color = "surface_container";
               background_opacity = 0.88;
               background_radius = 12.0;
               input_opacity = 1.0;
@@ -187,6 +187,7 @@ in {
         kinds = {
           keyboard_layout = false;
           lock_keys = false;
+          media = false;
           privacy = false;
         };
       };
@@ -197,24 +198,32 @@ in {
 
       shell = {
         clipboard_auto_paste = "off";
+        clipboard_history_max_entries = 200;
         font_family = "Inter Display";
         lang = "en";
         password_style = "random";
         polkit_agent = true;
         settings_show_advanced = true;
+        show_close_buttons = false;
         show_location = false;
         animation.speed = 1.0;
+        launcher = {
+          default_view = "all";
+          show_navigation_labels = false;
+          show_settings_button = false;
+        };
         mpris.blacklist = ["firefox"];
         panel = {
           clipboard_placement = "attached";
           launcher_placement = "attached";
+          list_item_background = true;
           open_near_click_clipboard = true;
           open_near_click_control_center = true;
           open_near_click_launcher = true;
           polkit_position = "top_center";
           session_placement = "floating";
           session_position = "center";
-          transparency_mode = "glass";
+          transparency_mode = "soft";
         };
         screenshot.save_to_file = false;
         shadow.alpha = 0.5;
