@@ -52,6 +52,7 @@ in {
           # See: https://github.com/NixOS/nixpkgs/issues/138423#issuecomment-947888673
           "PATH=/run/wrappers/bin:/run/current-system/sw/bin"
           "DOCKER_HOST=unix://%t/podman/podman.sock"
+          "DOCKER_SOCK=%t/podman/podman.sock"
         ];
         # "-" ignore errors if registry or cluster doesn't exist
         ExecStart = [

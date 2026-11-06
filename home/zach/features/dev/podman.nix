@@ -15,6 +15,8 @@ in {
   };
 
   services.podman.package = podmanPkg;
+  # Socket path for tools that mount it (e.g. k3d, defaults to /var/run/docker.sock)
+  home.sessionVariables.DOCKER_SOCK = "$XDG_RUNTIME_DIR/podman/podman.sock";
   xdg.configFile."containers/registries.conf".source = toml.generate "registries.conf" {
     unqualified-search-registries = ["docker.io"];
     registry = [
