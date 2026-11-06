@@ -49,17 +49,14 @@ in {
         };
       };
 
-      global = {
-        download.speed_limit = 100000;
-        upload.speed_limit = 100000;
-      };
-
       transfers = {
         download = {
           slots = 100;
+          speed_limit = 100000;
         };
         upload = {
           slots = 50;
+          speed_limit = 100000;
           limits = {
             queued = {
               files = 500;

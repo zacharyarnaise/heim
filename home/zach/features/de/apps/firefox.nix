@@ -110,7 +110,6 @@ in {
         "app.normandy.enabled" = false;
         "app.normandy.first_run" = false;
         "app.shield.optoutstudies.enabled" = false;
-        "app.update.auto" = false;
         "breakpad.reportURL" = "";
         "browser.aboutConfig.showWarning" = false;
         "browser.aboutwelcome.enabled" = false;
@@ -143,7 +142,6 @@ in {
         "browser.newtabpage.activity-stream.feeds.topsites" = false;
         "browser.newtabpage.activity-stream.telemetry" = false;
         "browser.newtabpage.enabled" = false;
-        "browser.onboarding.enabled" = false;
         "browser.pagethumbnails.capturing_disabled" = true;
         "browser.preferences.moreFromMozilla" = false;
         "browser.preonboarding.enabled" = false;
@@ -156,7 +154,6 @@ in {
         "browser.region.update.enabled" = false;
         "browser.safebrowsing.downloads.remote.enabled" = false;
         "browser.safebrowsing.downloads.remote.url" = "";
-        "browser.safebrowsing.enabled" = false;
         "browser.search.geoip.url" = "";
         "browser.search.geoSpecificDefaults.url" = "";
         "browser.search.suggest.enabled" = false;
@@ -171,7 +168,6 @@ in {
         "browser.startup.page" = 0;
         "browser.startup.preXulSkeletonUI" = false;
         "browser.tabs.crashReporting.sendReport" = false;
-        "browser.tabs.drawInTitlebar" = false;
         "browser.tabs.insertAfterCurrent" = true;
         "browser.tabs.insertAfterCurrentExceptPinned" = true;
         "browser.tabs.inTitlebar" = 0;
@@ -243,8 +239,6 @@ in {
         "font.default.x-western" = "sans-serif";
         "general.smoothScroll" = false;
         "geo.enabled" = false;
-        "geo.provider.ms-windows-location" = false;
-        "geo.provider.use_corelocation" = false;
         "geo.provider.use_geoclue" = false;
         "gfx.webrender.all" = true;
         "intl.accept_languages" = "en-US, en";
@@ -273,9 +267,7 @@ in {
         "permissions.default.local-network" = 2;
         "permissions.default.loopback-network" = 2;
         "permissions.default.xr" = 2;
-        "plugins.enumerable_names" = "";
         "privacy.antitracking.enableWebcompat" = false;
-        "privacy.donottrackheader.enabled" = false;
         "privacy.exposeContentTitleInWindow.pbm" = false;
         "privacy.fingerprintingProtection.overrides" = "+AllTargets,-CSSPrefersColorScheme";
         "privacy.fingerprintingProtection" = true;
@@ -301,13 +293,8 @@ in {
         "security.remote_settings.crlite_filters.enabled" = true;
         "security.ssl.require_safe_negotiation" = true;
         "security.ssl.treat_unsafe_negotiation_as_broken" = true;
-        "security.ssl3.dhe_dss_aes_128_sha" = false;
-        "security.ssl3.dhe_rsa_aes_128_sha" = false;
-        "security.ssl3.dhe_rsa_aes_256_sha" = false;
-        "security.ssl3.rsa_seed_sha" = false;
         "security.tls.enable_0rtt_data" = false;
         "security.tls.insecure_fallback_hosts.use_static_list" = false;
-        "security.tls.unrestricted_rc4_fallback" = false;
         "security.tls.version.enable-deprecated" = false;
         "security.tls.version.min" = 3;
         "services.sync.declinedEngines" = "addons,addresses,creditcards,passwords,prefs";

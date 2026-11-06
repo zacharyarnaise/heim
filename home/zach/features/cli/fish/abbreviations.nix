@@ -16,6 +16,7 @@ in {
       md = "mkdir -p";
       mv = "mv -iv";
       ns = "nix-shell";
+      pass = "gopass";
       rd = "rmdir";
       rm = "rm -iv";
 

@@ -30,32 +30,9 @@ in {
       })
     ];
 
-    fish = prev.fish.overrideAttrs (_: {
-      postBuild = ''
-        rm /build/source/share/functions/cdh.fish
-      '';
-    });
-
-    gopass = prev.gopass.override {
-      xclip = null;
-      passAlias = true;
-    };
-
-    # https://github.com/NixOS/nixpkgs/pull/569391
-    handlr-regex = prev.handlr-regex.overrideAttrs (_: {
-      checkFlags =
-        (prev.checkFlags or [])
-        ++ [
-          "--skip=common::mime_types::tests::from_path"
-          "--skip=common::path::tests::mime_table_terminal"
-          "--skip=common::path::tests::test_mime_table_json"
-          "--skip=common::path::tests::test_mime_table_piped"
-        ];
-    });
-
     # See: https://github.com/k3d-io/k3d/issues/1560
     k3d = prev.k3d.override {
-      k3sVersion = "1.36.4-k3s1";
+      k3sVersion = "1.36.6-k3s1";
     };
 
     yubikey-touch-detector = addPatches prev.yubikey-touch-detector [

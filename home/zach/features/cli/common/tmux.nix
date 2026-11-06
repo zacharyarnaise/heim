@@ -12,9 +12,10 @@
     newSession = true;
     prefix = "C-x";
     resizeAmount = 10;
-    terminal = "screen-256color";
+    terminal = "tmux-256color";
 
     extraConfig = ''
+      set -as terminal-features ",xterm-256color:RGB"
       # Increase messages display duration from 750ms to 4s
       set -g display-time 4000
       # Refresh 'status-left' and 'status-right' more often, from every 15s to 5s

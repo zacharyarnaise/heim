@@ -34,11 +34,6 @@
         "nix-command"
         "flakes"
       ];
-      system-features = [
-        "kvm"
-        "big-parallel"
-        "nixos-test"
-      ];
     };
   };
 }

@@ -9,9 +9,6 @@
 
   programs.rofi = {
     enable = true;
-    package = pkgs.rofi-unwrapped.override {
-      x11Support = false;
-    };
 
     settings = {
       font = lib.mkForce "${config.stylix.fonts.sansSerif.name} ${toString config.stylix.fonts.sizes.popups}";

@@ -31,7 +31,7 @@
           brightness = 0.75;
           contrast = 1.0;
           noise = 0.05;
-          passes = 4;
+          passes = 3;
           popups = true;
           popups_ignorealpha = 0.25;
           proportional = true;

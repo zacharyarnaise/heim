@@ -16,7 +16,9 @@
     zswap.enable = true;
   };
 
-  nix.settings.max-jobs = 12;
+  nix.settings = {
+    max-jobs = 4;
+    cores = 4;
+  };
   hardware.cpu.amd.updateMicrocode = true;
-  powerManagement.cpuFreqGovernor = "ondemand";
 }

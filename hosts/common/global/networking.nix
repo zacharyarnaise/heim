@@ -37,10 +37,7 @@
       Cache = true;
       DNSOverTLS = true;
       DNSSEC = true;
-      FallbackDNS = [
-        "127.0.0.1"
-        "::1"
-      ];
+      FallbackDNS = [];
       LLMNR = false;
       MulticastDNS = false;
       ReadEtcHosts = true;
@@ -57,6 +54,9 @@
           DHCP = "yes";
           IPv6PrivacyExtensions = true;
         };
+        dhcpV4Config.UseDNS = false;
+        dhcpV6Config.UseDNS = false;
+        ipv6AcceptRAConfig.UseDNS = false;
       };
     };
   };

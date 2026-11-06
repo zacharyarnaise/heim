@@ -1,7 +1,6 @@
 {
   config,
   inputs,
-  lib,
   ...
 }: let
   flakeSecrets = inputs.secrets.hosts."jiji";
@@ -35,7 +34,7 @@ in {
       "credentials=${secrets."storagebox/credentials".path}"
       "cache=loose"
       "iocharset=utf8"
-      "vers=3.0"
+      "vers=3.1.1"
       "noperm"
 
       "_netdev"
@@ -56,5 +55,4 @@ in {
   };
 
   nix.settings.max-jobs = 2;
-  powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand";
 }

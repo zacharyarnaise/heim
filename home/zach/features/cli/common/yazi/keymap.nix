@@ -1,5 +1,5 @@
 {
-  manager = {
+  mgr = {
     prepend_keymap = [
       {
         on = ["c" "m"];

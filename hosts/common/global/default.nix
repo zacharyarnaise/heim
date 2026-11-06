@@ -39,21 +39,8 @@
   documentation.doc.enable = false;
   documentation.info.enable = false;
 
-  services.irqbalance.enable = true;
-  systemd = {
-    services.journalctl-vacuum = {
-      description = "Vacuum journalctl logs";
-      serviceConfig = {
-        Type = "oneshot";
-        ExecStart = "${pkgs.systemd}/bin/journalctl --vacuum-time=23d";
-      };
-    };
-    timers.journalctl-vacuum = {
-      wantedBy = ["timers.target"];
-      partOf = ["journalctl-vacuum.service"];
-      timerConfig.OnCalendar = "weekly";
-    };
+  services.journald.settings.Journal.MaxRetentionSec = "30d";
 
-    services.irqbalance.serviceConfig.ProtectKernelTunables = "no";
-  };
+  services.irqbalance.enable = true;
+  systemd.services.irqbalance.serviceConfig.ProtectKernelTunables = "no";
 }

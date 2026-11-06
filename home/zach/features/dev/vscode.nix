@@ -148,14 +148,6 @@
         "claudeCode.initialPermissionMode" = "plan";
         "claudeCode.useCtrlEnterToSend" = true;
 
-        "github.copilot.enable" = {
-          "*" = true;
-          "markdown" = true;
-          "plaintext" = false;
-          "scminput" = false;
-        };
-        "github.copilot.nextEditSuggestions.enabled" = true;
-
         "go.alternateTools" = {
           "dlv" = "${pkgs.delve}/bin/dlv";
           "gofumpt" = "${pkgs.gofumpt}/bin/gofumpt";

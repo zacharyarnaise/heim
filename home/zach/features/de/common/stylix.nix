@@ -18,7 +18,7 @@
     };
     fonts = {
       emoji = {
-        package = pkgs.stable.openmoji-color;
+        package = pkgs.openmoji-color;
         name = "OpenMoji Color";
       };
 

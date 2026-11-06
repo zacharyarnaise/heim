@@ -20,6 +20,8 @@ in {
       unmanaged = [
         "interface-name:docker*"
         "interface-name:veth*"
+        "interface-name:en*"
+        "interface-name:eth*"
       ];
       wifi.backend = "iwd";
 
@@ -91,16 +93,6 @@ in {
       in {
         after = [subsystemDevice];
         wants = [subsystemDevice];
-      };
-    };
-    network.networks = {
-      "25-wireless" = {
-        matchConfig.Name = "wl*";
-        networkConfig = {
-          DHCP = "yes";
-          IgnoreCarrierLoss = "10s";
-          IPv6PrivacyExtensions = true;
-        };
       };
     };
   };

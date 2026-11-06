@@ -23,6 +23,10 @@
   powerManagement.enable = false;
 
   systemd = {
+    network.wait-online = {
+      enable = true;
+      anyInterface = true;
+    };
     enableEmergencyMode = false;
     services = {
       "autovt@".enable = lib.mkForce false;

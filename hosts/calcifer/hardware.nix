@@ -48,7 +48,10 @@
     cpu.intel.updateMicrocode = true;
     i2c.enable = true;
   };
-  nix.settings.max-jobs = 28;
+  nix.settings = {
+    max-jobs = 8;
+    cores = 6;
+  };
   powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
   swapDevices = [
     {

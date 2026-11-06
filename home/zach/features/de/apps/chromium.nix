@@ -8,13 +8,10 @@ in {
     commandLineArgs =
       [
         "--ozone-platform=wayland"
-        "--ozone-platform-hint=auto"
 
         "--ignore-gpu-blocklist"
         "--enable-zero-copy"
         "--enable-gpu-rasterization"
-
-        "--disk-cache=$XDG_RUNTIME_DIR/chromium-cache" # cache in tmpfs
 
         "--disable-breakpad"
         "--disable-speech-api"

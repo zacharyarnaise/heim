@@ -15,6 +15,10 @@
     functions = {
       fish_greeting = "";
     };
+    # Erasing also prevents fish from autoloading the stock cdh function
+    interactiveShellInit = ''
+      functions --erase cdh
+    '';
     plugins = [
       {
         name = "forgit";

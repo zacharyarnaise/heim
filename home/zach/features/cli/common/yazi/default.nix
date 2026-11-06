@@ -33,7 +33,7 @@
     };
 
     settings = {
-      manager = {
+      mgr = {
         ratio = [1 3 4];
         sort_by = "natural";
         sort_sensitive = true;

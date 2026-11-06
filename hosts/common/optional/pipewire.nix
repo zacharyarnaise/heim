@@ -9,6 +9,6 @@
     pulse.enable = true;
     wireplumber.enable = true;
 
-    wireplumber.extraConfig."wireplumber.profiles".main."monitor.libcamera" = "disabled";
+    wireplumber.extraConfig."10-disable-libcamera"."wireplumber.profiles".main."monitor.libcamera" = "disabled";
   };
 }

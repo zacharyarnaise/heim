@@ -19,7 +19,8 @@
     enable = true;
 
     gtk3.extraConfig = commonExtraConfig;
-    gtk4.extraConfig = commonExtraConfig;
+    # adwaita ignores prefer-dark-theme
+    gtk4.extraConfig = builtins.removeAttrs commonExtraConfig ["gtk-application-prefer-dark-theme"];
     gtk4.theme = lib.mkForce config.gtk.theme;
   };
 

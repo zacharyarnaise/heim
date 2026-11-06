@@ -22,7 +22,7 @@ in {
       LogLevel = "warn";
 
       AutoImportPlaylists = false;
-      CovertArtPriority = "cover.*";
+      CoverArtPriority = "cover.*";
       CoverArtQuality = 80;
       DefaultDownsamplingFormat = "opus";
       DefaultUIVolume = 50;
