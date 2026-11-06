@@ -8,7 +8,10 @@
 in {
   home.packages = [pkgs.k3d];
 
-  # Usage: k3d cluster create --config ~/.config/k3d/config.yaml
+  # Usage:
+  #   k3d registry create --default-network podman registry --image docker.io/library/registry:3
+  #   k3d cluster create --config ~/.config/k3d/config.yaml
+  # The registry can't be created from the config: it would join the "bridge" network, which podman doesn't allow
   # https://k3d.io/stable/usage/configfile/
   xdg.configFile."k3d/config.yaml".source = (pkgs.formats.yaml {}).generate "k3d-config.yaml" {
     apiVersion = "k3d.io/v1alpha5";
@@ -20,10 +23,7 @@ in {
         nodeFilters = ["server:*"];
       }
     ];
-    registries.create = {
-      name = "registry";
-      image = "docker.io/library/registry:3";
-    };
+    registries.use = ["k3d-registry:5000"];
     options = {
       k3d.disableLoadbalancer = true;
       k3s.extraArgs = [
@@ -53,8 +53,11 @@ in {
           "PATH=/run/wrappers/bin:/run/current-system/sw/bin"
           "DOCKER_HOST=unix://%t/podman/podman.sock"
         ];
-        # "-" ignore errors if cluster doesn't exist
-        ExecStart = "-${pkgs.k3d}/bin/k3d cluster start k3s-default";
+        # "-" ignore errors if registry or cluster doesn't exist
+        ExecStart = [
+          "-/run/current-system/sw/bin/podman start k3d-registry"
+          "-${pkgs.k3d}/bin/k3d cluster start k3s-default"
+        ];
         Type = "oneshot";
         RemainAfterExit = true;
       };
