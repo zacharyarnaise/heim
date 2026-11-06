@@ -7,6 +7,7 @@
     ./git.nix
     ./golang.nix
     ./gpg.nix
+    ./k3d.nix
     ./k8s.nix
     ./lua.nix
     ./nix.nix

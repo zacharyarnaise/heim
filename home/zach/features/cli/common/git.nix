@@ -11,7 +11,7 @@
     settings = {
       log.date = "iso";
       url = {
-        "ssh://git@github.com/".pushInsteadOf = "https://github.com/";
+        "ssh://git@github.com/".insteadOf = "https://github.com/";
       };
 
       core.whitespace = "-trailing-space";

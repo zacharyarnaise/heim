@@ -52,6 +52,7 @@
           directory = ".local/state/wireplumber";
           mode = "0700";
         }
+        ".local/share/systemd/timers"
         "Code"
         "Documents"
         "Downloads"
