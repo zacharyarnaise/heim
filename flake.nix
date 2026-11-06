@@ -60,11 +60,6 @@
       url = "github:nix-community/nix-vscode-extensions";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    nixarr = {
-      url = "github:rasmus-kirk/nixarr";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = {
@@ -120,7 +115,6 @@
     nixosConfigurations = lib.listToAttrs [
       (mkNixos "calcifer" "x86_64-linux")
       (mkNixos "jiji" "x86_64-linux")
-      (mkNixos "kamaji" "x86_64-linux")
       (mkNixos "noface" "x86_64-linux")
       (mkNixos "ponyo" "x86_64-linux")
     ];
