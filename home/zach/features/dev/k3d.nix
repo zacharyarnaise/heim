@@ -56,7 +56,7 @@ in {
         ];
         # "-" ignore errors if registry or cluster doesn't exist
         ExecStart = [
-          "-/run/current-system/sw/bin/podman start k3d-registry"
+          "-/run/current-system/sw/bin/podman --remote start k3d-registry"
           "-${pkgs.k3d}/bin/k3d cluster start k3s-default"
         ];
         Type = "oneshot";
@@ -70,15 +70,17 @@ in {
       Unit = {
         Description = "Clean k3d registry";
         Before = ["k3d-start.service"];
+        Wants = ["podman.socket"];
+        After = ["podman.socket"];
       };
       Service = {
         # Workaround for error: cannot setup namespace using newuidmap
         # See: https://github.com/NixOS/nixpkgs/issues/138423#issuecomment-947888673
         Environment = "PATH=/run/wrappers/bin:/run/current-system/sw/bin";
         ExecStart = [
-          "/run/current-system/sw/bin/podman start k3d-registry"
-          "/run/current-system/sw/bin/podman exec k3d-registry rm -rf /var/lib/registry/docker"
-          "/run/current-system/sw/bin/podman restart k3d-registry"
+          "/run/current-system/sw/bin/podman --remote start k3d-registry"
+          "/run/current-system/sw/bin/podman --remote exec k3d-registry rm -rf /var/lib/registry/docker"
+          "/run/current-system/sw/bin/podman --remote restart k3d-registry"
         ];
         Type = "oneshot";
       };
