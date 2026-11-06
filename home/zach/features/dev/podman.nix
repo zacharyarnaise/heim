@@ -34,4 +34,29 @@ in {
       }
     ];
   };
+
+  systemd.user = {
+    services."podman-image-prune" = {
+      Unit = {
+        Description = "Prune unused podman images";
+        RequiresMountsFor = "/persist/containers-rootless";
+      };
+      Service = {
+        # Workaround for error: cannot setup namespace using newuidmap
+        # See: https://github.com/NixOS/nixpkgs/issues/138423#issuecomment-947888673
+        Environment = "PATH=/run/wrappers/bin:/run/current-system/sw/bin";
+        ExecStart = "${podmanPkg}/bin/podman image prune -a -f --build-cache";
+        Type = "oneshot";
+      };
+    };
+    timers."podman-image-prune" = {
+      Unit.Description = "Weekly podman image prune";
+      Timer = {
+        OnCalendar = "weekly";
+        RandomizedDelaySec = 900;
+        Persistent = true;
+      };
+      Install.WantedBy = ["timers.target"];
+    };
+  };
 }
