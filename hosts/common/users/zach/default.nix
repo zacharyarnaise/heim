@@ -30,7 +30,6 @@ in {
         "video"
         "network"
         "docker"
-        "podman"
         "media"
       ];
 

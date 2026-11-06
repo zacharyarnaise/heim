@@ -16,17 +16,13 @@
     };
 
     settings = {
-      accept-flake-config = true;
       auto-optimise-store = false;
-      allowed-users = lib.mkDefault [""]; # Trusted users are always allowed to connect
-      trusted-users = lib.mkForce ["@wheel"];
+      allowed-users = ["@wheel"];
       extra-substituters = lib.mkAfter [
         "https://nix-community.cachix.org"
-        "https://noctalia.cachix.org"
       ];
       extra-trusted-public-keys = [
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-        "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
       ];
 
       connect-timeout = 5;

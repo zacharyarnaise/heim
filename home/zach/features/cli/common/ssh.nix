@@ -24,7 +24,7 @@ in {
       "*" = {
         AddKeysToAgent = lib.mkDefault false;
         AddressFamily = "inet";
-        Ciphers = ["chacha20-poly1305@openssh.com"];
+        Ciphers = ["aes256-gcm@openssh.com" "chacha20-poly1305@openssh.com" "aes128-gcm@openssh.com"];
         ControlMaster = lib.mkDefault false;
         ControlPersist = lib.mkDefault false;
         ForwardAgent = lib.mkDefault false;
@@ -37,7 +37,7 @@ in {
           "curve25519-sha256"
           "curve25519-sha256@libssh.org"
         ];
-        MACs = ["hmac-sha2-512-etm@openssh.com" "umac-128-etm@openssh.com" "hmac-sha2-512"];
+        MACs = ["hmac-sha2-512-etm@openssh.com" "hmac-sha2-256-etm@openssh.com"];
         ServerAliveCountMax = 4;
         ServerAliveInterval = 30;
         StrictHostKeyChecking = "ask";
@@ -47,7 +47,6 @@ in {
       "github.com" = {
         Host = "github.com";
         User = "git";
-        ForwardAgent = isHeadless;
         IdentitiesOnly = !isHeadless;
         IdentityFile = lib.optionals (!isHeadless) identityFiles;
       };

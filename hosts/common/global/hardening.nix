@@ -42,17 +42,18 @@
     "kernel.unprivileged_bpf_disabled" = "1";
     "net.core.bpf_jit_harden" = "2";
 
+    "net.ipv4.conf.all.accept_redirects" = "0";
+    "net.ipv4.conf.default.accept_redirects" = "0";
+    "net.ipv4.conf.all.secure_redirects" = "0";
+    "net.ipv4.conf.default.secure_redirects" = "0";
+    "net.ipv4.conf.all.send_redirects" = "0";
+    "net.ipv4.conf.default.send_redirects" = "0";
+    "net.ipv6.conf.all.accept_redirects" = "0";
+    "net.ipv6.conf.default.accept_redirects" = "0";
+
     "kernel.core_pattern" = "|/bin/false";
     "fs.suid_dumpable" = "0";
   };
 
   systemd.coredump.settings.Coredump.Storage = "none";
-
-  environment.etc = {
-    # Empty /etc/securetty to prevent root login on tty.
-    securetty.text = ''
-      # /etc/securetty: list of terminals on which root is allowed to login.
-      # See securetty(5) and login(1).
-    '';
-  };
 }

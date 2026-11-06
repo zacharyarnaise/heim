@@ -44,7 +44,7 @@
         "extensions.ignoreRecommendations" = true;
         "http.fetchAdditionalSupport" = false;
         "security.workspace.trust.banner" = "never";
-        "security.workspace.trust.enabled" = false;
+        "security.workspace.trust.enabled" = true;
         "redhat.telemetry.enabled" = false;
         "remote.autoForwardPorts" = false;
         "telemetry.editStats.enabled" = false;

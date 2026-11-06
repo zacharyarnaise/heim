@@ -17,7 +17,6 @@
   hostsConfig = lib.genAttrs hostNames (hostname: {
     host = hostname;
     hostname = "${secrets.hosts.${hostname}.inet}";
-    forwardAgent = true;
     identitiesOnly = true;
     identityFile = identityFiles;
   });
@@ -33,7 +32,7 @@ in {
         AddKeysToAgent = "yes";
         ControlMaster = "auto";
         ControlPath = "~/.ssh/sockets/control-%r@%h:%p";
-        ControlPersist = "15m";
+        ControlPersist = "5m";
       };
     }
     // hostsConfig // privateConfig;

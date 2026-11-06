@@ -40,5 +40,16 @@ in {
     firewall = {
       allowedUDPPorts = [flakeSecrets.wg.port];
     };
+
+    # Prevent traffic from leaking to other interfaces
+    nftables.tables.wg-leak = {
+      family = "inet";
+      content = ''
+        chain output {
+          type filter hook output priority 0; policy accept;
+          ip daddr { 10.0.0.0/24, 10.0.1.0/24 } oifname != "wg0" reject
+        }
+      '';
+    };
   };
 }

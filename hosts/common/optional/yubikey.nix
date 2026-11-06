@@ -16,7 +16,7 @@ in {
 
   security.pam = {
     u2f = {
-      enable = true;
+      enable = false; # Enable per service as needed
       control = "sufficient";
       settings = {
         authfile = secrets."u2f".path;
@@ -26,6 +26,8 @@ in {
     services = {
       login.u2f.enable = true;
       sudo.u2f.enable = true;
+      sudo-i.u2f.enable = true;
+      polkit-1.u2f.enable = true;
     };
   };
 }

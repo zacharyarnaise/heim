@@ -304,7 +304,7 @@ in {
         "security.ssl3.dhe_dss_aes_128_sha" = false;
         "security.ssl3.dhe_rsa_aes_128_sha" = false;
         "security.ssl3.dhe_rsa_aes_256_sha" = false;
-        "security.ssl3.rsa_seed_sha" = true;
+        "security.ssl3.rsa_seed_sha" = false;
         "security.tls.enable_0rtt_data" = false;
         "security.tls.insecure_fallback_hosts.use_static_list" = false;
         "security.tls.unrestricted_rc4_fallback" = false;

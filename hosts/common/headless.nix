@@ -16,6 +16,8 @@
   nix = {
     daemonCPUSchedPolicy = "batch";
     daemonIOSchedClass = "best-effort";
+    # Needed to copy closures with --target-host
+    settings.trusted-users = ["@wheel"];
   };
 
   powerManagement.enable = false;
