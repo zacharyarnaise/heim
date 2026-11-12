@@ -54,6 +54,9 @@ in {
           "DOCKER_HOST=unix://%t/podman/podman.sock"
           "DOCKER_SOCK=%t/podman/podman.sock"
         ];
+        # Wait until default route is available
+        ExecStartPre = "/bin/sh -c 'until ip route show default | grep -q .; do sleep 1; done'";
+        TimeoutStartSec = 120;
         # "-" ignore errors if registry or cluster doesn't exist
         ExecStart = [
           "-/run/current-system/sw/bin/podman --remote start k3d-registry"
@@ -77,6 +80,9 @@ in {
         # Workaround for error: cannot setup namespace using newuidmap
         # See: https://github.com/NixOS/nixpkgs/issues/138423#issuecomment-947888673
         Environment = "PATH=/run/wrappers/bin:/run/current-system/sw/bin";
+        # Wait until default route is available
+        ExecStartPre = "/bin/sh -c 'until ip route show default | grep -q .; do sleep 1; done'";
+        TimeoutStartSec = 120;
         ExecStart = [
           "/run/current-system/sw/bin/podman --remote start k3d-registry"
           "/run/current-system/sw/bin/podman --remote exec k3d-registry rm -rf /var/lib/registry/docker"
