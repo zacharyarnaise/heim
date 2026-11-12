@@ -18,12 +18,6 @@
       };
     };
     wireplumber.extraConfig = {
-      # A2DP HFP switch isn't working properly
-      "bluetooth-autoswitch-false" = {
-        "wireplumber.settings" = {
-          "bluetooth.autoswitch-to-headset-profile" = false;
-        };
-      };
       "id24-sink-config" = {
         "monitor.alsa.rules" = [
           {
