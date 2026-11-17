@@ -1,4 +1,10 @@
-{lib, ...}: {
+{
+  lib,
+  pkgs,
+  ...
+}: {
+  environment.systemPackages = [pkgs.dix]; # nh requires it for diff on remote hosts
+
   nix = {
     # https://github.com/NixOS/nix/issues/2982
     channel.enable = false;
