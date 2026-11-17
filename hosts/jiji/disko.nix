@@ -71,7 +71,8 @@
                 type = "filesystem";
                 format = "ext4";
                 mountpoint = "/storage/data01";
-                mountOptions = ["noatime" "nofail"];
+                # nofail drops implicit Before=local-fs.target
+                mountOptions = ["noatime" "nofail" "x-systemd.before=local-fs.target"];
               };
             };
           };
