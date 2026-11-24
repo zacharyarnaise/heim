@@ -19,10 +19,10 @@
     };
 
     nameservers = [
-      "86.54.11.100#unfiltered.joindns4.eu"
-      "86.54.11.200#unfiltered.joindns4.eu"
-      "2a13:1001::86:54:11:100#unfiltered.joindns4.eu"
-      "2a13:1001::86:54:11:200#unfiltered.joindns4.eu"
+      "1.1.1.1#one.one.one.one"
+      "1.0.0.1#one.one.one.one"
+      "2606:4700:4700::1111#one.one.one.one"
+      "2606:4700:4700::1001#one.one.one.one"
     ];
 
     firewall = {
