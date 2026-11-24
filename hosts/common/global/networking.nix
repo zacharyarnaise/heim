@@ -19,10 +19,10 @@
     };
 
     nameservers = [
-      "9.9.9.11#dns11.quad9.net"
-      "149.112.112.11#dns11.quad9.net"
-      "2620:fe::11#dns11.quad9.net"
-      "2620:fe::fe:11#dns11.quad9.net"
+      "86.54.11.100#unfiltered.joindns4.eu"
+      "86.54.11.200#unfiltered.joindns4.eu"
+      "2a13:1001::86:54:11:100#unfiltered.joindns4.eu"
+      "2a13:1001::86:54:11:200#unfiltered.joindns4.eu"
     ];
 
     firewall = {

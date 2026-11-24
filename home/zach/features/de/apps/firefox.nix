@@ -257,7 +257,7 @@ in {
         "network.IDN_show_punycode" = true;
         "network.notify.checkForProxies" = false;
         "network.trr.mode" = 3;
-        "network.trr.uri" = "https://dns11.quad9.net/dns-query";
+        "network.trr.uri" = "https://unfiltered.joindns4.eu/dns-query";
         "nglayout.initialpaint.delay_in_oopif" = 0;
         "nglayout.initialpaint.delay" = 0;
         "pdfjs.enableScripting" = false;
