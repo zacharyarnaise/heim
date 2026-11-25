@@ -21,7 +21,7 @@ in {
     };
 
   # Modifications to existing packages
-  modifications = _final: prev: {
+  modifications = final: prev: {
     beets = addPatches prev.beets [
       # Don't send user-agent bc some lyrics providers block it
       (prev.fetchpatch {
@@ -29,6 +29,9 @@ in {
         hash = "sha256-gS1NXX0un1RXgDz+Z5HRv4Pq1sM5TjdpY5HJIe8Y6RY=";
       })
     ];
+
+    # See: https://github.com/podman-container-tools/podman/pull/30243
+    inherit (final.stable) crun;
 
     # See: https://github.com/k3d-io/k3d/issues/1560
     k3d = prev.k3d.override {

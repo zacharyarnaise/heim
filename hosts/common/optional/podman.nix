@@ -47,6 +47,8 @@ in {
         containers = {
           log_driver = "k8s-file";
           log_size_max = 104857600; # 100 MiB
+          # Prevent stale paths after Nix GC runs
+          init_path = "/run/current-system/sw/libexec/podman/catatonit";
         };
         engine = {
           compression_format = "zstd:chunked";
