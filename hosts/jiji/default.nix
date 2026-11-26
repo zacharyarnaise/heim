@@ -9,6 +9,7 @@
     ./modules/wireguard.nix
     ./modules/postgresql.nix
     ./modules/atuin.nix
+    ./modules/music-import.nix
     ./modules/navidrome.nix
     ./modules/nextcloud.nix
     ./modules/slskd.nix
