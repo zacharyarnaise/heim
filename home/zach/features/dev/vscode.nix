@@ -17,6 +17,13 @@
     };
 
     mutableExtensionsDir = true;
+    trustedWorkspaces =
+      [
+        "${config.home.homeDirectory}/Code/Nix/heim"
+      ]
+      ++ lib.optionals config.hostSpec.isWork [
+        "${config.home.homeDirectory}/Code/Work/"
+      ];
     profiles.default = {
       enableExtensionUpdateCheck = false;
       enableUpdateCheck = false;
