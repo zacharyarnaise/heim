@@ -1,4 +1,8 @@
-{config, ...}: {
+{
+  config,
+  lib,
+  ...
+}: {
   wayland.windowManager.hyprland.settings = {
     config = {
       animations = {
@@ -96,7 +100,7 @@
         kb_model = config.hostSpec.kbdModel;
         kb_layout = config.hostSpec.kbdLayout;
         kb_variant = config.hostSpec.kbdVariant;
-        kb_options = config.hostSpec.kbdOptions;
+        kb_options = lib.concatStringsSep "," config.hostSpec.kbdOptions;
         numlock_by_default = true;
         repeat_rate = 50;
         repeat_delay = 400;
