@@ -33,6 +33,18 @@ diff host=`hostname` rev="HEAD":
     nh os build . -H {{ host }} -d never -o "result-{{ host }}-tree"
     dix diff "result-{{ host }}-${sha:0:7}" "result-{{ host }}-tree"
 
+# Derivation diff from a git rev against the working tree
+[arg("rev", long="rev")]
+[group("local")]
+diff-config host=`hostname` rev="HEAD":
+    #!/usr/bin/env bash
+    set -euo pipefail
+    sha=$(git rev-parse "{{ rev }}")
+    just diff {{ host }} --rev "$sha" >/dev/null
+    nix-diff --skip-already-compared \
+      "$(nix-store --query --deriver "result-{{ host }}-${sha:0:7}")" \
+      "$(nix-store --query --deriver "result-{{ host }}-tree")"
+
 # Build locally and switch a remote host
 [group("remote")]
 deploy host:
