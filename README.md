@@ -7,33 +7,24 @@ Here you'll find my [NixOS](https://nixos.org/) & [home-manager](https://github.
 
 </div>
 
-## Notable features
+## Features
 - Declarative disk partitioning ([disko](https://github.com/nix-community/disko))
 - Full disk encryption
-- [Impermanence](https://github.com/nix-community/impermanence), ephemeral root in ramfs
-- Secure Boot ([lanzaboote](https://github.com/nix-community/lanzaboote))
+- [Impermanence](https://github.com/nix-community/impermanence), ephemeral root in tmpfs
+- Secure Boot ([Limine](https://limine-bootloader.org/) + [sbctl](https://github.com/Foxboron/sbctl))
 - Secrets provisioning using a separate private repo ([sops-nix](https://github.com/Mic92/sops-nix))
 - Remote unattended bootstrapping via SSH ([nixos-anywhere](https://github.com/nix-community/nixos-anywhere))
-- Carefuly crafted Wayland DE ([Hyprland](https://hyprland.org/))
+- ([Hyprland](https://hyprland.org/))
   - <details>
-    <summary>Components used</summary>
+    <summary>Components</summary>
 
-    - Bar: [Waybar](https://github.com/Alexays/Waybar)
+    - Shell: [Noctalia](https://github.com/noctalia-dev/noctalia-shell)
     - Display manager: [ly](https://codeberg.org/fairyglade/ly)
     - File manager (TUI): [yazi](https://github.com/sxyazi/yazi)
-    - Launcher: [rofi](https://github.com/davatorium/rofi)
-    - Notification daemon: [mako](https://github.com/emersion/mako)
     - Terminal: [foot](https://codeberg.org/dnkl/foot)
     - Theming: [stylix](https://github.com/nix-community/stylix)
 
     </details>
-
-<img width="1920" height="1080" alt="Screenshot showing fastfetch opened" src="https://github.com/user-attachments/assets/608721a4-2417-4f87-8f9c-d3e6414bcc34" />
-<div align="center"><table><tr>
-<td><img width="1920" height="1080" alt="Screenshot showing various terminals opened" src="https://github.com/user-attachments/assets/dcb48e67-9306-423f-b198-000278677628" /></td>
-<td><img width="1920" height="1080" alt="Screenshot showing desktop applications and rofi launcher opened" src="https://github.com/user-attachments/assets/52e4cbb4-e80b-4b06-b886-863164f18a26" /></td>
-</tr></table></div>
-
 
 ## Repo structure
 ```sh
@@ -45,9 +36,8 @@ Here you'll find my [NixOS](https://nixos.org/) & [home-manager](https://github.
 │    ├─ optional/ # Optional configurations
 │    ├─ users/    # Host-level user declaration
 │  ├─ calcifer/  # Desktop
-│  ├─ jiji/      # Headless - Serves Atuin and Navidrome
-│  ├─ kamaji/    # Headless - Serves Jellyin/*arr stack + Moonlight client for streaming
-│  ├─ noface/    # Headless - QEMU guest used for debugging/testing
+│  ├─ jiji/      # Headless - WireGuard + Atuin, Navidrome, Nextcloud and slskd
+│  ├─ noface/    # Headless - VirtualBox guest used for debugging/testing
 │  ├─ ponyo/     # Laptop
 ├─ lib/               # Nix utilities/helpers
 ├─ modules/           # Reusable, abstract pieces of config for home-manager, NixOS or both.
@@ -58,7 +48,8 @@ Here you'll find my [NixOS](https://nixos.org/) & [home-manager](https://github.
 ├─ pkgs/              # Custom packages
 ├─ checks.nix         # pre-commit-check config
 ├─ flake.nix          # Entrypoint for hosts and home-manager configs
-└─ shell.nix          # devshell for manual bootstrapping tasks (nix-shell)
+├─ justfile           # Common commands, run `just` to list them
+└─ shell.nix          # devShell with the tooling (nix develop / direnv)
 ```
 
 ## Bootstrapping a new host
@@ -67,17 +58,13 @@ Here you'll find my [NixOS](https://nixos.org/) & [home-manager](https://github.
 2. Set a password for `root` to allow for SSH access
 ### On an existing NixOS machine
 1. Declare the new host in this repository
-2. Generate an SSH key pair that will be used as the host key, use it to encrypt the new host's secrets.<br>
-   The key will be copied and must be in a structure and permissioned as it should be on the target:
+2. Push the button from the devShell:
     ```sh
-    temp=$(mktemp -d) # Don't forget to clean it up afterwards
-    install -d -m755 "$temp/persist/etc/ssh"
-    ssh-keygen -t ed25519 -N "" -C "<hostname>" -f "$temp/persist/etc/ssh/ssh_host_ed25519_key"
+    just bootstrap <hostname> <target-ip>
     ```
-3. Push the button:
-    ```
-    nix run github:nix-community/nixos-anywhere#nixos-anywhere -- --extra-files "$temp" --flake /home/mydir/heim#hostname --target-host root@<hostname>
-    ```
+   It will generate SSH host key, prints its age recipient and public key, then pauses.
+3. While paused, in the secrets repo: add the age recipient to `.sops.yaml`, encrypt its secrets and
+   add the public key as `hosts/<hostname>/ssh_host_ed25519_key.pub`.
 
 > [!IMPORTANT]
 > If you use ZFS, `nixos-anywhere` has [an issue](https://github.com/nix-community/nixos-anywhere/issues/156) where it won't export the pool before rebooting.
