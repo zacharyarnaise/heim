@@ -26,6 +26,13 @@ Here you'll find my [NixOS](https://nixos.org/) & [home-manager](https://github.
 
     </details>
 
+<p align="center">
+  <img width="1920" height="1080" alt="Screenshot showing fastfetch opened" src="https://github.com/user-attachments/assets/4fa46608-7654-43ec-9d09-58ea5e9cff6a" />
+  <img width="960" height="540" alt="Screenshot showing various windows opened" src="https://github.com/user-attachments/assets/979652ce-d93d-480d-8f38-f218c8bd35d3" />
+  <br>
+  <sup>Wallpaper is Georg Pezolt - Salzburg von einer Loggia (1850)</sup>
+</p>
+
 ## Repo structure
 ```sh
 .
