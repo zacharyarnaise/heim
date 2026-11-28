@@ -13,7 +13,8 @@
       ../features/cli/fish
     ];
 
-  inherit hostSpec;
+  # These are defined twice: in NixOS config and in HM
+  hostSpec = removeAttrs hostSpec ["isDesktop" "isLaptop" "isHeadless"];
 
   programs = {
     home-manager.enable = true;
