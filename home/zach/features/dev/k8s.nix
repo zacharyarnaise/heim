@@ -72,6 +72,12 @@ in {
       ;
   };
 
+  programs.fish.shellAbbrs = {
+    k = "kubectl";
+    kn = "kubens";
+    kx = "kubectx";
+  };
+
   xdg.configFile."helm/repositories.yaml".text = lib.generators.toYAML {} {
     repositories = mkReposSet helmRepos;
   };
