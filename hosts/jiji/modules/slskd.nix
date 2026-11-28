@@ -109,7 +109,7 @@ in {
     tmpfiles.rules = [
       "d /storage/data01/slskd            0755 slskd slskd -"
       "d /storage/data01/slskd/downloads  0755 slskd slskd -"
-      "d /storage/data01/slskd/incomplete 0755 slskd slskd -"
+      "d /storage/data01/slskd/incomplete 0755 slskd slskd 7d"
     ];
   };
 
