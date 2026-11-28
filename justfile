@@ -66,15 +66,15 @@ bootstrap host target:
     nix flake update secrets
     nix run github:nix-community/nixos-anywhere -- --extra-files "$dir" --flake .#{{ host }} --target-host root@{{ target }}
 
-# Update all inputs
+# Update all inputs and commit flake.lock
 [group("flake")]
 update:
-    nix flake update
+    nix flake update --commit-lock-file --option commit-lock-file-summary "chore(lock): update"
 
-# Update secrets input
+# Update secrets input and commit flake.lock
 [group("flake")]
 update-secrets:
-    nix flake update secrets
+    nix flake update secrets --commit-lock-file --option commit-lock-file-summary "chore(lock): update"
 
 # Run pre-commit checks
 [group("flake")]
