@@ -61,6 +61,7 @@ in {
         MUSIC_IMPORT_FAILED = failed;
         MUSIC_IMPORT_READY = ready;
         NAVIDROME_URL = "http://${navidrome.Address}:${toString navidrome.Port}";
+        PYTHONUNBUFFERED = "1";
       };
       serviceConfig = {
         EnvironmentFile = secrets."music-import".path;

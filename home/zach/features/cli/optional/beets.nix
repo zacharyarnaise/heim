@@ -14,6 +14,7 @@
       library = "/storage/data01/beets/library.db";
       directory = "/storage/sb01/music";
       original_date = true;
+      raise_on_error = true;
       plugins = builtins.concatStringsSep " " [
         "info"
         "edit"

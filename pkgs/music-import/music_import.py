@@ -13,6 +13,7 @@ from pathlib import Path
 
 READY = Path(os.environ["MUSIC_IMPORT_READY"])
 FAILED = Path(os.environ["MUSIC_IMPORT_FAILED"])
+BEETS_RETRIES = 3
 
 
 def ffmpeg_resample(flac: Path) -> None:
@@ -73,16 +74,27 @@ def ffmpeg_resample(flac: Path) -> None:
 
 
 def beet_import(dir: Path) -> bool:
-    with tempfile.NamedTemporaryFile("r") as log:
-        result = subprocess.run(
-            ["beet", "import", "-q", "-w", "--from-scratch", "-l", log.name, dir],
-            check=False,
+    # Retry in case MusicBrainz isn't reachable (beets will exit non-zero)
+    for i in range(BEETS_RETRIES):
+        with tempfile.NamedTemporaryFile("r") as log:
+            result = subprocess.run(
+                ["beet", "import", "-q", "-w", "--from-scratch", "-l", log.name, dir],
+                check=False,
+            )
+            skipped = [
+                line.rstrip()
+                for line in log
+                if line.split(" ", 1)[0] in ("skip", "duplicate-skip")
+            ]
+        if result.returncode == 0:
+            break
+        print(
+            f"beets exited {result.returncode} (attempt {i}/{BEETS_RETRIES})",
+            file=sys.stderr,
         )
-        skipped = [
-            line.rstrip()
-            for line in log
-            if line.split(" ", 1)[0] in ("skip", "duplicate-skip")
-        ]
+        if i < BEETS_RETRIES - 1:
+            time.sleep(60)
+
     for line in skipped:
         print(f"beets: {line}", file=sys.stderr)
     return result.returncode == 0 and not skipped
