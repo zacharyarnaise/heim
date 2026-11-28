@@ -14,6 +14,7 @@
         nix
         home-manager
         nh
+        just
         pre-commit
         deadnix
         statix
