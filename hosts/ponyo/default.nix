@@ -1,7 +1,6 @@
 {
   imports = [
     ./hardware.nix
-    ./wireguard.nix
 
     ../common/pc.nix
     ../common/optional/laptop
@@ -11,6 +10,8 @@
     ../common/optional/bluetooth.nix
     ../common/optional/wireless.nix
   ];
+
+  heim.wireguard.enable = true;
 
   system.stateVersion = "26.05";
 }

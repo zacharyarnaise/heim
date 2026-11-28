@@ -6,7 +6,6 @@
     ../common/users/zach
 
     ./modules/networking.nix
-    ./modules/wireguard.nix
     ./modules/postgresql.nix
     ./modules/atuin.nix
     ./modules/music-import.nix
@@ -14,6 +13,11 @@
     ./modules/nextcloud.nix
     ./modules/slskd.nix
   ];
+
+  heim.wireguard = {
+    enable = true;
+    isServer = true;
+  };
 
   system.stateVersion = "26.05";
 }
