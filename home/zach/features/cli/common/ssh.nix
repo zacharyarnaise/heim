@@ -3,7 +3,6 @@
   config,
   ...
 }: let
-  isHeadless = config.hostSpec.kind == "headless";
   identityFiles =
     lib.lists.forEach [
       "id_zach_sk"
@@ -47,8 +46,8 @@ in {
       "github.com" = {
         Host = "github.com";
         User = "git";
-        IdentitiesOnly = !isHeadless;
-        IdentityFile = lib.optionals (!isHeadless) identityFiles;
+        IdentitiesOnly = !config.hostSpec.isHeadless;
+        IdentityFile = lib.optionals (!config.hostSpec.isHeadless) identityFiles;
       };
     };
   };

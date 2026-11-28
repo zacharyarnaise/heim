@@ -7,7 +7,6 @@
 }: let
   ifTheyExist = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
   inherit (config.sops) secrets;
-  secretsDir = builtins.toString inputs.secrets;
 in {
   home-manager.users.zach =
     import ../../../../home/zach/${config.hostSpec.name}.nix;
@@ -36,6 +35,6 @@ in {
     password = lib.mkForce null;
     hashedPasswordFile = secrets."passwords/zach".path;
     openssh.authorizedKeys.keys =
-      lib.splitString "\n" (builtins.readFile "${secretsDir}/users/zach/id_zach_sk.pub");
+      lib.splitString "\n" (builtins.readFile "${inputs.secrets}/users/zach/id_zach_sk.pub");
   };
 }

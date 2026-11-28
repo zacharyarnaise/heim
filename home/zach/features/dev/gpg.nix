@@ -3,9 +3,7 @@
   config,
   pkgs,
   ...
-}: let
-  secretsDir = builtins.toString inputs.secrets;
-in {
+}: {
   services.gpg-agent = {
     enable = true;
 
@@ -23,7 +21,7 @@ in {
 
     publicKeys = [
       {
-        source = "${secretsDir}/users/zach/gpg.pub";
+        source = "${inputs.secrets}/users/zach/gpg.pub";
         trust = 5;
       }
       {

@@ -7,18 +7,17 @@
   ...
 }: let
   inherit (inputs) secrets;
-  secretsDir = builtins.toString inputs.secrets;
   hosts = lib.attrNames outputs.nixosConfigurations;
 in {
   programs.ssh = {
-    startAgent = config.hostSpec.kind != "headless";
+    startAgent = !config.hostSpec.isHeadless;
     enableAskPassword = false;
     askPassword = "";
 
     knownHosts = lib.genAttrs hosts (hostname: {
-      extraHostNames = ["${secrets.hosts.${hostname}.inet}"];
+      extraHostNames = [secrets.hosts.${hostname}.inet];
       publicKey =
-        builtins.readFile "${secretsDir}/hosts/${hostname}/ssh_host_ed25519_key.pub";
+        builtins.readFile "${inputs.secrets}/hosts/${hostname}/ssh_host_ed25519_key.pub";
     });
     knownHostsFiles = [
       (pkgs.writeText "known_hosts_github" ''

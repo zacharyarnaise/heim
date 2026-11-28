@@ -1,8 +1,4 @@
 {
-  config,
-  lib,
-  ...
-}: {
   services.tlp = {
     enable = true;
     settings = {
@@ -27,7 +23,7 @@
     };
   };
 
-  systemd.services.tlp = lib.mkIf config.services.tlp.enable {
+  systemd.services.tlp = {
     after = ["powertop.service"];
   };
 }

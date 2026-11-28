@@ -5,20 +5,14 @@
   outputs,
   ...
 }: let
-  identityFiles =
-    lib.lists.forEach [
-      "id_zach_sk"
-    ]
-    (n: "/persist${config.home.homeDirectory}/.ssh/${n}");
-
   inherit (inputs) secrets;
 
   hostNames = lib.attrNames outputs.nixosConfigurations;
   hostsConfig = lib.genAttrs hostNames (hostname: {
     host = hostname;
-    hostname = "${secrets.hosts.${hostname}.inet}";
+    hostname = secrets.hosts.${hostname}.inet;
     identitiesOnly = true;
-    identityFile = identityFiles;
+    identityFile = ["/persist${config.home.homeDirectory}/.ssh/id_zach_sk"];
   });
 
   privateConfig =
