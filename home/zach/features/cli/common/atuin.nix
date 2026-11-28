@@ -29,8 +29,8 @@
       ];
 
       search = {
-        frequency_score_multiplier = 0.5;
-        recency_score_multiplier = 5.0;
+        frequency_score_multiplier = "0.5";
+        recency_score_multiplier = "5.0";
       };
     };
 
