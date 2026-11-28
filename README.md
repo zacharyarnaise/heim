@@ -14,7 +14,7 @@ Here you'll find my [NixOS](https://nixos.org/) & [home-manager](https://github.
 - Secure Boot ([Limine](https://limine-bootloader.org/) + [sbctl](https://github.com/Foxboron/sbctl))
 - Secrets provisioning using a separate private repo ([sops-nix](https://github.com/Mic92/sops-nix))
 - Remote unattended bootstrapping via SSH ([nixos-anywhere](https://github.com/nix-community/nixos-anywhere))
-- ([Hyprland](https://hyprland.org/))
+- [Hyprland](https://hyprland.org/)
   - <details>
     <summary>Components</summary>
 
