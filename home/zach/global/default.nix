@@ -5,7 +5,7 @@
   ...
 }: {
   imports =
-    (map lib.custom.relativeToRoot ["modules/home-manager" "modules/common"])
+    (map lib.heim.relativeToRoot ["modules/home-manager" "modules/common"])
     ++ [
       ./secrets.nix
 
