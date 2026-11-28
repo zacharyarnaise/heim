@@ -6,7 +6,7 @@ in {
     owner = "slskd";
   };
 
-  networking.firewall.interfaces.wg0.allowedTCPPorts = [5030];
+  networking.firewall.interfaces.wg0.allowedTCPPorts = [config.heim.net.services.slskd.port];
 
   services.slskd = {
     enable = true;
@@ -89,8 +89,8 @@ in {
       };
 
       web = {
-        ip_address = "10.0.1.3";
-        port = 5030;
+        ip_address = config.heim.net.services.slskd.ip;
+        port = config.heim.net.services.slskd.port;
       };
     };
   };

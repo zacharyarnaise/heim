@@ -47,7 +47,7 @@ in {
       content = ''
         chain output {
           type filter hook output priority 0; policy accept;
-          ip daddr { 10.0.0.0/24, 10.0.1.0/24 } oifname != "wg0" reject
+          ip daddr { ${config.heim.net.wg.subnet}, ${config.heim.net.services.subnet} } oifname != "wg0" reject
         }
       '';
     };

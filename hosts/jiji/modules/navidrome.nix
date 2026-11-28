@@ -6,7 +6,7 @@ in {
     owner = "navidrome";
   };
 
-  networking.firewall.interfaces.wg0.allowedTCPPorts = [4533];
+  networking.firewall.interfaces.wg0.allowedTCPPorts = [config.heim.net.services.navidrome.port];
 
   services.navidrome = {
     enable = true;
@@ -14,8 +14,8 @@ in {
 
     environmentFile = secrets.navidrome.path;
     settings = {
-      Address = "10.0.1.2";
-      Port = 4533;
+      Address = config.heim.net.services.navidrome.ip;
+      Port = config.heim.net.services.navidrome.port;
       DataFolder = "/storage/data01/navidrome/data";
       MusicFolder = "/storage/sb01/music";
       EnableInsightsCollector = false;

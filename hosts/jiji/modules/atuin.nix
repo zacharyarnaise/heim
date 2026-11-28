@@ -1,10 +1,12 @@
-{
-  networking.firewall.interfaces.wg0.allowedTCPPorts = [8888];
+{config, ...}: {
+  networking.firewall.interfaces.wg0.allowedTCPPorts = [
+    config.heim.net.services.atuin.port
+  ];
 
   services.atuin = {
     enable = true;
-    host = "10.0.1.1";
-    port = 8888;
+    host = config.heim.net.services.atuin.ip;
+    port = config.heim.net.services.atuin.port;
     openFirewall = false;
   };
 }

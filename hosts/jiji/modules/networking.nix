@@ -1,4 +1,4 @@
-{
+{config, ...}: {
   systemd.network = {
     netdevs."10-dummy0" = {
       netdevConfig = {
@@ -10,19 +10,19 @@
       name = "dummy0";
       addresses = [
         {
-          Address = "10.0.1.1/32";
+          Address = "${config.heim.net.services.atuin.ip}/32";
           Scope = "host";
         }
         {
-          Address = "10.0.1.2/32";
+          Address = "${config.heim.net.services.navidrome.ip}/32";
           Scope = "host";
         }
         {
-          Address = "10.0.1.3/32";
+          Address = "${config.heim.net.services.slskd.ip}/32";
           Scope = "host";
         }
         {
-          Address = "10.0.1.4/32";
+          Address = "${config.heim.net.services.nextcloud.ip}/32";
           Scope = "host";
         }
       ];

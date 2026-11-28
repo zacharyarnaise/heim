@@ -5,7 +5,7 @@
     settings = {
       update_check = false;
       auto_sync = true;
-      sync_address = "http://10.0.1.1:8888"; # TODO: declare this somewhere else so IPs are defined in one place
+      sync_address = "http://${config.heim.net.services.atuin.ip}:${toString config.heim.net.services.atuin.port}";
       sync_frequency = "15m";
       db_path = "/persist${config.home.homeDirectory}/.atuin.db";
       session_path = "/persist${config.home.homeDirectory}/.atuin-session";

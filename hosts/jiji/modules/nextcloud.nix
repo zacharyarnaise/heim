@@ -99,13 +99,13 @@ in {
 
     settings = {
       maintenance_window_start = 1;
-      trusted_domains = ["10.0.1.4"];
+      trusted_domains = [config.heim.net.services.nextcloud.ip];
     };
   };
 
   services.nginx.virtualHosts.${flakeSecrets.acme.domain} = {
     forceSSL = true;
-    listenAddresses = ["10.0.1.4"];
+    listenAddresses = [config.heim.net.services.nextcloud.ip];
     useACMEHost = flakeSecrets.acme.domain;
   };
 }
